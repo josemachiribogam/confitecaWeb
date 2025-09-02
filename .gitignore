@@ -1,0 +1,5 @@
+# Ignore Assets folder (exceeds commit size)
+Assets/
+
+# macOS system files
+.DS_Store

@@ -1,0 +1,3074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plop! - No Attention, No Attraction</title>
+    <link rel="icon" type="image/png" href="Assets/plop/plop_logo/plop_logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Dynamic Color Variables */
+        :root {
+            --bg-primary: #FF0040;
+            --bg-secondary: #FF1A56;
+            --accent-color: #FF6B9D;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --glow-color: #FF0040;
+            --particle-color: #FF6B9D;
+            --rebel-gradient: linear-gradient(135deg, #FF0040, #FF6B9D, #FF1A56);
+        }
+
+        /* Regular Flavor Themes */
+        .theme-strawberry {
+            --bg-primary: #FF0040;
+            --bg-secondary: #FF1A56;
+            --accent-color: #FF6B9D;
+            --glow-color: #FF0040;
+            --particle-color: #FF6B9D;
+            --rebel-gradient: linear-gradient(135deg, #FF0040, #FF6B9D, #FF1A56);
+        }
+
+        .theme-grape {
+            --bg-primary: #6B46C1;
+            --bg-secondary: #7C3AED;
+            --accent-color: #A78BFA;
+            --glow-color: #8B5CF6;
+            --particle-color: #C4B5FD;
+            --rebel-gradient: linear-gradient(135deg, #6B46C1, #A78BFA, #7C3AED);
+        }
+
+        .theme-green-apple {
+            --bg-primary: #10B981;
+            --bg-secondary: #059669;
+            --accent-color: #6EE7B7;
+            --glow-color: #34D399;
+            --particle-color: #A7F3D0;
+            --rebel-gradient: linear-gradient(135deg, #10B981, #6EE7B7, #059669);
+        }
+
+        .theme-orange {
+            --bg-primary: #F97316;
+            --bg-secondary: #EA580C;
+            --accent-color: #FED7AA;
+            --glow-color: #FB923C;
+            --particle-color: #FDBA74;
+            --rebel-gradient: linear-gradient(135deg, #F97316, #FED7AA, #EA580C);
+        }
+
+        .theme-blue-razz {
+            --bg-primary: #3B82F6;
+            --bg-secondary: #2563EB;
+            --accent-color: #93C5FD;
+            --glow-color: #60A5FA;
+            --particle-color: #DBEAFE;
+            --rebel-gradient: linear-gradient(135deg, #3B82F6, #93C5FD, #2563EB);
+        }
+
+        /* LED Dark Mode Themes */
+        .theme-led-strawberry {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --accent-color: #FF0040;
+            --glow-color: #FF0040;
+            --particle-color: #FF0040;
+            --rebel-gradient: linear-gradient(135deg, #0A0A0A, #1A1A1A, #FF0040);
+        }
+
+        .theme-led-blue {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --accent-color: #00FFFF;
+            --glow-color: #00FFFF;
+            --particle-color: #00FFFF;
+            --rebel-gradient: linear-gradient(135deg, #0A0A0A, #1A1A1A, #00FFFF);
+        }
+
+        /* LED Mode Styling */
+        .led-mode {
+            background: #0A0A0A !important;
+        }
+
+        .led-mode::before {
+            background: linear-gradient(135deg, #0A0A0A, #1A1A1A, #FF0040, #00FFFF, #FFFF00) !important;
+            animation: ledGradientShift 4s ease-in-out infinite !important;
+        }
+
+        @keyframes ledGradientShift {
+            0%, 100% { 
+                background: linear-gradient(135deg, #0A0A0A, #1A1A1A, var(--accent-color));
+                transform: rotate(0deg) scale(1);
+            }
+            25% { 
+                background: linear-gradient(225deg, #1A1A1A, var(--accent-color), #0A0A0A);
+                transform: rotate(2deg) scale(1.02);
+            }
+            50% { 
+                background: linear-gradient(315deg, var(--accent-color), #0A0A0A, #1A1A1A);
+                transform: rotate(-2deg) scale(1.01);
+            }
+            75% { 
+                background: linear-gradient(45deg, #0A0A0A, var(--accent-color), #1A1A1A);
+                transform: rotate(1deg) scale(1.01);
+            }
+        }
+
+        .led-mode nav {
+            background: rgba(10, 10, 10, 0.95) !important;
+            border-bottom: 1px solid var(--accent-color) !important;
+        }
+
+        .led-mode .product-card {
+            background: rgba(26, 26, 26, 0.8) !important;
+            border: 2px solid var(--accent-color) !important;
+            box-shadow: 0 0 30px var(--glow-color) !important;
+        }
+
+        .led-mode .product-card::before {
+            background: var(--accent-color) !important;
+            opacity: 0.1 !important;
+        }
+
+        .led-mode .product-card:hover {
+            box-shadow: 0 0 50px var(--glow-color) !important;
+            border-color: var(--accent-color) !important;
+        }
+
+        .led-mode .social-proof {
+            background: rgba(10, 10, 10, 0.8) !important;
+        }
+
+        .led-mode .lifestyle-section {
+            background: rgba(5, 5, 5, 0.9) !important;
+        }
+
+        .led-mode .cta-section {
+            background: rgba(10, 10, 10, 0.8) !important;
+        }
+
+        /* Enhanced Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--rebel-gradient);
+            z-index: -2;
+            animation: rebelGradientShift 6s ease-in-out infinite;
+        }
+
+        @keyframes rebelGradientShift {
+            0%, 100% { 
+                background: var(--rebel-gradient);
+                transform: rotate(0deg) scale(1);
+            }
+            33% { 
+                background: linear-gradient(225deg, var(--bg-secondary), var(--accent-color), var(--bg-primary));
+                transform: rotate(1deg) scale(1.02);
+            }
+            66% { 
+                background: linear-gradient(315deg, var(--accent-color), var(--bg-primary), var(--bg-secondary));
+                transform: rotate(-1deg) scale(1.01);
+            }
+        }
+
+        /* Rebellious Particles */
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            background: var(--particle-color);
+            pointer-events: none;
+            z-index: -1;
+            animation: rebelParticle 10s ease-in-out infinite;
+        }
+
+        @keyframes rebelParticle {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1); 
+                opacity: 0.4; 
+            }
+            25% { 
+                transform: translateY(-40px) rotate(90deg) scale(1.2); 
+                opacity: 0.8; 
+            }
+            50% { 
+                transform: translateY(-30px) rotate(180deg) scale(0.8); 
+                opacity: 0.6; 
+            }
+            75% { 
+                transform: translateY(-50px) rotate(270deg) scale(1.1); 
+                opacity: 0.9; 
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            height: 120px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 150px;
+            width: auto;
+            filter: drop-shadow(0 0 25px var(--glow-color));
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover img {
+            filter: drop-shadow(0 0 40px var(--glow-color));
+            transform: scale(1.08);
+        }
+
+        /* Mode Indicator */
+        .mode-indicator {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .mode-text {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.1em;
+        }
+
+        .led-mode .mode-indicator {
+            background: rgba(26, 26, 26, 0.9);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        .led-mode .mode-text {
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--accent-color);
+        }
+
+        /* Mobile Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(9px, 9px);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(9px, -9px);
+        }
+
+        .hamburger.active {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--glow-color);
+        }
+
+        .led-mode .hamburger.active {
+            box-shadow: 0 0 30px var(--accent-color);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--rebel-gradient);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--rebel-gradient);
+            animation: rebelGradientShift 4s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-links li {
+            margin: 2rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .mobile-menu.active .mobile-nav-links li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-nav-links li:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-nav-links li:nth-child(2) { transition-delay: 0.2s; }
+        .mobile-nav-links li:nth-child(3) { transition-delay: 0.3s; }
+        .mobile-nav-links li:nth-child(4) { transition-delay: 0.4s; }
+        .mobile-nav-links li:nth-child(5) { transition-delay: 0.5s; }
+
+        .mobile-nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 30px var(--glow-color);
+            transition: all 0.3s ease;
+            display: block;
+            padding: 1rem;
+        }
+
+        .mobile-nav-links a:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 50px var(--glow-color), 0 0 100px var(--glow-color);
+            color: var(--accent-color);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 3rem;
+            cursor: pointer;
+            padding: 1rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-shadow: 0 0 20px var(--glow-color);
+        }
+
+        .mobile-menu-close:hover {
+            transform: rotate(90deg) scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 40px var(--glow-color);
+        }
+
+        .mobile-menu-brand {
+            position: absolute;
+            bottom: 3rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease 0.5s;
+        }
+
+        .mobile-menu.active .mobile-menu-brand {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-brand .brand-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-shadow: 0 0 20px var(--glow-color);
+        }
+
+        /* LED Mode Menu Styling */
+        .led-mode .mobile-menu {
+            background: linear-gradient(135deg, #0A0A0A, #1A1A1A, var(--accent-color));
+        }
+
+        .led-mode .mobile-menu::before {
+            background: linear-gradient(135deg, #0A0A0A, #1A1A1A, var(--accent-color));
+            animation: ledGradientShift 4s ease-in-out infinite;
+        }
+
+        .led-mode .hamburger {
+            background: rgba(26, 26, 26, 0.8);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .led-mode .hamburger-line {
+            background: var(--accent-color);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        /* Mobile Menu Particles */
+        .mobile-menu-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--particle-color);
+            pointer-events: none;
+            animation: rebelParticle 8s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            transform: translateY(-2px);
+            text-shadow: 0 0 15px var(--glow-color);
+        }
+
+        /* Hero Section - Brand Manifesto */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding-top: 120px;
+            box-sizing: border-box;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .brand-mantra {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.9;
+            animation: mantraGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes mantraGlow {
+            0%, 100% { 
+                text-shadow: 0 0 20px var(--accent-color);
+                opacity: 0.9;
+            }
+            50% { 
+                text-shadow: 0 0 40px var(--accent-color), 0 0 60px var(--accent-color);
+                opacity: 1;
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            color: var(--text-primary);
+            text-shadow: 0 0 30px var(--glow-color);
+            animation: heroGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { 
+                text-shadow: 0 0 30px var(--glow-color), 0 0 60px var(--glow-color); 
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 50px var(--glow-color), 0 0 100px var(--glow-color); 
+                transform: scale(1.02);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .confidence-boost {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .flavor-subtitle {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            transition: all 0.8s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Attitude Pills */
+        .attitude-pills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .attitude-pill {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .attitude-pill:hover {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Lifestyle Visual */
+        .hero-lifestyle {
+            position: absolute;
+            top: 15%;
+            right: 5%;
+            width: 450px;
+            height: 500px;
+            z-index: 1;
+            opacity: 0;
+            transform: translateX(100px) translateY(50px) rotate(5deg);
+            animation: lifestyleEntrance 2s ease-out 1s forwards;
+            pointer-events: none;
+        }
+
+        @keyframes lifestyleEntrance {
+            0% {
+                opacity: 0;
+                transform: translateX(100px) translateY(50px) rotate(5deg) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) translateY(0) rotate(-2deg) scale(1);
+            }
+        }
+
+        .lifestyle-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .lifestyle-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--rebel-gradient);
+            opacity: 0.05;
+            border-radius: 30px;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-lifestyle:hover .lifestyle-container {
+            transform: translateY(-10px) rotate(0deg) scale(1.02);
+            border-color: var(--accent-color);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4), 0 0 40px var(--glow-color);
+        }
+
+        .hero-lifestyle:hover .lifestyle-container::before {
+            opacity: 0.1;
+        }
+
+        .lifestyle-glow {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+            opacity: 0.3;
+            border-radius: 50px;
+            animation: lifestyleGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes lifestyleGlow {
+            0%, 100% { 
+                transform: scale(1); 
+                opacity: 0.3; 
+            }
+            50% { 
+                transform: scale(1.1); 
+                opacity: 0.5; 
+            }
+        }
+
+        .lifestyle-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 28px;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .hero-lifestyle:hover .lifestyle-image {
+            transform: scale(1.05);
+        }
+
+        .lifestyle-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 0 0 28px 28px;
+        }
+
+        .hero-lifestyle:hover .lifestyle-overlay {
+            transform: translateY(0);
+        }
+
+        .lifestyle-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 15px var(--glow-color);
+        }
+
+        .lifestyle-subtitle {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* Dynamic Theme Integration */
+        .hero-lifestyle {
+            animation: lifestyleFloat 8s ease-in-out infinite 3s;
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .hero-lifestyle.theme-active {
+            pointer-events: auto;
+        }
+
+        .hero-lifestyle.theme-active .lifestyle-container {
+            border-color: var(--accent-color);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3), 0 0 25px var(--glow-color);
+        }
+
+        .hero-lifestyle.theme-secondary {
+            pointer-events: none;
+        }
+
+        .hero-lifestyle.theme-secondary .lifestyle-container {
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes lifestyleFloat {
+            0%, 100% { 
+                transform: translateX(0) translateY(0) rotate(-2deg); 
+            }
+            25% { 
+                transform: translateX(-10px) translateY(-15px) rotate(-1deg); 
+            }
+            50% { 
+                transform: translateX(5px) translateY(-8px) rotate(-3deg); 
+            }
+            75% { 
+                transform: translateX(-5px) translateY(-20px) rotate(0deg); 
+            }
+        }
+
+        /* LED Mode Styling */
+        .led-mode .lifestyle-container {
+            background: rgba(26, 26, 26, 0.8);
+            border-color: var(--accent-color);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-color);
+        }
+
+        .led-mode .lifestyle-glow {
+            background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+            animation: ledLifestylePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes ledLifestylePulse {
+            0%, 100% { 
+                transform: scale(1); 
+                opacity: 0.4; 
+            }
+            50% { 
+                transform: scale(1.2); 
+                opacity: 0.7; 
+            }
+        }
+
+        .led-mode .lifestyle-title {
+            color: var(--accent-color);
+            text-shadow: 0 0 20px var(--accent-color);
+        }
+
+        /* Responsive Behavior */
+        @media (max-width: 1200px) {
+            .hero-lifestyle {
+                width: 380px;
+                height: 450px;
+                right: 3%;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-lifestyle {
+                width: 320px;
+                height: 400px;
+                right: 2%;
+                top: 20%;
+            }
+
+            .hero-content {
+                max-width: 550px;
+                margin-right: auto;
+                margin-left: 2rem;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-lifestyle {
+                display: none;
+            }
+
+            .hero-content {
+                text-align: center;
+                margin: 0 auto;
+            }
+        }
+
+        /* Product Swiper Enhancement */
+        .swiper-section {
+            padding: 8rem 0 10rem 0;
+            position: relative;
+            overflow: visible;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px var(--glow-color);
+        }
+
+        .section-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: var(--text-secondary);
+            font-weight: 500;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .swiper-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: visible;
+            padding: 2rem 120px;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: visible;
+        }
+
+        .swiper-slide {
+            min-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px);
+            border-radius: 40px;
+            padding: 2.5rem 3rem;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        border-color 0.2s ease,
+                        box-shadow 0.2s ease;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            margin: 1.5rem auto;
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--rebel-gradient);
+            opacity: 0.05;
+            border-radius: 40px;
+            transition: opacity 0.2s ease;
+            will-change: opacity;
+        }
+
+        .product-card:hover {
+            transform: translate3d(0, -15px, 0) scale(1.02);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .product-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .product-image {
+            width: 200px;
+            height: 200px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            animation: productPulse 4s ease-in-out infinite;
+            box-shadow: 0 0 60px var(--glow-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
+            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale3d(1.1, 1.1, 1);
+        }
+
+        @keyframes productPulse {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                box-shadow: 0 0 60px var(--glow-color); 
+            }
+            50% { 
+                transform: scale(1.08) rotate(2deg); 
+                box-shadow: 0 0 100px var(--glow-color); 
+            }
+        }
+
+        .product-name {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .product-attitude {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .product-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .flavor-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        /* Enhanced Navigation - Side Arrows */
+        .swiper-nav {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .swiper-btn {
+            position: absolute;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .swiper-btn:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--bg-primary);
+            transform: scale(1.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        #prevBtn {
+            left: -80px;
+        }
+
+        #nextBtn {
+            right: -80px;
+        }
+
+        /* Flavor Indicators */
+        .flavor-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 2rem;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .flavor-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .flavor-dot.active {
+            background: var(--accent-color);
+            transform: scale(1.3);
+            box-shadow: 0 0 25px var(--glow-color);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* LED Flavor Dots */
+        .led-dot {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .led-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(45deg, #FF0040, #00FFFF);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        .led-dot.active::before {
+            box-shadow: 0 0 15px #FF0040, 0 0 25px #00FFFF;
+            opacity: 1;
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            padding: 6rem 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+        }
+
+        .social-proof h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .confidence-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .confidence-stat {
+            text-align: center;
+        }
+
+        .confidence-stat .big-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            display: block;
+            text-shadow: 0 0 30px var(--glow-color);
+        }
+
+        .confidence-stat .stat-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Enhanced CTA Section */
+        .cta-section {
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            text-shadow: 0 0 30px var(--glow-color);
+        }
+
+        .cta-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            padding: 2rem 4rem;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+            background: var(--text-primary);
+        }
+
+        /* Flavor-Specific Animations */
+        .strawberry-animation {
+            animation: strawberryBounce 1.2s ease-out;
+        }
+
+        @keyframes strawberryBounce {
+            0% { transform: translateY(-30px) rotate(-8deg) scale(0.9); }
+            50% { transform: translateY(15px) rotate(4deg) scale(1.1); }
+            100% { transform: translateY(0) rotate(0deg) scale(1); }
+        }
+
+        .grape-animation {
+            animation: grapeSwirl 1.5s ease-out;
+        }
+
+        @keyframes grapeSwirl {
+            0% { transform: rotate(-10deg) scale(0.8); }
+            50% { transform: rotate(185deg) scale(1.15); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .apple-animation {
+            animation: appleFresh 1.2s ease-out;
+        }
+
+        @keyframes appleFresh {
+            0% { transform: scale(0.7) skewX(-5deg); opacity: 0.6; }
+            50% { transform: scale(1.2) skewX(5deg); opacity: 1; }
+            100% { transform: scale(1) skewX(0deg); opacity: 1; }
+        }
+
+        .orange-animation {
+            animation: orangeZest 1.3s ease-out;
+        }
+
+        @keyframes orangeZest {
+            0% { transform: translateX(-40px) rotate(-15deg) scale(0.8); }
+            50% { transform: translateX(20px) rotate(10deg) scale(1.1); }
+            100% { transform: translateX(0) rotate(0deg) scale(1); }
+        }
+
+        .blue-animation {
+            animation: blueWave 1.4s ease-out;
+        }
+
+        @keyframes blueWave {
+            0% { transform: scaleY(0.7) skewX(-8deg) rotate(-5deg); }
+            50% { transform: scaleY(1.3) skewX(8deg) rotate(5deg); }
+            100% { transform: scaleY(1) skewX(0deg) rotate(0deg); }
+        }
+
+        /* LED Specific Animations */
+        .led-animation {
+            animation: ledPulse 1.5s ease-out;
+        }
+
+        @keyframes ledPulse {
+            0% { 
+                transform: scale(0.8); 
+                opacity: 0.7;
+                box-shadow: 0 0 0 var(--glow-color);
+            }
+            50% { 
+                transform: scale(1.1); 
+                opacity: 1;
+                box-shadow: 0 0 60px var(--glow-color);
+            }
+            100% { 
+                transform: scale(1); 
+                opacity: 1;
+                box-shadow: 0 0 30px var(--glow-color);
+            }
+        }
+
+        /* LED Glow Effects */
+        .led-glow {
+            position: relative;
+        }
+
+        .led-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+            opacity: 0.3;
+            animation: ledGlowPulse 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes ledGlowPulse {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.7; 
+                transform: scale(1.2);
+            }
+        }
+
+        /* LED Mode Text Effects */
+        .led-mode .product-name,
+        .led-mode .section-title,
+        .led-mode h1 {
+            text-shadow: 0 0 20px var(--accent-color), 0 0 40px var(--accent-color) !important;
+        }
+
+        .led-mode .product-attitude {
+            color: var(--accent-color) !important;
+            text-shadow: 0 0 15px var(--accent-color) !important;
+        }
+
+        .led-mode .stat-value {
+            color: var(--accent-color) !important;
+            text-shadow: 0 0 20px var(--accent-color) !important;
+        }
+
+        /* Display Formats Section */
+        .display-formats-section {
+            padding: 8rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            position: relative;
+        }
+
+        .display-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .display-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .display-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px);
+            border-radius: 25px;
+            padding: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .display-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .display-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--rebel-gradient);
+            opacity: 0;
+            border-radius: 25px;
+            transition: opacity 0.3s ease;
+        }
+
+        .display-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .display-image {
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .display-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .display-card:hover .display-image img {
+            transform: scale(1.05);
+        }
+
+        .display-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .display-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .display-features {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .feature-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 0.4rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .display-card:hover .feature-tag {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            border-color: var(--accent-color);
+        }
+
+        /* LED Exclusive Card */
+        .led-exclusive {
+            border: 2px solid var(--accent-color);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .led-exclusive .display-title {
+            color: var(--accent-color);
+            text-shadow: 0 0 15px var(--glow-color);
+        }
+
+        .led-exclusive::before {
+            background: var(--accent-color);
+            opacity: 0.1;
+        }
+
+        /* Display CTA */
+        .display-cta {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .display-cta h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px var(--glow-color);
+        }
+
+        .display-cta p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* LED Mode Display Section */
+        .led-mode .display-formats-section {
+            background: rgba(10, 10, 10, 0.8);
+        }
+
+        .led-mode .display-card {
+            background: rgba(26, 26, 26, 0.8);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .led-mode .display-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-color);
+        }
+
+        .led-mode .display-title {
+            text-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .led-mode .display-cta {
+            background: rgba(26, 26, 26, 0.8);
+            border-color: var(--accent-color);
+        }
+
+        /* Lifestyle Videos Section */
+        .lifestyle-section {
+            padding: 8rem 0;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lifestyle-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .video-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .video-container {
+            position: relative;
+            aspect-ratio: 9 / 16;
+            width: 100%;
+            max-height: 500px;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 23px;
+        }
+
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover .video-overlay {
+            transform: translateY(0);
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .video-subtitle {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .lifestyle-cta {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .lifestyle-message {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 20px var(--glow-color);
+        }
+
+        /* Video hover effects */
+        .video-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--rebel-gradient);
+            opacity: 0;
+            border-radius: 25px;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .video-card:hover::before {
+            opacity: 0.1;
+        }
+
+        /* Video Link Styling */
+        .video-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .video-link:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .video-link:visited {
+            color: inherit;
+        }
+
+        .video-link .video-card {
+            cursor: pointer;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mode-indicator {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            .attitude-pills {
+                gap: 0.5rem;
+            }
+            
+            .attitude-pill {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .hero {
+                padding-top: 100px;
+                min-height: 90vh;
+                text-align: center;
+                position: relative;
+            }
+            
+            .hero-content {
+                padding: 0 1.5rem;
+                max-width: 100%;
+                margin: 0 auto;
+                position: relative;
+                z-index: 2;
+            }
+
+            .hero h1 {
+                font-size: clamp(3rem, 10vw, 5rem);
+                line-height: 1;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1.1rem, 4vw, 1.5rem);
+                margin-bottom: 2rem;
+            }
+
+            .confidence-boost {
+                font-size: clamp(0.9rem, 3vw, 1.1rem);
+                margin-bottom: 2rem;
+                line-height: 1.5;
+                max-width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .flavor-subtitle {
+                font-size: clamp(1.5rem, 6vw, 2.2rem);
+                margin-bottom: 1rem;
+            }
+
+            .attitude-pills {
+                justify-content: center;
+                margin: 2rem 0;
+                padding: 0 1rem;
+            }
+
+            .brand-mantra {
+                font-size: clamp(1.2rem, 5vw, 1.8rem);
+                margin-bottom: 0.8rem;
+            }
+
+            /* Ensure hero lifestyle is completely hidden on mobile */
+            .hero-lifestyle {
+                display: none !important;
+            }
+
+            /* Mobile navigation adjustments */
+            nav {
+                height: 80px;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo img {
+                height: 60px;
+            }
+            
+            .swiper-container {
+                padding: 1rem;
+            }
+            
+            .product-card {
+                padding: 2rem 2rem;
+                margin: 1rem auto;
+                max-width: 95vw;
+                border-radius: 30px;
+            }
+            
+            .product-image {
+                width: 140px;
+                height: 140px;
+                font-size: 3.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .product-image img {
+                width: 115px;
+                height: 115px;
+            }
+            
+            .product-name {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .product-attitude {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .product-description {
+                font-size: 1rem;
+                line-height: 1.5;
+                margin-bottom: 1.5rem;
+            }
+            
+            .flavor-stats {
+                margin-top: 1.5rem;
+                padding-top: 1.5rem;
+                gap: 1rem;
+            }
+            
+            .stat-value {
+                font-size: 1.5rem;
+            }
+            
+            .stat-label {
+                font-size: 0.8rem;
+            }
+            
+            .confidence-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .confidence-stat .big-number {
+                font-size: 2.5rem;
+            }
+            
+            #prevBtn,
+            #nextBtn {
+                display: none;
+            }
+            
+            .flavor-indicators {
+                padding: 1rem;
+                margin-top: 1rem;
+                gap: 1rem;
+            }
+            
+            .flavor-dot {
+                width: 22px;
+                height: 22px;
+            }
+            
+            .flavor-dot.active {
+                transform: scale(1.3);
+            }
+
+            .led-dot::before {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .swiper-section {
+                padding: 3rem 0 4rem 0;
+            }
+            
+            .section-header {
+                margin-bottom: 2rem;
+                padding: 0 1rem;
+            }
+            
+            .section-title {
+                font-size: clamp(2rem, 8vw, 2.5rem);
+                margin-bottom: 0.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: clamp(1rem, 4vw, 1.2rem);
+            }
+            
+            .swiper-wrapper {
+                cursor: grab;
+            }
+            
+            .swiper-wrapper:active {
+                cursor: grabbing;
+            }
+            
+            .lifestyle-section {
+                padding: 4rem 0;
+            }
+            
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 2rem 0;
+            }
+            
+            .video-container {
+                max-height: 400px;
+            }
+            
+            .video-overlay {
+                padding: 1.5rem 1rem 1rem 1rem;
+            }
+            
+            .video-title {
+                font-size: 1.1rem;
+            }
+            
+            .video-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .display-formats-section {
+                padding: 4rem 0;
+            }
+
+            .display-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin: 2rem 0;
+            }
+
+            .display-card {
+                padding: 1.5rem;
+                border-radius: 20px;
+            }
+
+            .display-image {
+                height: 200px;
+                margin-bottom: 1rem;
+            }
+
+            .display-title {
+                font-size: 1.3rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .display-description {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .feature-tag {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.8rem;
+            }
+
+            .display-cta {
+                margin-top: 2rem;
+                padding: 2rem 1rem;
+                border-radius: 20px;
+            }
+
+            .display-cta h3 {
+                font-size: 1.5rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .display-cta p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 80px;
+                min-height: 85vh;
+            }
+
+            .hero-content {
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.5rem, 12vw, 4rem);
+                line-height: 0.95;
+                margin-bottom: 1rem;
+            }
+
+            .confidence-boost {
+                font-size: clamp(0.85rem, 4vw, 1rem);
+                max-width: 95%;
+                margin-bottom: 1.5rem;
+            }
+
+            .attitude-pills {
+                gap: 0.3rem;
+                margin: 1.5rem 0;
+                flex-wrap: wrap;
+            }
+
+            .attitude-pill {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.75rem;
+                margin: 0.2rem;
+            }
+
+            .flavor-subtitle {
+                font-size: clamp(1.3rem, 8vw, 2rem);
+                margin-bottom: 0.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1rem, 5vw, 1.3rem);
+                margin-bottom: 1.5rem;
+            }
+
+            /* Adjust navigation for very small screens */
+            nav {
+                height: 70px;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            .hamburger {
+                padding: 0.3rem;
+            }
+
+            .hamburger-line {
+                width: 20px;
+                height: 2px;
+                margin: 2px 0;
+            }
+        }
+
+        /* Ensure no content gets cut off */
+        html, body {
+            overflow-x: hidden;
+        }
+
+        .swiper-container {
+            box-sizing: border-box;
+            touch-action: pan-x;
+        }
+    </style>
+</head>
+<body class="theme-strawberry">
+    <!-- Enhanced Floating Particles -->
+    <div class="particle" style="top: 8%; left: 3%; width: 25px; height: 25px; animation-delay: 0s;"></div>
+    <div class="particle" style="top: 15%; right: 8%; width: 18px; height: 18px; animation-delay: 2s;"></div>
+    <div class="particle" style="bottom: 25%; left: 6%; width: 30px; height: 30px; animation-delay: 4s;"></div>
+    <div class="particle" style="top: 65%; right: 12%; width: 22px; height: 22px; animation-delay: 6s;"></div>
+    <div class="particle" style="bottom: 60%; right: 25%; width: 16px; height: 16px; animation-delay: 8s;"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="Assets/plop/plop_logo/plop_logo.png" alt="Plop!" />
+            </a>
+            <div class="mode-indicator" id="modeIndicator">
+                <span class="mode-text">REGULAR</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#flavors">Flavors</a></li>
+                <li><a href="#vibe">Vibe</a></li>
+                <li><a href="#formats">Formats</a></li>
+                <li><a href="#confidence">Confidence</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="#flavors" class="mobile-nav-link">Flavors</a></li>
+            <li><a href="#vibe" class="mobile-nav-link">Vibe</a></li>
+            <li><a href="#formats" class="mobile-nav-link">Formats</a></li>
+            <li><a href="#confidence" class="mobile-nav-link">Confidence</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-brand">
+            <div class="brand-text">Bold Flavor. Zero Apologies.</div>
+        </div>
+    </div>
+
+    <!-- Hero Section with Brand Manifesto -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- <div class="brand-mantra">No Attention, No Attraction</div> -->
+            <div class="flavor-subtitle" id="flavorSubtitle">Sour Strawberry</div>
+            <h1>Bold Flavor. <br>Zero Apologies.</h1>
+            <div class="hero-subtitle">Confidence comes in a wrapper.</div>
+            <div class="confidence-boost">
+                Plop is the flavor-charged lollipop made for people who want to stand out — not fit in. Loud design, wild flavors, and attitude in every stick.
+            </div>
+            
+            <div class="attitude-pills">
+                <div class="attitude-pill">Authentic</div>
+                <div class="attitude-pill">Irreverent</div>
+                <div class="attitude-pill">Magnetic</div>
+                <div class="attitude-pill">Rebellious</div>
+            </div>
+        </div>
+        
+        <!-- Dynamic Lifestyle Visual -->
+        <div class="hero-lifestyle" id="heroLifestyle">
+            <div class="lifestyle-container">
+                <div class="lifestyle-glow"></div>
+                <img src="Assets/plop/plop_lifestyle_images/plop_fresa_lifestyle.png" alt="Plop Strawberry Lifestyle" class="lifestyle-image" />
+                <div class="lifestyle-overlay">
+                    <div class="lifestyle-text">
+                        <div class="lifestyle-title">This is Plop Energy</div>
+                        <div class="lifestyle-subtitle">Real moments, real attitude</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Swiper -->
+    <section class="swiper-section" id="flavors">
+        <div class="section-header">
+            <h2 class="section-title">Choose Your Personality</h2>
+            <p class="section-subtitle">Every flavor tells a story. What's yours?</p>
+        </div>
+        
+        <div class="swiper-container">
+            <div class="swiper-wrapper" id="swiperWrapper">
+                <!-- Strawberry -->
+                <div class="swiper-slide" data-theme="strawberry" data-flavor="Sour Strawberry">
+                    <div class="product-card strawberry-animation">
+                        <div class="product-image">
+                            <img src="Assets/plop/plop_product_photos/GP FRESA.png" alt="Sour Strawberry Plop Lollipops" />
+                        </div>
+                        <h3 class="product-name">Sour Strawberry</h3>
+                        <div class="product-attitude">The Passionate</div>
+                        <p class="product-description">
+                            For those who live intensely. An explosion of red energy that screams "here I am" 
+                            without asking permission. Perfect for moments when you need everyone to turn and look.
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">9/10</span>
+                                <span class="stat-label">Intensity</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">10/10</span>
+                                <span class="stat-label">Attitude</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">8/10</span>
+                                <span class="stat-label">Rebellion</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grape -->
+                <div class="swiper-slide" data-theme="grape" data-flavor="Intense Grape">
+                    <div class="product-card grape-animation">
+                        <div class="product-image">
+                            <img src="Assets/plop/plop_product_photos/GP UVA.png" alt="Intense Grape Plop Lollipops" />
+                        </div>
+                        <h3 class="product-name">Intense Grape</h3>
+                        <div class="product-attitude">The Mysterious</div>
+                        <p class="product-description">
+                            The flavor of those who observe and conquer. Deep, complex, with that rebellious elegance 
+                            that doesn't need to shout to be noticed. For those who prefer silent seduction.
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">8/10</span>
+                                <span class="stat-label">Intensity</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">9/10</span>
+                                <span class="stat-label">Attitude</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">10/10</span>
+                                <span class="stat-label">Mystery</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Green Apple -->
+                <div class="swiper-slide" data-theme="green-apple" data-flavor="Green Apple">
+                    <div class="product-card apple-animation">
+                        <div class="product-image">
+                            <img src="Assets/plop/plop_product_photos/GP MANZANA.png" alt="Green Apple Plop Lollipops" />
+                        </div>
+                        <h3 class="product-name">Green Apple</h3>
+                        <div class="product-attitude">The Innovator</div>
+                        <p class="product-description">
+                            Fresh, disruptive, always one step ahead. It's the flavor of those who set trends 
+                            and don't follow rules. For moments when you want to show your most authentic and original side.
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">7/10</span>
+                                <span class="stat-label">Intensity</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">9/10</span>
+                                <span class="stat-label">Freshness</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">10/10</span>
+                                <span class="stat-label">Originality</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orange -->
+                <div class="swiper-slide" data-theme="orange" data-flavor="Explosive Orange">
+                    <div class="product-card orange-animation">
+                        <div class="product-image">
+                            <img src="Assets/plop/plop_product_photos/GP MARACUYA.png" alt="Explosive Orange Plop Lollipops" />
+                        </div>
+                        <h3 class="product-name">Explosive Orange</h3>
+                        <div class="product-attitude">The Charismatic</div>
+                        <p class="product-description">
+                            Pure energy that's contagious. The life of the party, the one who lights up the room just by walking in. 
+                            For moments when your personality needs to be the center of attention.
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">10/10</span>
+                                <span class="stat-label">Energy</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">10/10</span>
+                                <span class="stat-label">Charisma</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">8/10</span>
+                                <span class="stat-label">Fun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blue Razz -->
+                <div class="swiper-slide" data-theme="blue-razz" data-flavor="Electric Blue">
+                    <div class="product-card blue-animation">
+                        <div class="product-image">
+                            <img src="Assets/plop/plop_product_photos/GP CEREZA NEON BLUEBERRY.png" alt="Electric Blue Plop Lollipops" />
+                    </div>
+                        <h3 class="product-name">Electric Blue</h3>
+                        <div class="product-attitude">The Visionary</div>
+                        <p class="product-description">
+                            Different by nature. The flavor that breaks expectations and creates new realities. 
+                            For those who aren't afraid to stand out by being completely unique and authentic.
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">9/10</span>
+                                <span class="stat-label">Uniqueness</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">8/10</span>
+                                <span class="stat-label">Impact</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">10/10</span>
+                                <span class="stat-label">Future</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LED Strawberry -->
+                <div class="swiper-slide" data-theme="led-strawberry" data-flavor="LED Strawberry" data-led="true">
+                    <div class="product-card led-animation">
+                        <div class="product-image led-glow">
+                            <img src="Assets/plop/plop_product_photos/plop-LED-SURTIDO_FRESA.png" alt="LED Strawberry Plop with Glow Stick" />
+                            <div class="led-effect"></div>
+                        </div>
+                        <h3 class="product-name">LED Strawberry</h3>
+                        <div class="product-attitude">The Club Rebel</div>
+                        <p class="product-description">
+                            Light up the night with glow stick power! Explosive strawberry flavor that comes with a LED stick. 
+                            Perfect for parties, festivals, and making every moment electric. YEAH!
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">10/10</span>
+                                <span class="stat-label">Glow Power</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">10/10</span>
+                                <span class="stat-label">Party Vibe</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">9/10</span>
+                                <span class="stat-label">Electric</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LED Blue -->
+                <div class="swiper-slide" data-theme="led-blue" data-flavor="LED Cereza Blue" data-led="true">
+                    <div class="product-card led-animation">
+                        <div class="product-image led-glow">
+                            <img src="Assets/plop/plop_product_photos/plop_LED-SURTIDO_BLUEBERRY.png" alt="LED Cereza Blue Plop with Glow Stick" />
+                            <div class="led-effect"></div>
+                        </div>
+                        <h3 class="product-name">LED Cereza Blue</h3>
+                        <div class="product-attitude">The Neon Legend</div>
+                        <p class="product-description">
+                            Cherry blueberry fusion with electric blue glow! The ultimate party accessory that tastes as wild as it looks. 
+                            Designed for the dance floor, concerts, and unforgettable nights. OMG!
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">10/10</span>
+                                <span class="stat-label">Neon Power</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">9/10</span>
+                                <span class="stat-label">Festival Ready</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">10/10</span>
+                                <span class="stat-label">Legendary</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="swiper-nav">
+                <button class="swiper-btn" id="prevBtn">‹</button>
+                <button class="swiper-btn" id="nextBtn">›</button>
+            </div>
+
+            <!-- Flavor Indicators -->
+            <div class="flavor-indicators">
+                <div class="flavor-dot active" data-index="0"></div>
+                <div class="flavor-dot" data-index="1"></div>
+                <div class="flavor-dot" data-index="2"></div>
+                <div class="flavor-dot" data-index="3"></div>
+                <div class="flavor-dot" data-index="4"></div>
+                <div class="flavor-dot led-dot" data-index="5"></div>
+                <div class="flavor-dot led-dot" data-index="6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lifestyle Videos Section -->
+    <section class="lifestyle-section" id="vibe">
+        <div class="lifestyle-container">
+            <div class="section-header">
+                <h2 class="section-title">This Is How We Plop</h2>
+                <p class="section-subtitle">Real moments, real attitude, real confidence. See the Plop energy in action.</p>
+            </div>
+            
+            <div class="videos-grid">
+                <a href="https://www.tiktok.com/@plopecuador" target="_blank" rel="noopener noreferrer" class="video-link">
+                    <div class="video-card">
+                        <div class="video-container">
+                            <video autoplay muted loop playsinline>
+                                <source src="Assets/plop/plop_lifestyle_videos/GP FRESA LIKE A 10seg VERTICAL.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay">
+                                <div class="video-title">Strawberry Vibes</div>
+                                <div class="video-subtitle">When you need that passionate energy • Click to see more on TikTok</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://www.tiktok.com/@plopecuador" target="_blank" rel="noopener noreferrer" class="video-link">
+                    <div class="video-card">
+                        <div class="video-container">
+                            <video autoplay muted loop playsinline>
+                                <source src="Assets/plop/plop_lifestyle_videos/GP CEREZA ACIDA ROMPE D 10seg  VERTICAL.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay">
+                                <div class="video-title">Break The Rules</div>
+                                <div class="video-subtitle">Sour cherry attitude that can't be ignored • Click to see more on TikTok</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://www.tiktok.com/@plopecuador" target="_blank" rel="noopener noreferrer" class="video-link">
+                    <div class="video-card">
+                        <div class="video-container">
+                            <video autoplay muted loop playsinline>
+                                <source src="Assets/plop/plop_lifestyle_videos/PLOP_VIDEO_02_v3.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay">
+                                <div class="video-title">Pure Plop Energy</div>
+                                <div class="video-subtitle">This is what confidence looks like • Click to see more on TikTok</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="lifestyle-cta">
+                <p class="lifestyle-message">Ready to own your moment? Follow us on TikTok for more!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof" id="confidence">
+        <h2>The Power Of Being Seen</h2>
+        <div class="confidence-stats">
+            <div class="confidence-stat">
+                <span class="big-number">94%</span>
+                <span class="stat-text">Feel More Confident</span>
+            </div>
+            <div class="confidence-stat">
+                <span class="big-number">87%</span>
+                <span class="stat-text">Start More Conversations</span>
+            </div>
+            <div class="confidence-stat">
+                <span class="big-number">91%</span>
+                <span class="stat-text">Express Themselves Fearlessly</span>
+            </div>
+            <div class="confidence-stat">
+                <span class="big-number">96%</span>
+                <span class="stat-text">Recommend The Experience</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Display Formats Section -->
+    <section class="display-formats-section" id="formats">
+        <div class="display-container">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your Display Style</h2>
+                <p class="section-subtitle">From retail displays to grab-and-go bags, Plop adapts to every sales environment and moment.</p>
+            </div>
+            
+            <div class="display-grid">
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="Assets/plop/plop_displays_photos/GP-DISPLAY-CERRADO-V1-Current-View.png" alt="Plop Display Box - Perfect for Retail" />
+                    </div>
+                    <h3 class="display-title">Retail Display Box</h3>
+                    <p class="display-description">Eye-catching counter displays that demand attention. Perfect for convenience stores, pharmacies, and impulse purchases.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">High Visibility</span>
+                        <span class="feature-tag">Easy Access</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="Assets/plop/plop_displays_photos/GP-FUNDA-SURTIDO.png" alt="Mixed Flavor Bags - Variety in Every Pack" />
+                    </div>
+                    <h3 class="display-title">Mixed Flavor Bags</h3>
+                    <p class="display-description">Variety packs with all your favorite flavors. Can't decide? Get them all and let your mood choose.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">All Flavors</span>
+                        <span class="feature-tag">Great Value</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="Assets/plop/plop_displays_photos/funda-fresa.jpg" alt="Individual Flavor Bags - Pure Strawberry Power" />
+                    </div>
+                    <h3 class="display-title">Single Flavor Bags</h3>
+                    <p class="display-description">When you know exactly what you want. Pure, concentrated flavor experience for the dedicated.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Flavor Focus</span>
+                        <span class="feature-tag">Bulk Option</span>
+                    </div>
+                </div>
+
+                <div class="display-card led-exclusive">
+                    <div class="display-image">
+                        <img src="Assets/plop/plop_displays_photos/LED-PRINT-display.png" alt="LED Display - Light Up the Night" />
+                    </div>
+                    <h3 class="display-title">LED Night Display</h3>
+                    <p class="display-description">Special LED displays for clubs, festivals, and night events. When regular displays aren't electric enough.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Party Ready</span>
+                        <span class="feature-tag">Glow Power</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="Assets/plop/plop_displays_photos/GP-SHAKE-FUNDA.png" alt="Shake Series - Mix It Up" />
+                    </div>
+                    <h3 class="display-title">Shake Series Packs</h3>
+                    <p class="display-description">Our premium shake flavors in convenient grab bags. For when you want to level up your flavor game.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Premium Line</span>
+                        <span class="feature-tag">Unique Flavors</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="Assets/plop/plop_displays_photos/GP_MARACUYA 23.png" alt="Individual Units - Single Serve Power" />
+                    </div>
+                    <h3 class="display-title">Individual Units</h3>
+                    <p class="display-description">Single serves for spontaneous moments. When you need that instant confidence boost right now.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Impulse Buy</span>
+                        <span class="feature-tag">Instant Gratification</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="display-cta">
+                <h3>Ready to Stock Plop?</h3>
+                <p>Multiple formats mean maximum sales opportunities. Let's talk about what works best for your space.</p>
+                <button class="cta-btn">Get Stocking Info</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced CTA Section -->
+    <section class="cta-section">
+        <h2>Your Moment Is Now</h2>
+        <div class="cta-subtitle">
+            Don't wait any longer to be the most authentic and magnetic version of yourself. 
+            Every flavor is a new opportunity to shine.
+        </div>
+        <button class="cta-btn">Find Your Flavor</button>
+    </section>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 7;
+        const swiperWrapper = document.getElementById('swiperWrapper');
+        const flavorSubtitle = document.getElementById('flavorSubtitle');
+        const body = document.body;
+        
+        // Theme data with enhanced personality traits + LED themes
+        const themes = {
+            'strawberry': 'theme-strawberry',
+            'grape': 'theme-grape',
+            'green-apple': 'theme-green-apple',
+            'orange': 'theme-orange',
+            'blue-razz': 'theme-blue-razz',
+            'led-strawberry': 'theme-led-strawberry',
+            'led-blue': 'theme-led-blue'
+        };
+
+        function updateSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            
+            currentSlide = index;
+            
+            // Update slider position
+            const translateX = -index * 100;
+            swiperWrapper.style.transform = `translateX(${translateX}%)`;
+            
+            // Get current slide data
+            const currentSlideElement = swiperWrapper.children[index];
+            const theme = currentSlideElement.dataset.theme;
+            const flavor = currentSlideElement.dataset.flavor;
+            const isLED = currentSlideElement.dataset.led === 'true';
+            
+            // Update theme with enhanced transition
+            Object.values(themes).forEach(themeClass => {
+                body.classList.remove(themeClass);
+            });
+            body.classList.add(themes[theme]);
+            
+            // Toggle LED mode
+            const modeIndicator = document.getElementById('modeIndicator');
+            if (isLED) {
+                body.classList.add('led-mode');
+                // Update mode indicator
+                modeIndicator.querySelector('.mode-text').textContent = 'LED MODE';
+                // Update hero text for LED experience
+                document.querySelector('h1').innerHTML = 'Light Up.<br>Stand Out.';
+                document.querySelector('.confidence-boost').innerHTML = 
+                    'Plop LED brings the party to life with glow stick power and explosive flavors. Made for the night owls, festival goers, and club rebels who want to be seen.';
+                
+                // Update lifestyle section for LED mode
+                const lifestyleTitle = document.querySelector('.lifestyle-section .section-title');
+                const lifestyleSubtitle = document.querySelector('.lifestyle-section .section-subtitle');
+                if (lifestyleTitle) lifestyleTitle.textContent = 'Electric Nights & LED Lights';
+                if (lifestyleSubtitle) lifestyleSubtitle.textContent = 'When the sun goes down, the glow sticks come out. This is Plop LED energy in action.';
+                
+                // Update mobile menu brand text if menu is open
+                const brandText = document.querySelector('.mobile-menu-brand .brand-text');
+                if (brandText && mobileMenu.classList.contains('active')) {
+                    brandText.textContent = 'Light Up. Stand Out.';
+                }
+            } else {
+                body.classList.remove('led-mode');
+                // Update mode indicator
+                modeIndicator.querySelector('.mode-text').textContent = 'REGULAR';
+                // Restore original hero text
+                document.querySelector('h1').innerHTML = 'Bold Flavor. <br>Zero Apologies.';
+                document.querySelector('.confidence-boost').innerHTML = 
+                    'Plop is the flavor-charged lollipop made for teens who want to stand out — not fit in. Loud design, wild flavors, and attitude in every stick.';
+                
+                // Restore original lifestyle section
+                const lifestyleTitle = document.querySelector('.lifestyle-section .section-title');
+                const lifestyleSubtitle = document.querySelector('.lifestyle-section .section-subtitle');
+                if (lifestyleTitle) lifestyleTitle.textContent = 'This Is How We Plop';
+                if (lifestyleSubtitle) lifestyleSubtitle.textContent = 'Real moments, real attitude, real confidence. See the Plop energy in action.';
+                
+                // Update mobile menu brand text if menu is open
+                const brandText = document.querySelector('.mobile-menu-brand .brand-text');
+                if (brandText && mobileMenu.classList.contains('active')) {
+                    brandText.textContent = 'Bold Flavor. Zero Apologies.';
+                }
+            }
+            
+            // Update flavor subtitle with enhanced animation
+            flavorSubtitle.style.opacity = '0';
+            flavorSubtitle.style.transform = 'translateY(30px) scale(0.9)';
+            
+            setTimeout(() => {
+                flavorSubtitle.textContent = flavor;
+                flavorSubtitle.style.opacity = '1';
+                flavorSubtitle.style.transform = 'translateY(0) scale(1)';
+            }, 300);
+            
+            // Update indicators
+            document.querySelectorAll('.flavor-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            
+            // Generate themed particles
+            generateThemedParticles();
+            
+            // Update lifestyle visual
+            updateLifestyleVisual(theme, isLED);
+            
+            // Add personality-based body animation (simplified)
+            // Temporarily disabled animation reset to prevent page collapse
+            // body.style.animation = 'none';
+            // setTimeout(() => {
+            //     body.style.animation = 'rebelGradientShift 6s ease-in-out infinite';
+            // }, 50);
+        }
+
+        function updateLifestyleVisual(theme, isLED) {
+            const lifestyleElement = document.getElementById('heroLifestyle');
+            const lifestyleContainer = lifestyleElement.querySelector('.lifestyle-container');
+            const lifestyleTitle = lifestyleElement.querySelector('.lifestyle-title');
+            const lifestyleSubtitle = lifestyleElement.querySelector('.lifestyle-subtitle');
+            
+            // Reset previous theme classes
+            lifestyleElement.classList.remove('theme-active', 'theme-secondary');
+            
+            if (theme === 'strawberry' || isLED) {
+                // Primary display for strawberry or LED mode
+                lifestyleElement.classList.add('theme-active');
+                lifestyleElement.style.opacity = '1';
+                lifestyleElement.style.transform = 'translateX(0) translateY(0) rotate(-2deg) scale(1)';
+                
+                if (isLED) {
+                    lifestyleTitle.textContent = 'Electric Vibes';
+                    lifestyleSubtitle.textContent = 'Light up the night';
+                } else {
+                    lifestyleTitle.textContent = 'This is Plop Energy';
+                    lifestyleSubtitle.textContent = 'Real moments, real attitude';
+                }
+            } else {
+                // Secondary display for other flavors
+                lifestyleElement.classList.add('theme-secondary');
+                lifestyleElement.style.opacity = '0.4';
+                lifestyleElement.style.transform = 'translateX(30px) translateY(20px) rotate(-5deg) scale(0.9)';
+                
+                lifestyleTitle.textContent = 'Feel The Energy';
+                lifestyleSubtitle.textContent = 'Every flavor has attitude';
+            }
+        }
+
+        function generateThemedParticles() {
+            // Remove existing dynamic particles
+            document.querySelectorAll('.particle[data-dynamic="true"]').forEach(particle => {
+                particle.remove();
+            });
+            
+            const isLEDMode = body.classList.contains('led-mode');
+            const particleCount = isLEDMode ? 8 : 4;
+            
+            // Add new themed particles with personality
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.setAttribute('data-dynamic', 'true');
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = (Math.random() * 25 + 15) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                
+                // LED-specific particle effects
+                if (isLEDMode) {
+                    particle.style.background = `radial-gradient(circle, var(--accent-color), transparent)`;
+                    particle.style.boxShadow = `0 0 20px var(--accent-color)`;
+                    particle.style.animation = `rebelParticle ${Math.random() * 3 + 2}s ease-in-out infinite, ledGlowPulse ${Math.random() * 2 + 1}s ease-in-out infinite`;
+                }
+                
+                document.body.appendChild(particle);
+                
+                // Remove after animation cycle
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 15000);
+            }
+        }
+
+        // Enhanced navigation with personality feedback
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            updateSlide(currentSlide - 1);
+            // Add button feedback
+            document.getElementById('prevBtn').style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                document.getElementById('prevBtn').style.transform = '';
+            }, 150);
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            updateSlide(currentSlide + 1);
+            // Add button feedback
+            document.getElementById('nextBtn').style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                document.getElementById('nextBtn').style.transform = '';
+            }, 150);
+        });
+
+        // Enhanced flavor dots interaction
+        document.querySelectorAll('.flavor-dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                updateSlide(index);
+                // Add dot feedback
+                dot.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    dot.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Enhanced touch/swipe support with better feedback
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        const swiperContainer = document.querySelector('.swiper-container');
+
+        swiperContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            swiperContainer.style.transition = 'transform 0.1s ease';
+        });
+
+        swiperContainer.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            currentX = e.touches[0].clientX;
+            const deltaX = currentX - startX;
+            const currentTransform = -currentSlide * 100;
+            const newTransform = currentTransform + (deltaX / swiperContainer.offsetWidth) * 100;
+            swiperWrapper.style.transform = `translateX(${newTransform}%)`;
+        });
+
+        swiperContainer.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            
+            const deltaX = startX - currentX;
+            const threshold = 50;
+            
+            swiperContainer.style.transition = '';
+            
+            if (Math.abs(deltaX) > threshold) {
+                if (deltaX > 0) {
+                    updateSlide(currentSlide + 1);
+                } else {
+                    updateSlide(currentSlide - 1);
+                }
+            } else {
+                // Snap back to current slide
+                swiperWrapper.style.transform = `translateX(${-currentSlide * 100}%)`;
+            }
+            
+            isDragging = false;
+        });
+
+        // Enhanced mouse drag support
+        swiperContainer.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            isDragging = true;
+            swiperContainer.style.cursor = 'grabbing';
+            swiperContainer.style.transition = 'transform 0.1s ease';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            currentX = e.clientX;
+            const deltaX = currentX - startX;
+            const currentTransform = -currentSlide * 100;
+            const newTransform = currentTransform + (deltaX / swiperContainer.offsetWidth) * 100;
+            swiperWrapper.style.transform = `translateX(${newTransform}%)`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            
+            const deltaX = startX - currentX;
+            const threshold = 50;
+            
+            swiperContainer.style.transition = '';
+            
+            if (Math.abs(deltaX) > threshold) {
+                if (deltaX > 0) {
+                    updateSlide(currentSlide + 1);
+                } else {
+                    updateSlide(currentSlide - 1);
+                }
+            } else {
+                swiperWrapper.style.transform = `translateX(${-currentSlide * 100}%)`;
+            }
+            
+            isDragging = false;
+            swiperContainer.style.cursor = 'grab';
+        });
+
+        // Enhanced keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                updateSlide(currentSlide - 1);
+            } else if (e.key === 'ArrowRight') {
+                updateSlide(currentSlide + 1);
+            } else if (e.key >= '1' && e.key <= '5') {
+                updateSlide(parseInt(e.key) - 1);
+            }
+        });
+
+        // Attitude pills interaction
+        document.querySelectorAll('.attitude-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                pill.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    pill.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // CTA button enhancement
+        document.querySelector('.cta-btn').addEventListener('click', () => {
+            const btn = document.querySelector('.cta-btn');
+            btn.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                btn.style.transform = '';
+                // Here you could add navigation to a product page or modal
+                console.log('CTA clicked - Navigate to product selection');
+            }, 200);
+        });
+
+        // Initialize with enhanced particles
+        generateThemedParticles();
+
+        // Initialize lifestyle visual with strawberry theme
+        updateLifestyleVisual('strawberry', false);
+
+        // Lifestyle visual interactions
+        const heroLifestyle = document.getElementById('heroLifestyle');
+        if (heroLifestyle) {
+            heroLifestyle.addEventListener('click', () => {
+                if (heroLifestyle.classList.contains('theme-active')) {
+                    // Add a fun click animation
+                    heroLifestyle.style.transform = 'translateX(0) translateY(-10px) rotate(2deg) scale(1.05)';
+                    setTimeout(() => {
+                        heroLifestyle.style.transform = 'translateX(0) translateY(0) rotate(-2deg) scale(1)';
+                    }, 200);
+                    
+                    // Generate extra particles on click
+                    generateLifestyleParticles();
+                }
+            });
+        }
+
+        function generateLifestyleParticles() {
+            const colors = body.classList.contains('led-mode') 
+                ? ['var(--accent-color)', '#FF0040', '#00FFFF'] 
+                : ['var(--accent-color)', 'var(--glow-color)'];
+            
+            for (let i = 0; i < 6; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.setAttribute('data-dynamic', 'true');
+                particle.style.position = 'fixed';
+                particle.style.top = '30%';
+                particle.style.right = '15%';
+                particle.style.width = (Math.random() * 15 + 10) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.borderRadius = '50%';
+                particle.style.zIndex = '9999';
+                particle.style.pointerEvents = 'none';
+                particle.style.animation = `rebelParticle ${Math.random() * 2 + 1}s ease-out forwards`;
+                
+                // Random direction
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 100 + 50;
+                particle.style.setProperty('--end-x', Math.cos(angle) * distance + 'px');
+                particle.style.setProperty('--end-y', Math.sin(angle) * distance + 'px');
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 2000);
+            }
+        }
+
+        // Mobile Menu Functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function openMobileMenu() {
+            hamburger.classList.add('active');
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Generate menu particles
+            generateMobileMenuParticles();
+            
+            // Update menu brand text based on current mode
+            const brandText = document.querySelector('.mobile-menu-brand .brand-text');
+            if (body.classList.contains('led-mode')) {
+                brandText.textContent = 'Light Up. Stand Out.';
+            } else {
+                brandText.textContent = 'Bold Flavor. Zero Apologies.';
+            }
+        }
+
+        function closeMobileMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Remove menu particles
+            document.querySelectorAll('.mobile-menu-particle').forEach(particle => {
+                particle.remove();
+            });
+        }
+
+        function generateMobileMenuParticles() {
+            const particleCount = body.classList.contains('led-mode') ? 12 : 8;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'mobile-menu-particle';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = (Math.random() * 20 + 10) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                
+                if (body.classList.contains('led-mode')) {
+                    particle.style.background = `radial-gradient(circle, var(--accent-color), transparent)`;
+                    particle.style.boxShadow = `0 0 15px var(--accent-color)`;
+                }
+                
+                mobileMenu.appendChild(particle);
+            }
+        }
+
+        // Event Listeners for Mobile Menu
+        hamburger.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+        // Close menu when clicking nav links
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
+                // Smooth scroll to section
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Prevent body scroll when menu is open
+        mobileMenu.addEventListener('touchmove', (e) => {
+            if (mobileMenu.classList.contains('active')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Confidence stats animation on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bigNumbers = entry.target.querySelectorAll('.big-number');
+                    bigNumbers.forEach((num, index) => {
+                        setTimeout(() => {
+                            num.style.animation = 'none';
+                            num.style.animation = 'countUp 1.5s ease-out forwards';
+                        }, index * 200);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(document.querySelector('.social-proof'));
+
+        // Add count-up animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes countUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px) scale(0.5);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
