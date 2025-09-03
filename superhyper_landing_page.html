@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Hyper - Choose Your Extreme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Bungee&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+            background: #000;
+            color: #fff;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .loader-hot, .loader-sour {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .loader-hot {
+            left: 0;
+            background: radial-gradient(circle, #ff4500, #ff0000);
+            box-shadow: 0 0 60px #ff4500;
+        }
+
+        .loader-sour {
+            right: 0;
+            background: radial-gradient(circle, #00ff00, #00ffff);
+            box-shadow: 0 0 60px #00ff00;
+            animation-delay: 0.75s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* Split Screen Choice */
+        .choice-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            z-index: 1000;
+            transition: all 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .choice-screen.hidden {
+            transform: scale(0.8);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .choice-side {
+            flex: 1;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .choice-side:hover {
+            flex: 1.5;
+        }
+
+        /* HOT Side - Based on brand assets */
+        .hot-side {
+            background: linear-gradient(135deg, #8B1538, #D2001F, #FF4500, #FFD700);
+            background-size: 300% 300%;
+            animation: lavaFlow 4s ease-in-out infinite;
+            position: relative;
+        }
+
+        .hot-side::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Assets/superhiperacido/superhyper-lifestyle/super-hyper-gum-HOT-background.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes lavaFlow {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 50% 25%; }
+            50% { background-position: 100% 75%; }
+            75% { background-position: 75% 100%; }
+        }
+
+        .hot-side::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, transparent 20%, rgba(210,0,31,0.4) 40%, rgba(255,69,0,0.3) 70%);
+            animation: heatWave 3s ease-in-out infinite;
+        }
+
+        @keyframes heatWave {
+            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            50% { transform: translate(-30px, -30px) scale(1.1) rotate(2deg); }
+        }
+
+        /* SOUR Side - Based on brand assets */
+        .sour-side {
+            background: linear-gradient(135deg, #8BC34A, #4CAF50, #00E676, #CCFF90);
+            background-size: 300% 300%;
+            animation: acidFlow 4s ease-in-out infinite reverse;
+            position: relative;
+        }
+
+        .sour-side::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, transparent 40%, rgba(255,255,0,0.2) 60%, transparent 80%),
+                        radial-gradient(circle at 70% 70%, transparent 30%, rgba(140,195,74,0.3) 50%, transparent 70%);
+            background-size: 200px 200px, 150px 150px;
+            animation: bubbleFloat 8s linear infinite;
+        }
+
+        @keyframes acidFlow {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 25% 75%; }
+            50% { background-position: 100% 25%; }
+            75% { background-position: 75% 100%; }
+        }
+
+        .sour-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.3)" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/></circle><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.3)" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.5s" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="3" fill="rgba(255,255,255,0.3)" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="2s" begin="1s" repeatCount="indefinite"/></circle></svg>');
+            background-size: 200px 200px;
+            animation: bubbleFloat 10s linear infinite;
+        }
+
+        @keyframes bubbleFloat {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(-100%); }
+        }
+
+        /* Choice Content */
+        .choice-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .choice-emoji {
+            font-size: 8rem;
+            margin-bottom: 1rem;
+            animation: emojiPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(0,0,0,0.5));
+        }
+
+        @keyframes emojiPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(-5deg); }
+            50% { transform: scale(1.2) rotate(5deg); }
+            75% { transform: scale(1.1) rotate(-5deg); }
+        }
+
+        .choice-title {
+            font-family: 'Bungee', cursive;
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #FFD700;
+            text-shadow: 
+                4px 4px 0 #000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                0 0 20px rgba(255, 215, 0, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .choice-subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.15em;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        /* Flame particles for HOT */
+        .flame-particle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #ffff00, #ff4500);
+            border-radius: 50%;
+            opacity: 0;
+            animation: flameRise 3s ease-out infinite;
+        }
+
+        @keyframes flameRise {
+            0% {
+                bottom: 0;
+                opacity: 0;
+                transform: translateX(0) scale(0);
+            }
+            20% {
+                opacity: 1;
+                transform: translateX(calc(var(--offset) * 20px)) scale(1);
+            }
+            100% {
+                bottom: 100%;
+                opacity: 0;
+                transform: translateX(calc(var(--offset) * 50px)) scale(0.5);
+            }
+        }
+
+        /* Electric sparks for SOUR */
+        .spark-particle {
+            position: absolute;
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(to bottom, transparent, #00ffff, transparent);
+            opacity: 0;
+            animation: sparkZap 2s linear infinite;
+        }
+
+        @keyframes sparkZap {
+            0% {
+                opacity: 0;
+                transform: translateY(-100vh) scaleY(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(0) scaleY(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) scaleY(0);
+            }
+        }
+
+        /* Main Content (Hidden initially) */
+        .main-content {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.8s ease;
+        }
+
+        .main-content.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Dynamic backgrounds based on choice - Brand colors */
+        body.hot-chosen {
+            background: linear-gradient(135deg, #2C0A1E, #8B1538, #2C0A1E);
+        }
+
+        body.hot-chosen::before {
+            background: linear-gradient(135deg, #8B1538, #D2001F, #FF4500, #FFD700);
+        }
+
+        body.sour-chosen {
+            background: linear-gradient(135deg, #0D2818, #1B5E20, #0D2818);
+        }
+
+        body.sour-chosen::before {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50, #66BB6A, #8BC34A, #9CCC65);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, #ff4500, #00ffff) 1;
+            z-index: 900;
+            padding: 1rem 0;
+            transform: translateY(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        nav.visible {
+            transform: translateY(0);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            height: 100px;
+            width: auto;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+            transform: scale(1.05);
+        }
+
+        .mode-indicator {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid;
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mode-indicator.hot-mode {
+            color: #FFD700;
+            border-color: #D2001F;
+            background: rgba(210, 0, 31, 0.2);
+            text-shadow: 2px 2px 0 #8B1538;
+        }
+
+        .mode-indicator.sour-mode {
+            color: #FFD700;
+            border-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.3);
+            text-shadow: 2px 2px 0 #2E7D32;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff4500, #00ffff);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-family: 'Bungee', cursive;
+            font-size: clamp(3rem, 10vw, 8rem);
+            text-align: center;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            animation: titleGlitch 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlitch {
+            0%, 100% { 
+                text-shadow: 
+                    2px 2px 0 #ff4500,
+                    -2px -2px 0 #00ffff;
+            }
+            25% {
+                text-shadow: 
+                    -2px 2px 0 #ff4500,
+                    2px -2px 0 #00ffff;
+            }
+            50% {
+                text-shadow: 
+                    2px -2px 0 #ff4500,
+                    -2px 2px 0 #00ffff;
+            }
+            75% {
+                text-shadow: 
+                    -2px -2px 0 #ff4500,
+                    2px 2px 0 #00ffff;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* Challenge Section */
+        .challenge-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .challenge-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenge-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--glow-color, #fff) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .challenge-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .challenge-card.hot-challenge {
+            --glow-color: #D2001F;
+            border-color: rgba(210, 0, 31, 0.3);
+        }
+
+        .challenge-card.hot-challenge::before {
+            background: radial-gradient(circle, #FFD700 0%, #D2001F 50%, transparent 70%);
+        }
+
+        .challenge-card.sour-challenge {
+            --glow-color: #4CAF50;
+            border-color: rgba(76, 175, 80, 0.4);
+        }
+
+        .challenge-card.sour-challenge::before {
+            background: radial-gradient(circle, #FFD700 0%, #4CAF50 30%, #2E7D32 70%, transparent 100%);
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--glow-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .challenge-emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .challenge-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .challenge-description {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Dare Button */
+        .dare-button {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .dare-btn {
+            font-family: 'Bungee', cursive;
+            font-size: 1.5rem;
+            padding: 1rem 3rem;
+            background: linear-gradient(45deg, #D2001F, #FFD700, #8BC34A);
+            border: 3px solid #000;
+            border-radius: 15px;
+            color: #000;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 0 #fff;
+        }
+
+        .dare-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+        }
+
+        .dare-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .dare-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Face Reaction Meter */
+        .reaction-meter {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 40px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .meter-fill {
+            width: 100%;
+            background: linear-gradient(to top, #00ff00, #ffff00, #ff4500);
+            border-radius: 30px;
+            transition: height 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meter-fill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            animation: meterPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes meterPulse {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        .meter-label {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .choice-screen {
+                flex-direction: column;
+            }
+
+            .choice-side:hover {
+                flex: 1;
+            }
+
+            .choice-title {
+                font-size: 2.5rem;
+            }
+
+            .choice-emoji {
+                font-size: 5rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .reaction-meter {
+                right: 1rem;
+                width: 60px;
+                height: 200px;
+            }
+
+            .hero-title {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+
+            .challenge-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Product Showcase */
+        .product-showcase {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .product-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-cylinder {
+            width: 100px;
+            height: 350px;
+            background: linear-gradient(180deg, 
+                var(--product-top, #ff4500) 0%, 
+                var(--product-middle, #ff6b35) 50%, 
+                var(--product-bottom, #ff8c42) 100%);
+            border-radius: 50px;
+            position: absolute;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.3),
+                inset -10px 0 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .product-cylinder:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.4),
+                0 0 60px var(--glow-color, #fff);
+        }
+
+        .product-cylinder.hot {
+            --product-top: #8B1538;
+            --product-middle: #D2001F;
+            --product-bottom: #FF4500;
+            --glow-color: #D2001F;
+        }
+
+        .product-cylinder.sour {
+            --product-top: #2E7D32;
+            --product-middle: #4CAF50;
+            --product-bottom: #66BB6A;
+            --glow-color: #4CAF50;
+        }
+
+        .product-cylinder:nth-child(1) { left: 20%; animation: floatProduct 4s ease-in-out infinite; }
+        .product-cylinder:nth-child(2) { left: 40%; animation: floatProduct 4s ease-in-out 0.5s infinite; }
+        .product-cylinder:nth-child(3) { left: 60%; animation: floatProduct 4s ease-in-out 1s infinite; }
+
+        @keyframes floatProduct {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(3deg); }
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 2px solid;
+            border-image: linear-gradient(90deg, #ff4500, #00ffff) 1;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(139, 21, 56, 0.95), rgba(76, 175, 80, 0.95));
+            z-index: 9999;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-menu.hot-mode {
+            background: linear-gradient(135deg, rgba(139, 21, 56, 0.95), rgba(210, 0, 31, 0.95));
+        }
+
+        .mobile-menu.sour-mode {
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.95), rgba(76, 175, 80, 0.95));
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-menu-links li {
+            margin: 2rem 0;
+        }
+
+        .mobile-menu-links a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Bungee', cursive;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* VS Indicator - Comic book style */
+        .vs-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bungee', cursive;
+            font-size: 3rem;
+            color: #FFD700;
+            text-shadow: 
+                4px 4px 0 #000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                0 0 30px rgba(255, 215, 0, 1);
+            z-index: 20;
+            animation: vsPulse 1s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 40%, transparent 70%);
+            border: 4px solid #000;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+        }
+
+        @keyframes vsPulse {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1) rotate(0deg); 
+                box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.2) rotate(5deg); 
+                box-shadow: 0 0 60px rgba(255, 215, 0, 0.9);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-hot"></div>
+            <div class="loader-sour"></div>
+        </div>
+    </div>
+
+    <!-- Choice Screen -->
+    <div class="choice-screen" id="choiceScreen">
+        <!-- HOT Side -->
+        <div class="choice-side hot-side" data-choice="hot">
+            <div class="choice-content">
+                <div class="choice-emoji">🔥</div>
+                <h2 class="choice-title">HOT</h2>
+                <p class="choice-subtitle">Feel the Burn</p>
+            </div>
+            <!-- Flame particles -->
+            <div class="flame-particle" style="left: 10%; animation-delay: 0s; --offset: -1;"></div>
+            <div class="flame-particle" style="left: 30%; animation-delay: 0.5s; --offset: 0.5;"></div>
+            <div class="flame-particle" style="left: 50%; animation-delay: 1s; --offset: -0.5;"></div>
+            <div class="flame-particle" style="left: 70%; animation-delay: 1.5s; --offset: 1;"></div>
+            <div class="flame-particle" style="left: 90%; animation-delay: 2s; --offset: -0.3;"></div>
+        </div>
+
+        <!-- VS Indicator -->
+        <div class="vs-indicator">VS</div>
+
+        <!-- SOUR Side -->
+        <div class="choice-side sour-side" data-choice="sour">
+            <div class="choice-content">
+                <div class="choice-emoji">⚡</div>
+                <h2 class="choice-title">SOUR</h2>
+                <p class="choice-subtitle">Face the Pucker</p>
+            </div>
+            <!-- Electric sparks -->
+            <div class="spark-particle" style="left: 15%; animation-delay: 0s;"></div>
+            <div class="spark-particle" style="left: 35%; animation-delay: 0.4s;"></div>
+            <div class="spark-particle" style="left: 55%; animation-delay: 0.8s;"></div>
+            <div class="spark-particle" style="left: 75%; animation-delay: 1.2s;"></div>
+            <div class="spark-particle" style="left: 85%; animation-delay: 1.6s;"></div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Navigation -->
+        <nav id="navbar">
+            <div class="nav-container">
+                <img src="Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png" alt="Super Hyper Ácido" class="logo">
+                <div class="mode-indicator" id="modeIndicator">
+                    <span>EXTREME MODE</span>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+            <ul class="mobile-menu-links">
+                <li><a href="#hero">HOME</a></li>
+                <li><a href="#challenges">CHALLENGES</a></li>
+                <li><a href="#products">PRODUCTS</a></li>
+                <li><a href="#dare">DARE A FRIEND</a></li>
+            </ul>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <h1 class="hero-title">
+                <span id="heroTitleLine1">CHOOSE YOUR</span><br>
+                <span id="heroTitleLine2">EXTREME</span>
+            </h1>
+            <p class="hero-subtitle">The Ultimate Face-Off Between Fire and Fury</p>
+            
+            <!-- Product Showcase -->
+            <div class="product-showcase">
+                <div class="product-container">
+                    <div class="product-cylinder hot"></div>
+                    <div class="product-cylinder sour"></div>
+                    <div class="product-cylinder hot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenge Section -->
+        <section class="challenge-section" id="challenges">
+            <h2 class="hero-title" style="font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 1rem;">
+                EXTREME CHALLENGES
+            </h2>
+            <p class="hero-subtitle" style="font-size: 1.2rem;">Can You Handle It?</p>
+            
+            <div class="challenge-grid">
+                <!-- HOT Challenges -->
+                <div class="challenge-card hot-challenge">
+                    <div class="challenge-emoji">🌶️</div>
+                    <h3 class="challenge-title">INFERNO RUSH</h3>
+                    <p class="challenge-description">60 seconds of pure heat. No water allowed. Record your reaction!</p>
+                </div>
+                
+                <div class="challenge-card hot-challenge">
+                    <div class="challenge-emoji">🔥</div>
+                    <h3 class="challenge-title">DRAGON'S BREATH</h3>
+                    <p class="challenge-description">How many can you handle? Stack them up and feel the burn multiply!</p>
+                </div>
+                
+                <!-- SOUR Challenges -->
+                <div class="challenge-card sour-challenge">
+                    <div class="challenge-emoji">😖</div>
+                    <h3 class="challenge-title">PUCKER POWER</h3>
+                    <p class="challenge-description">Keep a straight face for 30 seconds. Impossible? Prove us wrong!</p>
+                </div>
+                
+                <div class="challenge-card sour-challenge">
+                    <div class="challenge-emoji">💧</div>
+                    <h3 class="challenge-title">ACID RAIN</h3>
+                    <p class="challenge-description">The sourest experience on Earth. Your tears will tell the story!</p>
+                </div>
+            </div>
+
+            <div class="dare-button">
+                <button class="dare-btn" id="dareBtn">DARE A FRIEND →</button>
+            </div>
+        </section>
+
+        <!-- Face Reaction Meter -->
+        <div class="reaction-meter" id="reactionMeter">
+            <span class="meter-label">EXTREME LEVEL</span>
+            <div class="meter-fill" id="meterFill" style="height: 30%;"></div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 Super Hyper by Confiteca. Are You Brave Enough?</p>
+        </footer>
+    </div>
+
+    <script>
+        // Loading and initialization
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 2000);
+        });
+
+        // Choice selection
+        const choiceSides = document.querySelectorAll('.choice-side');
+        const choiceScreen = document.getElementById('choiceScreen');
+        const mainContent = document.getElementById('mainContent');
+        const navbar = document.getElementById('navbar');
+        const modeIndicator = document.getElementById('modeIndicator');
+        const heroTitleLine2 = document.getElementById('heroTitleLine2');
+        let selectedMode = null;
+
+        choiceSides.forEach(side => {
+            side.addEventListener('click', (e) => {
+                const choice = e.currentTarget.dataset.choice;
+                selectedMode = choice;
+                
+                // Update body class
+                document.body.className = `${choice}-chosen`;
+                
+                // Update mode indicator
+                modeIndicator.className = `mode-indicator ${choice}-mode`;
+                modeIndicator.innerHTML = `<span>${choice.toUpperCase()} MODE ACTIVE</span>`;
+                
+                // Update hero title
+                if (choice === 'hot') {
+                    heroTitleLine2.textContent = 'FIRE';
+                    heroTitleLine2.style.color = '#ff4500';
+                } else {
+                    heroTitleLine2.textContent = 'FURY';
+                    heroTitleLine2.style.color = '#00ffff';
+                }
+                
+                // Animate transition
+                choiceScreen.classList.add('hidden');
+                setTimeout(() => {
+                    mainContent.classList.add('active');
+                    navbar.classList.add('visible');
+                    animateMeter();
+                }, 500);
+            });
+        });
+
+        // Mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking links
+        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Reaction meter animation
+        const meterFill = document.getElementById('meterFill');
+        let meterInterval;
+
+        function animateMeter() {
+            let height = 30;
+            meterInterval = setInterval(() => {
+                height = 30 + Math.random() * 40;
+                meterFill.style.height = height + '%';
+            }, 2000);
+        }
+
+        // Challenge card interactions
+        const challengeCards = document.querySelectorAll('.challenge-card');
+        challengeCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Increase meter on hover
+                const currentHeight = parseFloat(meterFill.style.height);
+                meterFill.style.height = Math.min(currentHeight + 20, 100) + '%';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                // Decrease meter on leave
+                const currentHeight = parseFloat(meterFill.style.height);
+                meterFill.style.height = Math.max(currentHeight - 10, 30) + '%';
+            });
+        });
+
+        // Dare button
+        const dareBtn = document.getElementById('dareBtn');
+        dareBtn.addEventListener('click', () => {
+            // Create share functionality
+            const shareText = `I just took the Super Hyper ${selectedMode?.toUpperCase() || 'EXTREME'} challenge! Can you handle it? 🔥⚡`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Super Hyper Challenge',
+                    text: shareText,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback - copy to clipboard
+                navigator.clipboard.writeText(shareText + ' ' + window.location.href);
+                
+                // Visual feedback
+                dareBtn.textContent = 'LINK COPIED!';
+                setTimeout(() => {
+                    dareBtn.innerHTML = 'DARE A FRIEND →';
+                }, 2000);
+            }
+        });
+
+        // Parallax effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth - 0.5;
+            const y = e.clientY / window.innerHeight - 0.5;
+            
+            // Move products slightly
+            const products = document.querySelectorAll('.product-cylinder');
+            products.forEach((product, index) => {
+                const offsetX = x * 20 * (index + 1);
+                const offsetY = y * 20 * (index + 1);
+                product.style.transform = `translateX(${offsetX}px) translateY(${offsetY}px) rotate(${x * 5}deg)`;
+            });
+        });
+
+        // Add smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Random particle generation
+        function createRandomParticles() {
+            if (selectedMode === 'hot') {
+                // Create flame particles
+                for (let i = 0; i < 5; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'flame-particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 3 + 's';
+                    particle.style.setProperty('--offset', (Math.random() - 0.5) * 2);
+                    document.querySelector('.hero').appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 3000);
+                }
+            } else if (selectedMode === 'sour') {
+                // Create spark particles
+                for (let i = 0; i < 5; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'spark-particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 2 + 's';
+                    document.querySelector('.hero').appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 2000);
+                }
+            }
+        }
+
+        // Generate particles periodically when mode is selected
+        setInterval(() => {
+            if (selectedMode) {
+                createRandomParticles();
+            }
+        }, 4000);
+    </script>
+</body>
+</html>
