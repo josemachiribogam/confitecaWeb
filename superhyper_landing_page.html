@@ -120,10 +120,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('Assets/superhiperacido/superhyper-lifestyle/super-hyper-gum-HOT-background.png');
+            background-image: url('Assets/superhiperacido/superhyper-lifestyle/super-hyper-hot-red-background.png');
             background-size: cover;
             background-position: center;
-            opacity: 0.3;
+            opacity: 0.6;
             mix-blend-mode: overlay;
         }
 
@@ -165,10 +165,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 30%, transparent 40%, rgba(255,255,0,0.2) 60%, transparent 80%),
-                        radial-gradient(circle at 70% 70%, transparent 30%, rgba(140,195,74,0.3) 50%, transparent 70%);
-            background-size: 200px 200px, 150px 150px;
-            animation: bubbleFloat 8s linear infinite;
+            background-image: url('Assets/superhiperacido/superhyper-lifestyle/super-hyper-sour-background.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.7;
+            mix-blend-mode: overlay;
         }
 
         @keyframes acidFlow {
@@ -318,7 +319,19 @@
         }
 
         body.hot-chosen::before {
-            background: linear-gradient(135deg, #8B1538, #D2001F, #FF4500, #FFD700);
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(139, 21, 56, 0.8), rgba(210, 0, 31, 0.6)),
+                        url('Assets/superhiperacido/superhyper-lifestyle/super-hyper-hot-yellow-background.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            z-index: -1;
+            pointer-events: none;
         }
 
         body.sour-chosen {
@@ -326,7 +339,19 @@
         }
 
         body.sour-chosen::before {
-            background: linear-gradient(135deg, #2E7D32, #4CAF50, #66BB6A, #8BC34A, #9CCC65);
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.7), rgba(76, 175, 80, 0.5)),
+                        url('Assets/superhiperacido/superhyper-lifestyle/super-hyper-sour-background.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* Navigation */
@@ -371,13 +396,26 @@
 
         .mode-indicator {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             letter-spacing: 0.1em;
-            padding: 0.5rem 1.5rem;
+            padding: 0.5rem 1rem;
             border: 2px solid;
             border-radius: 25px;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .mode-indicator:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .mode-indicator.inactive {
+            display: none;
         }
 
         .mode-indicator.hot-mode {
@@ -686,68 +724,144 @@
             .challenge-grid {
                 grid-template-columns: 1fr;
             }
+
+            .product-container {
+                flex-direction: column;
+                height: auto;
+                gap: 40px;
+                padding: 2rem 0;
+                max-width: 100%;
+            }
+
+            .product-lollipop {
+                width: 280px;
+                height: 400px;
+            }
+
+            .product-lollipop::after {
+                bottom: -35px;
+                font-size: 1rem;
+                padding: 6px 12px;
+            }
+
         }
 
         /* Product Showcase */
         .product-showcase {
-            padding: 4rem 2rem;
+            padding: 0;
             text-align: center;
         }
 
         .product-container {
-            max-width: 800px;
+            max-width: 1400px;
             margin: 0 auto;
             position: relative;
-            height: 400px;
+            height: 700px;
             display: flex;
             justify-content: center;
             align-items: center;
+            gap: 80px;
         }
 
-        .product-cylinder {
-            width: 100px;
-            height: 350px;
-            background: linear-gradient(180deg, 
-                var(--product-top, #ff4500) 0%, 
-                var(--product-middle, #ff6b35) 50%, 
-                var(--product-bottom, #ff8c42) 100%);
-            border-radius: 50px;
-            position: absolute;
-            box-shadow: 
-                0 20px 60px rgba(0, 0, 0, 0.3),
-                inset -10px 0 20px rgba(0, 0, 0, 0.2);
+        .product-lollipop {
+            width: 450px;
+            height: 600px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
             transition: all 0.5s ease;
             cursor: pointer;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+            z-index: 2;
         }
 
-        .product-cylinder:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 
-                0 30px 80px rgba(0, 0, 0, 0.4),
-                0 0 60px var(--glow-color, #fff);
+        .product-lollipop:hover {
+            transform: scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.5));
         }
 
-        .product-cylinder.hot {
-            --product-top: #8B1538;
-            --product-middle: #D2001F;
-            --product-bottom: #FF4500;
-            --glow-color: #D2001F;
+        .product-lollipop.fresa {
+            background-image: url('Assets/superhiperacido/superhiperacido_product_photos/super-hyper-fresa-plop-lollipop.png');
         }
 
-        .product-cylinder.sour {
-            --product-top: #2E7D32;
-            --product-middle: #4CAF50;
-            --product-bottom: #66BB6A;
-            --glow-color: #4CAF50;
+        .product-lollipop.limon {
+            background-image: url('Assets/superhiperacido/superhiperacido_product_photos/super-hyper-limon-hot-lollipop-plop.png');
         }
 
-        .product-cylinder:nth-child(1) { left: 20%; animation: floatProduct 4s ease-in-out infinite; }
-        .product-cylinder:nth-child(2) { left: 40%; animation: floatProduct 4s ease-in-out 0.5s infinite; }
-        .product-cylinder:nth-child(3) { left: 60%; animation: floatProduct 4s ease-in-out 1s infinite; }
+        .product-lollipop.mango {
+            background-image: url('Assets/superhiperacido/superhiperacido_product_photos/super-hyper-mango-hot-lollipop-plop.png');
+        }
+
+        .product-lollipop:nth-child(1) { animation: floatProduct 4s ease-in-out infinite; }
+        .product-lollipop:nth-child(2) { animation: floatProduct 4s ease-in-out 0.5s infinite; }
+        .product-lollipop:nth-child(3) { animation: floatProduct 4s ease-in-out 1s infinite; }
+
+        /* Product flavor labels */
+        .product-lollipop::after {
+            content: attr(data-flavor);
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            color: #FFD700;
+            text-shadow: 2px 2px 0 #000;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid #FFD700;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-lollipop:hover::after {
+            opacity: 1;
+        }
+
 
         @keyframes floatProduct {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(3deg); }
+        }
+
+        /* Emoji effects on product hover */
+        .emoji-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0;
+            animation: floatEmoji 3s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes floatEmoji {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0.5) rotate(0deg);
+            }
+            20% {
+                opacity: 1;
+                transform: translateY(-20px) scale(1) rotate(10deg);
+            }
+            80% {
+                opacity: 1;
+                transform: translateY(-100px) scale(1.2) rotate(-5deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-150px) scale(0.8) rotate(15deg);
+            }
         }
 
         /* Footer */
@@ -857,6 +971,28 @@
                 box-shadow: 0 0 60px rgba(255, 215, 0, 0.9);
             }
         }
+
+        @keyframes floatUp {
+            0% { 
+                opacity: 0; 
+                transform: translateX(-50%) translateY(10px); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateX(-50%) translateY(0); 
+            }
+        }
+
+        @keyframes popIn {
+            0% { 
+                opacity: 0; 
+                transform: translate(-50%, -50%) scale(0.5); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translate(-50%, -50%) scale(1); 
+            }
+        }
     </style>
 </head>
 <body>
@@ -875,7 +1011,7 @@
             <div class="choice-content">
                 <div class="choice-emoji">🔥</div>
                 <h2 class="choice-title">HOT</h2>
-                <p class="choice-subtitle">Feel the Burn</p>
+                <p class="choice-subtitle">Do you dare?</p>
             </div>
             <!-- Flame particles -->
             <div class="flame-particle" style="left: 10%; animation-delay: 0s; --offset: -1;"></div>
@@ -893,7 +1029,7 @@
             <div class="choice-content">
                 <div class="choice-emoji">⚡</div>
                 <h2 class="choice-title">SOUR</h2>
-                <p class="choice-subtitle">Face the Pucker</p>
+                <p class="choice-subtitle">Feel the intensity</p>
             </div>
             <!-- Electric sparks -->
             <div class="spark-particle" style="left: 15%; animation-delay: 0s;"></div>
@@ -910,8 +1046,8 @@
         <nav id="navbar">
             <div class="nav-container">
                 <img src="Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png" alt="Super Hyper Ácido" class="logo">
-                <div class="mode-indicator" id="modeIndicator">
-                    <span>EXTREME MODE</span>
+                <div class="mode-indicator inactive" id="modeIndicator">
+                    <span>SELECT YOUR MODE</span>
                 </div>
                 <div class="hamburger" id="hamburger">
                     <span></span>
@@ -938,14 +1074,14 @@
                 <span id="heroTitleLine1">CHOOSE YOUR</span><br>
                 <span id="heroTitleLine2">EXTREME</span>
             </h1>
-            <p class="hero-subtitle">The Ultimate Face-Off Between Fire and Fury</p>
+            <p class="hero-subtitle">Warning: Extreme reactions guaranteed. No turning back.</p>
             
             <!-- Product Showcase -->
             <div class="product-showcase">
                 <div class="product-container">
-                    <div class="product-cylinder hot"></div>
-                    <div class="product-cylinder sour"></div>
-                    <div class="product-cylinder hot"></div>
+                    <div class="product-lollipop fresa" data-flavor="STRAWBERRY HOT"></div>
+                    <div class="product-lollipop limon" data-flavor="LIME HOT"></div>
+                    <div class="product-lollipop mango" data-flavor="MANGO HOT"></div>
                 </div>
             </div>
         </section>
@@ -955,20 +1091,20 @@
             <h2 class="hero-title" style="font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 1rem;">
                 EXTREME CHALLENGES
             </h2>
-            <p class="hero-subtitle" style="font-size: 1.2rem;">Can You Handle It?</p>
+            <p class="hero-subtitle" style="font-size: 1.2rem;">Do you dare to try something different?</p>
             
             <div class="challenge-grid">
                 <!-- HOT Challenges -->
                 <div class="challenge-card hot-challenge">
                     <div class="challenge-emoji">🌶️</div>
                     <h3 class="challenge-title">INFERNO RUSH</h3>
-                    <p class="challenge-description">60 seconds of pure heat. No water allowed. Record your reaction!</p>
+                    <p class="challenge-description">60 seconds of pure fire. No water allowed. Record your reaction and prove your bravery!</p>
                 </div>
                 
                 <div class="challenge-card hot-challenge">
                     <div class="challenge-emoji">🔥</div>
                     <h3 class="challenge-title">DRAGON'S BREATH</h3>
-                    <p class="challenge-description">How many can you handle? Stack them up and feel the burn multiply!</p>
+                    <p class="challenge-description">How many can you handle? Stack them up and feel the intensity multiply!</p>
                 </div>
                 
                 <!-- SOUR Challenges -->
@@ -981,7 +1117,7 @@
                 <div class="challenge-card sour-challenge">
                     <div class="challenge-emoji">💧</div>
                     <h3 class="challenge-title">ACID RAIN</h3>
-                    <p class="challenge-description">The sourest experience on Earth. Your tears will tell the story!</p>
+                    <p class="challenge-description">The most sour experience on the planet. Your tears will tell the story!</p>
                 </div>
             </div>
 
@@ -998,7 +1134,7 @@
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2025 Super Hyper by Confiteca. Are You Brave Enough?</p>
+            <p>&copy; 2025 Super Hyper by Confiteca. Always SHA - Do You Dare?</p>
         </footer>
     </div>
 
@@ -1029,7 +1165,7 @@
                 
                 // Update mode indicator
                 modeIndicator.className = `mode-indicator ${choice}-mode`;
-                modeIndicator.innerHTML = `<span>${choice.toUpperCase()} MODE ACTIVE</span>`;
+                modeIndicator.innerHTML = `<span>${choice.toUpperCase()} MODE: ON</span>`;
                 
                 // Update hero title
                 if (choice === 'hot') {
@@ -1046,8 +1182,51 @@
                     mainContent.classList.add('active');
                     navbar.classList.add('visible');
                     animateMeter();
+                    
+                    // Show mode indicator after transition
+                    modeIndicator.classList.remove('inactive');
                 }, 500);
             });
+        });
+
+        // Mode toggle functionality
+        modeIndicator.addEventListener('click', () => {
+            if (selectedMode && !modeIndicator.classList.contains('inactive')) {
+                // Toggle between hot and sour
+                const newMode = selectedMode === 'hot' ? 'sour' : 'hot';
+                selectedMode = newMode;
+                
+                // Update body class
+                document.body.className = `${newMode}-chosen`;
+                
+                // Update mode indicator
+                modeIndicator.className = `mode-indicator ${newMode}-mode`;
+                modeIndicator.innerHTML = `<span>${newMode.toUpperCase()} MODE: ON</span>`;
+                
+                // Update hero title
+                if (newMode === 'hot') {
+                    heroTitleLine2.textContent = 'FIRE';
+                    heroTitleLine2.style.color = '#ff4500';
+                } else {
+                    heroTitleLine2.textContent = 'FURY';
+                    heroTitleLine2.style.color = '#00ffff';
+                }
+                
+                // Add visual feedback
+                modeIndicator.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    modeIndicator.style.transform = '';
+                }, 200);
+                
+                // Boost reaction meter for mode switch
+                const meterFill = document.getElementById('meterFill');
+                if (meterFill) {
+                    meterFill.style.height = '90%';
+                    setTimeout(() => {
+                        meterFill.style.height = '45%';
+                    }, 1000);
+                }
+            }
         });
 
         // Mobile menu
@@ -1082,31 +1261,160 @@
             }, 2000);
         }
 
-        // Challenge card interactions
+        // Challenge card interactions - Enhanced with brand insight about insecurity before daring
         const challengeCards = document.querySelectorAll('.challenge-card');
+        const insecurityMessages = [
+            "Are you really going to try this?", 
+            "Maybe this isn't for you...",
+            "Are you completely sure?",
+            "Others have failed here...",
+            "Think twice about this..."
+        ];
+        
+        const encouragementMessages = [
+            "That's the SHA spirit!",
+            "Prepare for the unexpected!",
+            "The adventure begins here",
+            "Your moment of glory!",
+            "Show what you're made of!"
+        ];
+        
         challengeCards.forEach(card => {
+            let hoverTimer;
+            
             card.addEventListener('mouseenter', () => {
-                // Increase meter on hover
+                // First show insecurity (brand insight: es imposible atreverse sin sentir inseguridad)
+                const insecurityMsg = insecurityMessages[Math.floor(Math.random() * insecurityMessages.length)];
+                
+                // Create floating message
+                const floatingMsg = document.createElement('div');
+                floatingMsg.textContent = insecurityMsg;
+                floatingMsg.style.cssText = `
+                    position: absolute;
+                    top: -40px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(255, 0, 0, 0.9);
+                    color: white;
+                    padding: 8px 16px;
+                    border-radius: 20px;
+                    font-size: 0.8rem;
+                    font-weight: bold;
+                    z-index: 1000;
+                    pointer-events: none;
+                    animation: floatUp 0.5s ease-out;
+                `;
+                card.appendChild(floatingMsg);
+                
+                // After 1 second, show encouragement (overcoming insecurity)
+                hoverTimer = setTimeout(() => {
+                    const encourageMsg = encouragementMessages[Math.floor(Math.random() * encouragementMessages.length)];
+                    floatingMsg.textContent = encourageMsg;
+                    floatingMsg.style.background = 'rgba(0, 255, 0, 0.9)';
+                    
+                    // Increase meter significantly
+                    const currentHeight = parseFloat(meterFill.style.height);
+                    meterFill.style.height = Math.min(currentHeight + 30, 100) + '%';
+                }, 1000);
+                
+                // Initial small meter increase (representing initial fear/excitement)
                 const currentHeight = parseFloat(meterFill.style.height);
-                meterFill.style.height = Math.min(currentHeight + 20, 100) + '%';
+                meterFill.style.height = Math.min(currentHeight + 10, 100) + '%';
             });
             
             card.addEventListener('mouseleave', () => {
-                // Decrease meter on leave
+                clearTimeout(hoverTimer);
+                // Remove any floating messages
+                const messages = card.querySelectorAll('[style*="floatUp"]');
+                messages.forEach(msg => msg.remove());
+                
+                // Decrease meter
                 const currentHeight = parseFloat(meterFill.style.height);
-                meterFill.style.height = Math.max(currentHeight - 10, 30) + '%';
+                meterFill.style.height = Math.max(currentHeight - 15, 30) + '%';
+            });
+            
+            // Add click interaction for "surprise" element
+            card.addEventListener('click', () => {
+                // Brand insight: "Con SHA, prepárate para reacciones inesperadas"
+                const surprises = [
+                    "PLOT TWIST! This challenge is more intense than it seems 😱",
+                    "SURPRISE! There's an ULTRA secret version of this challenge 🤫", 
+                    "UNEXPECTED TURN! Did you know you can combine it with others? 🔄",
+                    "REVELATION! True daredevils do it with their eyes closed 👁️",
+                    "BONUS SURPRISE! Share your reaction and unlock the extreme level 📹"
+                ];
+                
+                const surprise = surprises[Math.floor(Math.random() * surprises.length)];
+                
+                // Create surprise popup
+                const popup = document.createElement('div');
+                popup.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: linear-gradient(45deg, #FFD700, #FF4500);
+                        color: #000;
+                        padding: 20px;
+                        border-radius: 15px;
+                        font-family: 'Bebas Neue', sans-serif;
+                        font-size: 1.2rem;
+                        text-align: center;
+                        z-index: 10000;
+                        border: 3px solid #000;
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                        max-width: 300px;
+                        animation: popIn 0.5s ease-out;
+                    ">
+                        ${surprise}
+                        <div style="margin-top: 15px;">
+                            <button onclick="this.parentElement.parentElement.remove()" 
+                                style="background: #000; color: #FFD700; border: none; padding: 8px 16px; 
+                                border-radius: 8px; cursor: pointer; font-weight: bold;">
+                                GOT IT!
+                            </button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(popup);
+                
+                // Max out the meter for surprise effect
+                meterFill.style.height = '100%';
+                setTimeout(() => {
+                    const currentHeight = parseFloat(meterFill.style.height);
+                    meterFill.style.height = Math.max(currentHeight - 20, 50) + '%';
+                }, 2000);
             });
         });
 
-        // Dare button
+        // Dare button - Enhanced with brand personality (Explorador, Bandido, Bufón)
         const dareBtn = document.getElementById('dareBtn');
+        const dareMessages = [
+            // Explorador (50%) - adventurous, curious
+            "I just explored the unknown with Super Hyper ${mode}! Do you dare to discover what happens? 🔥⚡",
+            "I discovered my limit with SHA ${mode}... What's yours? The only way to know is by daring 🌶️💚",
+            "I navigated uncharted territory with Super Hyper. Want to join the adventure? 🚀",
+            
+            // Bandido (35%) - rebellious, rule-breaking
+            "I broke all the rules with Super Hyper ${mode}! Do you have the guts to follow me? 😈🔥",
+            "I defied the impossible and survived SHA ${mode}. Your turn to rebel 💥",
+            "I ignored all warnings... and it was incredible! Ready to join the rebellion? 🔥⚡",
+            
+            // Bufón (15%) - playful, fun-loving
+            "My face completely transformed with SHA ${mode}! 😂 Want to see what face you make? 🤪",
+            "SHA ${mode} made me cry... but from laughter! Do you dare to laugh with me? 😭😂"
+        ];
+        
         dareBtn.addEventListener('click', () => {
-            // Create share functionality
-            const shareText = `I just took the Super Hyper ${selectedMode?.toUpperCase() || 'EXTREME'} challenge! Can you handle it? 🔥⚡`;
+            // Select random message based on brand personality distribution
+            const randomMessage = dareMessages[Math.floor(Math.random() * dareMessages.length)];
+            const modeText = selectedMode?.toUpperCase() || 'EXTREME';
+            const shareText = randomMessage.replace('${mode}', modeText);
             
             if (navigator.share) {
                 navigator.share({
-                    title: 'Super Hyper Challenge',
+                    title: 'Super Hyper Challenge - Do You Dare?',
                     text: shareText,
                     url: window.location.href
                 });
@@ -1114,12 +1422,150 @@
                 // Fallback - copy to clipboard
                 navigator.clipboard.writeText(shareText + ' ' + window.location.href);
                 
-                // Visual feedback
-                dareBtn.textContent = 'LINK COPIED!';
+                // Visual feedback with personality
+                const feedbackMessages = [
+                    'LINK COPIED! 🔗',
+                    'READY TO SHARE! 💥',
+                    'CHALLENGE READY! 🚀'
+                ];
+                
+                dareBtn.textContent = feedbackMessages[Math.floor(Math.random() * feedbackMessages.length)];
                 setTimeout(() => {
                     dareBtn.innerHTML = 'DARE A FRIEND →';
                 }, 2000);
             }
+        });
+
+        // Emoji creation function for product hover
+        function createEmojiEffects(lollipop, container) {
+            const flavorClass = lollipop.classList[1]; // fresa, limon, mango
+            
+            // Define emoji combinations for each flavor
+            const emojiCombos = {
+                fresa: ['🍓', '🔥', '💥', '🌶️'],
+                limon: ['🍋', '🔥', '⚡', '💚', '🌶️'], 
+                mango: ['🥭', '🔥', '🧡', '💥', '🌶️']
+            };
+            
+            const emojis = emojiCombos[flavorClass] || ['🔥', '💥'];
+            
+            // Create multiple floating emojis
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.className = 'floating-emoji';
+                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    
+                    // Random positioning around the product
+                    const angle = (Math.random() * 360) * Math.PI / 180;
+                    const radius = 80 + Math.random() * 60;
+                    const x = 50 + Math.cos(angle) * (radius / 4);
+                    const y = 50 + Math.sin(angle) * (radius / 4);
+                    
+                    emoji.style.left = x + '%';
+                    emoji.style.top = y + '%';
+                    emoji.style.animationDelay = Math.random() * 0.5 + 's';
+                    
+                    container.appendChild(emoji);
+                    
+                    // Remove emoji after animation
+                    setTimeout(() => {
+                        if (emoji.parentNode) {
+                            emoji.remove();
+                        }
+                    }, 3500);
+                }, i * 150);
+            }
+        }
+
+        // Enhanced product interactions
+        const productLollipops = document.querySelectorAll('.product-lollipop');
+        productLollipops.forEach((lollipop, index) => {
+            
+            // Add emoji container
+            const emojiContainer = document.createElement('div');
+            emojiContainer.className = 'emoji-container';
+            lollipop.appendChild(emojiContainer);
+            
+            // Hover effects with emojis
+            lollipop.addEventListener('mouseenter', () => {
+                createEmojiEffects(lollipop, emojiContainer);
+                
+                // Boost the reaction meter
+                const meterFill = document.getElementById('meterFill');
+                if (meterFill) {
+                    meterFill.style.height = '75%';
+                }
+            });
+            
+            lollipop.addEventListener('mouseleave', () => {
+                // Clear emojis will happen automatically via timeout
+                
+                // Reset reaction meter
+                const meterFill = document.getElementById('meterFill');
+                if (meterFill) {
+                    const currentHeight = parseFloat(meterFill.style.height);
+                    meterFill.style.height = Math.max(currentHeight - 20, 30) + '%';
+                }
+            });
+            lollipop.addEventListener('click', () => {
+                // Get flavor info
+                const flavor = lollipop.dataset.flavor;
+                const flavorClass = lollipop.classList[1]; // fresa, limon, mango
+                
+                // Create flavor experience popup
+                const flavorMessages = {
+                    fresa: "🍓 STRAWBERRY HOT: The classic fire starter! Sweet meets heat in the most explosive way possible!",
+                    limon: "🟢 LIME HOT: Tangy torture! The perfect balance of citrus sourness and burning sensation!",
+                    mango: "🥭 MANGO HOT: Tropical inferno! Sweet tropical flavor followed by an intense heat wave!"
+                };
+                
+                const popup = document.createElement('div');
+                popup.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: linear-gradient(45deg, #000, #FFD700, #000);
+                        color: #fff;
+                        padding: 30px;
+                        border-radius: 20px;
+                        font-family: 'Bebas Neue', sans-serif;
+                        font-size: 1.1rem;
+                        text-align: center;
+                        z-index: 10000;
+                        border: 4px solid #D2001F;
+                        box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+                        max-width: 400px;
+                        animation: popIn 0.6s ease-out;
+                    ">
+                        <h3 style="color: #FFD700; margin-bottom: 15px; font-size: 1.5rem;">${flavor}</h3>
+                        <p style="margin-bottom: 20px; line-height: 1.4;">${flavorMessages[flavorClass]}</p>
+                        <div style="margin-top: 20px;">
+                            <button onclick="this.parentElement.parentElement.parentElement.remove()" 
+                                style="background: #D2001F; color: #FFD700; border: none; padding: 12px 24px; 
+                                border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem;
+                                transition: all 0.3s ease;" 
+                                onmouseover="this.style.background='#FFD700'; this.style.color='#D2001F'"
+                                onmouseout="this.style.background='#D2001F'; this.style.color='#FFD700'">
+                                I DARE TO TRY IT!
+                            </button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(popup);
+                
+                // Animate the clicked lollipop
+                lollipop.style.animation = 'none';
+                setTimeout(() => {
+                    lollipop.style.animation = 'floatProduct 4s ease-in-out infinite';
+                    lollipop.style.transform = 'scale(1.2) rotate(360deg)';
+                    setTimeout(() => {
+                        lollipop.style.transform = '';
+                    }, 600);
+                }, 10);
+            });
         });
 
         // Parallax effect on mouse move
@@ -1128,11 +1574,14 @@
             const y = e.clientY / window.innerHeight - 0.5;
             
             // Move products slightly
-            const products = document.querySelectorAll('.product-cylinder');
+            const products = document.querySelectorAll('.product-lollipop');
             products.forEach((product, index) => {
-                const offsetX = x * 20 * (index + 1);
-                const offsetY = y * 20 * (index + 1);
-                product.style.transform = `translateX(${offsetX}px) translateY(${offsetY}px) rotate(${x * 5}deg)`;
+                const offsetX = x * 15 * (index + 1);
+                const offsetY = y * 15 * (index + 1);
+                const baseTransform = product.style.transform || '';
+                if (!baseTransform.includes('scale')) {
+                    product.style.transform = `translateX(${offsetX}px) translateY(${offsetY}px) rotate(${x * 3}deg)`;
+                }
             });
         });
 
