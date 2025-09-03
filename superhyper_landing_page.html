@@ -634,59 +634,150 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* Face Reaction Meter */
+        /* Super Hyper Reaction Meter */
         .reaction-meter {
             position: fixed;
             right: 2rem;
             top: 50%;
             transform: translateY(-50%);
-            width: 80px;
-            height: 300px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 40px;
-            padding: 10px;
+            width: 100px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.95));
+            border: 3px solid;
+            border-image: linear-gradient(180deg, #FFD700, #D2001F, #4CAF50) 1;
+            border-radius: 50px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
             z-index: 100;
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.3),
+                inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .meter-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
         }
 
         .meter-fill {
             width: 100%;
-            background: linear-gradient(to top, #00ff00, #ffff00, #ff4500);
-            border-radius: 30px;
-            transition: height 0.3s ease;
+            background: linear-gradient(to top, 
+                #4CAF50 0%, 
+                #8BC34A 20%, 
+                #FFEB3B 40%, 
+                #FF9800 60%, 
+                #FF5722 80%, 
+                #D32F2F 90%,
+                #B71C1C 100%
+            );
+            border-radius: 35px;
+            transition: height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.4),
+                inset 0 0 15px rgba(255, 255, 255, 0.1);
         }
 
-        .meter-fill::before {
-            content: '';
+
+
+        @keyframes meterGlow {
+            0%, 100% { 
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translateY(15px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes extremeGlow {
+            0%, 100% { 
+                transform: translateY(0) scaleY(1);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translateY(10px) scaleY(1.2);
+                opacity: 1;
+            }
+        }
+
+        .meter-labels {
             position: absolute;
+            left: -60px;
             top: 0;
-            left: 0;
-            right: 0;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.5);
-            animation: meterPulse 1s ease-in-out infinite;
-        }
-
-        @keyframes meterPulse {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.9rem;
+            color: #FFD700;
+            text-shadow: 1px 1px 0 #000;
         }
 
         .meter-label {
+            writing-mode: horizontal-tb;
+            letter-spacing: 0.1em;
+            text-align: right;
+            line-height: 1;
+        }
+
+        .meter-title {
             position: absolute;
-            top: -40px;
+            top: -50px;
             left: 50%;
             transform: translateX(-50%);
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 0.1em;
+            font-family: 'Bungee', cursive;
+            font-size: 1rem;
+            color: #FFD700;
+            text-shadow: 2px 2px 0 #000;
             white-space: nowrap;
+            animation: titlePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { 
+                transform: translateX(-50%) scale(1);
+                text-shadow: 2px 2px 0 #000;
+            }
+            50% { 
+                transform: translateX(-50%) scale(1.1);
+                text-shadow: 2px 2px 0 #000, 0 0 10px #FFD700;
+            }
+        }
+
+        /* Extreme state styling */
+        .reaction-meter.extreme {
+            animation: meterShake 0.3s ease-in-out infinite;
+            border-image: linear-gradient(180deg, #FF0000, #FFD700, #FF0000) 1;
+            box-shadow: 
+                0 0 60px rgba(255, 0, 0, 0.8),
+                inset 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes meterShake {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            25% { transform: translateY(-50%) translateX(2px); }
+            75% { transform: translateY(-50%) translateX(-2px); }
+        }
+
+        @media (max-width: 768px) {
+            @keyframes meterShake {
+                0%, 100% { transform: translateY(0); }
+                25% { transform: translateY(2px); }
+                75% { transform: translateY(-2px); }
+            }
+
         }
 
         /* Mobile Styles */
@@ -712,9 +803,104 @@
             }
 
             .reaction-meter {
-                right: 1rem;
-                width: 60px;
-                height: 200px;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                top: auto;
+                transform: none;
+                width: 100%;
+                height: 120px;
+                border-radius: 0;
+                border-top: 3px solid;
+                border-left: none;
+                border-right: none;
+                border-bottom: none;
+                background: linear-gradient(90deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 20, 0.98));
+                backdrop-filter: blur(25px);
+                padding: 15px 20px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 10px;
+                box-shadow: 
+                    0 -10px 30px rgba(0, 0, 0, 0.7),
+                    0 -5px 15px rgba(255, 215, 0, 0.2);
+            }
+
+            .reaction-meter::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(90deg, 
+                    rgba(0, 0, 0, 0.9), 
+                    rgba(20, 20, 20, 0.95),
+                    rgba(0, 0, 0, 0.9)
+                );
+                z-index: -1;
+            }
+
+            .meter-container {
+                width: 88%;
+                height: 35px;
+                flex-direction: row;
+                position: relative;
+                background: rgba(0, 0, 0, 0.7);
+                border-radius: 20px;
+                border: 2px solid rgba(255, 255, 255, 0.4);
+                overflow: hidden;
+                order: 3;
+            }
+
+            .meter-fill {
+                height: 100%;
+                width: 5%; /* Default low state for mobile */
+                border-radius: 18px;
+                border: none;
+                transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                background: linear-gradient(to right, 
+                    #4CAF50 0%, 
+                    #8BC34A 20%, 
+                    #FFEB3B 40%, 
+                    #FF9800 60%, 
+                    #FF5722 80%, 
+                    #D32F2F 90%,
+                    #B71C1C 100%
+                );
+            }
+
+
+            .meter-labels {
+                position: relative;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                justify-content: space-between;
+                font-size: 0.7rem;
+                gap: 5px;
+                order: 2;
+                padding: 0 20px;
+            }
+
+            .meter-title {
+                align-content: center;
+                position: relative;
+                top: 0;
+                transform: none;
+                font-size: 1rem;
+                order: 1;
+                margin: 0;
+                text-align: center;
+            }
+
+            .meter-labels .meter-label {
+                text-align: center;
+                writing-mode: horizontal-tb;
             }
 
             .hero-title {
@@ -744,6 +930,14 @@
                 padding: 6px 12px;
             }
 
+            /* Add bottom padding to avoid meter overlap */
+            .main-content {
+                padding-bottom: 140px;
+            }
+
+            footer {
+                padding-bottom: 140px;
+            }
         }
 
         /* Product Showcase */
@@ -1126,10 +1320,19 @@
             </div>
         </section>
 
-        <!-- Face Reaction Meter -->
+        <!-- Super Hyper Reaction Meter -->
         <div class="reaction-meter" id="reactionMeter">
-            <span class="meter-label">EXTREME LEVEL</span>
-            <div class="meter-fill" id="meterFill" style="height: 30%;"></div>
+            <div class="meter-title" id="meterTitle">INTENSITY</div>
+            <div class="meter-labels">
+                <div class="meter-label">EXTREME</div>
+                <div class="meter-label">INSANE</div>
+                <div class="meter-label">WILD</div>
+                <div class="meter-label">HOT</div>
+                <div class="meter-label">MILD</div>
+            </div>
+            <div class="meter-container">
+                <div class="meter-fill" id="meterFill"></div>
+            </div>
         </div>
 
         <!-- Footer -->
@@ -1167,13 +1370,16 @@
                 modeIndicator.className = `mode-indicator ${choice}-mode`;
                 modeIndicator.innerHTML = `<span>${choice.toUpperCase()} MODE: ON</span>`;
                 
-                // Update hero title
+                // Update hero title and meter
+                const meterTitle = document.getElementById('meterTitle');
                 if (choice === 'hot') {
                     heroTitleLine2.textContent = 'FIRE';
                     heroTitleLine2.style.color = '#ff4500';
+                    meterTitle.textContent = 'HEAT METER';
                 } else {
                     heroTitleLine2.textContent = 'FURY';
                     heroTitleLine2.style.color = '#00ffff';
+                    meterTitle.textContent = 'SOUR METER';
                 }
                 
                 // Animate transition
@@ -1185,6 +1391,15 @@
                     
                     // Show mode indicator after transition
                     modeIndicator.classList.remove('inactive');
+                    
+                    // Initialize meter for current viewport
+                    if (window.innerWidth <= 768) {
+                        meterFill.style.width = '5%';
+                        meterFill.style.height = '100%';
+                    } else {
+                        meterFill.style.height = '5%';
+                        meterFill.style.width = '100%';
+                    }
                 }, 500);
             });
         });
@@ -1203,13 +1418,16 @@
                 modeIndicator.className = `mode-indicator ${newMode}-mode`;
                 modeIndicator.innerHTML = `<span>${newMode.toUpperCase()} MODE: ON</span>`;
                 
-                // Update hero title
+                // Update hero title and meter
+                const meterTitle = document.getElementById('meterTitle');
                 if (newMode === 'hot') {
                     heroTitleLine2.textContent = 'FIRE';
                     heroTitleLine2.style.color = '#ff4500';
+                    meterTitle.textContent = 'HEAT METER';
                 } else {
                     heroTitleLine2.textContent = 'FURY';
                     heroTitleLine2.style.color = '#00ffff';
+                    meterTitle.textContent = 'SOUR METER';
                 }
                 
                 // Add visual feedback
@@ -1218,14 +1436,8 @@
                     modeIndicator.style.transform = '';
                 }, 200);
                 
-                // Boost reaction meter for mode switch
-                const meterFill = document.getElementById('meterFill');
-                if (meterFill) {
-                    meterFill.style.height = '90%';
-                    setTimeout(() => {
-                        meterFill.style.height = '45%';
-                    }, 1000);
-                }
+                // Extreme reaction for mode switch
+                triggerExtremeReaction();
             }
         });
 
@@ -1249,16 +1461,65 @@
             });
         });
 
-        // Reaction meter animation
+        // Super Hyper Reaction Meter System
         const meterFill = document.getElementById('meterFill');
+        const reactionMeter = document.getElementById('reactionMeter');
         let meterInterval;
 
         function animateMeter() {
-            let height = 30;
+            // Keep meter super low with minimal fluctuation
+            let level = 5;
             meterInterval = setInterval(() => {
-                height = 30 + Math.random() * 40;
-                meterFill.style.height = height + '%';
+                level = 3 + Math.random() * 4; // Fluctuates between 3-7%
+                if (window.innerWidth <= 768) {
+                    meterFill.style.width = level + '%';
+                    meterFill.style.height = '100%';
+                } else {
+                    meterFill.style.height = level + '%';
+                    meterFill.style.width = '100%';
+                }
+            }, 3000);
+        }
+
+        function triggerExtremeReaction() {
+            // Spike to EXTREME level
+            clearInterval(meterInterval);
+            
+            if (window.innerWidth <= 768) {
+                meterFill.style.width = '100%';
+                meterFill.style.height = '100%';
+            } else {
+                meterFill.style.height = '100%';
+                meterFill.style.width = '100%';
+            }
+            
+            meterFill.classList.add('extreme');
+            reactionMeter.classList.add('extreme');
+            
+            // Hold extreme state for a moment
+            setTimeout(() => {
+                resetMeterToLow();
             }, 2000);
+        }
+
+        function resetMeterToLow() {
+            // Gradual return to low state
+            meterFill.classList.remove('extreme');
+            reactionMeter.classList.remove('extreme');
+            
+            setTimeout(() => {
+                if (window.innerWidth <= 768) {
+                    meterFill.style.width = '5%';
+                    meterFill.style.height = '100%';
+                } else {
+                    meterFill.style.height = '5%';
+                    meterFill.style.width = '100%';
+                }
+                // Resume low-level animation
+                setTimeout(() => {
+                    animateMeter();
+                }, 1000);
+            }, 500);
         }
 
         // Challenge card interactions - Enhanced with brand insight about insecurity before daring
@@ -1312,14 +1573,11 @@
                     floatingMsg.textContent = encourageMsg;
                     floatingMsg.style.background = 'rgba(0, 255, 0, 0.9)';
                     
-                    // Increase meter significantly
-                    const currentHeight = parseFloat(meterFill.style.height);
-                    meterFill.style.height = Math.min(currentHeight + 30, 100) + '%';
+                    // Only trigger meter reaction on mobile for hover
+                    if (window.innerWidth <= 768) {
+                        triggerExtremeReaction();
+                    }
                 }, 1000);
-                
-                // Initial small meter increase (representing initial fear/excitement)
-                const currentHeight = parseFloat(meterFill.style.height);
-                meterFill.style.height = Math.min(currentHeight + 10, 100) + '%';
             });
             
             card.addEventListener('mouseleave', () => {
@@ -1328,9 +1586,7 @@
                 const messages = card.querySelectorAll('[style*="floatUp"]');
                 messages.forEach(msg => msg.remove());
                 
-                // Decrease meter
-                const currentHeight = parseFloat(meterFill.style.height);
-                meterFill.style.height = Math.max(currentHeight - 15, 30) + '%';
+                // Meter will return to low state automatically
             });
             
             // Add click interaction for "surprise" element
@@ -1379,12 +1635,8 @@
                 `;
                 document.body.appendChild(popup);
                 
-                // Max out the meter for surprise effect
-                meterFill.style.height = '100%';
-                setTimeout(() => {
-                    const currentHeight = parseFloat(meterFill.style.height);
-                    meterFill.style.height = Math.max(currentHeight - 20, 50) + '%';
-                }, 2000);
+                // Extreme reaction for surprise effect
+                triggerExtremeReaction();
             });
         });
 
@@ -1487,26 +1739,19 @@
             emojiContainer.className = 'emoji-container';
             lollipop.appendChild(emojiContainer);
             
-            // Hover effects with emojis
+            // Hover effects with emojis (mobile gets meter reaction, desktop doesn't)
             lollipop.addEventListener('mouseenter', () => {
                 createEmojiEffects(lollipop, emojiContainer);
                 
-                // Boost the reaction meter
-                const meterFill = document.getElementById('meterFill');
-                if (meterFill) {
-                    meterFill.style.height = '75%';
+                // Only trigger meter reaction on mobile hover
+                if (window.innerWidth <= 768) {
+                    triggerExtremeReaction();
                 }
             });
             
             lollipop.addEventListener('mouseleave', () => {
-                // Clear emojis will happen automatically via timeout
-                
-                // Reset reaction meter
-                const meterFill = document.getElementById('meterFill');
-                if (meterFill) {
-                    const currentHeight = parseFloat(meterFill.style.height);
-                    meterFill.style.height = Math.max(currentHeight - 20, 30) + '%';
-                }
+                // Emojis will clear automatically via timeout
+                // Meter will return to low state via triggerExtremeReaction logic on mobile
             });
             lollipop.addEventListener('click', () => {
                 // Get flavor info
@@ -1555,6 +1800,9 @@
                     </div>
                 `;
                 document.body.appendChild(popup);
+                
+                // Extreme reaction on product click
+                triggerExtremeReaction();
                 
                 // Animate the clicked lollipop
                 lollipop.style.animation = 'none';
@@ -1630,6 +1878,20 @@
                 createRandomParticles();
             }
         }, 4000);
+
+        // Handle window resize for meter responsiveness
+        window.addEventListener('resize', () => {
+            if (meterFill) {
+                // Re-initialize meter for new viewport size
+                if (window.innerWidth <= 768) {
+                    meterFill.style.width = '5%';
+                    meterFill.style.height = '100%';
+                } else {
+                    meterFill.style.height = '5%';
+                    meterFill.style.width = '100%';
+                }
+            }
+        });
     </script>
 </body>
 </html>
