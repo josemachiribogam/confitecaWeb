@@ -44,34 +44,48 @@
 
         .loader {
             position: relative;
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .loader-hot, .loader-sour {
+        .loader-logo {
             position: absolute;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            animation: pulse 1.5s ease-in-out infinite;
+            width: 180px;
+            height: 180px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            animation: logoSpin 2s linear infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
         }
 
-        .loader-hot {
-            left: 0;
-            background: radial-gradient(circle, #ff4500, #ff0000);
-            box-shadow: 0 0 60px #ff4500;
+        .loader-logo.hot {
+            background-image: url('Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png');
+            animation-delay: 0s;
         }
 
-        .loader-sour {
-            right: 0;
-            background: radial-gradient(circle, #00ff00, #00ffff);
-            box-shadow: 0 0 60px #00ff00;
-            animation-delay: 0.75s;
+        .loader-logo.sour {
+            background-image: url('Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png');
+            animation-delay: 1s;
+            transform: scale(0.8);
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(0.8); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
+        @keyframes logoSpin {
+            0% { 
+                transform: rotate(0deg) scale(0.8);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: rotate(180deg) scale(1.1);
+                opacity: 1;
+            }
+            100% { 
+                transform: rotate(360deg) scale(0.8);
+                opacity: 0.6;
+            }
         }
 
         /* Split Screen Choice */
@@ -462,6 +476,17 @@
             overflow: hidden;
         }
 
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto; /* Allow hero to be more compact on mobile */
+                padding-top: 35%; /* Ensure content is below fixed nav */
+                padding-bottom: 2rem;
+                padding-left: 2rem;
+                padding-right: 2rem;
+                justify-content: flex-start; /* Start from top instead of center */
+            }
+        }
+
         .hero-title {
             font-family: 'Bungee', cursive;
             font-size: clamp(3rem, 10vw, 8rem);
@@ -497,7 +522,6 @@
         .hero-subtitle {
             font-size: clamp(1.2rem, 3vw, 2rem);
             text-align: center;
-            margin-bottom: 3rem;
             opacity: 0.9;
             font-weight: 600;
             letter-spacing: 0.05em;
@@ -771,6 +795,118 @@
             75% { transform: translateY(-50%) translateX(-2px); }
         }
 
+        /* UGC Reaction Video Overlay */
+        .ugc-reaction-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .ugc-reaction-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .ugc-video-container {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: ugcVideoAppear 0.6s ease-out;
+        }
+
+        .ugc-dramatic-header {
+            font-family: 'Bungee', cursive;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            color: #FFD700;
+            text-shadow: 
+                3px 3px 0 #D2001F,
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: textShake 0.5s ease-in-out infinite;
+        }
+
+        .ugc-video {
+            border: 4px solid #FFD700;
+            border-radius: 20px;
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.6),
+                0 0 60px rgba(210, 0, 31, 0.4);
+            max-width: 100%;
+            max-height: 70vh;
+        }
+
+        .ugc-dramatic-footer {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: #fff;
+            text-shadow: 2px 2px 0 #000;
+            text-align: center;
+            margin-top: 1rem;
+            letter-spacing: 0.2em;
+            animation: textPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes ugcVideoAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(-10deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(2deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes textShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-1deg); }
+            75% { transform: translateX(2px) rotate(1deg); }
+        }
+
+        @keyframes textPulse {
+            0%, 100% { 
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .ugc-video-container {
+                max-width: 95vw;
+            }
+            
+            .ugc-video {
+                max-height: 60vh;
+                border-radius: 15px;
+                border-width: 3px;
+            }
+        }
+
         @media (max-width: 768px) {
             @keyframes meterShake {
                 0%, 100% { transform: translateY(0); }
@@ -912,22 +1048,52 @@
             }
 
             .product-container {
-                flex-direction: column;
-                height: auto;
-                gap: 40px;
-                padding: 2rem 0;
+                flex-direction: row;
+                height: 500px;
+                gap: 30px;
+                padding: 1rem 1rem; /* Reduced top padding from 2rem to 1rem */
                 max-width: 100%;
+                overflow-x: auto;
+                overflow-y: hidden;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* Internet Explorer 10+ */
+            }
+
+            .product-container::-webkit-scrollbar {
+                display: none; /* WebKit */
             }
 
             .product-lollipop {
-                width: 280px;
-                height: 400px;
+                width: 350px;
+                height: 450px;
+                flex-shrink: 0;
+                scroll-snap-align: center;
             }
 
             .product-lollipop::after {
                 bottom: -35px;
                 font-size: 1rem;
                 padding: 6px 12px;
+            }
+
+            /* Mobile scroll indicator */
+            .product-showcase::after {
+                content: '← Swipe to explore flavors →';
+                display: block;
+                text-align: center;
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 0.9rem;
+                color: rgba(255, 215, 0, 0.8);
+                text-shadow: 1px 1px 0 #000;
+                margin-top: 1rem;
+                animation: swipeHint 2s ease-in-out infinite;
+            }
+
+            @keyframes swipeHint {
+                0%, 100% { opacity: 0.6; }
+                50% { opacity: 1; }
             }
 
             /* Add bottom padding to avoid meter overlap */
@@ -946,6 +1112,12 @@
             text-align: center;
         }
 
+        @media (max-width: 768px) {
+            .product-showcase {
+                margin-top: -2rem; /* Pull products closer to hero content */
+            }
+        }
+
         .product-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -962,7 +1134,6 @@
             height: 600px;
             background-size: contain;
             background-repeat: no-repeat;
-            background-position: center;
             position: relative;
             transition: all 0.5s ease;
             cursor: pointer;
@@ -1193,8 +1364,8 @@
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loader">
-            <div class="loader-hot"></div>
-            <div class="loader-sour"></div>
+            <div class="loader-logo hot"></div>
+            <div class="loader-logo sour"></div>
         </div>
     </div>
 
@@ -1341,6 +1512,17 @@
         </footer>
     </div>
 
+    <!-- UGC Reaction Video Overlay -->
+    <div class="ugc-reaction-overlay" id="ugcOverlay">
+        <div class="ugc-video-container">
+            <div class="ugc-dramatic-header" id="ugcHeader">THIS IS WHAT HAPPENS WHEN YOU DARE</div>
+            <video class="ugc-video" id="ugcVideo" muted autoplay playsinline loop>
+                <source src="" type="video/mp4">
+            </video>
+            <div class="ugc-dramatic-footer" id="ugcFooter">DO YOU DARE?</div>
+        </div>
+    </div>
+
     <script>
         // Loading and initialization
         window.addEventListener('load', () => {
@@ -1370,16 +1552,19 @@
                 modeIndicator.className = `mode-indicator ${choice}-mode`;
                 modeIndicator.innerHTML = `<span>${choice.toUpperCase()} MODE: ON</span>`;
                 
-                // Update hero title and meter
+                // Update hero title, meter, and logo
                 const meterTitle = document.getElementById('meterTitle');
+                const logo = document.querySelector('.logo');
                 if (choice === 'hot') {
                     heroTitleLine2.textContent = 'FIRE';
                     heroTitleLine2.style.color = '#ff4500';
                     meterTitle.textContent = 'HEAT METER';
+                    logo.src = 'Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
                 } else {
                     heroTitleLine2.textContent = 'FURY';
                     heroTitleLine2.style.color = '#00ffff';
                     meterTitle.textContent = 'SOUR METER';
+                    logo.src = 'Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
                 }
                 
                 // Animate transition
@@ -1418,16 +1603,19 @@
                 modeIndicator.className = `mode-indicator ${newMode}-mode`;
                 modeIndicator.innerHTML = `<span>${newMode.toUpperCase()} MODE: ON</span>`;
                 
-                // Update hero title and meter
+                // Update hero title, meter, and logo
                 const meterTitle = document.getElementById('meterTitle');
+                const logo = document.querySelector('.logo');
                 if (newMode === 'hot') {
                     heroTitleLine2.textContent = 'FIRE';
                     heroTitleLine2.style.color = '#ff4500';
                     meterTitle.textContent = 'HEAT METER';
+                    logo.src = 'Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
                 } else {
                     heroTitleLine2.textContent = 'FURY';
                     heroTitleLine2.style.color = '#00ffff';
                     meterTitle.textContent = 'SOUR METER';
+                    logo.src = 'Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
                 }
                 
                 // Add visual feedback
@@ -1495,6 +1683,13 @@
             
             meterFill.classList.add('extreme');
             reactionMeter.classList.add('extreme');
+            
+            // 70% chance to show UGC reaction video on extreme meter trigger
+            if (Math.random() < 0.7) {
+                setTimeout(() => {
+                    showUGCReaction();
+                }, 800); // Short delay after meter peaks
+            }
             
             // Hold extreme state for a moment
             setTimeout(() => {
@@ -1878,6 +2073,66 @@
                 createRandomParticles();
             }
         }, 4000);
+
+        // UGC Reaction Video System
+        const ugcVideos = [
+            {
+                src: 'Assets/superhiperacido/superhyper-lifestyle-videos/super-hyper-reaction-ugc-1.mp4',
+                header: 'THIS IS WHAT HAPPENS WHEN YOU DARE',
+                footer: 'STILL THINK YOU CAN HANDLE IT?'
+            },
+            {
+                src: 'Assets/superhiperacido/superhyper-lifestyle-videos/super-hyper-reaction-ugc-2.mp4',
+                header: 'THE AFTERMATH OF EXTREME',
+                footer: 'YOUR TURN TO FACE THE HEAT'
+            },
+            {
+                src: 'Assets/superhiperacido/superhyper-lifestyle-videos/super-hyper-reaction-ugc-3.mp4',
+                header: 'WITNESS THE POWER OF SHA',
+                footer: 'DO YOU DARE?'
+            }
+        ];
+
+        const ugcOverlay = document.getElementById('ugcOverlay');
+        const ugcVideo = document.getElementById('ugcVideo');
+        const ugcHeader = document.getElementById('ugcHeader');
+        const ugcFooter = document.getElementById('ugcFooter');
+
+        function showUGCReaction() {
+            // Select random UGC video and messaging
+            const randomReaction = ugcVideos[Math.floor(Math.random() * ugcVideos.length)];
+            
+            // Update content
+            ugcHeader.textContent = randomReaction.header;
+            ugcFooter.textContent = randomReaction.footer;
+            ugcVideo.querySelector('source').src = randomReaction.src;
+            ugcVideo.load(); // Reload video with new source
+            
+            // Show overlay with dramatic entrance
+            ugcOverlay.classList.add('active');
+            
+            // Auto-hide after video duration (assuming ~5-10 seconds)
+            setTimeout(() => {
+                hideUGCReaction();
+            }, 8000); // 8 seconds viewing time
+        }
+
+        function hideUGCReaction() {
+            ugcOverlay.classList.remove('active');
+            
+            // Pause video after hiding
+            setTimeout(() => {
+                ugcVideo.pause();
+                ugcVideo.currentTime = 0;
+            }, 300);
+        }
+
+        // Click overlay to close (optional escape)
+        ugcOverlay.addEventListener('click', (e) => {
+            if (e.target === ugcOverlay) {
+                hideUGCReaction();
+            }
+        });
 
         // Handle window resize for meter responsiveness
         window.addEventListener('resize', () => {
