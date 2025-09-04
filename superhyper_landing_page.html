@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Hyper - Choose Your Extreme</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌶️</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Bungee&display=swap" rel="stylesheet">
     <style>
         * {
@@ -377,7 +378,7 @@
             backdrop-filter: blur(20px);
             border-bottom: 2px solid;
             border-image: linear-gradient(90deg, #ff4500, #00ffff) 1;
-            z-index: 900;
+            z-index: 1100;
             padding: 1rem 0;
             transform: translateY(-100%);
             transition: transform 0.5s ease;
@@ -534,6 +535,292 @@
             margin: 0 auto;
         }
 
+        /* Hall of Fame Section */
+        .hall-of-fame-section {
+            padding: 6rem 2rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .comic-burst-bg {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulseBurst 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseBurst {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+            50% { transform: translateX(-50%) scale(1.2); opacity: 0.3; }
+        }
+
+        .hall-fame-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .comic-text-shadow {
+            color: #fff;
+            text-shadow: 
+                4px 4px 0 #000,
+                -2px -2px 0 #FFD700,
+                2px -2px 0 #FFD700,
+                -2px 2px 0 #FFD700,
+                2px 2px 0 #FFD700;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .fame-highlight {
+            color: #FFD700;
+            text-shadow: 
+                4px 4px 0 #D2001F,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000;
+            display: inline-block;
+        }
+
+        .hall-fame-subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: #FFD700;
+            text-shadow: 2px 2px 0 #000;
+            margin-bottom: 3rem;
+            letter-spacing: 0.1em;
+        }
+
+        .hall-fame-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .fame-video-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #FFD700, #D2001F, #4CAF50, #FFD700) 1;
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fame-video-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .fame-video-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+            border-image: linear-gradient(45deg, #FFD700, #FF4500, #FFD700) 1;
+        }
+
+        .comic-frame {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            border: 4px solid #000;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            background: #000;
+        }
+
+        .fame-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .comic-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .fame-video-card:hover .comic-overlay {
+            opacity: 1;
+        }
+
+        .speech-bubble {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #fff;
+            color: #000;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 3px solid #000;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+            transform: scale(0);
+            animation: popIn 0.5s ease-out 0.2s forwards;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            border-top-color: #000;
+        }
+
+        .speech-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -7px;
+            right: 22px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-top-color: #fff;
+        }
+
+        .comic-effects {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .comic-pow, .comic-zap, .comic-boom {
+            display: inline-block;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            padding: 5px 15px;
+            border: 3px solid #000;
+            border-radius: 15px;
+            text-shadow: 2px 2px 0 #000;
+            transform: rotate(-5deg) scale(0);
+            animation: comicPop 0.6s ease-out 0.4s forwards;
+        }
+
+        .comic-pow {
+            background: linear-gradient(45deg, #FFD700, #FF4500);
+            color: #000;
+        }
+
+        .comic-zap {
+            background: linear-gradient(45deg, #00ffff, #4CAF50);
+            color: #000;
+        }
+
+        .comic-boom {
+            background: linear-gradient(45deg, #FF4500, #D2001F);
+            color: #fff;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        @keyframes comicPop {
+            0% { transform: rotate(-5deg) scale(0); }
+            50% { transform: rotate(5deg) scale(1.2); }
+            100% { transform: rotate(-2deg) scale(1); }
+        }
+
+        .fame-caption {
+            text-align: center;
+        }
+
+        .fame-caption h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: #FFD700;
+            text-shadow: 2px 2px 0 #000;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .fame-caption p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .hall-fame-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .fame-challenge {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: #FFD700;
+            text-shadow: 2px 2px 0 #000;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .fame-btn {
+            background: linear-gradient(135deg, #FFD700, #FF4500);
+            border: 3px solid #000;
+            color: #000;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: none;
+            letter-spacing: 0.05em;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .fame-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #FF4500, #D2001F);
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.4);
+        }
+
+        .fame-btn:active {
+            transform: translateY(-1px);
+        }
+
         .challenge-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -679,6 +966,7 @@
             box-shadow: 
                 0 0 30px rgba(255, 215, 0, 0.3),
                 inset 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
         }
 
         .meter-container {
@@ -916,6 +1204,681 @@
 
         }
 
+        /* Epic Hall of Fame Styles */
+        .hall-of-fame-section {
+            position: relative;
+            min-height: 100vh;
+            padding: 80px 2rem;
+            background: 
+                radial-gradient(ellipse at center top, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(0, 0, 0, 0.98) 100%);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 100px;
+        }
+
+        /* Epic Background Effects */
+        .fame-bg-effects {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .lightning-bolt {
+            position: absolute;
+            width: 4px;
+            height: 200px;
+            background: linear-gradient(0deg, transparent, #FFD700, #FFF700, transparent);
+            transform-origin: top center;
+            animation: lightning-strike 4s infinite ease-in-out;
+            box-shadow: 0 0 20px #FFD700, 0 0 40px #FFD700;
+        }
+
+        .lightning-1 {
+            top: 10%;
+            left: 15%;
+            animation-delay: 0s;
+            transform: rotate(-15deg);
+        }
+
+        .lightning-2 {
+            top: 20%;
+            right: 20%;
+            animation-delay: 2s;
+            transform: rotate(20deg);
+        }
+
+        @keyframes lightning-strike {
+            0%, 90%, 100% { opacity: 0; }
+             5%, 15% { opacity: 1; }
+            10% { opacity: 0.7; }
+        }
+
+        .fame-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #FFD700, transparent),
+                radial-gradient(2px 2px at 40px 70px, #FF6B35, transparent),
+                radial-gradient(1px 1px at 90px 40px, #00FFFF, transparent),
+                radial-gradient(1px 1px at 130px 80px, #FFD700, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: particle-float 20s infinite linear;
+            opacity: 0.6;
+        }
+
+        @keyframes particle-float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
+        }
+
+        .comic-rays {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: 
+                conic-gradient(from 0deg, 
+                    transparent 0deg, 
+                    rgba(255, 215, 0, 0.1) 30deg, 
+                    transparent 60deg,
+                    rgba(255, 215, 0, 0.1) 90deg,
+                    transparent 120deg,
+                    rgba(255, 215, 0, 0.1) 150deg,
+                    transparent 180deg,
+                    rgba(255, 215, 0, 0.1) 210deg,
+                    transparent 240deg,
+                    rgba(255, 215, 0, 0.1) 270deg,
+                    transparent 300deg,
+                    rgba(255, 215, 0, 0.1) 330deg,
+                    transparent 360deg
+                );
+            animation: rays-rotate 30s infinite linear;
+            border-radius: 50%;
+        }
+
+        @keyframes rays-rotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Hall of Fame Header */
+        .fame-header {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .fame-badge {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .badge-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 60px;
+            background: radial-gradient(ellipse, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: badge-pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes badge-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+
+        .badge-text {
+            position: relative;
+            display: inline-block;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #FFD700;
+            text-shadow: 
+                0 0 10px #FFD700,
+                2px 2px 0 #000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000;
+            padding: 12px 24px;
+            border: 3px solid #FFD700;
+            border-radius: 30px;
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(40, 40, 40, 0.9)),
+                radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.5),
+                inset 0 2px 10px rgba(255, 215, 0, 0.2);
+        }
+
+        .fame-epic-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            margin: 0;
+            text-align: center;
+        }
+
+        .title-line-1 {
+            display: block;
+            color: #FF6B35;
+            text-shadow: 
+                4px 4px 0 #000,
+                -4px -4px 0 #000,
+                4px -4px 0 #000,
+                -4px 4px 0 #000,
+                0 0 20px #FF6B35;
+            transform: scale(1.1);
+            animation: title-glow 2s infinite alternate ease-in-out;
+        }
+
+        .title-line-2 {
+            display: block;
+            color: #FFD700;
+            text-shadow: 
+                4px 4px 0 #000,
+                -4px -4px 0 #000,
+                4px -4px 0 #000,
+                -4px 4px 0 #000,
+                0 0 20px #FFD700;
+            animation: title-glow 2s infinite alternate ease-in-out 0.5s;
+        }
+
+        @keyframes title-glow {
+            0% { text-shadow: 4px 4px 0 #000, -4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 0 0 20px currentColor; }
+            100% { text-shadow: 4px 4px 0 #000, -4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 0 0 40px currentColor, 0 0 60px currentColor; }
+        }
+
+        .fame-epic-subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            text-align: center;
+            margin: 1.5rem 0 0 0;
+        }
+
+        .subtitle-highlight {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00FFFF;
+            text-shadow: 
+                2px 2px 0 #000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                0 0 15px #00FFFF;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle-detail {
+            display: block;
+            font-size: 1rem;
+            color: #ccc;
+            text-shadow: 1px 1px 0 #000;
+            letter-spacing: 1px;
+        }
+
+        /* Epic Video Showcase */
+        .fame-showcase {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            width: 100%;
+            max-width: 1400px;
+            z-index: 10;
+        }
+
+        /* Featured Hero Card */
+        .fame-hero-card {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .hero-frame {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 6px solid #FFD700;
+            border-radius: 20px;
+            background: 
+                linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 107, 53, 0.2) 100%),
+                radial-gradient(circle at center, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%);
+            box-shadow: 
+                0 0 50px rgba(255, 215, 0, 0.6),
+                inset 0 0 30px rgba(255, 215, 0, 0.1),
+                0 20px 40px rgba(0, 0, 0, 0.5);
+            overflow: visible;
+            animation: hero-pulse 4s infinite ease-in-out;
+            margin-bottom: 40px;
+        }
+
+        @keyframes hero-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 50px rgba(255, 215, 0, 0.6), inset 0 0 30px rgba(255, 215, 0, 0.1), 0 20px 40px rgba(0, 0, 0, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 70px rgba(255, 215, 0, 0.8), inset 0 0 50px rgba(255, 215, 0, 0.2), 0 30px 60px rgba(0, 0, 0, 0.7); }
+        }
+
+        .frame-decorations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .corner-ornament {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #FFD700;
+            background: rgba(255, 215, 0, 0.3);
+        }
+
+        .corner-ornament.top-left {
+            top: -6px;
+            left: -6px;
+            border-right: none;
+            border-bottom: none;
+            border-radius: 0 0 20px 0;
+        }
+
+        .corner-ornament.top-right {
+            top: -6px;
+            right: -6px;
+            border-left: none;
+            border-bottom: none;
+            border-radius: 0 0 0 20px;
+        }
+
+        .corner-ornament.bottom-left {
+            bottom: -6px;
+            left: -6px;
+            border-right: none;
+            border-top: none;
+            border-radius: 0 20px 0 0;
+        }
+
+        .corner-ornament.bottom-right {
+            bottom: -6px;
+            right: -6px;
+            border-left: none;
+            border-top: none;
+            border-radius: 20px 0 0 0;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fame-hero-card:hover .hero-overlay {
+            opacity: 1;
+        }
+
+        .impact-effects {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .impact-burst {
+            width: 100px;
+            height: 100px;
+            border: 4px solid #FFD700;
+            border-radius: 50%;
+            animation: impact-burst 1s infinite ease-out;
+        }
+
+        @keyframes impact-burst {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .hero-speech-bubble {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-top-color: #fff;
+        }
+
+        .hero-comic-effects {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+        }
+
+        .mega-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #FF6B35;
+            text-shadow: 
+                3px 3px 0 #000,
+                -3px -3px 0 #000,
+                3px -3px 0 #000,
+                -3px 3px 0 #000,
+                0 0 15px #FF6B35;
+            animation: mega-bounce 0.5s infinite alternate ease-in-out;
+        }
+
+        @keyframes mega-bounce {
+            0% { transform: scale(1) rotate(-5deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .hero-title-badge {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #FFD700, #FFA000);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 
+                0 5px 15px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(255, 215, 0, 0.5);
+            z-index: 5;
+        }
+
+        .hero-rank {
+            display: block;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .hero-name {
+            display: block;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Side Warriors */
+        .fame-warriors {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .warrior-card {
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .warrior-card:hover {
+            transform: scale(1.05);
+        }
+
+        .warrior-frame {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            border: 4px solid #00FFFF;
+            border-radius: 15px;
+            background: 
+                linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(255, 107, 53, 0.2) 100%),
+                radial-gradient(circle at center, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .warrior-left .warrior-frame {
+            border-color: #FF6B35;
+            box-shadow: 
+                0 0 30px rgba(255, 107, 53, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .warrior-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 11px;
+        }
+
+        .warrior-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .warrior-card:hover .warrior-overlay {
+            opacity: 1;
+        }
+
+        .warrior-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 0 #000;
+            letter-spacing: 2px;
+        }
+
+        .warrior-info {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .warrior-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            color: #FFD700;
+            text-shadow: 1px 1px 0 #000;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: 1px;
+        }
+
+        .warrior-info p {
+            font-size: 0.9rem;
+            color: #ccc;
+            text-shadow: 1px 1px 0 #000;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Epic Call to Action */
+        .fame-epic-cta {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            padding: 3rem 2rem;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .cta-lightning-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%),
+                linear-gradient(45deg, transparent 40%, rgba(0, 255, 255, 0.05) 50%, transparent 60%);
+            border-radius: 20px;
+            animation: cta-glow 3s infinite ease-in-out alternate;
+        }
+
+        @keyframes cta-glow {
+            0% { opacity: 0.7; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.02); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-challenge {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 900;
+            margin: 0 0 2rem 0;
+            line-height: 1.1;
+        }
+
+        .cta-line-1 {
+            display: block;
+            color: #00FFFF;
+            text-shadow: 
+                3px 3px 0 #000,
+                -3px -3px 0 #000,
+                3px -3px 0 #000,
+                -3px 3px 0 #000,
+                0 0 15px #00FFFF;
+        }
+
+        .cta-line-2 {
+            display: block;
+            color: #FF6B35;
+            text-shadow: 
+                3px 3px 0 #000,
+                -3px -3px 0 #000,
+                3px -3px 0 #000,
+                -3px 3px 0 #000,
+                0 0 15px #FF6B35;
+        }
+
+        .epic-fame-btn {
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA000 50%, #FF6B35 100%);
+            color: #000;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.5),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 2px 10px rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+        }
+
+        .epic-fame-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 0 50px rgba(255, 215, 0, 0.8),
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                inset 0 2px 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-bg-effect {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .epic-fame-btn:hover .btn-bg-effect {
+            left: 100%;
+        }
+
+        .btn-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-icon {
+            position: relative;
+            z-index: 2;
+            margin-left: 10px;
+            animation: icon-spark 1s infinite ease-in-out alternate;
+        }
+
+        @keyframes icon-spark {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); text-shadow: 0 0 10px #FFD700; }
+        }
+
         /* Mobile Styles */
         @media (max-width: 768px) {
             .choice-screen {
@@ -1120,12 +2083,53 @@
                 50% { opacity: 1; }
             }
 
-            /* Add bottom padding to avoid meter overlap */
-            .main-content {
-                padding-bottom: 140px;
+            /* Epic Hall of Fame Mobile Styles */
+            .hall-of-fame-section {
+                padding: 40px 1rem;
+                gap: 2rem;
+            }
+            
+            .fame-showcase {
+                flex-direction: column;
+                gap: 2rem;
+                max-width: 100%;
+            }
+            
+            .hero-frame {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .warrior-frame {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .fame-warriors {
+                flex-direction: row;
+                gap: 1rem;
+                justify-content: center;
+            }
+            
+            .fame-epic-title {
+                font-size: clamp(2rem, 10vw, 3rem);
+            }
+            
+            .subtitle-highlight {
+                font-size: 1.2rem;
+            }
+            
+            .cta-challenge {
+                font-size: clamp(1.2rem, 8vw, 1.8rem);
+            }
+            
+            .epic-fame-btn {
+                font-size: 1.2rem;
+                padding: 15px 30px;
             }
 
-            footer {
+            /* Add bottom padding to avoid meter overlap */
+            .main-content {
                 padding-bottom: 140px;
             }
         }
@@ -1205,6 +2209,29 @@
         @media (max-width: 768px) {
             .product-showcase {
                 margin-top: -2rem; /* Pull products closer to hero content */
+            }
+            
+            .hall-fame-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .fame-video-card {
+                padding: 1rem;
+            }
+            
+            .comic-frame {
+                height: 200px;
+            }
+            
+            .comic-pow, .comic-zap, .comic-boom {
+                font-size: 1.5rem;
+                padding: 3px 10px;
+            }
+            
+            .speech-bubble {
+                font-size: 0.8rem;
+                padding: 6px 10px;
             }
         }
 
@@ -1335,6 +2362,7 @@
             border-image: linear-gradient(90deg, #ff4500, #00ffff) 1;
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(20px);
+            margin-top: auto;
         }
 
         /* Mobile Menu */
@@ -1569,6 +2597,123 @@
             </div>
         </section>
 
+        <!-- Hall of Fame Section -->
+        <section class="hall-of-fame-section" id="hallOfFame">
+            <!-- Epic Background Effects -->
+            <div class="fame-bg-effects">
+                <div class="lightning-bolt lightning-1"></div>
+                <div class="lightning-bolt lightning-2"></div>
+                <div class="fame-particles"></div>
+                <div class="comic-rays"></div>
+            </div>
+            
+            <!-- Hall of Fame Header -->
+            <div class="fame-header">
+                <div class="fame-badge">
+                    <div class="badge-glow"></div>
+                    <span class="badge-text">HALL OF FAME</span>
+                </div>
+                <h2 class="fame-epic-title">
+                    <span class="title-line-1">EPIC</span>
+                    <span class="title-line-2">FACES</span>
+                </h2>
+                <p class="fame-epic-subtitle">
+                    <span class="subtitle-highlight">REACTIONS THAT TELL THE STORY</span>
+                    <span class="subtitle-detail">Watch the faces of those who dared to take on the challenge</span>
+                </p>
+            </div>
+            
+            <!-- Epic Video Showcase -->
+            <div class="fame-showcase">
+                <!-- Featured Hero (Center) -->
+                <div class="fame-hero-card" data-hero="main">
+                    <div class="hero-frame">
+                        <div class="frame-decorations">
+                            <div class="corner-ornament top-left"></div>
+                            <div class="corner-ornament top-right"></div>
+                            <div class="corner-ornament bottom-left"></div>
+                            <div class="corner-ornament bottom-right"></div>
+                        </div>
+                        <video class="hero-video" muted loop playsinline>
+                            <source src="Assets/superhiperacido/superhyper-lifestyle-videos/hall-of-fame-faces-super-hyper.mp4" type="video/mp4">
+                        </video>
+                        <div class="hero-overlay">
+                            <div class="impact-effects">
+                                <div class="impact-burst"></div>
+                                <div class="impact-rings"></div>
+                            </div>
+                            <div class="hero-speech-bubble">
+                                <span>THAT FACE SAYS IT ALL!</span>
+                            </div>
+                            <div class="hero-comic-effects">
+                                <span class="mega-text">LEGENDARY!</span>
+                                <div class="explosion-effect"></div>
+                            </div>
+                        </div>
+                        <div class="hero-title-badge">
+                            <span class="hero-rank">#1</span>
+                            <span class="hero-name">ULTIMATE REACTION</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Side Warriors -->
+                <div class="fame-warriors">
+                    <div class="warrior-card warrior-left" data-warrior="1">
+                        <div class="warrior-frame">
+                            <video class="warrior-video" muted loop playsinline>
+                                <source src="Assets/superhiperacido/superhyper-lifestyle-videos/hall-of-fame-faces-super-hyper-2.mp4" type="video/mp4">
+                            </video>
+                            <div class="warrior-overlay">
+                                <div class="warrior-effects">
+                                    <span class="warrior-text">FIRE MASTER</span>
+                                    <div class="flame-effects"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="warrior-info">
+                            <h3>THE HEAT REACTION</h3>
+                            <p>That face shows the true power of fire</p>
+                        </div>
+                    </div>
+                    
+                    <div class="warrior-card warrior-right" data-warrior="2">
+                        <div class="warrior-frame">
+                            <video class="warrior-video" muted loop playsinline>
+                                <source src="Assets/superhiperacido/superhyper-lifestyle-videos/hall-of-fame-faces-superhyper-3.mp4" type="video/mp4">
+                            </video>
+                            <div class="warrior-overlay">
+                                <div class="warrior-effects">
+                                    <span class="warrior-text">SOUR CHAMPION</span>
+                                    <div class="electric-effects"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="warrior-info">
+                            <h3>THE SOUR EXPRESSION</h3>
+                            <p>Every face tells the story of pure intensity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Epic Call to Action -->
+            <div class="fame-epic-cta">
+                <div class="cta-lightning-bg"></div>
+                <div class="cta-content">
+                    <h3 class="cta-challenge">
+                        <span class="cta-line-1">DO YOU HAVE WHAT IT TAKES</span>
+                        <span class="cta-line-2">TO JOIN THE HALL OF FAME?</span>
+                    </h3>
+                    <button class="epic-fame-btn" id="fameBtn">
+                        <span class="btn-bg-effect"></span>
+                        <span class="btn-text">SHARE YOUR REACTION</span>
+                        <span class="btn-icon">⚡</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- Super Hyper Reaction Meter -->
         <div class="reaction-meter" id="reactionMeter">
             <div class="meter-title" id="meterTitle">INTENSITY</div>
@@ -1711,6 +2856,22 @@
             attachChallengeListeners();
         }
 
+        // Function to update favicon dynamically
+        function updateFavicon(emoji) {
+            const favicon = document.querySelector('link[rel="icon"]');
+            const newFaviconUrl = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${emoji}</text></svg>`;
+            
+            if (favicon) {
+                favicon.href = newFaviconUrl;
+            } else {
+                // Create favicon if it doesn't exist
+                const newFavicon = document.createElement('link');
+                newFavicon.rel = 'icon';
+                newFavicon.href = newFaviconUrl;
+                document.head.appendChild(newFavicon);
+            }
+        }
+
         // Choice selection
         const choiceSides = document.querySelectorAll('.choice-side');
         const choiceScreen = document.getElementById('choiceScreen');
@@ -1732,7 +2893,7 @@
                 modeIndicator.className = `mode-indicator ${choice}-mode`;
                 modeIndicator.innerHTML = `<span>${choice.toUpperCase()} MODE: ON</span>`;
                 
-                // Update hero title, meter, and logo
+                // Update hero title, meter, logo, and favicon
                 const meterTitle = document.getElementById('meterTitle');
                 const logo = document.querySelector('.logo');
                 if (choice === 'hot') {
@@ -1740,11 +2901,13 @@
                     heroTitleLine2.style.color = '#ff4500';
                     meterTitle.textContent = 'HEAT METER';
                     logo.src = 'Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
+                    updateFavicon('🌶️');
                 } else {
                     heroTitleLine2.textContent = 'SOUR';
                     heroTitleLine2.style.color = '#00ffff';
                     meterTitle.textContent = 'SOUR METER';
                     logo.src = 'Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
+                    updateFavicon('😖');
                 }
                 
                 // Update product and challenge displays based on mode
@@ -2503,7 +3666,230 @@
                 }
             }
         });
+
+        // Hall of Fame Video Interactions
+        const fameVideoCards = document.querySelectorAll('.fame-video-card');
+        const fameBtn = document.getElementById('fameBtn');
+
+        // Auto-play videos on hover for better engagement
+        fameVideoCards.forEach(card => {
+            const video = card.querySelector('.fame-video');
+            
+            // Play video on hover/focus
+            card.addEventListener('mouseenter', () => {
+                if (video) {
+                    video.play().catch(e => console.log('Video play failed:', e));
+                }
+            });
+            
+            // Pause video when not hovering (on desktop)
+            card.addEventListener('mouseleave', () => {
+                if (video && window.innerWidth > 768) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            });
+            
+            // Mobile: play/pause on tap
+            card.addEventListener('click', () => {
+                if (video) {
+                    if (video.paused) {
+                        // Pause all other videos first
+                        fameVideoCards.forEach(otherCard => {
+                            const otherVideo = otherCard.querySelector('.fame-video');
+                            if (otherVideo && otherVideo !== video) {
+                                otherVideo.pause();
+                                otherVideo.currentTime = 0;
+                            }
+                        });
+                        video.play().catch(e => console.log('Video play failed:', e));
+                        
+                    } else {
+                        video.pause();
+                        video.currentTime = 0;
+                    }
+                }
+            });
+        });
+
+        // Fame button functionality
+        if (fameBtn) {
+            fameBtn.addEventListener('click', () => {
+                // Share messages for Hall of Fame
+                const fameMessages = [
+                    // Explorador (50%) - adventurous
+                    "I'm ready to join the Super Hyper Hall of Fame! 🏆 Watch me conquer the ultimate ${mode} challenge! Do you dare to try?",
+                    "I'm about to make LEGENDARY history with Super Hyper! 🔥⚡ Ready to witness greatness in the ${mode} challenge?",
+                    "Adventure calls! I'm stepping up to the Super Hyper Hall of Fame challenge! 💥 ${mode} mode: ACTIVATED!",
+                    
+                    // Bandido (35%) - rebellious
+                    "Rules? What rules? I'm breaking into the Super Hyper Hall of Fame! 😈 ${mode} mode can't stop me!",
+                    "I don't follow the crowd, I lead it! About to dominate the Hall of Fame ${mode} challenge! 🔥",
+                    "They said it couldn't be done... Watch me prove them wrong! Super Hyper ${mode} Hall of Fame, here I come! 💥",
+                    
+                    // Bufón (15%) - playful
+                    "My face is about to become LEGENDARY! 🤪 Super Hyper ${mode} Hall of Fame, prepare for epic reactions! 😂",
+                    "Ready to make the most ridiculous faces in Super Hyper history! 😭😂 ${mode} Hall of Fame awaits!"
+                ];
+                
+                const randomMessage = fameMessages[Math.floor(Math.random() * fameMessages.length)];
+                const modeText = selectedMode?.toUpperCase() || 'EXTREME';
+                const shareText = randomMessage.replace('${mode}', modeText);
+                
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Super Hyper Hall of Fame Challenge',
+                        text: shareText,
+                        url: window.location.href
+                    });
+                } else {
+                    // Fallback - copy to clipboard
+                    navigator.clipboard.writeText(shareText + ' ' + window.location.href);
+                    
+                    // Visual feedback with Hall of Fame theme
+                    const originalText = fameBtn.innerHTML;
+                    const feedbackMessages = [
+                        'CHALLENGE COPIED! 🏆',
+                        'READY FOR FAME! 🔥',
+                        'LEGEND IN THE MAKING! ⚡'
+                    ];
+                    
+                    fameBtn.innerHTML = feedbackMessages[Math.floor(Math.random() * feedbackMessages.length)];
+                    setTimeout(() => {
+                        fameBtn.innerHTML = originalText;
+                    }, 2500);
+                }
+                
+            });
+        }
         
+        // Epic Hall of Fame Video Interactions
+        function initializeHallOfFame() {
+            // Get all video elements
+            const heroVideo = document.querySelector('.hero-video');
+            const warriorVideos = document.querySelectorAll('.warrior-video');
+            const fameBtn = document.getElementById('fameBtn');
+            
+            // Hero video interactions
+            if (heroVideo) {
+                const heroCard = document.querySelector('.fame-hero-card');
+                
+                // Play/pause on hover (desktop)
+                if (window.innerWidth > 768) {
+                    heroCard.addEventListener('mouseenter', () => {
+                        heroVideo.play().catch(e => console.log('Hero video play failed:', e));
+                    });
+                    
+                    heroCard.addEventListener('mouseleave', () => {
+                        heroVideo.pause();
+                        heroVideo.currentTime = 0;
+                    });
+                }
+                
+                // Play/pause on click (mobile)
+                heroCard.addEventListener('click', () => {
+                    if (heroVideo.paused) {
+                        heroVideo.play().catch(e => console.log('Hero video play failed:', e));
+                    } else {
+                        heroVideo.pause();
+                        heroVideo.currentTime = 0;
+                    }
+                });
+            }
+            
+            // Warrior video interactions
+            warriorVideos.forEach((video, index) => {
+                const warriorCard = video.closest('.warrior-card');
+                
+                if (warriorCard) {
+                    // Play/pause on hover (desktop)
+                    if (window.innerWidth > 768) {
+                        warriorCard.addEventListener('mouseenter', () => {
+                            video.play().catch(e => console.log(`Warrior video ${index} play failed:`, e));
+                        });
+                        
+                        warriorCard.addEventListener('mouseleave', () => {
+                            video.pause();
+                            video.currentTime = 0;
+                        });
+                    }
+                    
+                    // Play/pause on click (mobile)
+                    warriorCard.addEventListener('click', () => {
+                        if (video.paused) {
+                            video.play().catch(e => console.log(`Warrior video ${index} play failed:`, e));
+                        } else {
+                            video.pause();
+                            video.currentTime = 0;
+                        }
+                    });
+                }
+            });
+            
+            // Fame button interaction
+            if (fameBtn) {
+                fameBtn.addEventListener('click', () => {
+                    // Create epic share messages for Hall of Fame
+                    const fameMessages = [
+                        "I just witnessed LEGENDARY reactions with Super Hyper ${mode}! Ready to join the Hall of Fame? 🏆⚡",
+                        "These WARRIORS conquered the impossible with SHA ${mode}! Do you have what it takes? 💪🔥",
+                        "The Hall of Fame awaits your LEGENDARY face! Dare to become a Super Hyper legend? 🌟",
+                        "I'm inspired by these EPIC reactions! Time to create my own legend with SHA ${mode}! ⚡🔥"
+                    ];
+                    
+                    const randomMessage = fameMessages[Math.floor(Math.random() * fameMessages.length)];
+                    const modeText = selectedMode?.toUpperCase() || 'EXTREME';
+                    const shareText = randomMessage.replace('${mode}', modeText);
+                    
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'Super Hyper Hall of Fame - Become a Legend!',
+                            text: shareText,
+                            url: window.location.href
+                        }).catch(err => console.log('Share failed:', err));
+                    } else {
+                        // Fallback for browsers without Web Share API
+                        const url = encodeURIComponent(window.location.href);
+                        const text = encodeURIComponent(shareText);
+                        const shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+                        window.open(shareUrl, '_blank', 'width=550,height=420');
+                    }
+                });
+            }
+        }
+        
+        // Auto-play videos when section comes into view
+        function observeHallOfFame() {
+            const hallOfFameSection = document.getElementById('hallOfFame');
+            
+            if (hallOfFameSection && 'IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Section is in view, start auto-play for hero video
+                            const heroVideo = document.querySelector('.hero-video');
+                            if (heroVideo) {
+                                setTimeout(() => {
+                                    heroVideo.play().catch(e => console.log('Auto-play failed:', e));
+                                }, 500);
+                            }
+                        } else {
+                            // Section is out of view, pause all videos
+                            const allVideos = document.querySelectorAll('.hero-video, .warrior-video');
+                            allVideos.forEach(video => {
+                                video.pause();
+                                video.currentTime = 0;
+                            });
+                        }
+                    });
+                }, {
+                    threshold: 0.3 // Trigger when 30% of section is visible
+                });
+                
+                observer.observe(hallOfFameSection);
+            }
+        }
+
         // Debug: Check product container scrollability and arrows
         setTimeout(() => {
             const container = document.getElementById('productContainer');
@@ -2548,7 +3934,53 @@
                     });
                 }
             }
+            
+            // Initialize Hall of Fame after debug
+            initializeHallOfFame();
+            observeHallOfFame();
+            
+            // Initialize meter visibility control
+            observeReactionMeter();
         }, 3000);
+        
+        // Function to hide/show reaction meter based on scroll position
+        function observeReactionMeter() {
+            const hallOfFameSection = document.getElementById('hallOfFame');
+            const reactionMeter = document.getElementById('reactionMeter');
+            
+            if (hallOfFameSection && reactionMeter && 'IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const isMobile = window.innerWidth <= 768;
+                        
+                        if (entry.isIntersecting) {
+                            // Hall of Fame section is visible, hide meter
+                            reactionMeter.style.opacity = '0';
+                            reactionMeter.style.visibility = 'hidden';
+                            if (isMobile) {
+                                reactionMeter.style.transform = 'translateY(100%)';
+                            } else {
+                                reactionMeter.style.transform = 'translateY(-50%) translateX(-50%) translateY(100px)';
+                            }
+                        } else {
+                            // Hall of Fame section is not visible, show meter
+                            reactionMeter.style.opacity = '1';
+                            reactionMeter.style.visibility = 'visible';
+                            if (isMobile) {
+                                reactionMeter.style.transform = 'translateY(0)';
+                            } else {
+                                reactionMeter.style.transform = 'translateY(-50%)';
+                            }
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -10% 0px'
+                });
+                
+                observer.observe(hallOfFameSection);
+            }
+        }
     </script>
 </body>
 </html>
