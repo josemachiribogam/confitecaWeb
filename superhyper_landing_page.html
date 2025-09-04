@@ -477,7 +477,7 @@
             overflow: hidden;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .hero {
                 min-height: auto; /* Allow hero to be more compact on mobile */
                 padding-top: 35%; /* Ensure content is below fixed nav */
@@ -1184,7 +1184,7 @@
         }
 
         /* Mobile adjustments */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .ugc-video-container {
                 max-width: 95vw;
             }
@@ -1196,7 +1196,7 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             @keyframes meterShake {
                 0%, 100% { transform: translateY(0); }
                 25% { transform: translateY(2px); }
@@ -1881,7 +1881,7 @@
         }
 
         /* Mobile Styles */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .choice-screen {
                 flex-direction: column;
             }
@@ -2150,7 +2150,7 @@
         }
         
         /* Hide arrows explicitly on desktop */
-        @media (min-width: 769px) {
+        @media (min-width: 1025px) {
             .product-nav {
                 display: none !important;
                 visibility: hidden !important;
@@ -2158,7 +2158,7 @@
         }
         
         /* Show arrows only on mobile */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .product-nav {
                 display: flex !important; /* Show on mobile */
                 position: absolute;
@@ -2193,7 +2193,7 @@
             right: 1rem;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .product-nav-prev {
                 left: 0.5rem;
             }
@@ -2207,7 +2207,7 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .product-showcase {
                 margin-top: -2rem; /* Pull products closer to hero content */
             }
@@ -2237,7 +2237,7 @@
         }
 
         /* Desktop styles for products - only apply on larger screens */
-        @media (min-width: 769px) {
+        @media (min-width: 1025px) {
             .product-container {
                 max-width: 1400px;
                 margin: 0 auto;
@@ -2806,7 +2806,7 @@
                 // Don't set backgroundImage inline - let CSS handle it
                 
                 // Force width on mobile to prevent shrinking
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1024) {
                     productDiv.style.transform = '';
                     productDiv.style.minWidth = '400px';
                     productDiv.style.width = '400px';
@@ -2928,7 +2928,7 @@
                     modeIndicator.classList.remove('inactive');
                     
                     // Initialize meter for current viewport
-                    if (window.innerWidth <= 768) {
+                    if (window.innerWidth <= 1024) {
                         meterFill.style.width = '5%';
                         meterFill.style.height = '100%';
                     } else {
@@ -3012,7 +3012,7 @@
             let level = 5;
             meterInterval = setInterval(() => {
                 level = 3 + Math.random() * 4; // Fluctuates between 3-7%
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1024) {
                     meterFill.style.width = level + '%';
                     meterFill.style.height = '100%';
                 } else {
@@ -3026,7 +3026,7 @@
             // Spike to EXTREME level
             clearInterval(meterInterval);
             
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1024) {
                 meterFill.style.width = '100%';
                 meterFill.style.height = '100%';
             } else {
@@ -3056,7 +3056,7 @@
             reactionMeter.classList.remove('extreme');
             
             setTimeout(() => {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1024) {
                     meterFill.style.width = '5%';
                     meterFill.style.height = '100%';
                 } else {
@@ -3123,7 +3123,7 @@
                     floatingMsg.style.background = 'rgba(0, 255, 0, 0.9)';
                     
                     // Only trigger meter reaction on mobile for hover
-                    if (window.innerWidth <= 768) {
+                    if (window.innerWidth <= 1024) {
                         triggerExtremeReaction();
                     }
                 }, 1000);
@@ -3203,7 +3203,7 @@
                 container: !!productContainer,
                 prevBtn: !!prevBtn,
                 nextBtn: !!nextBtn,
-                isMobile: window.innerWidth <= 768
+                isMobile: window.innerWidth <= 1024
             });
             
             if (!productContainer || !prevBtn || !nextBtn) {
@@ -3216,7 +3216,7 @@
             const newNextBtn = nextBtn;
             
             // Force visibility on mobile
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1024) {
                 newPrevBtn.style.display = 'flex';
                 newPrevBtn.style.visibility = 'visible';
                 newNextBtn.style.display = 'flex';
@@ -3245,7 +3245,7 @@
             });
             
             // Calculate scroll amount (one product width plus gap)
-            const scrollAmount = window.innerWidth <= 768 ? 430 : 530; // 400px + 30px gap on mobile
+            const scrollAmount = window.innerWidth <= 1024 ? 430 : 530; // 400px + 30px gap on mobile
             
             newPrevBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -3256,7 +3256,7 @@
                 console.log('Container scrollWidth:', productContainer.scrollWidth);
                 console.log('Container clientWidth:', productContainer.clientWidth);
                 
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1024) {
                     // Mobile: scroll to previous product
                     productContainer.scrollBy({
                         left: -scrollAmount,
@@ -3287,7 +3287,7 @@
                 console.log('Container scrollWidth:', productContainer.scrollWidth);
                 console.log('Container clientWidth:', productContainer.clientWidth);
                 
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1024) {
                     // Mobile: scroll to next product
                     const maxScroll = productContainer.scrollWidth - productContainer.clientWidth;
                     productContainer.scrollBy({
@@ -3442,7 +3442,7 @@
             // Hover effects with emojis (desktop only to prevent scroll interference)
             lollipop.addEventListener('mouseenter', () => {
                 // Skip hover effects on mobile to prevent scroll interference
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1024) {
                     return;
                 }
                 
@@ -3531,7 +3531,7 @@
         // Parallax effect on mouse move (desktop only)
         document.addEventListener('mousemove', (e) => {
             // Skip parallax effect on mobile devices to prevent scroll interference
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1024) {
                 return;
             }
             
@@ -3660,7 +3660,7 @@
         window.addEventListener('resize', () => {
             if (meterFill) {
                 // Re-initialize meter for new viewport size
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1024) {
                     meterFill.style.width = '5%';
                     meterFill.style.height = '100%';
                 } else {
@@ -3687,7 +3687,7 @@
             
             // Pause video when not hovering (on desktop)
             card.addEventListener('mouseleave', () => {
-                if (video && window.innerWidth > 768) {
+                if (video && window.innerWidth > 1024) {
                     video.pause();
                     video.currentTime = 0;
                 }
@@ -3778,7 +3778,7 @@
                 const heroCard = document.querySelector('.fame-hero-card');
                 
                 // Play/pause on hover (desktop)
-                if (window.innerWidth > 768) {
+                if (window.innerWidth > 1024) {
                     heroCard.addEventListener('mouseenter', () => {
                         heroVideo.play().catch(e => console.log('Hero video play failed:', e));
                     });
@@ -3806,7 +3806,7 @@
                 
                 if (warriorCard) {
                     // Play/pause on hover (desktop)
-                    if (window.innerWidth > 768) {
+                    if (window.innerWidth > 1024) {
                         warriorCard.addEventListener('mouseenter', () => {
                             video.play().catch(e => console.log(`Warrior video ${index} play failed:`, e));
                         });
@@ -3899,7 +3899,7 @@
             const prevBtn = document.getElementById('productPrev');
             const nextBtn = document.getElementById('productNext');
             
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1024) {
                 console.log('=== Mobile Debug ===');
                 console.log('Container exists:', !!container);
                 console.log('Prev button exists:', !!prevBtn);
@@ -3954,7 +3954,7 @@
             if (hallOfFameSection && reactionMeter && 'IntersectionObserver' in window) {
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        const isMobile = window.innerWidth <= 768;
+                        const isMobile = window.innerWidth <= 1024;
                         
                         if (entry.isIntersecting) {
                             // Hall of Fame section is visible, hide meter
