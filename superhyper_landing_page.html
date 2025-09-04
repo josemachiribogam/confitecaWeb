@@ -989,6 +989,8 @@
                 border: 2px solid rgba(255, 255, 255, 0.4);
                 overflow: hidden;
                 order: 3;
+                outline: none;
+                box-shadow: none;
             }
 
             .meter-fill {
@@ -998,13 +1000,13 @@
                 border: none;
                 transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                 background: linear-gradient(to right, 
-                    #4CAF50 0%, 
-                    #8BC34A 20%, 
-                    #FFEB3B 40%, 
-                    #FF9800 60%, 
-                    #FF5722 80%, 
-                    #D32F2F 90%,
-                    #B71C1C 100%
+                    #B71C1C 0%,
+                    #D32F2F 10%,
+                    #FF5722 20%, 
+                    #FF9800 40%, 
+                    #FFEB3B 60%, 
+                    #8BC34A 80%, 
+                    #4CAF50 100%
                 );
             }
 
@@ -1048,17 +1050,27 @@
             }
 
             .product-container {
-                flex-direction: row;
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
                 height: 500px;
                 gap: 30px;
-                padding: 1rem 1rem; /* Reduced top padding from 2rem to 1rem */
-                max-width: 100%;
-                overflow-x: auto;
+                padding: 1rem 2rem; /* Add horizontal padding for first/last items */
+                width: 100%;
+                max-width: 100vw;
+                overflow-x: scroll !important;
                 overflow-y: hidden;
-                scroll-snap-type: x mandatory;
+                scroll-snap-type: x proximity; /* Use proximity instead of mandatory for smoother scrolling */
+                scroll-padding: 1rem; /* Add scroll padding to align properly */
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none; /* Firefox */
                 -ms-overflow-style: none; /* Internet Explorer 10+ */
+                white-space: nowrap; /* Prevent wrapping */
+                /* Reset desktop styles */
+                justify-content: flex-start !important;
+                align-items: center !important;
+                margin: 0 !important;
+                box-sizing: border-box;
             }
 
             .product-container::-webkit-scrollbar {
@@ -1066,10 +1078,22 @@
             }
 
             .product-lollipop {
-                width: 350px;
-                height: 450px;
-                flex-shrink: 0;
+                min-width: 400px !important;
+                width: 400px !important;
+                max-width: 400px !important;
+                height: 400px;
+                flex: 0 0 400px !important;
+                flex-shrink: 0 !important;
                 scroll-snap-align: center;
+                transform: none !important;
+                background-size: 350px auto;
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                position: relative;
+                cursor: pointer;
+                filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+                overflow: hidden;
+                display: block;
             }
 
             .product-lollipop::after {
@@ -1110,6 +1134,72 @@
         .product-showcase {
             padding: 0;
             text-align: center;
+            position: relative;
+            overflow: visible; /* Ensure arrows are visible */
+            min-height: 500px; /* Ensure container has height */
+        }
+        
+        /* Product Navigation Arrows - Mobile Only */
+        .product-nav {
+            display: none !important; /* Hidden on desktop */
+        }
+        
+        /* Hide arrows explicitly on desktop */
+        @media (min-width: 769px) {
+            .product-nav {
+                display: none !important;
+                visibility: hidden !important;
+            }
+        }
+        
+        /* Show arrows only on mobile */
+        @media (max-width: 768px) {
+            .product-nav {
+                display: flex !important; /* Show on mobile */
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(255, 255, 255, 0.2);
+                border: 2px solid #FFD700;
+                color: #FFD700;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                font-size: 1.5rem;
+                font-weight: bold;
+                cursor: pointer;
+                z-index: 1000;
+                transition: all 0.3s ease;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(10px);
+                pointer-events: auto;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+        }
+        
+        .product-nav-prev {
+            left: 1rem;
+        }
+        
+        .product-nav-next {
+            right: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .product-nav-prev {
+                left: 0.5rem;
+            }
+            
+            .product-nav-next {
+                right: 0.5rem;
+            }
+            
+            .product-nav:active {
+                transform: translateY(-50%) scale(0.95);
+            }
         }
 
         @media (max-width: 768px) {
@@ -1118,44 +1208,52 @@
             }
         }
 
-        .product-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            height: 700px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 80px;
+        /* Desktop styles for products - only apply on larger screens */
+        @media (min-width: 769px) {
+            .product-container {
+                max-width: 1400px;
+                margin: 0 auto;
+                position: relative;
+                height: 500px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .product-lollipop {
+                width: 450px;
+                height: 350px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                position: relative;
+                transition: all 0.5s ease;
+                cursor: pointer;
+                filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+                z-index: 2;
+            }
+
+            .product-lollipop:hover {
+                transform: scale(1.15) rotate(5deg);
+                filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.5));
+            }
         }
 
-        .product-lollipop {
-            width: 450px;
-            height: 600px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            position: relative;
-            transition: all 0.5s ease;
-            cursor: pointer;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
-            z-index: 2;
-        }
-
-        .product-lollipop:hover {
-            transform: scale(1.15) rotate(5deg);
-            filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.5));
-        }
-
+        /* Product background images - apply to all screen sizes */
         .product-lollipop.fresa {
             background-image: url('Assets/superhiperacido/superhiperacido_product_photos/super-hyper-fresa-plop-lollipop.png');
+            background-position: center center !important;
         }
 
         .product-lollipop.limon {
             background-image: url('Assets/superhiperacido/superhiperacido_product_photos/super-hyper-limon-hot-lollipop-plop.png');
+            background-position: center center !important;
         }
 
         .product-lollipop.mango {
             background-image: url('Assets/superhiperacido/superhiperacido_product_photos/super-hyper-mango-hot-lollipop-plop.png');
+            background-position: center center !important;
         }
 
         .product-lollipop:nth-child(1) { animation: floatProduct 4s ease-in-out infinite; }
@@ -1443,11 +1541,15 @@
             
             <!-- Product Showcase -->
             <div class="product-showcase">
-                <div class="product-container">
-                    <div class="product-lollipop fresa" data-flavor="STRAWBERRY HOT"></div>
-                    <div class="product-lollipop limon" data-flavor="LIME HOT"></div>
-                    <div class="product-lollipop mango" data-flavor="MANGO HOT"></div>
+                <button class="product-nav product-nav-prev" id="productPrev" aria-label="Previous product" type="button">
+                    <span style="pointer-events: none;">‹</span>
+                </button>
+                <div class="product-container" id="productContainer">
+                    <!-- Products will be dynamically inserted here based on mode -->
                 </div>
+                <button class="product-nav product-nav-next" id="productNext" aria-label="Next product" type="button">
+                    <span style="pointer-events: none;">›</span>
+                </button>
             </div>
         </section>
 
@@ -1458,32 +1560,8 @@
             </h2>
             <p class="hero-subtitle" style="font-size: 1.2rem;">Do you dare to try something different?</p>
             
-            <div class="challenge-grid">
-                <!-- HOT Challenges -->
-                <div class="challenge-card hot-challenge">
-                    <div class="challenge-emoji">🌶️</div>
-                    <h3 class="challenge-title">INFERNO RUSH</h3>
-                    <p class="challenge-description">60 seconds of pure fire. No water allowed. Record your reaction and prove your bravery!</p>
-                </div>
-                
-                <div class="challenge-card hot-challenge">
-                    <div class="challenge-emoji">🔥</div>
-                    <h3 class="challenge-title">DRAGON'S BREATH</h3>
-                    <p class="challenge-description">How many can you handle? Stack them up and feel the intensity multiply!</p>
-                </div>
-                
-                <!-- SOUR Challenges -->
-                <div class="challenge-card sour-challenge">
-                    <div class="challenge-emoji">😖</div>
-                    <h3 class="challenge-title">PUCKER POWER</h3>
-                    <p class="challenge-description">Keep a straight face for 30 seconds. Impossible? Prove us wrong!</p>
-                </div>
-                
-                <div class="challenge-card sour-challenge">
-                    <div class="challenge-emoji">💧</div>
-                    <h3 class="challenge-title">ACID RAIN</h3>
-                    <p class="challenge-description">The most sour experience on the planet. Your tears will tell the story!</p>
-                </div>
+            <div class="challenge-grid" id="challengeGrid">
+                <!-- Challenges will be dynamically inserted here based on mode -->
             </div>
 
             <div class="dare-button">
@@ -1531,6 +1609,108 @@
             }, 2000);
         });
 
+        // Product configurations for HOT and SOUR modes
+        const productsByMode = {
+            hot: [
+                { class: 'limon', flavor: 'LIME HOT', image: 'Assets/superhiperacido/superhiperacido_product_photos/super-hyper-limon-hot-lollipop-plop.png' },
+                { class: 'mango', flavor: 'MANGO HOT', image: 'Assets/superhiperacido/superhiperacido_product_photos/super-hyper-mango-hot-lollipop-plop.png' },
+                { class: 'fresa', flavor: 'STRAWBERRY HOT', image: 'Assets/superhiperacido/superhiperacido_product_photos/super-hyper-fresa-plop-lollipop.png' }
+            ],
+            sour: [
+                { class: 'fresa', flavor: 'STRAWBERRY SOUR', image: 'Assets/superhiperacido/superhiperacido_product_photos/super-hyper-fresa-plop-lollipop.png' },
+                { class: 'limon', flavor: 'LIME SOUR', image: 'Assets/superhiperacido/superhiperacido_product_photos/super-hyper-limon-hot-lollipop-plop.png' },
+                { class: 'mango', flavor: 'MANGO SOUR', image: 'Assets/superhiperacido/superhiperacido_product_photos/super-hyper-mango-hot-lollipop-plop.png' }
+            ]
+        };
+
+        // Challenge configurations for HOT and SOUR modes
+        const challengesByMode = {
+            hot: [
+                { emoji: '🌶️', title: 'INFERNO RUSH', description: '60 seconds of pure fire. No water allowed. Record your reaction and prove your bravery!' },
+                { emoji: '🔥', title: 'DRAGON\'S BREATH', description: 'How many can you handle? Stack them up and feel the intensity multiply!' },
+                { emoji: '🌋', title: 'VOLCANO CHALLENGE', description: 'Three HOT lollipops at once. The ultimate test of heat resistance!' }
+            ],
+            sour: [
+                { emoji: '😖', title: 'PUCKER POWER', description: 'Keep a straight face for 30 seconds. Impossible? Prove us wrong!' },
+                { emoji: '💧', title: 'ACID RAIN', description: 'The most sour experience on the planet. Your tears will tell the story!' },
+                { emoji: '⚡', title: 'ELECTRIC SHOCK', description: 'Three SOUR lollipops simultaneously. Your taste buds will never be the same!' }
+            ]
+        };
+
+        // Function to update product display based on mode
+        function updateProductDisplay(mode) {
+            const productContainer = document.getElementById('productContainer');
+            productContainer.innerHTML = ''; // Clear existing products
+            
+            // Debug logging
+            console.log('Updating products for mode:', mode);
+            console.log('Container before update:', {
+                scrollWidth: productContainer.scrollWidth,
+                clientWidth: productContainer.clientWidth,
+                scrollLeft: productContainer.scrollLeft,
+                style: window.getComputedStyle(productContainer)
+            });
+            
+            const products = productsByMode[mode] || [];
+            products.forEach((product, index) => {
+                const productDiv = document.createElement('div');
+                productDiv.className = `product-lollipop ${product.class}`;
+                productDiv.setAttribute('data-flavor', product.flavor);
+                productDiv.setAttribute('data-index', index);
+                // Don't set backgroundImage inline - let CSS handle it
+                
+                // Force width on mobile to prevent shrinking
+                if (window.innerWidth <= 768) {
+                    productDiv.style.transform = '';
+                    productDiv.style.minWidth = '400px';
+                    productDiv.style.width = '400px';
+                    productDiv.style.maxWidth = '400px';
+                    productDiv.style.flexShrink = '0';
+                    productDiv.style.backgroundPosition = 'center center';
+                    productDiv.style.backgroundSize = '350px auto';
+                }
+                
+                productContainer.appendChild(productDiv);
+            });
+            
+            // Debug logging after adding products
+            setTimeout(() => {
+                console.log('Container after update:', {
+                    scrollWidth: productContainer.scrollWidth,
+                    clientWidth: productContainer.clientWidth,
+                    childCount: productContainer.children.length,
+                    canScroll: productContainer.scrollWidth > productContainer.clientWidth
+                });
+            }, 100);
+            
+            // Re-attach event listeners to new product elements
+            attachProductListeners();
+            
+            // Setup navigation arrows
+            setupProductNavigation();
+        }
+
+        // Function to update challenge display based on mode
+        function updateChallengeDisplay(mode) {
+            const challengeGrid = document.getElementById('challengeGrid');
+            challengeGrid.innerHTML = ''; // Clear existing challenges
+            
+            const challenges = challengesByMode[mode] || [];
+            challenges.forEach(challenge => {
+                const challengeCard = document.createElement('div');
+                challengeCard.className = `challenge-card ${mode}-challenge`;
+                challengeCard.innerHTML = `
+                    <div class="challenge-emoji">${challenge.emoji}</div>
+                    <h3 class="challenge-title">${challenge.title}</h3>
+                    <p class="challenge-description">${challenge.description}</p>
+                `;
+                challengeGrid.appendChild(challengeCard);
+            });
+            
+            // Re-attach event listeners to challenge cards
+            attachChallengeListeners();
+        }
+
         // Choice selection
         const choiceSides = document.querySelectorAll('.choice-side');
         const choiceScreen = document.getElementById('choiceScreen');
@@ -1561,11 +1741,15 @@
                     meterTitle.textContent = 'HEAT METER';
                     logo.src = 'Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
                 } else {
-                    heroTitleLine2.textContent = 'FURY';
+                    heroTitleLine2.textContent = 'SOUR';
                     heroTitleLine2.style.color = '#00ffff';
                     meterTitle.textContent = 'SOUR METER';
                     logo.src = 'Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
                 }
+                
+                // Update product and challenge displays based on mode
+                updateProductDisplay(choice);
+                updateChallengeDisplay(choice);
                 
                 // Animate transition
                 choiceScreen.classList.add('hidden');
@@ -1612,20 +1796,23 @@
                     meterTitle.textContent = 'HEAT METER';
                     logo.src = 'Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
                 } else {
-                    heroTitleLine2.textContent = 'FURY';
+                    heroTitleLine2.textContent = 'SOUR';
                     heroTitleLine2.style.color = '#00ffff';
                     meterTitle.textContent = 'SOUR METER';
                     logo.src = 'Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
                 }
                 
-                // Add visual feedback
+                // Update product and challenge displays based on mode
+                updateProductDisplay(newMode);
+                updateChallengeDisplay(newMode);
+                
+                // Add visual feedback (subtle scale animation only)
                 modeIndicator.style.transform = 'scale(1.1)';
                 setTimeout(() => {
                     modeIndicator.style.transform = '';
                 }, 200);
                 
-                // Extreme reaction for mode switch
-                triggerExtremeReaction();
+                // No meter reaction when switching modes via indicator
             }
         });
 
@@ -1717,8 +1904,9 @@
             }, 500);
         }
 
-        // Challenge card interactions - Enhanced with brand insight about insecurity before daring
-        const challengeCards = document.querySelectorAll('.challenge-card');
+        // Function to attach listeners to challenge cards
+        function attachChallengeListeners() {
+            const challengeCards = document.querySelectorAll('.challenge-card');
         const insecurityMessages = [
             "Are you really going to try this?", 
             "Maybe this isn't for you...",
@@ -1834,6 +2022,156 @@
                 triggerExtremeReaction();
             });
         });
+        }
+        
+        // Initial call to attach challenge listeners (will be empty until mode is chosen)
+        attachChallengeListeners();
+        
+        // Product Navigation Setup
+        function setupProductNavigation() {
+            const productContainer = document.getElementById('productContainer');
+            let prevBtn = document.getElementById('productPrev');
+            let nextBtn = document.getElementById('productNext');
+            
+            console.log('Setting up navigation:', {
+                container: !!productContainer,
+                prevBtn: !!prevBtn,
+                nextBtn: !!nextBtn,
+                isMobile: window.innerWidth <= 768
+            });
+            
+            if (!productContainer || !prevBtn || !nextBtn) {
+                console.log('Navigation elements not found');
+                return;
+            }
+            
+            // Don't clone/replace on mobile, just use existing buttons
+            const newPrevBtn = prevBtn;
+            const newNextBtn = nextBtn;
+            
+            // Force visibility on mobile
+            if (window.innerWidth <= 768) {
+                newPrevBtn.style.display = 'flex';
+                newPrevBtn.style.visibility = 'visible';
+                newNextBtn.style.display = 'flex';
+                newNextBtn.style.visibility = 'visible';
+                console.log('Forced arrow visibility on mobile');
+            }
+            
+            // Prevent any events from bubbling through the arrows
+            [newPrevBtn, newNextBtn].forEach(btn => {
+                btn.addEventListener('mousedown', (e) => {
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                });
+                btn.addEventListener('mouseup', (e) => {
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                });
+                btn.addEventListener('touchstart', (e) => {
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                }, { passive: false });
+                btn.addEventListener('touchend', (e) => {
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                }, { passive: false });
+            });
+            
+            // Calculate scroll amount (one product width plus gap)
+            const scrollAmount = window.innerWidth <= 768 ? 430 : 530; // 400px + 30px gap on mobile
+            
+            newPrevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                e.preventDefault();
+                console.log('Previous button clicked - arrow only!');
+                console.log('Current scroll:', productContainer.scrollLeft);
+                console.log('Container scrollWidth:', productContainer.scrollWidth);
+                console.log('Container clientWidth:', productContainer.clientWidth);
+                
+                if (window.innerWidth <= 768) {
+                    // Mobile: scroll to previous product
+                    productContainer.scrollBy({
+                        left: -scrollAmount,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Also try scrollLeft directly as backup
+                    if (productContainer.scrollLeft > 0) {
+                        productContainer.scrollLeft = Math.max(0, productContainer.scrollLeft - scrollAmount);
+                    }
+                } else {
+                    // Desktop: rotate through products (if we implement rotation)
+                    console.log('Desktop mode - products centered');
+                }
+                
+                setTimeout(() => {
+                    console.log('New scroll position:', productContainer.scrollLeft);
+                }, 100);
+            }, true);
+            
+            newNextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                e.preventDefault();
+                console.log('Next button clicked - arrow only!');
+                console.log('Current scroll:', productContainer.scrollLeft);
+                console.log('Max scroll:', productContainer.scrollWidth - productContainer.clientWidth);
+                console.log('Container scrollWidth:', productContainer.scrollWidth);
+                console.log('Container clientWidth:', productContainer.clientWidth);
+                
+                if (window.innerWidth <= 768) {
+                    // Mobile: scroll to next product
+                    const maxScroll = productContainer.scrollWidth - productContainer.clientWidth;
+                    productContainer.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Also try scrollLeft directly as backup
+                    if (productContainer.scrollLeft < maxScroll) {
+                        productContainer.scrollLeft = Math.min(maxScroll, productContainer.scrollLeft + scrollAmount);
+                    }
+                } else {
+                    // Desktop: rotate through products (if we implement rotation)
+                    console.log('Desktop mode - products centered');
+                }
+                
+                setTimeout(() => {
+                    console.log('New scroll position:', productContainer.scrollLeft);
+                }, 100);
+            }, true);
+            
+            // Update button visibility based on scroll position
+            function updateNavButtons() {
+                const isAtStart = productContainer.scrollLeft <= 0;
+                const isAtEnd = productContainer.scrollLeft >= (productContainer.scrollWidth - productContainer.clientWidth - 10);
+                
+                // Debug logging
+                console.log('Updating nav buttons:', {
+                    isAtStart,
+                    isAtEnd,
+                    scrollLeft: productContainer.scrollLeft,
+                    scrollWidth: productContainer.scrollWidth,
+                    clientWidth: productContainer.clientWidth
+                });
+                
+                newPrevBtn.style.opacity = isAtStart ? '0.5' : '1';
+                newPrevBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
+                newPrevBtn.style.visibility = 'visible';
+                
+                newNextBtn.style.opacity = isAtEnd ? '0.5' : '1';
+                newNextBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
+                newNextBtn.style.visibility = 'visible';
+            }
+            
+            // Listen for scroll events to update button states
+            productContainer.addEventListener('scroll', updateNavButtons);
+            
+            // Initial button state
+            updateNavButtons();
+        }
 
         // Dare button - Enhanced with brand personality (Explorador, Bandido, Bufón)
         const dareBtn = document.getElementById('dareBtn');
@@ -1925,30 +2263,39 @@
             }
         }
 
-        // Enhanced product interactions
-        const productLollipops = document.querySelectorAll('.product-lollipop');
-        productLollipops.forEach((lollipop, index) => {
+        // Function to attach event listeners to product elements
+        function attachProductListeners() {
+            const productLollipops = document.querySelectorAll('.product-lollipop');
+            productLollipops.forEach((lollipop, index) => {
             
             // Add emoji container
             const emojiContainer = document.createElement('div');
             emojiContainer.className = 'emoji-container';
             lollipop.appendChild(emojiContainer);
             
-            // Hover effects with emojis (mobile gets meter reaction, desktop doesn't)
+            // Hover effects with emojis (desktop only to prevent scroll interference)
             lollipop.addEventListener('mouseenter', () => {
-                createEmojiEffects(lollipop, emojiContainer);
-                
-                // Only trigger meter reaction on mobile hover
+                // Skip hover effects on mobile to prevent scroll interference
                 if (window.innerWidth <= 768) {
-                    triggerExtremeReaction();
+                    return;
                 }
+                
+                createEmojiEffects(lollipop, emojiContainer);
             });
             
             lollipop.addEventListener('mouseleave', () => {
                 // Emojis will clear automatically via timeout
                 // Meter will return to low state via triggerExtremeReaction logic on mobile
             });
-            lollipop.addEventListener('click', () => {
+            lollipop.addEventListener('click', (e) => {
+                // Only handle clicks directly on the lollipop
+                if (e.target !== lollipop && !lollipop.contains(e.target)) {
+                    return;
+                }
+                
+                // Prevent propagation
+                e.stopPropagation();
+                
                 // Get flavor info
                 const flavor = lollipop.dataset.flavor;
                 const flavorClass = lollipop.classList[1]; // fresa, limon, mango
@@ -2010,9 +2357,18 @@
                 }, 10);
             });
         });
+        }
+        
+        // Initial call to attach listeners (will be empty until mode is chosen)
+        attachProductListeners();
 
-        // Parallax effect on mouse move
+        // Parallax effect on mouse move (desktop only)
         document.addEventListener('mousemove', (e) => {
+            // Skip parallax effect on mobile devices to prevent scroll interference
+            if (window.innerWidth <= 768) {
+                return;
+            }
+            
             const x = e.clientX / window.innerWidth - 0.5;
             const y = e.clientY / window.innerHeight - 0.5;
             
@@ -2147,6 +2503,52 @@
                 }
             }
         });
+        
+        // Debug: Check product container scrollability and arrows
+        setTimeout(() => {
+            const container = document.getElementById('productContainer');
+            const prevBtn = document.getElementById('productPrev');
+            const nextBtn = document.getElementById('productNext');
+            
+            if (window.innerWidth <= 768) {
+                console.log('=== Mobile Debug ===');
+                console.log('Container exists:', !!container);
+                console.log('Prev button exists:', !!prevBtn);
+                console.log('Next button exists:', !!nextBtn);
+                
+                if (prevBtn) {
+                    const prevStyles = window.getComputedStyle(prevBtn);
+                    console.log('Prev button styles:', {
+                        display: prevStyles.display,
+                        visibility: prevStyles.visibility,
+                        opacity: prevStyles.opacity,
+                        position: prevStyles.position,
+                        zIndex: prevStyles.zIndex,
+                        left: prevStyles.left
+                    });
+                }
+                
+                if (nextBtn) {
+                    const nextStyles = window.getComputedStyle(nextBtn);
+                    console.log('Next button styles:', {
+                        display: nextStyles.display,
+                        visibility: nextStyles.visibility,
+                        opacity: nextStyles.opacity,
+                        position: nextStyles.position,
+                        zIndex: nextStyles.zIndex,
+                        right: nextStyles.right
+                    });
+                }
+                
+                if (container) {
+                    console.log('Container scroll info:', {
+                        width: container.clientWidth,
+                        scrollWidth: container.scrollWidth,
+                        canScroll: container.scrollWidth > container.clientWidth
+                    });
+                }
+            }
+        }, 3000);
     </script>
 </body>
 </html>
