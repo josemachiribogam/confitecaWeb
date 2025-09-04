@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Hyper - Choose Your Extreme</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌶️</text></svg>">
+    <link rel="icon" href="Assets/superhiperacido/superhiperacido_logo/superhyperhot-favicon.png" id="favicon">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Bungee&display=swap" rel="stylesheet">
     <style>
         * {
@@ -826,6 +826,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            padding: 1rem;
         }
 
         .challenge-card {
@@ -838,7 +839,7 @@
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .challenge-card::before {
@@ -2857,17 +2858,19 @@
         }
 
         // Function to update favicon dynamically
-        function updateFavicon(emoji) {
+        function updateFavicon(mode) {
             const favicon = document.querySelector('link[rel="icon"]');
-            const newFaviconUrl = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${emoji}</text></svg>`;
+            const faviconPath = mode === 'hot' 
+                ? 'Assets/superhiperacido/superhiperacido_logo/superhyperhot-favicon.png'
+                : 'Assets/superhiperacido/superhiperacido_logo/superhyper-sour-favicon.png';
             
             if (favicon) {
-                favicon.href = newFaviconUrl;
+                favicon.href = faviconPath;
             } else {
                 // Create favicon if it doesn't exist
                 const newFavicon = document.createElement('link');
                 newFavicon.rel = 'icon';
-                newFavicon.href = newFaviconUrl;
+                newFavicon.href = faviconPath;
                 document.head.appendChild(newFavicon);
             }
         }
@@ -2901,13 +2904,13 @@
                     heroTitleLine2.style.color = '#ff4500';
                     meterTitle.textContent = 'HEAT METER';
                     logo.src = 'Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
-                    updateFavicon('🌶️');
+                    updateFavicon('hot');
                 } else {
                     heroTitleLine2.textContent = 'SOUR';
                     heroTitleLine2.style.color = '#00ffff';
                     meterTitle.textContent = 'SOUR METER';
                     logo.src = 'Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
-                    updateFavicon('😖');
+                    updateFavicon('sour');
                 }
                 
                 // Update product and challenge displays based on mode
