@@ -64,12 +64,12 @@
         }
 
         .loader-logo.hot {
-            background-image: url('Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png');
+            background-image: url('Assets/_optimized/superhyper/logo-super-hyper-hot-180.webp');
             animation-delay: 0s;
         }
 
         .loader-logo.sour {
-            background-image: url('Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png');
+            background-image: url('Assets/_optimized/superhyper/superhiperacido_logo-180.webp');
             animation-delay: 1s;
             transform: scale(0.8);
         }
@@ -86,6 +86,20 @@
             100% { 
                 transform: rotate(360deg) scale(0.8);
                 opacity: 0.6;
+            }
+        }
+
+        /* Mobile: use smaller loader logos */
+        @media (max-width: 480px) {
+            .loader-logo {
+                width: 96px;
+                height: 96px;
+            }
+            .loader-logo.hot {
+                background-image: url('Assets/_optimized/superhyper/logo-super-hyper-hot-96.webp');
+            }
+            .loader-logo.sour {
+                background-image: url('Assets/_optimized/superhyper/superhiperacido_logo-96.webp');
             }
         }
 
@@ -2270,17 +2284,26 @@
 
         /* Product background images - apply to all screen sizes */
         .product-lollipop.fresa {
-            background-image: url('Assets/superhiperacido/superhiperacido_product_photos/super-hyper-fresa-plop-lollipop.png');
+            background-image: image-set(
+                url('Assets/_optimized/superhyper/super-hyper-fresa-plop-lollipop-400.webp') 1x,
+                url('Assets/_optimized/superhyper/super-hyper-fresa-plop-lollipop-800.webp') 2x
+            );
             background-position: center center !important;
         }
 
         .product-lollipop.limon {
-            background-image: url('Assets/superhiperacido/superhiperacido_product_photos/super-hyper-limon-hot-lollipop-plop.png');
+            background-image: image-set(
+                url('Assets/_optimized/superhyper/super-hyper-limon-hot-lollipop-plop-400.webp') 1x,
+                url('Assets/_optimized/superhyper/super-hyper-limon-hot-lollipop-plop-800.webp') 2x
+            );
             background-position: center center !important;
         }
 
         .product-lollipop.mango {
-            background-image: url('Assets/superhiperacido/superhiperacido_product_photos/super-hyper-mango-hot-lollipop-plop.png');
+            background-image: image-set(
+                url('Assets/_optimized/superhyper/super-hyper-mango-hot-lollipop-plop-400.webp') 1x,
+                url('Assets/_optimized/superhyper/super-hyper-mango-hot-lollipop-plop-800.webp') 2x
+            );
             background-position: center center !important;
         }
 
@@ -2537,7 +2560,7 @@
         <!-- Navigation -->
         <nav id="navbar">
             <div class="nav-container">
-                <img src="Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png" alt="Super Hyper Ácido" class="logo">
+                <img src="Assets/_optimized/superhyper/superhiperacido_logo-300.webp" alt="Super Hyper Ácido" class="logo" width="300" height="100" decoding="async" srcset="Assets/_optimized/superhyper/superhiperacido_logo-180.webp 180w, Assets/_optimized/superhyper/superhiperacido_logo-300.webp 300w" sizes="(max-width: 1024px) 180px, 300px">
                 <div class="mode-indicator inactive" id="modeIndicator">
                     <span>SELECT YOUR MODE</span>
                 </div>
@@ -2635,7 +2658,7 @@
                             <div class="corner-ornament bottom-left"></div>
                             <div class="corner-ornament bottom-right"></div>
                         </div>
-                        <video class="hero-video" muted loop playsinline>
+                        <video class="hero-video" muted loop playsinline preload="metadata">
                             <source src="Assets/superhiperacido/superhyper-lifestyle-videos/hall-of-fame-faces-super-hyper.mp4" type="video/mp4">
                         </video>
                         <div class="hero-overlay">
@@ -2662,7 +2685,7 @@
                 <div class="fame-warriors">
                     <div class="warrior-card warrior-left" data-warrior="1">
                         <div class="warrior-frame">
-                            <video class="warrior-video" muted loop playsinline>
+                            <video class="warrior-video" muted loop playsinline preload="metadata">
                                 <source src="Assets/superhiperacido/superhyper-lifestyle-videos/hall-of-fame-faces-super-hyper-2.mp4" type="video/mp4">
                             </video>
                             <div class="warrior-overlay">
@@ -2680,7 +2703,7 @@
                     
                     <div class="warrior-card warrior-right" data-warrior="2">
                         <div class="warrior-frame">
-                            <video class="warrior-video" muted loop playsinline>
+                            <video class="warrior-video" muted loop playsinline preload="metadata">
                                 <source src="Assets/superhiperacido/superhyper-lifestyle-videos/hall-of-fame-faces-superhyper-3.mp4" type="video/mp4">
                             </video>
                             <div class="warrior-overlay">
