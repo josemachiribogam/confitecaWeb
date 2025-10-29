@@ -9,6 +9,51 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/plop.min.css">
+    <style>
+        /* Mobile-only: split hero into top (text) and bottom (lifestyle) halves */
+        @media (max-width: 768px) {
+            .hero {
+                display: flex;
+                flex-direction: column;
+                min-height: 100svh;
+            }
+            .hero .hero-content {
+                flex: 1 0 50svh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-top: 16px;
+                padding-bottom: 12px;
+            }
+            /* Force show lifestyle on mobile and place it in flow as bottom half */
+            #heroLifestyle {
+                display: flex !important;
+                position: static !important;
+                right: auto !important;
+                top: auto !important;
+                width: 100% !important;
+                height: 50svh !important;
+                opacity: 1 !important;
+                transform: translateX(0) translateY(0) rotate(-2deg) scale(1) !important;
+                pointer-events: auto !important;
+                margin-top: 8px;
+            }
+            .hero #heroLifestyle .lifestyle-container {
+                width: 100%;
+                height: 100% !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                position: relative;
+            }
+            .hero #heroLifestyle .lifestyle-image {
+                max-height: 100% !important;
+                width: auto;
+                object-fit: contain !important;
+            }
+        }
+    </style>
 </head>
 <body class="theme-strawberry">
     <!-- Enhanced Floating Particles -->
@@ -67,13 +112,6 @@
             <div class="confidence-boost">
                 Plop is the flavor-charged lollipop made for people who want to stand out — not fit in. Loud design, wild flavors, and attitude in every stick.
             </div>
-            
-            <div class="attitude-pills">
-                <div class="attitude-pill">Authentic</div>
-                <div class="attitude-pill">Irreverent</div>
-                <div class="attitude-pill">Magnetic</div>
-                <div class="attitude-pill">Rebellious</div>
-            </div>
         </div>
         
         <!-- Dynamic Lifestyle Visual -->
@@ -112,20 +150,20 @@
                             For those who live intensely. An explosion of red energy that screams "here I am" 
                             without asking permission. Perfect for moments when you need everyone to turn and look.
                         </p>
-                        <div class="flavor-stats">
-                            <div class="stat">
-                                <span class="stat-value">9/10</span>
-                                <span class="stat-label">Intensity</span>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">120/10</span>
+                                    <span class="stat-label">Intensity</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">130/10</span>
+                                    <span class="stat-label">Attitude</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">115/10</span>
+                                    <span class="stat-label">Rebellion</span>
+                                </div>
                             </div>
-                            <div class="stat">
-                                <span class="stat-value">10/10</span>
-                                <span class="stat-label">Attitude</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">8/10</span>
-                                <span class="stat-label">Rebellion</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -141,20 +179,20 @@
                             The flavor of those who observe and conquer. Deep, complex, with that rebellious elegance 
                             that doesn't need to shout to be noticed. For those who prefer silent seduction.
                         </p>
-                        <div class="flavor-stats">
-                            <div class="stat">
-                                <span class="stat-value">8/10</span>
-                                <span class="stat-label">Intensity</span>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">110/10</span>
+                                    <span class="stat-label">Intensity</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">115/10</span>
+                                    <span class="stat-label">Attitude</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">140/10</span>
+                                    <span class="stat-label">Mystery</span>
+                                </div>
                             </div>
-                            <div class="stat">
-                                <span class="stat-value">9/10</span>
-                                <span class="stat-label">Attitude</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">10/10</span>
-                                <span class="stat-label">Mystery</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -170,20 +208,20 @@
                             Fresh, disruptive, always one step ahead. It's the flavor of those who set trends 
                             and don't follow rules. For moments when you want to show your most authentic and original side.
                         </p>
-                        <div class="flavor-stats">
-                            <div class="stat">
-                                <span class="stat-value">7/10</span>
-                                <span class="stat-label">Intensity</span>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">105/10</span>
+                                    <span class="stat-label">Intensity</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">130/10</span>
+                                    <span class="stat-label">Freshness</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">135/10</span>
+                                    <span class="stat-label">Originality</span>
+                                </div>
                             </div>
-                            <div class="stat">
-                                <span class="stat-value">9/10</span>
-                                <span class="stat-label">Freshness</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">10/10</span>
-                                <span class="stat-label">Originality</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -199,20 +237,20 @@
                             Pure energy that's contagious. The life of the party, the one who lights up the room just by walking in. 
                             For moments when your personality needs to be the center of attention.
                         </p>
-                        <div class="flavor-stats">
-                            <div class="stat">
-                                <span class="stat-value">10/10</span>
-                                <span class="stat-label">Energy</span>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">140/10</span>
+                                    <span class="stat-label">Energy</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">135/10</span>
+                                    <span class="stat-label">Charisma</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">120/10</span>
+                                    <span class="stat-label">Fun</span>
+                                </div>
                             </div>
-                            <div class="stat">
-                                <span class="stat-value">10/10</span>
-                                <span class="stat-label">Charisma</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">8/10</span>
-                                <span class="stat-label">Fun</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -228,20 +266,20 @@
                             Different by nature. The flavor that breaks expectations and creates new realities. 
                             For those who aren't afraid to stand out by being completely unique and authentic.
                         </p>
-                        <div class="flavor-stats">
-                            <div class="stat">
-                                <span class="stat-value">9/10</span>
-                                <span class="stat-label">Uniqueness</span>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">130/10</span>
+                                    <span class="stat-label">Uniqueness</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">125/10</span>
+                                    <span class="stat-label">Impact</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                    <span class="stat-label">Future</span>
+                                </div>
                             </div>
-                            <div class="stat">
-                                <span class="stat-value">8/10</span>
-                                <span class="stat-label">Impact</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">10/10</span>
-                                <span class="stat-label">Future</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -258,20 +296,20 @@
                             Light up the night with glow stick power! Explosive strawberry flavor that comes with a LED stick. 
                             Perfect for parties, festivals, and making every moment electric. YEAH!
                         </p>
-                        <div class="flavor-stats">
-                            <div class="stat">
-                                <span class="stat-value">10/10</span>
-                                <span class="stat-label">Glow Power</span>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                    <span class="stat-label">Glow Power</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                    <span class="stat-label">Party Vibe</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">135/10</span>
+                                    <span class="stat-label">Electric</span>
+                                </div>
                             </div>
-                            <div class="stat">
-                                <span class="stat-value">10/10</span>
-                                <span class="stat-label">Party Vibe</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">9/10</span>
-                                <span class="stat-label">Electric</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -288,20 +326,20 @@
                             Cherry blueberry fusion with electric blue glow! The ultimate party accessory that tastes as wild as it looks. 
                             Designed for the dance floor, concerts, and unforgettable nights. OMG!
                         </p>
-                        <div class="flavor-stats">
-                            <div class="stat">
-                                <span class="stat-value">10/10</span>
-                                <span class="stat-label">Neon Power</span>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                    <span class="stat-label">Neon Power</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">140/10</span>
+                                    <span class="stat-label">Festival Ready</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                    <span class="stat-label">Legendary</span>
+                                </div>
                             </div>
-                            <div class="stat">
-                                <span class="stat-value">9/10</span>
-                                <span class="stat-label">Festival Ready</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">10/10</span>
-                                <span class="stat-label">Legendary</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -330,7 +368,7 @@
         <div class="lifestyle-container">
             <div class="section-header">
                 <h2 class="section-title">This Is How We Plop</h2>
-                <p class="section-subtitle">Real moments, real attitude, real confidence. See the Plop energy in action.</p>
+                <p class="section-subtitle">Real moments, real attitude, real you. See the Plop energy in action.</p>
             </div>
             
             <div class="videos-grid">
@@ -370,7 +408,7 @@
                             </video>
                             <div class="video-overlay">
                                 <div class="video-title">Pure Plop Energy</div>
-                                <div class="video-subtitle">This is what confidence looks like • Click to see more on TikTok</div>
+                                <div class="video-subtitle">This is what being yourself looks like • Click to see more on TikTok</div>
                             </div>
                         </div>
                     </div>
@@ -385,22 +423,22 @@
 
     <!-- Social Proof Section -->
     <section class="social-proof" id="confidence">
-        <h2>The Power Of Being Seen</h2>
+        <h2>The Power Of Being Yourself</h2>
         <div class="confidence-stats">
             <div class="confidence-stat">
-                <span class="big-number">94%</span>
-                <span class="stat-text">Feel More Confident</span>
+                <span class="big-number">120%</span>
+                <span class="stat-text">Feel More Like Themselves</span>
             </div>
             <div class="confidence-stat">
-                <span class="big-number">87%</span>
-                <span class="stat-text">Start More Conversations</span>
+                <span class="big-number">130%</span>
+                <span class="stat-text">Spark More Conversations</span>
             </div>
             <div class="confidence-stat">
-                <span class="big-number">91%</span>
-                <span class="stat-text">Express Themselves Fearlessly</span>
+                <span class="big-number">125%</span>
+                <span class="stat-text">Express Themselves Authentically</span>
             </div>
             <div class="confidence-stat">
-                <span class="big-number">96%</span>
+                <span class="big-number">140%</span>
                 <span class="stat-text">Recommend The Experience</span>
             </div>
         </div>
@@ -480,7 +518,7 @@
                         <img src="Assets/_optimized/plop/GP_MARACUYA 23.webp" alt="Individual Units - Single Serve Power" width="921" height="1200" loading="lazy" decoding="async" />
                     </div>
                     <h3 class="display-title">Individual Units</h3>
-                    <p class="display-description">Single serves for spontaneous moments. When you need that instant confidence boost right now.</p>
+                    <p class="display-description">Single serves for spontaneous moments. When you want that instant boost right now.</p>
                     <div class="display-features">
                         <span class="feature-tag">Impulse Buy</span>
                         <span class="feature-tag">Instant Gratification</span>
@@ -575,13 +613,13 @@
                 // Restore original hero text
                 document.querySelector('h1').innerHTML = 'Bold Flavor. <br>Zero Apologies.';
                 document.querySelector('.confidence-boost').innerHTML = 
-                    'Plop is the flavor-charged lollipop made for teens who want to stand out — not fit in. Loud design, wild flavors, and attitude in every stick.';
+                    'Plop is the flavor-charged lollipop made for those who want to stand out — not fit in. Loud design, wild flavors, and attitude in every stick.';
                 
                 // Restore original lifestyle section
                 const lifestyleTitle = document.querySelector('.lifestyle-section .section-title');
                 const lifestyleSubtitle = document.querySelector('.lifestyle-section .section-subtitle');
                 if (lifestyleTitle) lifestyleTitle.textContent = 'This Is How We Plop';
-                if (lifestyleSubtitle) lifestyleSubtitle.textContent = 'Real moments, real attitude, real confidence. See the Plop energy in action.';
+                if (lifestyleSubtitle) lifestyleSubtitle.textContent = 'Real moments, real attitude, real you. See the Plop energy in action.';
                 
                 // Update mobile menu brand text if menu is open
                 const brandText = document.querySelector('.mobile-menu-brand .brand-text');
@@ -816,15 +854,7 @@
             }
         });
 
-        // Attitude pills interaction
-        document.querySelectorAll('.attitude-pill').forEach(pill => {
-            pill.addEventListener('click', () => {
-                pill.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    pill.style.transform = '';
-                }, 150);
-            });
-        });
+        
 
         // CTA button enhancement
         document.querySelector('.cta-btn').addEventListener('click', () => {
