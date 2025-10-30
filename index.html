@@ -8,6 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <link rel="preload" as="style" href="css/confiteca.min.css" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/confiteca.min.css"></noscript>
+    <style>
+        /* Equal-height brand cards across grid */
+        .brands-grid > * { height: 100%; }
+        .brands-grid > * > .brand-card,
+        .brands-grid > .brand-card { height: 100%; display: flex; flex-direction: column; }
+        /* Preserve pill width for category tag */
+        .brand-card .brand-category { align-self: center; }
+    </style>
 </head>
 <body>
     <!-- Floating Candy Elements -->
@@ -88,14 +96,16 @@
             
             <!-- Top 8 Brands -->
             <div class="brands-grid">
-                <div class="brand-card fade-in">
-                    <div class="brand-logo">
-                        <img src="Assets/tumix/tumix_logo/tumix_logo.png" alt="Tumix - Ecuador's flagship lollipop and gum brand since 1994" />
+                <a href="plop_landing_page.html" class="brand-card-link">
+                    <div class="brand-card fade-in">
+                        <div class="brand-logo">
+                            <img src="Assets/plop/plop_logo/plop_logo.png" alt="Plop! - Modern sugar-free lollipops in multipack presentations" />
+                        </div>
+                        <h3>Plop!</h3>
+                        <div class="brand-category">Lollipops</div>
+                        <p>Bright, bold, and full of joy. Plop! combines fruity flavor with a chewy gum center, giving every lick a surprise twist. Sweet, playful, and made to make you smile.</p>
                     </div>
-                    <h3>Tumix</h3>
-                    <div class="brand-category">Lollipops & Gum</div>
-                    <p>Ecuador's beloved flagship brand since 1994. <cite index="7-1">Tumix is the absolute leader in the category and Confiteca's flagship brand</cite>, offering incredible variety from dragée gum to sugar-free options with unmatched freshness.</p>
-                </div>
+                </a>
                 
                                     <a href="agogo_landing_page.html" class="brand-card-link">
                         <div class="brand-card fade-in">
@@ -103,8 +113,8 @@
                                 <img src="Assets/agogo/agogo_logo/agogo_logo.png" alt="Agogo - Pioneer bubble gum balls brand founded in 1968" />
                             </div>
                             <h3>Agogo</h3>
-                            <div class="brand-category">Bubble Gum Balls</div>
-                            <p>The pioneer that started it all in 1968. <cite index="7-1">Agogo revolutionized the market and became the symbol of joy, flavor and fun for different generations</cite>, featuring innovative hollow balls with liquid centers.</p>
+                            <div class="brand-category">Bubble Gum</div>
+                            <p>Born in 1968, Agogo turned color into happiness. Each bubble bursts with fun, flavor, and childhood nostalgia — a timeless icon that proves happiness really does come in colors.</p>
                         </div>
                     </a>
                 
@@ -113,9 +123,9 @@
                     <div class="brand-logo">
                         <img src="Assets/superhiperacido/superhiperacido_logo/SHA-02.png" alt="Super Hiper Ácido - Extreme sour candy in unique 20cm cylinder format" />
                     </div>
-                    <h3>Super Hyper</h3>
+                    <h3>Super Hiper Ácido</h3>
                     <div class="brand-category">Sour Candy</div>
-                    <p>Extreme sour innovation in unique formats. <cite index="12-1">20cm-long cylinders filled with liquid or sour powder</cite> in flavors like watermelon, maracuyá, and strawberry that deliver intense sour experiences.</p>
+                    <p>Our wildest creation. Super Hiper Ácido delivers an electric punch of fruity sourness in its signature 20 cm tube. It’s bold, zesty, and impossible not to share — if you can handle it.</p>
                 </div>
                 </a>
                 
@@ -126,20 +136,18 @@
                         </div>
                         <h3>Dr. Look</h3>
                         <div class="brand-category">Novelty Candy</div>
-                        <p>Revolutionary novelty experiences launched in 2005. Features the world-famous <cite index="22-1">Pelukloca cotton gum presented in plastic jars</cite> - a unique cotton candy that transforms into chewing gum.</p>
+                        <p>Meet the mad candy scientist. From the legendary Pelukloca cotton gum to other playful inventions, Dr. Look turns every bite into an experiment in fun, flavor, and imagination.</p>
                     </div>
                 </a>
                 
-                <a href="plop_landing_page.html" class="brand-card-link">
-                    <div class="brand-card fade-in">
-                        <div class="brand-logo">
-                            <img src="Assets/plop/plop_logo/plop_logo.png" alt="Plop! - Modern sugar-free lollipops in multipack presentations" />
-                        </div>
-                        <h3>Plop!</h3>
-                        <div class="brand-category">Sugar-Free Lollipops</div>
-                        <p>Modern sugar-free innovation. <cite index="22-1">5-unit sugarfree lollipops in multipack and individual flowpack presentations</cite>, representing Confiteca's move toward healthier, premium products with added value.</p>
+                <div class="brand-card fade-in">
+                    <div class="brand-logo">
+                        <img src="Assets/tumix/tumix_logo/tumix_logo.png" alt="Tumix - Ecuador's flagship lollipop and gum brand since 1994" />
                     </div>
-                </a>
+                    <h3>Tumix</h3>
+                    <div class="brand-category">Gum & Mints</div>
+                    <p>Freshness that never quits. Tumix is Ecuador’s favorite mint gum — a cool burst that keeps breath fresh and spirits lifted. Available in classic and sugar-free dragées that bring confidence to every smile.</p>
+                </div>
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
@@ -147,7 +155,7 @@
                     </div>
                     <h3>Kataboom</h3>
                     <div class="brand-category">Liquid-Filled Gum</div>
-                    <p>Explosive flavor experiences. <cite index="14-1">Balls filled with liquid</cite> that create surprise bursts of intense flavors, offering an interactive candy experience that delights consumers of all ages.</p>
+                    <p>A bubble gum with a bang. Kataboom hides a liquid core that bursts with intense flavor — a little thrill in every chew. Once you pop one, you’ll want to boom again.</p>
                 </div>
                 
                 <div class="brand-card fade-in">
@@ -155,16 +163,18 @@
                         <img src="Assets/american/american_logo/american_logo.png" alt="American - Premium chocolate made with Ecuador's renowned Nacional cacao beans" />
                     </div>
                     <h3>American</h3>
-                    <div class="brand-category">Premium Chocolate</div>
-                    <p>Launched in 2004 as Confiteca entered the premium chocolate market. Crafted with Ecuador's world-renowned Nacional cacao beans, delivering rich, complex flavors with floral and fruity notes.</p>
+                    <div class="brand-category">Chocolates & Caramels</div>
+                    <p>Smooth, creamy, and proudly Ecuadorian. American brings together fine cocoa and indulgent fillings in bonbons and caramels made to savor — one bite, and you’ll taste the craft.</p>
                 </div>
                 
+                <!--
                 <div class="brand-card fade-in">
                     <div class="brand-logo">🌟</div>
                     <h3>República del Cacao</h3>
-                    <div class="brand-category">Luxury Chocolate</div>
-                    <p>Premium artisanal chocolate celebrating Ecuador's 5,000-year cacao heritage. <cite index="37-1">Made from rare Arriba Nacional cacao from Vinces Community</cite>, representing the finest in Ecuadorian chocolate craftsmanship.</p>
+                    <div class="brand-category">Premium Chocolate</div>
+                    <p>Chocolate from the heart of Ecuador. Crafted with cacao fino de aroma and a deep love for origin, República del Cacao celebrates the people, places, and traditions behind every bar.</p>
                 </div>
+                -->
             </div>
             
             <!-- Hidden Brands -->
@@ -172,17 +182,17 @@
                 <div class="brand-card fade-in">
                     <div class="brand-logo">❄️</div>
                     <h3>Artic</h3>
-                    <div class="brand-category">Dragée Gum</div>
-                    <p>Refreshing mint experiences in elegant dragée format. Part of the extensive Tumix family, offering cooling sensations with long-lasting flavor and premium candy-coated presentation.</p>
+                    <div class="brand-category">Mint Gum</div>
+                    <p>Cool and refreshing — just like its name. Artic offers elegant mint dragées with long-lasting chill. A modern take on freshness that never goes out of style.</p>
                 </div>
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/jazz/jazz_logo/jazz_logo.png" alt="Jazz - Sophisticated hard candies with complex flavor profiles" />
+                        <img src="Assets/jazz/jazz_logo/jazz_logo.png" alt="Jaazz - Sophisticated hard candies with complex flavor profiles" />
                     </div>
-                    <h3>Jazz</h3>
-                    <div class="brand-category">Hard Candy</div>
-                    <p>Sophisticated hard candies with complex flavor profiles. Named to evoke the smooth, layered experience of jazz music, delivering sophisticated taste experiences for mature palates.</p>
+                    <h3>Jaazz</h3>
+                    <div class="brand-category">Menthol Candy</div>
+                    <p>Smooth, bold, and full of rhythm. Jazz is the candy that cools and refreshes with mint, cherry, or eucalyptus notes — a hit for those who like a little edge in their sweetness.</p>
                 </div>
                 
                 <div class="brand-card fade-in">
@@ -190,30 +200,34 @@
                         <img src="Assets/chocotin/chocotin_logo/chocotin_logo.png" alt="Chocotin - Compact chocolate treats with Ecuador's premium cacao" />
                     </div>
                     <h3>Chocotin</h3>
-                    <div class="brand-category">Chocolate Treats</div>
-                    <p>Compact chocolate delights launched alongside American in 2004. Offers bite-sized chocolate experiences with Ecuador's premium cacao, perfect for on-the-go indulgence.</p>
+                    <div class="brand-category">Chocolate Cream Cups</div>
+                    <p>Small cups, big smiles. Chocotin is pure spoonable joy — creamy chocolate made for kids and anyone who never stopped being one.</p>
                 </div>
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">🌈</div>
                     <h3>Melo</h3>
-                    <div class="brand-category">Soft Candy</div>
-                    <p>Colorful soft candies with vibrant flavors and textures. Designed to appeal to younger consumers with playful colors and fruit-forward taste profiles that create memorable experiences.</p>
+                    <div class="brand-category">Hard Candy</div>
+                    <p>Colorful, classic, and loved by all ages. Melo mixes bright fruit flavors and chewy textures into one happy assortment that keeps the candy aisle smiling.</p>
                 </div>
                 
+                <!--
                 <div class="brand-card fade-in">
                     <div class="brand-logo">⚡</div>
                     <h3>Zoom</h3>
-                    <div class="brand-category">Energy Candy</div>
-                    <p>High-energy confections designed for active lifestyles. Combines great taste with functional benefits, targeting consumers who want both indulgence and energy boost.</p>
+                    <div class="brand-category">Chewy Fruit Candy</div>
+                    <p>Fast flavor, fun energy. Zoom is a bite-sized candy that packs fruity punch and color in every chew — made for motion, shared for joy.</p>
                 </div>
+                -->
                 
+                <!--
                 <div class="brand-card fade-in">
                     <div class="brand-logo">🌮</div>
                     <h3>Tafí</h3>
-                    <div class="brand-category">Regional Specialties</div>
-                    <p>Traditional South American flavors in modern candy formats. Celebrates regional tastes and cultural heritage while appealing to both local and international markets.</p>
+                    <div class="brand-category">Regional Chewy Candy</div>
+                    <p>Inspired by Latin American flavors, Tafí brings the taste of home in every piece — from creamy coconut to rich milk-rum. Sweet nostalgia wrapped in color.</p>
                 </div>
+                -->
             </div>
 
             <div class="brands-section-footer">
