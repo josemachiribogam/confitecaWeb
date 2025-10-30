@@ -2395,7 +2395,7 @@
             }
 
             .specimen-image {
-                width: 120px;
+                width: 80%;
             }
 
             .data-line {
@@ -3277,11 +3277,13 @@
             .main-product {
                 width: 280px;
                 height: 280px;
+                margin-bottom: 95%;
             }
             
             .side-product {
                 width: 120px;
                 height: 120px;
+                display: none;
             }
             
             .side-product.left-1, .side-product.right-1 {
@@ -3302,6 +3304,7 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.2rem;
+                margin-top: 20%;
             }
             
             .lab-nav.prev { left: 10px; }
@@ -3311,6 +3314,7 @@
                 bottom: -120px;
                 padding: 1.5rem 2rem;
                 min-width: 350px;
+                max-width: 98%;
             }
 
             .invention-name {
@@ -5387,7 +5391,7 @@
             font-size: 0.9rem;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             transform: scale(0.9);
-            animation: bubbleFloat 5s ease-in-out infinite;
+            animation: bubbleFloat 10s ease-in-out infinite;
             z-index: 4;
         }
 
@@ -6241,10 +6245,13 @@
         .challenge-monitor .monitor-screen {
             background: radial-gradient(circle at center, rgba(0, 50, 50, 0.3), rgba(0, 20, 20, 0.9));
             padding: 2rem;
-            min-height: 500px;
+            /* Allow content to define height and prevent clipping */
+            height: auto;
+            min-height: 0;
             position: relative;
             display: flex;
             flex-direction: column;
+            overflow: visible;
         }
 
         .challenge-content {
@@ -6256,6 +6263,13 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+
+        .challenge-display {
+            width: 100%;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-wrap: break-word;
         }
 
         .challenge-loading {
@@ -7242,7 +7256,8 @@
             }
 
             .hero-character {
-                height: 180px;
+                /* height: 180px; */
+                margin-top: 20%;
             }
 
             .impossible-demos {
@@ -7399,6 +7414,7 @@
             }
             
             .lab-feed {
+                display: none;
                 gap: 1.5rem;
             }
             
@@ -7627,17 +7643,40 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
                 text-align: center;
+                justify-items: center;
+                align-items: center;
+                width: 100%;
+                margin: 0 auto;
+            }
+            
+            .story-container {
+                padding: 0 1rem;
+                max-width: 100%;
+                width: 100%;
+                overflow: hidden;
+            }
+            
+            .story-text {
+                max-width: 680px;
+                margin: 0 auto;
+                width: 100%;
+                overflow: hidden;
             }
             
             .story-stats {
-                flex-direction: row;
-                justify-content: space-around;
+                /* flex-direction: row; */
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+                width: 100%;
             }
             
             .stat-item {
                 padding: 1.5rem 1rem;
-                flex: 1;
-                margin: 0 0.5rem;
+                flex: 1 1 calc(33.333% - 1rem);
+                margin: 0;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             
             .stat-number {
@@ -7656,6 +7695,8 @@
 
             .dr-look-pointing {
                 width: 200px;
+                max-width: 100%;
+                height: auto;
             }
 
             .pointing-glow {
@@ -7663,11 +7704,22 @@
                 height: 240px;
             }
 
+            .character-pointing-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
             .character-speech-bubble {
-                top: -40px;
-                right: -60px;
+                top: 50px;
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
                 padding: 8px 12px;
                 font-size: 0.8rem;
+                max-width: 85vw;
+                white-space: normal;
+                text-align: center;
             }
 
             .character-speech-bubble::before {
@@ -7722,8 +7774,11 @@
             }
 
             .challenge-monitor .monitor-screen {
-                min-height: 450px;
+                /* Ensure variable length content fits fully on mobile */
+                height: auto;
+                min-height: 0;
                 padding: 1.5rem;
+                overflow: visible;
             }
 
             .challenge-controls {
@@ -7744,7 +7799,7 @@
             .ai-toggle {
                 justify-content: center;
             }
-            }
+            
 
             /* Reduce 3D effects on mobile to prevent overflow */
             .swiper-slide.swiper-slide-prev {
