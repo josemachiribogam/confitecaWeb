@@ -2,5 +2,7 @@
 Assets/
 
 # macOS system files
-.DS_Storereports/
 .DS_Store
+
+# Lighthouse performance reports (build artifacts)
+reports/
