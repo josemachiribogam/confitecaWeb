@@ -1,8 +1,9 @@
-# Ignore Assets folder (exceeds commit size)
-Assets/
-
 # macOS system files
 .DS_Store
 
 # Lighthouse performance reports (build artifacts)
 reports/
+
+# Campaign/marketing source files (too large for GitHub, not needed for deployment)
+Assets/*/CAMPAÑAS/
+Assets/*/CAMPA*/
