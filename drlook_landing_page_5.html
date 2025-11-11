@@ -51,6 +51,13 @@
             overflow: hidden;
         }
         
+        /* Ensure hero content (including character-badge) sits below fixed nav on desktop */
+        @media (min-width: 1025px) {
+            .hero {
+                padding-top: 100px; /* nav is 120px; add small buffer so badge isn't cut */
+            }
+        }
+        
         .hero-grid {
             max-width: 1400px;
             margin: 0 auto;
@@ -100,7 +107,7 @@
         
         .character-badge {
             position: absolute;
-            top: 20px;
+            top: 30px;
             right: 20px;
             background: rgba(255, 255, 255, 0.95);
             padding: 1rem 1.5rem;
@@ -7872,7 +7879,7 @@
             <!-- Left Side: Dr. Look Character & Branding -->
             <div class="hero-character">
                 <div class="character-container">
-                    <img src="Assets/drlook/dr_look_character_images/Untitled design (1).png" alt="Dr. Look Character" class="dr-look-main" />
+                    <img src="Assets/drlook/dr_look_character_images/DR_LOOK_Pose_04 2.png" alt="Dr. Look Character" class="dr-look-main" />
                     <div class="character-badge">
                         <span class="badge-text">THE MAD SCIENTIST</span>
                         <span class="badge-subtitle">OF CANDY</span>
@@ -8460,7 +8467,7 @@
 
             <div class="challenge-workspace">
                 <div class="dr-look-challenge-character">
-                    <img src="Assets/drlook/dr_look_character_images/Untitled design (1).png" 
+                    <img src="Assets/drlook/dr_look_character_images/DR LOOK_Pose_01.png" 
                          alt="Dr. Look presenting challenge" 
                          class="dr-look-presenter">
                     <div class="character-glow"></div>
