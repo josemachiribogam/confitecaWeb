@@ -31,7 +31,7 @@
                 position: static !important;
                 right: auto !important;
                 top: auto !important;
-                width: 100% !important;
+                width: 90% !important;
                 height: 50svh !important;
                 opacity: 1 !important;
                 transform: translateX(0) translateY(0) rotate(-2deg) scale(1) !important;
@@ -52,6 +52,18 @@
                 max-height: 100% !important;
                 width: auto;
                 object-fit: contain !important;
+            }
+        }
+        /* Lifestyle section: add horizontal padding on all viewports */
+        .lifestyle-section {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        /* Slightly increase padding on large desktops */
+        @media (min-width: 1200px) {
+            .lifestyle-section {
+                padding-left: 5%;
+                padding-right: 5%;
             }
         }
     </style>
