@@ -3672,6 +3672,12 @@
             position: relative;
             z-index: 2;
         }
+        
+        /* Apply laboratory background specifically to the lab video section container */
+        .lab-video-showcase .lab-container {
+            background: url('Assets/drlook/dr_look_character_images/Dr Look Laboratory.png') center / cover no-repeat;
+            border-radius: 10px;
+        }
 
         .lab-monitors {
             display: grid;
@@ -3816,6 +3822,7 @@
             justify-content: center;
             gap: 0.8rem;
             margin-top: 1rem;
+            margin-bottom: 10px;
         }
 
         .control-dot {
@@ -3943,6 +3950,16 @@
         @media (max-width: 768px) {
             .lab-video-showcase {
                 padding: 6rem 0;
+            }
+            
+            /* In Lab Mode on mobile, let the showcase expand to fit all videos */
+            body.lab-mode-active .lab-video-showcase {
+                max-height: none;
+                height: auto;
+                overflow: visible;
+                animation: none; /* disable reveal animation that caps max-height */
+                opacity: 1;
+                transform: none;
             }
 
             .lab-monitors {
