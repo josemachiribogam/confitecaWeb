@@ -1,11 +1,10 @@
 TO-DOs para Confiteca:
 -Confiteca.com b2b manter la estructura acutal -- para la b2c hacer dominios especficios sin poder volver a confiteca.com
 -Dr. Look: Pelucaloka ya no se produce / pruning
--Marcas para agregar: Plop y Globopop al igual que Boogie y Tumix, Muss
+
 -PLOP: cambiar imagenes a plop vs Globopop
 -TODOS LOS LANDINGS: Para la parte del catalogo - pedir que mismos productos quieren: Nombres y Fotos
 -Para los CTAs: PEDIR Amarilis hace los email sales@confiteca.com
--Para las paginas que no tengan landing cuando el user haga click se da la vuelta la tarjeta y se ve el producto.
 -Para contact us: pedir que manden el correo support@confiteca.com
 -Press: agregar link a las entrevistas
 -GOOGLE ANALYTICS: pedir a Amarilis. 
@@ -19,3 +18,6 @@ TO-DOs para Confiteca:
 /**-Quitar Republica del Cacao de Epic Brands**/
 /**-Comment out hasta ahora. Sustainability de Description: Ecofiber, Solar Panels, etc... que alguien:  **/
 /**-Coming Soon + el hero**/
+/**-Remove the en/es toggle in the nav bar for agogo_landing_page.html, drlook_landing_page_5.html, superhyper_landing_page.html (just kee it in the slider menu)**/
+/**-Para las paginas que no tengan landing cuando el user haga click se da la vuelta la tarjeta y se ve el producto.**/
+/**-Marcas para agregar: Plop y Globopop al igual que Boogie y Tumix, Muss**/

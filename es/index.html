@@ -16,6 +16,87 @@
         /* Preserve pill width for category tag */
         .brand-card .brand-category { align-self: center; }
         
+        /* ===== FLIP CARD STYLES ===== */
+        .flip-card-container {
+            perspective: 1000px;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .flip-card-container.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front,
+        .flip-card-back {
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .flip-card-front {
+            position: relative;
+        }
+        .flip-card-front .brand-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .flip-card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotateY(180deg);
+        }
+        .flip-card-back-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(250,250,250,0.98));
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .flip-card-back-content .coming-soon-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse-icon 2s ease-in-out infinite;
+        }
+        .flip-card-back-content h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--confiteca-red, #e63946);
+            margin-bottom: 0.5rem;
+        }
+        .flip-card-back-content p {
+            font-size: 0.95rem;
+            color: #666;
+            max-width: 200px;
+        }
+        .flip-card-back-content .tap-hint {
+            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            color: #999;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        /* ===== END FLIP CARD STYLES ===== */
+        
         /* Responsive tweaks */
         @media (max-width: 1024px) {
             .hero h1 {
@@ -212,31 +293,73 @@
                     </div>
                 </a>
                 
-                <div class="brand-card fade-in">
-                    <div class="brand-logo">
-                        <img src="../Assets/tumix/tumix_logo/tumix_logo.png" alt="Tumix - La marca insignia de chicles y paletas del Ecuador desde 1994" />
+                <div class="flip-card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="brand-card fade-in">
+                                <div class="brand-logo">
+                                    <img src="../Assets/tumix/tumix_logo/tumix_logo.png" alt="Tumix - La marca insignia de chicles y paletas del Ecuador desde 1994" />
+                                </div>
+                                <h3>Tumix</h3>
+                                <div class="brand-category">Chicles de menta</div>
+                                <p>Frescura que no se detiene. Tumix es el chicle de menta favorito del Ecuador: un golpe frío que refresca el aliento y levanta el ánimo, con sabores que dan confianza a cada sonrisa.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-back-content">
+                                <div class="coming-soon-icon">🚀</div>
+                                <h4>Próximamente</h4>
+                                <p>Estamos preparando algo especial. ¡Mantente atento!</p>
+                                <div class="tap-hint">👆 Toca para volver</div>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Tumix</h3>
-                    <div class="brand-category">Chicles de menta</div>
-                    <p>Frescura que no se detiene. Tumix es el chicle de menta favorito del Ecuador: un golpe frío que refresca el aliento y levanta el ánimo, con sabores que dan confianza a cada sonrisa.</p>
                 </div>
                 
-                <div class="brand-card fade-in">
-                    <div class="brand-logo">
-                        <img src="../Assets/kataboom/kataboom_logo/kataboom_logo.png" alt="Kataboom - Chicles con núcleo líquido y explosiones de sabor" />
+                <div class="flip-card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="brand-card fade-in">
+                                <div class="brand-logo">
+                                    <img src="../Assets/kataboom/kataboom_logo/kataboom_logo.png" alt="Kataboom - Chicles con núcleo líquido y explosiones de sabor" />
+                                </div>
+                                <h3>Kataboom</h3>
+                                <div class="brand-category">Chicle líquido</div>
+                                <p>Un chicle con estallido. Kataboom esconde un núcleo líquido que libera sabores intensos: una mini adrenalina en cada mordida. Pruebas uno y quieres volver a explotar.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-back-content">
+                                <div class="coming-soon-icon">💥</div>
+                                <h4>Próximamente</h4>
+                                <p>Estamos preparando algo especial. ¡Mantente atento!</p>
+                                <div class="tap-hint">👆 Toca para volver</div>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Kataboom</h3>
-                    <div class="brand-category">Chicle líquido</div>
-                    <p>Un chicle con estallido. Kataboom esconde un núcleo líquido que libera sabores intensos: una mini adrenalina en cada mordida. Pruebas uno y quieres volver a explotar.</p>
                 </div>
                 
-                <div class="brand-card fade-in">
-                    <div class="brand-logo">
-                        <img src="../Assets/american/american_logo/american_logo.png" alt="American - Chocolate premium hecho con cacao Nacional del Ecuador" />
+                <div class="flip-card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="brand-card fade-in">
+                                <div class="brand-logo">
+                                    <img src="../Assets/american/american_logo/american_logo.png" alt="American - Chocolate premium hecho con cacao Nacional del Ecuador" />
+                                </div>
+                                <h3>American</h3>
+                                <div class="brand-category">Chocolates y caramelos</div>
+                                <p>Suave, cremoso y orgullosamente ecuatoriano. American combina cacao fino con rellenos indulgentes en bombones y caramelos hechos para saborear; un bocado y sientes el oficio.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-back-content">
+                                <div class="coming-soon-icon">🍫</div>
+                                <h4>Próximamente</h4>
+                                <p>Estamos preparando algo especial. ¡Mantente atento!</p>
+                                <div class="tap-hint">👆 Toca para volver</div>
+                            </div>
+                        </div>
                     </div>
-                    <h3>American</h3>
-                    <div class="brand-category">Chocolates y caramelos</div>
-                    <p>Suave, cremoso y orgullosamente ecuatoriano. American combina cacao fino con rellenos indulgentes en bombones y caramelos hechos para saborear; un bocado y sientes el oficio.</p>
                 </div>
                 
                 <!--
@@ -251,36 +374,155 @@
             
             <!-- Hidden Brands -->
             <div class="hidden-brands" id="hiddenBrands">
-                <div class="brand-card fade-in">
-                    <div class="brand-logo">❄️</div>
-                    <h3>Artic</h3>
-                    <div class="brand-category">Chicles de menta</div>
-                    <p>Frío y refrescante, tal como su nombre. Artic ofrece dragees de menta elegantes con frescura prolongada. Una visión moderna de la frescura que nunca pasa de moda.</p>
-                </div>
-                
-                <div class="brand-card fade-in">
-                    <div class="brand-logo">
-                        <img src="../Assets/jazz/jazz_logo/jazz_logo.png" alt="Jaazz - Caramelos sofisticados con perfiles de sabor complejos" />
+                <div class="flip-card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="brand-card fade-in">
+                                <div class="brand-logo">❄️</div>
+                                <h3>Artic</h3>
+                                <div class="brand-category">Chicles de menta</div>
+                                <p>Frío y refrescante, tal como su nombre. Artic ofrece dragees de menta elegantes con frescura prolongada. Una visión moderna de la frescura que nunca pasa de moda.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-back-content">
+                                <div class="coming-soon-icon">❄️</div>
+                                <h4>Próximamente</h4>
+                                <p>Estamos preparando algo especial. ¡Mantente atento!</p>
+                                <div class="tap-hint">👆 Toca para volver</div>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Jaazz</h3>
-                    <div class="brand-category">Caramelos mentolados</div>
-                    <p>Suave, atrevido y con ritmo. Jaazz es el caramelo que enfría y refresca con notas de menta, cereza o eucalipto; perfecto para quienes disfrutan un toque rebelde en su dulzura.</p>
                 </div>
                 
-                <div class="brand-card fade-in">
-                    <div class="brand-logo">
-                        <img src="../Assets/chocotin/chocotin_logo/chocotin_logo.png" alt="Chocotin - Bocados de chocolate hechos con cacao premium ecuatoriano" />
+                <div class="flip-card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="brand-card fade-in">
+                                <div class="brand-logo">
+                                    <img src="../Assets/jazz/jazz_logo/jazz_logo.png" alt="Jaazz - Caramelos sofisticados con perfiles de sabor complejos" />
+                                </div>
+                                <h3>Jaazz</h3>
+                                <div class="brand-category">Caramelos mentolados</div>
+                                <p>Suave, atrevido y con ritmo. Jaazz es el caramelo que enfría y refresca con notas de menta, cereza o eucalipto; perfecto para quienes disfrutan un toque rebelde en su dulzura.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-back-content">
+                                <div class="coming-soon-icon">🎷</div>
+                                <h4>Próximamente</h4>
+                                <p>Estamos preparando algo especial. ¡Mantente atento!</p>
+                                <div class="tap-hint">👆 Toca para volver</div>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Chocotin</h3>
-                    <div class="brand-category">Copitas de crema de chocolate</div>
-                    <p>Copas pequeñas, sonrisas gigantes. Chocotin es pura alegría para comer con cucharita: chocolate cremoso hecho para niños y para quien se niega a dejar de serlo.</p>
                 </div>
                 
-                <div class="brand-card fade-in">
-                    <div class="brand-logo">🌈</div>
-                    <h3>Melo</h3>
-                    <div class="brand-category">Caramelos duros</div>
-                    <p>Colorido, clásico y amado por todas las edades. Melo mezcla sabores frutales vibrantes y texturas masticables en una mezcla feliz que mantiene sonriendo al anaquel.</p>
+                <div class="flip-card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="brand-card fade-in">
+                                <div class="brand-logo">
+                                    <img src="../Assets/chocotin/chocotin_logo/chocotin_logo.png" alt="Chocotin - Bocados de chocolate hechos con cacao premium ecuatoriano" />
+                                </div>
+                                <h3>Chocotin</h3>
+                                <div class="brand-category">Copitas de crema de chocolate</div>
+                                <p>Copas pequeñas, sonrisas gigantes. Chocotin es pura alegría para comer con cucharita: chocolate cremoso hecho para niños y para quien se niega a dejar de serlo.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-back-content">
+                                <div class="coming-soon-icon">🍫</div>
+                                <h4>Próximamente</h4>
+                                <p>Estamos preparando algo especial. ¡Mantente atento!</p>
+                                <div class="tap-hint">👆 Toca para volver</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="brand-card fade-in">
+                                <div class="brand-logo">🌈</div>
+                                <h3>Melo</h3>
+                                <div class="brand-category">Caramelos duros</div>
+                                <p>Colorido, clásico y amado por todas las edades. Melo mezcla sabores frutales vibrantes y texturas masticables en una mezcla feliz que mantiene sonriendo al anaquel.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-back-content">
+                                <div class="coming-soon-icon">🌈</div>
+                                <h4>Próximamente</h4>
+                                <p>Estamos preparando algo especial. ¡Mantente atento!</p>
+                                <div class="tap-hint">👆 Toca para volver</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="brand-card fade-in">
+                                <div class="brand-logo">🎈</div>
+                                <h3>Globoplop</h3>
+                                <div class="brand-category">Paletas y merch</div>
+                                <p>Diversión grande y colorida inspirada en el espíritu festivalero de Plop!: experiencias con globos que amplifican cada celebración.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-back-content">
+                                <div class="coming-soon-icon">🎈</div>
+                                <h4>Próximamente</h4>
+                                <p>Estamos preparando algo especial. ¡Mantente atento!</p>
+                                <div class="tap-hint">👆 Toca para volver</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="brand-card fade-in">
+                                <div class="brand-logo">🕶️</div>
+                                <h3>Boogie</h3>
+                                <div class="brand-category">Paletas</div>
+                                <p>Energía retro con sabor moderno. Boogie ofrece dulzura con ritmo y estilo audaz que te pone en movimiento.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-back-content">
+                                <div class="coming-soon-icon">🕶️</div>
+                                <h4>Próximamente</h4>
+                                <p>Estamos preparando algo especial. ¡Mantente atento!</p>
+                                <div class="tap-hint">👆 Toca para volver</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="brand-card fade-in">
+                                <div class="brand-logo">🍬</div>
+                                <h3>Muss</h3>
+                                <div class="brand-category">Chicle y caramelos</div>
+                                <p>Masticable suave con carácter. Muss trae texturas deliciosas y sabores juguetones que querrás llevar siempre.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-back-content">
+                                <div class="coming-soon-icon">🍬</div>
+                                <h4>Próximamente</h4>
+                                <p>Estamos preparando algo especial. ¡Mantente atento!</p>
+                                <div class="tap-hint">👆 Toca para volver</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!--
@@ -449,6 +691,9 @@
                     <a href="superhyper_landing_page.html">Super Hyper</a>
                     <a href="drlook_landing_page_5.html">Dr. Look</a>
                     <!-- <a href="#">República del Cacao</a> -->
+                    <a href="#">Globoplop</a>
+                    <a href="#">Boogie</a>
+                    <a href="#">Muss</a>
                     <a href="#">Ver todas las marcas</a>
                 </div>
                 
@@ -578,13 +823,28 @@
         });
 
         // Enhanced brand card interactions - OPTIMIZED
+        // Only apply hover effect to cards that are NOT inside flip containers
         document.querySelectorAll('.brand-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
+            const isFlipCard = card.closest('.flip-card-container');
+            if (!isFlipCard) {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            }
+        });
+        
+        // Hover effect for flip card containers (always active, even when flipped)
+        document.querySelectorAll('.flip-card-container').forEach(container => {
+            container.addEventListener('mouseenter', () => {
+                container.style.transform = 'translateY(-10px)';
             });
             
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
+            container.addEventListener('mouseleave', () => {
+                container.style.transform = 'translateY(0)';
             });
         });
 
