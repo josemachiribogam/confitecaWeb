@@ -3,101 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confiteca | Redirecting…</title>
+    <title>Confiteca - We Make the World's Favorite Moments Sweeter</title>
+    <link rel="icon" type="image/png" href="../Assets/confiteca/confiteca_logo/confiteca_smile_icon_square.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="preload" as="style" href="../css/confiteca.min.css" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/confiteca.min.css"></noscript>
     <style>
-        :root {
-            color-scheme: light dark;
+        /* Equal-height brand cards across grid */
+        .brands-grid > * { height: 100%; }
+        .brands-grid > * > .brand-card,
+        .brands-grid > .brand-card { height: 100%; display: flex; flex-direction: column; }
+        /* Preserve pill width for category tag */
+        .brand-card .brand-category { align-self: center; }
+        
+        /* Responsive tweaks */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: clamp(4rem, 12vw, 5rem);
+            }
+            .cta-primary {
+                /* padding: 1rem 1.8rem; */
+                font-size: .9rem;
+                letter-spacing: .05em;
+            }
         }
-        body {
-            font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+        .language-toggle {
             display: flex;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background: radial-gradient(circle at top, #fff5f5, #fde6ff);
-            color: #a00e3b;
-            text-align: center;
-            padding: 2rem;
+            gap: 0.35rem;
+            margin-left: 1.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
-        .card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 1.5rem;
-            padding: 3rem;
-            box-shadow: 0 30px 80px rgba(160, 14, 59, 0.15);
-            max-width: 480px;
-            width: min(100%, 480px);
-        }
-        h1 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            margin-bottom: 1rem;
-        }
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-        .lang-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        a {
-            background: linear-gradient(135deg, #ff5e99, #ffb347);
-            color: #fff;
+        .language-toggle a {
             text-decoration: none;
-            padding: 0.9rem 1.8rem;
+            color: var(--confiteca-red);
+            border: 1px solid rgba(0,0,0,0.1);
             border-radius: 999px;
+            padding: 0.2rem 0.9rem;
             font-weight: 600;
-            letter-spacing: 0.04em;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.2s ease;
         }
-        a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 94, 153, 0.3);
+        .language-toggle a:hover {
+            transform: translateY(-1px);
+            border-color: rgba(0,0,0,0.3);
+        }
+        .language-toggle a.active {
+            background: linear-gradient(135deg, var(--confiteca-red), var(--hot-pink));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 18px rgba(255, 94, 153, 0.35);
+        }
+        .language-toggle span {
+            color: rgba(0,0,0,0.3);
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .language-toggle {
+                display: none;
+            }
+            .language-toggle.mobile {
+                display: flex;
+                justify-content: center;
+                margin: 1.5rem 0 0;
+            }
         }
     </style>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "u4g15ahjfe");
+    </script>
 </head>
 <body>
-    <div class="card">
-        <h1>Confiteca is loading your experience…</h1>
-        <p>Please select your preferred language if you are not redirected automatically.</p>
-        <div class="lang-links">
-            <a href="en/index.html">English / EN</a>
-            <a href="es/index.html">Español / ES</a>
-        </div>
-    </div>
-
-    <script>
-        (function redirectByLanguage() {
-            try {
-                const hasLanguagePath = /\/(en|es)\//.test(window.location.pathname);
-                if (hasLanguagePath) return;
-
-                const url = new URL(window.location.href);
-                const currentPath = url.pathname;
-                const basePath = currentPath.endsWith('/')
-                    ? currentPath
-                    : currentPath.replace(/[^/]+$/, '/');
-
-                const userLanguage = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-                const prefersSpanish = userLanguage.startsWith('es');
-                const targetLang = prefersSpanish ? 'es' : 'en';
-
-                url.pathname = `${basePath}${targetLang}/index.html`.replace(/\/+/g, '/');
-                window.location.replace(url.toString());
-            } catch (error) {
-                console.error('Language redirect failed', error);
-            }
-        })();
-    </script>
-</body>
-</html>
+    <!-- Floating Candy Elements -->
+    <div class="floating-candy" style="top: 10%; left: 5%; animation-delay: 0s;">🍭</div>
+    <div class="floating-candy" style="top: 20%; right: 10%; animation-delay: 2s;">🍬</div>
+    <div class="floating-candy" style="bottom: 30%; left: 8%; animation-delay: 4s;">🫧</div>
+    <div class="floating-candy" style="top: 70%; right: 15%; animation-delay: 6s;">🍫</div>
 
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <img src="Assets/confiteca/confiteca_logo/confiteca_logo.png" alt="Confiteca - Spreading Joy Since 1964" class="logo">
+            <img src="../Assets/confiteca/confiteca_logo/confiteca_logo.png" alt="Confiteca - Spreading Joy Since 1964" class="logo">
             
             <!-- Desktop Menu -->
             <ul class="nav-links">
@@ -107,6 +99,11 @@
                 <li><a href="#careers">Careers</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="language-toggle">
+                <a href="index.html" class="active">EN</a>
+                <span>/</span>
+                <a href="../es/index.html">ES</a>
+            </div>
 
             <!-- Mobile Hamburger -->
             <div class="hamburger" id="hamburger">
@@ -132,6 +129,11 @@
                 <li><a href="#careers">⭐ Careers</a></li>
                 <li><a href="#contact">📧 Contact</a></li>
             </ul>
+            <div class="language-toggle mobile">
+                <a href="index.html" class="active">EN</a>
+                <span>/</span>
+                <a href="../es/index.html">ES</a>
+            </div>
         </div>
     </nav>
 
@@ -146,7 +148,7 @@
             <h1>We Make the World's Favorite Moments Sweeter</h1>
             <p>The global candy house behind 15+ beloved brands enjoyed across 30+ countries. From Ecuador to the world, we're spreading joy one bite at a time.</p>
             <a href="#brands" class="cta-primary">
-                Discover o<img src="Assets/confiteca/confiteca_logo/confiteca_smile_icon_square.png" alt="Confiteca smile icon used as letter U" class="cta-smile-icon">r Universe
+                Discover o<img src="../Assets/confiteca/confiteca_logo/confiteca_smile_icon_square.png" alt="Confiteca smile icon used as letter U" class="cta-smile-icon">r Universe
             </a>
         </div>
     </section>
@@ -169,7 +171,7 @@
                 <a href="plop_landing_page.html" class="brand-card-link">
                     <div class="brand-card fade-in">
                         <div class="brand-logo">
-                            <img src="Assets/plop/plop_logo/plop_logo.png" alt="Plop! - Modern sugar-free lollipops in multipack presentations" />
+                            <img src="../Assets/plop/plop_logo/plop_logo.png" alt="Plop! - Modern sugar-free lollipops in multipack presentations" />
                         </div>
                         <h3>Plop!</h3>
                         <div class="brand-category">Lollipops</div>
@@ -180,7 +182,7 @@
                                     <a href="agogo_landing_page.html" class="brand-card-link">
                         <div class="brand-card fade-in">
                             <div class="brand-logo">
-                                <img src="Assets/agogo/agogo_logo/agogo_logo.png" alt="Agogo - Pioneer bubble gum balls brand founded in 1964" />
+                                <img src="../Assets/agogo/agogo_logo/agogo_logo.png" alt="Agogo - Pioneer bubble gum balls brand founded in 1964" />
                             </div>
                             <h3>Agogo</h3>
                             <div class="brand-category">Ball Gum</div>
@@ -191,7 +193,7 @@
                 <a href="superhyper_landing_page.html" class="brand-card-link">
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/superhiperacido/superhiperacido_logo/SHA-02.png" alt="Super Hiper Ácido - Extreme sour candy in unique 20cm cylinder format" style="width: 100%; height: 100%; object-fit: contain;" />
+                        <img src="../Assets/superhiperacido/superhiperacido_logo/SHA-02.png" alt="Super Hiper Ácido - Extreme sour candy in unique 20cm cylinder format" style="width: 100%; height: 100%; object-fit: contain;" />
                     </div>
                     <h3>Super Hyper</h3>
                     <div class="brand-category">Sour Candy</div>
@@ -202,7 +204,7 @@
                 <a href="drlook_landing_page_5.html" class="brand-card-link">
                     <div class="brand-card fade-in">
                         <div class="brand-logo">
-                            <img src="Assets/drlook/logo_dr_look/Logo_Dr.Look_Horizontal.png" alt="Dr. Look - Revolutionary novelty candy brand featuring unique cotton gum experiences" />
+                            <img src="../Assets/drlook/logo_dr_look/Logo_Dr.Look_Horizontal.png" alt="Dr. Look - Revolutionary novelty candy brand featuring unique cotton gum experiences" />
                         </div>
                         <h3>Dr. Look</h3>
                         <div class="brand-category">Novelty Candy</div>
@@ -212,7 +214,7 @@
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/tumix/tumix_logo/tumix_logo.png" alt="Tumix - Ecuador's flagship lollipop and gum brand since 1994" />
+                        <img src="../Assets/tumix/tumix_logo/tumix_logo.png" alt="Tumix - Ecuador's flagship lollipop and gum brand since 1994" />
                     </div>
                     <h3>Tumix</h3>
                     <div class="brand-category">Mint Gum</div>
@@ -221,7 +223,7 @@
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/kataboom/kataboom_logo/kataboom_logo.png" alt="Kataboom - Explosive liquid-filled gum balls with surprise flavor bursts" />
+                        <img src="../Assets/kataboom/kataboom_logo/kataboom_logo.png" alt="Kataboom - Explosive liquid-filled gum balls with surprise flavor bursts" />
                     </div>
                     <h3>Kataboom</h3>
                     <div class="brand-category">Liquid-Filled Gum</div>
@@ -230,7 +232,7 @@
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/american/american_logo/american_logo.png" alt="American - Premium chocolate made with Ecuador's renowned Nacional cacao beans" />
+                        <img src="../Assets/american/american_logo/american_logo.png" alt="American - Premium chocolate made with Ecuador's renowned Nacional cacao beans" />
                     </div>
                     <h3>American</h3>
                     <div class="brand-category">Chocolates & Caramels</div>
@@ -258,7 +260,7 @@
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/jazz/jazz_logo/jazz_logo.png" alt="Jaazz - Sophisticated hard candies with complex flavor profiles" />
+                        <img src="../Assets/jazz/jazz_logo/jazz_logo.png" alt="Jaazz - Sophisticated hard candies with complex flavor profiles" />
                     </div>
                     <h3>Jaazz</h3>
                     <div class="brand-category">Menthol Candy</div>
@@ -267,7 +269,7 @@
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/chocotin/chocotin_logo/chocotin_logo.png" alt="Chocotin - Compact chocolate treats with Ecuador's premium cacao" />
+                        <img src="../Assets/chocotin/chocotin_logo/chocotin_logo.png" alt="Chocotin - Compact chocolate treats with Ecuador's premium cacao" />
                     </div>
                     <h3>Chocotin</h3>
                     <div class="brand-category">Chocolate Cream Cups</div>
@@ -462,7 +464,7 @@
                 
                 <div class="footer-section">
                     <h4>Connect</h4>
-                    <a href="#zz">LinkedIn</a>
+                    <a href="#">LinkedIn</a>
                     <a href="#">Instagram</a>
                     <a href="#">TikTok</a>
                     <a href="#">Contact Us</a>

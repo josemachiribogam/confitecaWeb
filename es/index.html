@@ -1,112 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confiteca | Redirecting…</title>
+    <title>Confiteca - Endulzamos los momentos favoritos del mundo</title>
+    <link rel="icon" type="image/png" href="../Assets/confiteca/confiteca_logo/confiteca_smile_icon_square.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="preload" as="style" href="../css/confiteca.min.css" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/confiteca.min.css"></noscript>
     <style>
-        :root {
-            color-scheme: light dark;
+        /* Equal-height brand cards across grid */
+        .brands-grid > * { height: 100%; }
+        .brands-grid > * > .brand-card,
+        .brands-grid > .brand-card { height: 100%; display: flex; flex-direction: column; }
+        /* Preserve pill width for category tag */
+        .brand-card .brand-category { align-self: center; }
+        
+        /* Responsive tweaks */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: clamp(4rem, 12vw, 5rem);
+            }
+            .cta-primary {
+                /* padding: 1rem 1.8rem; */
+                font-size: .9rem;
+                letter-spacing: .05em;
+            }
         }
-        body {
-            font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+        .language-toggle {
             display: flex;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background: radial-gradient(circle at top, #fff5f5, #fde6ff);
-            color: #a00e3b;
-            text-align: center;
-            padding: 2rem;
+            gap: 0.35rem;
+            margin-left: 1.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
-        .card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 1.5rem;
-            padding: 3rem;
-            box-shadow: 0 30px 80px rgba(160, 14, 59, 0.15);
-            max-width: 480px;
-            width: min(100%, 480px);
-        }
-        h1 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            margin-bottom: 1rem;
-        }
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-        .lang-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        a {
-            background: linear-gradient(135deg, #ff5e99, #ffb347);
-            color: #fff;
+        .language-toggle a {
             text-decoration: none;
-            padding: 0.9rem 1.8rem;
+            color: var(--confiteca-red);
+            border: 1px solid rgba(0,0,0,0.1);
             border-radius: 999px;
+            padding: 0.2rem 0.9rem;
             font-weight: 600;
-            letter-spacing: 0.04em;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.2s ease;
         }
-        a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 94, 153, 0.3);
+        .language-toggle a:hover {
+            transform: translateY(-1px);
+            border-color: rgba(0,0,0,0.3);
+        }
+        .language-toggle a.active {
+            background: linear-gradient(135deg, var(--confiteca-red), var(--hot-pink));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 18px rgba(255, 94, 153, 0.35);
+        }
+        .language-toggle span {
+            color: rgba(0,0,0,0.3);
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .language-toggle {
+                display: none;
+            }
+            .language-toggle.mobile {
+                display: flex;
+                justify-content: center;
+                margin: 1.5rem 0 0;
+            }
         }
     </style>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "u4g15ahjfe");
+    </script>
 </head>
 <body>
-    <div class="card">
-        <h1>Confiteca is loading your experience…</h1>
-        <p>Please select your preferred language if you are not redirected automatically.</p>
-        <div class="lang-links">
-            <a href="en/index.html">English / EN</a>
-            <a href="es/index.html">Español / ES</a>
-        </div>
-    </div>
-
-    <script>
-        (function redirectByLanguage() {
-            try {
-                const hasLanguagePath = /\/(en|es)\//.test(window.location.pathname);
-                if (hasLanguagePath) return;
-
-                const url = new URL(window.location.href);
-                const currentPath = url.pathname;
-                const basePath = currentPath.endsWith('/')
-                    ? currentPath
-                    : currentPath.replace(/[^/]+$/, '/');
-
-                const userLanguage = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-                const prefersSpanish = userLanguage.startsWith('es');
-                const targetLang = prefersSpanish ? 'es' : 'en';
-
-                url.pathname = `${basePath}${targetLang}/index.html`.replace(/\/+/g, '/');
-                window.location.replace(url.toString());
-            } catch (error) {
-                console.error('Language redirect failed', error);
-            }
-        })();
-    </script>
-</body>
-</html>
+    <!-- Floating Candy Elements -->
+    <div class="floating-candy" style="top: 10%; left: 5%; animation-delay: 0s;">🍭</div>
+    <div class="floating-candy" style="top: 20%; right: 10%; animation-delay: 2s;">🍬</div>
+    <div class="floating-candy" style="bottom: 30%; left: 8%; animation-delay: 4s;">🫧</div>
+    <div class="floating-candy" style="top: 70%; right: 15%; animation-delay: 6s;">🍫</div>
 
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <img src="Assets/confiteca/confiteca_logo/confiteca_logo.png" alt="Confiteca - Spreading Joy Since 1964" class="logo">
+            <img src="../Assets/confiteca/confiteca_logo/confiteca_logo.png" alt="Confiteca - Alegría desde 1964" class="logo">
             
             <!-- Desktop Menu -->
             <ul class="nav-links">
-                <li><a href="#brands">Brands</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#innovation">Innovation</a></li>
-                <li><a href="#careers">Careers</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#brands">Marcas</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#innovation">Innovación</a></li>
+                <li><a href="#careers">Talento</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
+            <div class="language-toggle">
+                <a href="../en/index.html">EN</a>
+                <span>/</span>
+                <a href="index.html" class="active">ES</a>
+            </div>
 
             <!-- Mobile Hamburger -->
             <div class="hamburger" id="hamburger">
@@ -123,15 +120,20 @@
         <div class="mobile-menu" id="mobileMenu">
             <div class="mobile-menu-header">
                 <h3>Confiteca</h3>
-                <p>Sweet Universe Navigation</p>
+                <p>Navega nuestro universo dulce</p>
             </div>
             <ul class="mobile-nav-links">
-                <li><a href="#brands">🍭 Our Brands</a></li>
-                <li><a href="#about">🏭 About Us</a></li>
-                <li><a href="#innovation">🚀 Innovation</a></li>
-                <li><a href="#careers">⭐ Careers</a></li>
-                <li><a href="#contact">📧 Contact</a></li>
+                <li><a href="#brands">🍭 Nuestras marcas</a></li>
+                <li><a href="#about">🏭 Quiénes somos</a></li>
+                <li><a href="#innovation">🚀 Innovación</a></li>
+                <li><a href="#careers">⭐ Talento</a></li>
+                <li><a href="#contact">📧 Contacto</a></li>
             </ul>
+            <div class="language-toggle mobile">
+                <a href="../en/index.html">EN</a>
+                <span>/</span>
+                <a href="index.html" class="active">ES</a>
+            </div>
         </div>
     </nav>
 
@@ -143,15 +145,15 @@
             <div class="shape"></div>
         </div>
         <div class="hero-content">
-            <h1>We Make the World's Favorite Moments Sweeter</h1>
-            <p>The global candy house behind 15+ beloved brands enjoyed across 30+ countries. From Ecuador to the world, we're spreading joy one bite at a time.</p>
+            <h1>Endulzamos los momentos favoritos del mundo</h1>
+            <p>Somos la casa dulce detrás de 15+ marcas queridas en 30+ países. Desde Ecuador hacia el planeta, llevamos alegría mordisco a mordisco.</p>
             <a href="#brands" class="cta-primary">
-                Discover o<img src="Assets/confiteca/confiteca_logo/confiteca_smile_icon_square.png" alt="Confiteca smile icon used as letter U" class="cta-smile-icon">r Universe
+                Descubre n<img src="../Assets/confiteca/confiteca_logo/confiteca_smile_icon_square.png" alt="Sonrisa de Confiteca usada como letra U" class="cta-smile-icon">estro Universo
             </a>
         </div>
     </section>
 
-    <!-- Brands Showcase -->
+    <!-- Vitrina de marcas -->
     <section id="brands" class="section brands-showcase">
         <div class="parallax-candy">🍭</div>
         <div class="parallax-candy">🍬</div>
@@ -160,8 +162,8 @@
         
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Our Sweet Empire</h2>
-                <p>From gum to chocolate, lollipops to hard candies—our diverse brand family delivers joy across every category and generation with bold flavors and unforgettable experiences.</p>
+                <h2>Nuestro imperio dulce</h2>
+                <p>De chicles a chocolates, de paletas a caramelos duros: nuestras marcas llenan cada categoría y generación con sabores audaces y experiencias memorables.</p>
             </div>
             
             <!-- Top 8 Brands -->
@@ -169,72 +171,72 @@
                 <a href="plop_landing_page.html" class="brand-card-link">
                     <div class="brand-card fade-in">
                         <div class="brand-logo">
-                            <img src="Assets/plop/plop_logo/plop_logo.png" alt="Plop! - Modern sugar-free lollipops in multipack presentations" />
+                            <img src="../Assets/plop/plop_logo/plop_logo.png" alt="Plop! - Paletas modernas con centro de chicle sin azúcar" />
                         </div>
                         <h3>Plop!</h3>
-                        <div class="brand-category">Lollipops</div>
-                        <p>Bright, bold, and full of joy. Plop! combines fruity flavor with a chewy gum center, giving every lick a surprise twist. Sweet, playful, and made to make you smile.</p>
+                        <div class="brand-category">Paletas con chicle</div>
+                        <p>Colores vivos y pura alegría. Plop! mezcla sabores frutales con un centro de chicle que sorprende en cada lamida. Dulce, juguetón y hecho para sacarte una sonrisa.</p>
                     </div>
                 </a>
                 
-                                    <a href="agogo_landing_page.html" class="brand-card-link">
+                <a href="agogo_landing_page.html" class="brand-card-link">
                         <div class="brand-card fade-in">
                             <div class="brand-logo">
-                                <img src="Assets/agogo/agogo_logo/agogo_logo.png" alt="Agogo - Pioneer bubble gum balls brand founded in 1964" />
+                                <img src="../Assets/agogo/agogo_logo/agogo_logo.png" alt="Agogo - La marca pionera de chicles en bolita desde 1964" />
                             </div>
                             <h3>Agogo</h3>
-                            <div class="brand-category">Ball Gum</div>
-                            <p>Born in 1964, Agogo turned color into happiness. Each bubble bursts with fun, flavor, and childhood nostalgia — a timeless icon that proves happiness really does come in colors.</p>
+                            <div class="brand-category">Chicles en bolita</div>
+                            <p>Nacido en 1964, Agogo convirtió el color en felicidad. Cada burbuja explota en sabor, diversión y nostalgia de infancia; un ícono eterno que prueba que la alegría sí viene en colores.</p>
                         </div>
                     </a>
                 
                 <a href="superhyper_landing_page.html" class="brand-card-link">
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/superhiperacido/superhiperacido_logo/SHA-02.png" alt="Super Hiper Ácido - Extreme sour candy in unique 20cm cylinder format" style="width: 100%; height: 100%; object-fit: contain;" />
+                        <img src="../Assets/superhiperacido/superhiperacido_logo/SHA-02.png" alt="Super Hiper Ácido - Caramelos extremos en su icónico cilindro de 20 cm" style="width: 100%; height: 100%; object-fit: contain;" />
                     </div>
                     <h3>Super Hyper</h3>
-                    <div class="brand-category">Sour Candy</div>
-                    <p>Our most extreme brand, made for people who want challenges & look for wild flavors. Daring experiences that are impossible not to share.</p>
+                    <div class="brand-category">Caramelos extremos</div>
+                    <p>Nuestra marca más atrevida, creada para quienes buscan retos y sabores salvajes. Experiencias intensas imposibles de no compartir.</p>
                 </div>
                 </a>
                 
                 <a href="drlook_landing_page_5.html" class="brand-card-link">
                     <div class="brand-card fade-in">
                         <div class="brand-logo">
-                            <img src="Assets/drlook/logo_dr_look/Logo_Dr.Look_Horizontal.png" alt="Dr. Look - Revolutionary novelty candy brand featuring unique cotton gum experiences" />
+                            <img src="../Assets/drlook/logo_dr_look/Logo_Dr.Look_Horizontal.png" alt="Dr. Look - Dulces sorprendentes con experiencias únicas de algodón y chicle" />
                         </div>
                         <h3>Dr. Look</h3>
-                        <div class="brand-category">Novelty Candy</div>
-                        <p>Meet the mad candy scientist. From the legendary Pelukloca cotton gum to other playful inventions, Dr. Look turns every bite into an experiment in fun, flavor, and imagination.</p>
+                        <div class="brand-category">Dulces experimentales</div>
+                        <p>Conoce al científico loco del dulce. Desde la legendaria Pelukloca hasta otras locuras deliciosas, Dr. Look convierte cada mordisco en un experimento de sabor, diversión e imaginación.</p>
                     </div>
                 </a>
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/tumix/tumix_logo/tumix_logo.png" alt="Tumix - Ecuador's flagship lollipop and gum brand since 1994" />
+                        <img src="../Assets/tumix/tumix_logo/tumix_logo.png" alt="Tumix - La marca insignia de chicles y paletas del Ecuador desde 1994" />
                     </div>
                     <h3>Tumix</h3>
-                    <div class="brand-category">Mint Gum</div>
-                    <p>Freshness that never quits. Tumix is Ecuador’s favorite mint gum — a cool burst that keeps breath fresh and spirits lifted. Available in different refreshing flavors that bring confidence to every smile.</p>
+                    <div class="brand-category">Chicles de menta</div>
+                    <p>Frescura que no se detiene. Tumix es el chicle de menta favorito del Ecuador: un golpe frío que refresca el aliento y levanta el ánimo, con sabores que dan confianza a cada sonrisa.</p>
                 </div>
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/kataboom/kataboom_logo/kataboom_logo.png" alt="Kataboom - Explosive liquid-filled gum balls with surprise flavor bursts" />
+                        <img src="../Assets/kataboom/kataboom_logo/kataboom_logo.png" alt="Kataboom - Chicles con núcleo líquido y explosiones de sabor" />
                     </div>
                     <h3>Kataboom</h3>
-                    <div class="brand-category">Liquid-Filled Gum</div>
-                    <p>A bubble gum with a bang. Kataboom hides a liquid core that bursts with intense flavor — a little thrill in every chew. Once you pop one, you’ll want to boom again.</p>
+                    <div class="brand-category">Chicle líquido</div>
+                    <p>Un chicle con estallido. Kataboom esconde un núcleo líquido que libera sabores intensos: una mini adrenalina en cada mordida. Pruebas uno y quieres volver a explotar.</p>
                 </div>
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/american/american_logo/american_logo.png" alt="American - Premium chocolate made with Ecuador's renowned Nacional cacao beans" />
+                        <img src="../Assets/american/american_logo/american_logo.png" alt="American - Chocolate premium hecho con cacao Nacional del Ecuador" />
                     </div>
                     <h3>American</h3>
-                    <div class="brand-category">Chocolates & Caramels</div>
-                    <p>Smooth, creamy, and proudly Ecuadorian. American brings together fine cocoa and indulgent fillings in bonbons and caramels made to savor — one bite, and you’ll taste the craft.</p>
+                    <div class="brand-category">Chocolates y caramelos</div>
+                    <p>Suave, cremoso y orgullosamente ecuatoriano. American combina cacao fino con rellenos indulgentes en bombones y caramelos hechos para saborear; un bocado y sientes el oficio.</p>
                 </div>
                 
                 <!--
@@ -252,33 +254,33 @@
                 <div class="brand-card fade-in">
                     <div class="brand-logo">❄️</div>
                     <h3>Artic</h3>
-                    <div class="brand-category">Mint Gum</div>
-                    <p>Cool and refreshing — just like its name. Artic offers elegant mint dragées with long-lasting chill. A modern take on freshness that never goes out of style.</p>
+                    <div class="brand-category">Chicles de menta</div>
+                    <p>Frío y refrescante, tal como su nombre. Artic ofrece dragees de menta elegantes con frescura prolongada. Una visión moderna de la frescura que nunca pasa de moda.</p>
                 </div>
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/jazz/jazz_logo/jazz_logo.png" alt="Jaazz - Sophisticated hard candies with complex flavor profiles" />
+                        <img src="../Assets/jazz/jazz_logo/jazz_logo.png" alt="Jaazz - Caramelos sofisticados con perfiles de sabor complejos" />
                     </div>
                     <h3>Jaazz</h3>
-                    <div class="brand-category">Menthol Candy</div>
-                    <p>Smooth, bold, and full of rhythm. Jazz is the candy that cools and refreshes with mint, cherry, or eucalyptus notes — a hit for those who like a little edge in their sweetness.</p>
+                    <div class="brand-category">Caramelos mentolados</div>
+                    <p>Suave, atrevido y con ritmo. Jaazz es el caramelo que enfría y refresca con notas de menta, cereza o eucalipto; perfecto para quienes disfrutan un toque rebelde en su dulzura.</p>
                 </div>
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">
-                        <img src="Assets/chocotin/chocotin_logo/chocotin_logo.png" alt="Chocotin - Compact chocolate treats with Ecuador's premium cacao" />
+                        <img src="../Assets/chocotin/chocotin_logo/chocotin_logo.png" alt="Chocotin - Bocados de chocolate hechos con cacao premium ecuatoriano" />
                     </div>
                     <h3>Chocotin</h3>
-                    <div class="brand-category">Chocolate Cream Cups</div>
-                    <p>Small cups, big smiles. Chocotin is pure spoonable joy — creamy chocolate made for kids and anyone who never stopped being one.</p>
+                    <div class="brand-category">Copitas de crema de chocolate</div>
+                    <p>Copas pequeñas, sonrisas gigantes. Chocotin es pura alegría para comer con cucharita: chocolate cremoso hecho para niños y para quien se niega a dejar de serlo.</p>
                 </div>
                 
                 <div class="brand-card fade-in">
                     <div class="brand-logo">🌈</div>
                     <h3>Melo</h3>
-                    <div class="brand-category">Hard Candy</div>
-                    <p>Colorful, classic, and loved by all ages. Melo mixes bright fruit flavors and chewy textures into one happy assortment that keeps the candy aisle smiling.</p>
+                    <div class="brand-category">Caramelos duros</div>
+                    <p>Colorido, clásico y amado por todas las edades. Melo mezcla sabores frutales vibrantes y texturas masticables en una mezcla feliz que mantiene sonriendo al anaquel.</p>
                 </div>
                 
                 <!--
@@ -302,7 +304,7 @@
 
             <div class="brands-section-footer">
                 <button class="show-all-btn" id="showAllBtn" onclick="toggleBrands()">
-                    <span id="btnText">Show All Brands</span>
+                    <span id="btnText">Ver todas las marcas</span>
                 </button>
             </div>
         </div>
@@ -320,24 +322,24 @@
                         </div>
                     </div>
                     <div class="heritage-text">
-                        <h2 class="heritage-title">60+ Years of Spreading Joy Across the Globe</h2>
-                        <p class="heritage-subtitle">From our first Agogo in Ecuador to conquering 30+ countries worldwide</p>
+                        <h2 class="heritage-title">60+ años repartiendo alegría por el planeta</h2>
+                        <p class="heritage-subtitle">Desde nuestro primer Agogo en Ecuador hasta conquistar 30+ países</p>
                     </div>
                 </div>
                 <div class="heritage-stats">
                     <div class="heritage-stat">
                         <span class="stat-number">30+</span>
-                        <span class="stat-label">Countries</span>
+                        <span class="stat-label">Países</span>
                     </div>
                     <div class="heritage-divider"></div>
                     <div class="heritage-stat">
                         <span class="stat-number">15+</span>
-                        <span class="stat-label">Brands</span>
+                        <span class="stat-label">Marcas</span>
                     </div>
                     <div class="heritage-divider"></div>
                     <div class="heritage-stat">
                         <span class="stat-number">60+</span>
-                        <span class="stat-label">Years</span>
+                        <span class="stat-label">Años</span>
                     </div>
                 </div>
             </div>
@@ -354,26 +356,26 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <h3>From Ecuador to the Universe</h3>
-                    <p>Founded in Ecuador in <strong>1964</strong> with our first brand Agogo, Confiteca began as a visionary company with a massive dream: to create moments of pure joy through exceptional confectionery that would conquer the world.</p>
-                    <p>Today, we're a vertically integrated global <strong>powerhouse</strong> with manufacturing facilities across Ecuador, Colombia, and Peru. Our innovative brands reach <strong>30+ countries</strong> worldwide through <strong>100K+ points</strong> of sale.</p>
-                    <p><strong>Mission:</strong> Spreading joy, one bite at a time.</p>
-                    <p><em>"Alegría al alcance de todos" - Joy within everyone's reach</em></p>
+                    <h3>Del Ecuador al universo</h3>
+                    <p>Nacimos en <strong>1964</strong> en Ecuador con nuestra primera marca, Agogo. Confiteca arrancó como una empresa visionaria con un sueño gigante: crear momentos de alegría pura con confitería excepcional que pudiera conquistar al mundo.</p>
+                    <p>Hoy somos un <strong>powerhouse</strong> global integrado verticalmente, con plantas en Ecuador, Colombia y Perú. Nuestras marcas innovadoras llegan a <strong>30+ países</strong> mediante <strong>100K+ puntos</strong> de venta.</p>
+                    <p><strong>Misión:</strong> Llevar alegría, bocado a bocado.</p>
+                    <p><em>"Alegría al alcance de todos"</em></p>
                 </div>
                 <div class="about-visual fade-in">
                     <div class="stats-container">
                         <div class="stats-grid">
                             <div class="stat">
                                 <span class="stat-number">30+</span>
-                                <span class="stat-label">Countries</span>
+                            <span class="stat-label">Países</span>
                             </div>
                             <div class="stat">
                                 <span class="stat-number">100,000+</span>
-                                <span class="stat-label">Points of Sale</span>
+                            <span class="stat-label">Puntos de venta</span>
                             </div>
                             <div class="stat">
                                 <span class="stat-number">15+</span>
-                                <span class="stat-label">Epic Brands</span>
+                            <span class="stat-label">Marcas épicas</span>
                             </div>
                         </div>
                     </div>
@@ -382,32 +384,32 @@
         </div>
     </section>
 
-    <!--Innovation Section
+    <!--Sección de innovación
     <section id="innovation" class="section innovation">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Innovation That Powers Global Brands</h2>
-                <p>From idea to shelf, we help visionary brands bring their candy dreams to life.<br>
-                    With cutting-edge R&D, world-class production, and regional scalability, Confiteca transforms bold concepts into products that win hearts — and markets — worldwide.</p>
+                <h2>Innovación que impulsa marcas globales</h2>
+                <p>Del concepto al anaquel, ayudamos a marcas visionarias a materializar sus sueños dulces.<br>
+                    Con I+D de punta, producción de clase mundial y escala regional, Confiteca transforma ideas audaces en productos que enamoran consumidores y mercados.</p>
             </div>
             
             <div class="innovation-grid">
                 <div class="innovation-card fade-in">
                     <div class="innovation-icon">🏭</div>
-                    <h3>Multi-Country Domination</h3>
-                    <p>Strategic production facilities across Ecuador, Colombia, and Peru enable us to serve regional markets with fresh, high-quality products while maintaining cost efficiency and lightning-fast delivery.</p>
+                    <h3>Presencia multi-país</h3>
+                    <p>Plantas estratégicas en Ecuador, Colombia y Perú nos permiten servir a la región con productos frescos y de alta calidad, cuidando costos y tiempos de entrega.</p>
                 </div>
                 
                 <div class="innovation-card fade-in">
                     <div class="innovation-icon">👑</div>
-                    <h3>End-to-End Development</h3>
-                    <p>We don’t just manufacture — we co-create. <br>From flavor innovation and packaging design to formulation and compliance, our team helps partners build unique products ready for global markets.</p>
+                    <h3>Desarrollo end-to-end</h3>
+                    <p>No solo manufacturamos, co-creamos.<br>Desde la innovación de sabores y el diseño de empaque hasta la formulación y normativas, acompañamos a nuestros socios para lanzar productos listos para el mundo.</p>
                 </div>
                 
                 <div class="innovation-card fade-in">
                     <div class="innovation-icon">🚀</div>
-                    <h3>Massive Scale Production</h3>
-                    <p>Our state-of-the-art facilities produce over 500 million units monthly across seven major product categories, from bubble gum to premium chocolate with mind-blowing efficiency.</p>
+                    <h3>Producción a gran escala</h3>
+                    <p>Nuestras plantas producen más de 500 millones de unidades al mes en siete categorías, desde chicle hasta chocolate premium, con eficiencia sorprendente.</p>
                 </div>
             </div>
         </div>
@@ -418,12 +420,12 @@
         <div style="position: absolute; top: 10%; right: 5%; font-size: 12rem; opacity: 0.03;">🎯</div>
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Join Our Sweet Revolution</h2>
-                <p>Be part of a team that brings joy to millions worldwide. We're always looking for passionate rockstars who share our commitment to candy excellence and world domination.</p>
+                <h2>Súmate a la revolución dulce</h2>
+                <p>Forma parte del equipo que lleva alegría a millones. Buscamos personas apasionadas que compartan nuestro compromiso con la excelencia confitera y los sueños en grande.</p>
             </div>
             
             <div style="text-align: center; margin-top: 4rem;">
-                <a href="https://www.linkedin.com/company/confitecaoficial/jobs/" target="_blank" rel="noopener noreferrer" class="cta-primary" style="background: linear-gradient(135deg, var(--hot-pink), var(--confiteca-red)); color: white; font-size: 1.2rem; padding: 2rem 4rem;">Launch Your Career</a>
+                <a href="https://www.linkedin.com/company/confitecaoficial/jobs/" target="_blank" rel="noopener noreferrer" class="cta-primary" style="background: linear-gradient(135deg, var(--hot-pink), var(--confiteca-red)); color: white; font-size: 1.2rem; padding: 2rem 4rem;">Despega tu carrera</a>
             </div>
         </div>
     </section>
@@ -433,45 +435,45 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Confiteca Universe</h4>
-                    <p>Global headquarters in Ecuador</p>
-                    <p>Spreading joy across 30+ countries</p>
-                    <p>Manufacturing in Ecuador, Colombia & Peru</p>
+                    <h4>Universo Confiteca</h4>
+                    <p>Casa matriz en Ecuador</p>
+                    <p>Alegría en 30+ países</p>
+                    <p>Manufactura en Ecuador, Colombia y Perú</p>
                     <p><em>Alegría al alcance de todos</em></p>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Our Epic Brands</h4>
+                    <h4>Nuestras marcas épicas</h4>
                     <a href="plop_landing_page.html">Plop</a>
                     <a href="agogo_landing_page.html">Agogo</a>
                     <a href="superhyper_landing_page.html">Super Hyper</a>
                     <a href="drlook_landing_page_5.html">Dr. Look</a>
                     <!-- <a href="#">República del Cacao</a> -->
-                    <a href="#">View All Brands</a>
+                    <a href="#">Ver todas las marcas</a>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Company</h4>
-                    <a href="#">About Us</a>
+                    <h4>Compañía</h4>
+                    <a href="#">Nosotros</a>
                     <!-- <a href="#">Innovation</a> -->
                     <!-- <a href="#">Sustainability</a> -->
-                    <a href="https://www.linkedin.com/company/confitecaoficial/jobs/">Careers</a>
-                    <a href="#">Press</a>
+                    <a href="https://www.linkedin.com/company/confitecaoficial/jobs/">Talento</a>
+                    <a href="#">Prensa</a>
                     <!-- <a href="#">Investor Relations</a> -->
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Connect</h4>
-                    <a href="#zz">LinkedIn</a>
+                    <h4>Conecta</h4>
+                    <a href="#">LinkedIn</a>
                     <a href="#">Instagram</a>
                     <a href="#">TikTok</a>
-                    <a href="#">Contact Us</a>
+                    <a href="#">Contáctanos</a>
                     <a href="#">press@confiteca.com</a>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Confiteca. All rights reserved. | Privacy Policy | Terms of Service | Made with 🍭 in Ecuador</p>
+                <p>&copy; 2025 Confiteca. Todos los derechos reservados. | Política de privacidad | Términos de servicio | Hecho con 🍭 en Ecuador</p>
             </div>
         </div>
     </footer>
@@ -662,9 +664,9 @@
             });
         });
 
-        console.log('🍭 Welcome to the Confiteca Universe! 🍬');
+        console.log('🍭 Bienvenido al universo Confiteca 🍬');
 
-        // Show All Brands Toggle Function
+        // Función para alternar la vista de marcas
         function toggleBrands() {
             const hiddenBrands = document.getElementById('hiddenBrands');
             const btnText = document.getElementById('btnText');
@@ -672,7 +674,7 @@
             
             if (hiddenBrands.classList.contains('show')) {
                 hiddenBrands.classList.remove('show');
-                btnText.textContent = 'Show All Brands';
+                btnText.textContent = 'Ver todas las marcas';
                 showAllBtn.style.background = 'linear-gradient(135deg, var(--confiteca-red), var(--hot-pink))';
                 
                 // Scroll back to brands section
@@ -682,7 +684,7 @@
                 });
             } else {
                 hiddenBrands.classList.add('show');
-                btnText.textContent = 'Show Less';
+                btnText.textContent = 'Ver menos';
                 showAllBtn.style.background = 'linear-gradient(135deg, var(--hot-pink), var(--electric-yellow))';
             }
         }

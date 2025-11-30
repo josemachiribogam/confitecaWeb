@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plop! - No Attention, No Attraction</title>
+    <link rel="icon" type="image/png" href="../Assets/plop/plop_logo/plop_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/plop.min.css">
+    <style>
+        /* Mobile-only: split hero into top (text) and bottom (lifestyle) halves */
+        @media (max-width: 768px) {
+            .hero {
+                display: flex;
+                flex-direction: column;
+                min-height: 100svh;
+            }
+            .hero .hero-content {
+                flex: 1 0 50svh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-top: 16px;
+                padding-bottom: 12px;
+            }
+            /* Force show lifestyle on mobile and place it in flow as bottom half */
+            #heroLifestyle {
+                display: flex !important;
+                position: static !important;
+                right: auto !important;
+                top: auto !important;
+                width: 90% !important;
+                height: 50svh !important;
+                opacity: 1 !important;
+                transform: translateX(0) translateY(0) rotate(-2deg) scale(1) !important;
+                pointer-events: auto !important;
+                margin-top: 8px;
+                margin-bottom: 20px;
+            }
+            .hero #heroLifestyle .lifestyle-container {
+                width: 100%;
+                height: 100% !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                position: relative;
+            }
+            .hero #heroLifestyle .lifestyle-image {
+                max-height: 100% !important;
+                width: auto;
+                object-fit: contain !important;
+            }
+        }
+        /* Lifestyle section: add horizontal padding on all viewports */
+        .lifestyle-section {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        /* Slightly increase padding on large desktops */
+        @media (min-width: 1200px) {
+            .lifestyle-section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "u4g15ahjfe");
+    </script>
+</head>
+<body class="theme-strawberry">
+    <!-- Enhanced Floating Particles -->
+    <div class="particle" style="top: 8%; left: 3%; width: 25px; height: 25px; animation-delay: 0s;"></div>
+    <div class="particle" style="top: 15%; right: 8%; width: 18px; height: 18px; animation-delay: 2s;"></div>
+    <div class="particle" style="bottom: 25%; left: 6%; width: 30px; height: 30px; animation-delay: 4s;"></div>
+    <div class="particle" style="top: 65%; right: 12%; width: 22px; height: 22px; animation-delay: 6s;"></div>
+    <div class="particle" style="bottom: 60%; right: 25%; width: 16px; height: 16px; animation-delay: 8s;"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="../Assets/_optimized/plop/plop_logo.webp" alt="Plop!" width="120" height="120" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/plop_logo.webp 120w, ../Assets/_optimized/plop/plop_logo.webp 240w" sizes="(max-width: 768px) 100px, 120px" />
+            </a>
+            <div class="mode-indicator" id="modeIndicator">
+                <span class="mode-text">REGULAR</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#flavors">Flavors</a></li>
+                <li><a href="#vibe">Vibe</a></li>
+                <li><a href="#formats">Formats</a></li>
+                <li><a href="#confidence">Confidence</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="#flavors" class="mobile-nav-link">Flavors</a></li>
+            <li><a href="#vibe" class="mobile-nav-link">Vibe</a></li>
+            <li><a href="#formats" class="mobile-nav-link">Formats</a></li>
+            <li><a href="#confidence" class="mobile-nav-link">Confidence</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-brand">
+            <div class="brand-text">Bold Flavor. Zero Apologies.</div>
+        </div>
+    </div>
+
+    <!-- Hero Section with Brand Manifesto -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- <div class="brand-mantra">No Attention, No Attraction</div> -->
+            <div class="flavor-subtitle" id="flavorSubtitle">Sour Strawberry</div>
+            <h1>Bold Flavor. <br>Zero Apologies.</h1>
+            <div class="hero-subtitle">Confidence comes in a wrapper.</div>
+            <div class="confidence-boost">
+                Plop is the flavor-charged lollipop made for people who want to stand out — not fit in. Loud design, wild flavors, and attitude in every stick.
+            </div>
+        </div>
+        
+        <!-- Dynamic Lifestyle Visual -->
+                <div class="hero-lifestyle" id="heroLifestyle">
+            <div class="lifestyle-container">
+                <div class="lifestyle-glow"></div>
+                <img src="../Assets/_optimized/plop/plop_fresa_lifestyle.webp" alt="Plop Strawberry Lifestyle" class="lifestyle-image" width="508" height="638" loading="lazy" decoding="async" />
+                <div class="lifestyle-overlay">
+                    <div class="lifestyle-text">
+                        <div class="lifestyle-title">This is Plop Energy</div>
+                        <div class="lifestyle-subtitle">Real moments, real attitude</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Swiper -->
+    <section class="swiper-section" id="flavors">
+        <div class="section-header">
+            <h2 class="section-title">Choose Your Personality</h2>
+            <p class="section-subtitle">Every flavor tells a story. What's yours?</p>
+        </div>
+        
+        <div class="swiper-container">
+            <div class="swiper-wrapper" id="swiperWrapper">
+                <!-- Strawberry -->
+                <div class="swiper-slide" data-theme="strawberry" data-flavor="Sour Strawberry">
+                    <div class="product-card strawberry-animation">
+                        <div class="product-image">
+                            <img src="../Assets/_optimized/plop/GP FRESA.webp" alt="Sour Strawberry Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP FRESA.webp 180w, ../Assets/_optimized/plop/GP FRESA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                        </div>
+                        <h3 class="product-name">Sour Strawberry</h3>
+                        <div class="product-attitude">The Passionate</div>
+                        <p class="product-description">
+                            For those who live intensely. An explosion of red energy that screams "here I am" 
+                            without asking permission. Perfect for moments when you need everyone to turn and look.
+                        </p>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">120/10</span>
+                                    <span class="stat-label">Intensity</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">130/10</span>
+                                    <span class="stat-label">Attitude</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">115/10</span>
+                                    <span class="stat-label">Rebellion</span>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- Grape -->
+                <div class="swiper-slide" data-theme="grape" data-flavor="Intense Grape">
+                    <div class="product-card grape-animation">
+                        <div class="product-image">
+                            <img src="../Assets/_optimized/plop/GP UVA.webp" alt="Intense Grape Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP UVA.webp 180w, ../Assets/_optimized/plop/GP UVA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                        </div>
+                        <h3 class="product-name">Intense Grape</h3>
+                        <div class="product-attitude">The Mysterious</div>
+                        <p class="product-description">
+                            The flavor of those who observe and conquer. Deep, complex, with that rebellious elegance 
+                            that doesn't need to shout to be noticed. For those who prefer silent seduction.
+                        </p>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">110/10</span>
+                                    <span class="stat-label">Intensity</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">115/10</span>
+                                    <span class="stat-label">Attitude</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">140/10</span>
+                                    <span class="stat-label">Mystery</span>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- Green Apple -->
+                <div class="swiper-slide" data-theme="green-apple" data-flavor="Green Apple">
+                    <div class="product-card apple-animation">
+                        <div class="product-image">
+                            <img src="../Assets/_optimized/plop/GP MANZANA.webp" alt="Green Apple Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP MANZANA.webp 180w, ../Assets/_optimized/plop/GP MANZANA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                        </div>
+                        <h3 class="product-name">Green Apple</h3>
+                        <div class="product-attitude">The Innovator</div>
+                        <p class="product-description">
+                            Fresh, disruptive, always one step ahead. It's the flavor of those who set trends 
+                            and don't follow rules. For moments when you want to show your most authentic and original side.
+                        </p>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">105/10</span>
+                                    <span class="stat-label">Intensity</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">130/10</span>
+                                    <span class="stat-label">Freshness</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">135/10</span>
+                                    <span class="stat-label">Originality</span>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- Orange -->
+                <div class="swiper-slide" data-theme="orange" data-flavor="Explosive Orange">
+                    <div class="product-card orange-animation">
+                        <div class="product-image">
+                            <img src="../Assets/_optimized/plop/GP MARACUYA.webp" alt="Explosive Orange Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP MARACUYA.webp 180w, ../Assets/_optimized/plop/GP MARACUYA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                        </div>
+                        <h3 class="product-name">Explosive Orange</h3>
+                        <div class="product-attitude">The Charismatic</div>
+                        <p class="product-description">
+                            Pure energy that's contagious. The life of the party, the one who lights up the room just by walking in. 
+                            For moments when your personality needs to be the center of attention.
+                        </p>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">140/10</span>
+                                    <span class="stat-label">Energy</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">135/10</span>
+                                    <span class="stat-label">Charisma</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">120/10</span>
+                                    <span class="stat-label">Fun</span>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- Blue Razz -->
+                <div class="swiper-slide" data-theme="blue-razz" data-flavor="Electric Blue">
+                    <div class="product-card blue-animation">
+                        <div class="product-image">
+                            <img src="../Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY.webp" alt="Electric Blue Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY.webp 180w, ../Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                    </div>
+                        <h3 class="product-name">Electric Blue</h3>
+                        <div class="product-attitude">The Visionary</div>
+                        <p class="product-description">
+                            Different by nature. The flavor that breaks expectations and creates new realities. 
+                            For those who aren't afraid to stand out by being completely unique and authentic.
+                        </p>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">130/10</span>
+                                    <span class="stat-label">Uniqueness</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">125/10</span>
+                                    <span class="stat-label">Impact</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                    <span class="stat-label">Future</span>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- LED Strawberry -->
+                <div class="swiper-slide" data-theme="led-strawberry" data-flavor="LED Strawberry" data-led="true">
+                    <div class="product-card led-animation">
+                        <div class="product-image led-glow">
+                            <img src="../Assets/_optimized/plop/plop-LED-SURTIDO_FRESA.webp" alt="LED Strawberry Plop with Glow Stick" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/plop-LED-SURTIDO_FRESA.webp 180w, ../Assets/_optimized/plop/plop-LED-SURTIDO_FRESA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <div class="led-effect"></div>
+                        </div>
+                        <h3 class="product-name">LED Strawberry</h3>
+                        <div class="product-attitude">The Club Rebel</div>
+                        <p class="product-description">
+                            Light up the night with glow stick power! Explosive strawberry flavor that comes with a LED stick. 
+                            Perfect for parties, festivals, and making every moment electric. YEAH!
+                        </p>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                    <span class="stat-label">Glow Power</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                    <span class="stat-label">Party Vibe</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">135/10</span>
+                                    <span class="stat-label">Electric</span>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- LED Blue -->
+                <div class="swiper-slide" data-theme="led-blue" data-flavor="LED Cereza Blue" data-led="true">
+                    <div class="product-card led-animation">
+                        <div class="product-image led-glow">
+                            <img src="../Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY.webp" alt="LED Cereza Blue Plop with Glow Stick" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY.webp 180w, ../Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <div class="led-effect"></div>
+                        </div>
+                        <h3 class="product-name">LED Cereza Blue</h3>
+                        <div class="product-attitude">The Neon Legend</div>
+                        <p class="product-description">
+                            Cherry blueberry fusion with electric blue glow! The ultimate party accessory that tastes as wild as it looks. 
+                            Designed for the dance floor, concerts, and unforgettable nights. OMG!
+                        </p>
+                            <div class="flavor-stats">
+                                <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                    <span class="stat-label">Neon Power</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">140/10</span>
+                                    <span class="stat-label">Festival Ready</span>
+                                </div>
+                                <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                    <span class="stat-label">Legendary</span>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="swiper-nav">
+                <button class="swiper-btn" id="prevBtn">‹</button>
+                <button class="swiper-btn" id="nextBtn">›</button>
+            </div>
+
+            <!-- Flavor Indicators -->
+            <div class="flavor-indicators">
+                <div class="flavor-dot active" data-index="0"></div>
+                <div class="flavor-dot" data-index="1"></div>
+                <div class="flavor-dot" data-index="2"></div>
+                <div class="flavor-dot" data-index="3"></div>
+                <div class="flavor-dot" data-index="4"></div>
+                <div class="flavor-dot led-dot" data-index="5"></div>
+                <div class="flavor-dot led-dot" data-index="6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lifestyle Videos Section -->
+    <section class="lifestyle-section" id="vibe">
+        <div class="lifestyle-container">
+            <div class="section-header">
+                <h2 class="section-title">This Is How We Plop</h2>
+                <p class="section-subtitle">Real moments, real attitude, real you. See the Plop energy in action.</p>
+            </div>
+            
+            <div class="videos-grid">
+                <a href="https://www.tiktok.com/@plopecuador" target="_blank" rel="noopener noreferrer" class="video-link">
+                    <div class="video-card">
+                        <div class="video-container">
+                            <video class="lazy-video" muted loop playsinline preload="metadata">
+                                <source data-src="../Assets/plop/plop_lifestyle_videos/GP FRESA LIKE A 10seg VERTICAL.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay">
+                                <div class="video-title">Strawberry Vibes</div>
+                                <div class="video-subtitle">When you need that passionate energy • Click to see more on TikTok</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://www.tiktok.com/@plopecuador" target="_blank" rel="noopener noreferrer" class="video-link">
+                    <div class="video-card">
+                        <div class="video-container">
+                            <video class="lazy-video" muted loop playsinline preload="metadata">
+                                <source data-src="../Assets/plop/plop_lifestyle_videos/GP CEREZA ACIDA ROMPE D 10seg  VERTICAL.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay">
+                                <div class="video-title">Break The Rules</div>
+                                <div class="video-subtitle">Sour cherry attitude that can't be ignored • Click to see more on TikTok</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://www.tiktok.com/@plopecuador" target="_blank" rel="noopener noreferrer" class="video-link">
+                    <div class="video-card">
+                        <div class="video-container">
+                            <video class="lazy-video" muted loop playsinline preload="metadata">
+                                <source data-src="../Assets/plop/plop_lifestyle_videos/PLOP_VIDEO_02_v3.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay">
+                                <div class="video-title">Pure Plop Energy</div>
+                                <div class="video-subtitle">This is what being yourself looks like • Click to see more on TikTok</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="lifestyle-cta">
+                <p class="lifestyle-message">Ready to own your moment? Follow us on TikTok for more!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof" id="confidence">
+        <h2>The Power Of Being Yourself</h2>
+        <div class="confidence-stats">
+            <div class="confidence-stat">
+                <span class="big-number">120%</span>
+                <span class="stat-text">Feel More Like Themselves</span>
+            </div>
+            <div class="confidence-stat">
+                <span class="big-number">130%</span>
+                <span class="stat-text">Spark More Conversations</span>
+            </div>
+            <div class="confidence-stat">
+                <span class="big-number">125%</span>
+                <span class="stat-text">Express Themselves Authentically</span>
+            </div>
+            <div class="confidence-stat">
+                <span class="big-number">140%</span>
+                <span class="stat-text">Recommend The Experience</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Display Formats Section -->
+    <section class="display-formats-section" id="formats">
+        <div class="display-container">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your Display Style</h2>
+                <p class="section-subtitle">From retail displays to grab-and-go bags, Plop adapts to every sales environment and moment.</p>
+            </div>
+            
+            <div class="display-grid">
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/GP-DISPLAY-CERRADO-V1-Current-View.webp" alt="Plop Display Box - Perfect for Retail" width="1200" height="1200" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Retail Display Box</h3>
+                    <p class="display-description">Eye-catching counter displays that demand attention. Perfect for convenience stores, pharmacies, and impulse purchases.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">High Visibility</span>
+                        <span class="feature-tag">Easy Access</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/GP-FUNDA-SURTIDO.webp" alt="Mixed Flavor Bags - Variety in Every Pack" width="833" height="1200" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Mixed Flavor Bags</h3>
+                    <p class="display-description">Variety packs with all your favorite flavors. Can't decide? Get them all and let your mood choose.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">All Flavors</span>
+                        <span class="feature-tag">Great Value</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/funda-fresa.webp" alt="Individual Flavor Bags - Pure Strawberry Power" width="1012" height="944" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Single Flavor Bags</h3>
+                    <p class="display-description">When you know exactly what you want. Pure, concentrated flavor experience for the dedicated.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Flavor Focus</span>
+                        <span class="feature-tag">Bulk Option</span>
+                    </div>
+                </div>
+
+                <div class="display-card led-exclusive">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/LED-PRINT-display.webp" alt="LED Display - Light Up the Night" width="1175" height="1200" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">LED Night Display</h3>
+                    <p class="display-description">Special LED displays for clubs, festivals, and night events. When regular displays aren't electric enough.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Party Ready</span>
+                        <span class="feature-tag">Glow Power</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/GP-SHAKE-FUNDA.webp" alt="Shake Series - Mix It Up" width="833" height="1200" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Shake Series Packs</h3>
+                    <p class="display-description">Our premium shake flavors in convenient grab bags. For when you want to level up your flavor game.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Premium Line</span>
+                        <span class="feature-tag">Unique Flavors</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/GP_MARACUYA 23.webp" alt="Individual Units - Single Serve Power" width="921" height="1200" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Individual Units</h3>
+                    <p class="display-description">Single serves for spontaneous moments. When you want that instant boost right now.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Impulse Buy</span>
+                        <span class="feature-tag">Instant Gratification</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="display-cta">
+                <h3>Ready to Stock Plop?</h3>
+                <p>Multiple formats mean maximum sales opportunities. Let's talk about what works best for your space.</p>
+                <button class="cta-btn">Get Stocking Info</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced CTA Section -->
+    <section class="cta-section">
+        <h2>Your Moment Is Now</h2>
+        <div class="cta-subtitle">
+            Don't wait any longer to be the most authentic and magnetic version of yourself. 
+            Every flavor is a new opportunity to shine.
+        </div>
+        <button class="cta-btn">Find Your Flavor</button>
+    </section>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 7;
+        const swiperWrapper = document.getElementById('swiperWrapper');
+        const flavorSubtitle = document.getElementById('flavorSubtitle');
+        const body = document.body;
+        
+        // Theme data with enhanced personality traits + LED themes
+        const themes = {
+            'strawberry': 'theme-strawberry',
+            'grape': 'theme-grape',
+            'green-apple': 'theme-green-apple',
+            'orange': 'theme-orange',
+            'blue-razz': 'theme-blue-razz',
+            'led-strawberry': 'theme-led-strawberry',
+            'led-blue': 'theme-led-blue'
+        };
+
+        function updateSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            
+            currentSlide = index;
+            
+            // Update slider position
+            const translateX = -index * 100;
+            swiperWrapper.style.transform = `translateX(${translateX}%)`;
+            
+            // Get current slide data
+            const currentSlideElement = swiperWrapper.children[index];
+            const theme = currentSlideElement.dataset.theme;
+            const flavor = currentSlideElement.dataset.flavor;
+            const isLED = currentSlideElement.dataset.led === 'true';
+            
+            // Update theme with enhanced transition
+            Object.values(themes).forEach(themeClass => {
+                body.classList.remove(themeClass);
+            });
+            body.classList.add(themes[theme]);
+            
+            // Toggle LED mode
+            const modeIndicator = document.getElementById('modeIndicator');
+            if (isLED) {
+                body.classList.add('led-mode');
+                // Update mode indicator
+                modeIndicator.querySelector('.mode-text').textContent = 'LED MODE';
+                // Update hero text for LED experience
+                document.querySelector('h1').innerHTML = 'Light Up.<br>Stand Out.';
+                document.querySelector('.confidence-boost').innerHTML = 
+                    'Plop LED brings the party to life with glow stick power and explosive flavors. Made for the night owls, festival goers, and club rebels who want to be seen.';
+                
+                // Update lifestyle section for LED mode
+                const lifestyleTitle = document.querySelector('.lifestyle-section .section-title');
+                const lifestyleSubtitle = document.querySelector('.lifestyle-section .section-subtitle');
+                if (lifestyleTitle) lifestyleTitle.textContent = 'Electric Nights & LED Lights';
+                if (lifestyleSubtitle) lifestyleSubtitle.textContent = 'When the sun goes down, the glow sticks come out. This is Plop LED energy in action.';
+                
+                // Update mobile menu brand text if menu is open
+                const brandText = document.querySelector('.mobile-menu-brand .brand-text');
+                if (brandText && mobileMenu.classList.contains('active')) {
+                    brandText.textContent = 'Light Up. Stand Out.';
+                }
+            } else {
+                body.classList.remove('led-mode');
+                // Update mode indicator
+                modeIndicator.querySelector('.mode-text').textContent = 'REGULAR';
+                // Restore original hero text
+                document.querySelector('h1').innerHTML = 'Bold Flavor. <br>Zero Apologies.';
+                document.querySelector('.confidence-boost').innerHTML = 
+                    'Plop is the flavor-charged lollipop made for those who want to stand out — not fit in. Loud design, wild flavors, and attitude in every stick.';
+                
+                // Restore original lifestyle section
+                const lifestyleTitle = document.querySelector('.lifestyle-section .section-title');
+                const lifestyleSubtitle = document.querySelector('.lifestyle-section .section-subtitle');
+                if (lifestyleTitle) lifestyleTitle.textContent = 'This Is How We Plop';
+                if (lifestyleSubtitle) lifestyleSubtitle.textContent = 'Real moments, real attitude, real you. See the Plop energy in action.';
+                
+                // Update mobile menu brand text if menu is open
+                const brandText = document.querySelector('.mobile-menu-brand .brand-text');
+                if (brandText && mobileMenu.classList.contains('active')) {
+                    brandText.textContent = 'Bold Flavor. Zero Apologies.';
+                }
+            }
+            
+            // Update flavor subtitle with enhanced animation
+            flavorSubtitle.style.opacity = '0';
+            flavorSubtitle.style.transform = 'translateY(30px) scale(0.9)';
+            
+            setTimeout(() => {
+                flavorSubtitle.textContent = flavor;
+                flavorSubtitle.style.opacity = '1';
+                flavorSubtitle.style.transform = 'translateY(0) scale(1)';
+            }, 300);
+            
+            // Update indicators
+            document.querySelectorAll('.flavor-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            
+            // Generate themed particles
+            generateThemedParticles();
+            
+            // Update lifestyle visual
+            updateLifestyleVisual(theme, isLED);
+            
+            // Add personality-based body animation (simplified)
+            // Temporarily disabled animation reset to prevent page collapse
+            // body.style.animation = 'none';
+            // setTimeout(() => {
+            //     body.style.animation = 'rebelGradientShift 6s ease-in-out infinite';
+            // }, 50);
+        }
+
+        function updateLifestyleVisual(theme, isLED) {
+            const lifestyleElement = document.getElementById('heroLifestyle');
+            const lifestyleContainer = lifestyleElement.querySelector('.lifestyle-container');
+            const lifestyleTitle = lifestyleElement.querySelector('.lifestyle-title');
+            const lifestyleSubtitle = lifestyleElement.querySelector('.lifestyle-subtitle');
+            
+            // Reset previous theme classes
+            lifestyleElement.classList.remove('theme-active', 'theme-secondary');
+            
+            if (theme === 'strawberry' || isLED) {
+                // Primary display for strawberry or LED mode
+                lifestyleElement.classList.add('theme-active');
+                lifestyleElement.style.opacity = '1';
+                lifestyleElement.style.transform = 'translateX(0) translateY(0) rotate(-2deg) scale(1)';
+                
+                if (isLED) {
+                    lifestyleTitle.textContent = 'Electric Vibes';
+                    lifestyleSubtitle.textContent = 'Light up the night';
+                } else {
+                    lifestyleTitle.textContent = 'This is Plop Energy';
+                    lifestyleSubtitle.textContent = 'Real moments, real attitude';
+                }
+            } else {
+                // Secondary display for other flavors
+                lifestyleElement.classList.add('theme-secondary');
+                lifestyleElement.style.opacity = '0.4';
+                lifestyleElement.style.transform = 'translateX(30px) translateY(20px) rotate(-5deg) scale(0.9)';
+                
+                lifestyleTitle.textContent = 'Feel The Energy';
+                lifestyleSubtitle.textContent = 'Every flavor has attitude';
+            }
+        }
+
+        function generateThemedParticles() {
+            // Remove existing dynamic particles
+            document.querySelectorAll('.particle[data-dynamic="true"]').forEach(particle => {
+                particle.remove();
+            });
+            
+            const isLEDMode = body.classList.contains('led-mode');
+            const particleCount = isLEDMode ? 8 : 4;
+            
+            // Add new themed particles with personality
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.setAttribute('data-dynamic', 'true');
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = (Math.random() * 25 + 15) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                
+                // LED-specific particle effects
+                if (isLEDMode) {
+                    particle.style.background = `radial-gradient(circle, var(--accent-color), transparent)`;
+                    particle.style.boxShadow = `0 0 20px var(--accent-color)`;
+                    particle.style.animation = `rebelParticle ${Math.random() * 3 + 2}s ease-in-out infinite, ledGlowPulse ${Math.random() * 2 + 1}s ease-in-out infinite`;
+                }
+                
+                document.body.appendChild(particle);
+                
+                // Remove after animation cycle
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 15000);
+            }
+        }
+
+        // Enhanced navigation with personality feedback
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            updateSlide(currentSlide - 1);
+            // Add button feedback
+            document.getElementById('prevBtn').style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                document.getElementById('prevBtn').style.transform = '';
+            }, 150);
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            updateSlide(currentSlide + 1);
+            // Add button feedback
+            document.getElementById('nextBtn').style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                document.getElementById('nextBtn').style.transform = '';
+            }, 150);
+        });
+
+        // Enhanced flavor dots interaction
+        document.querySelectorAll('.flavor-dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                updateSlide(index);
+                // Add dot feedback
+                dot.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    dot.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Enhanced touch/swipe support with better feedback
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        const swiperContainer = document.querySelector('.swiper-container');
+
+        swiperContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            swiperContainer.style.transition = 'transform 0.1s ease';
+        });
+
+        swiperContainer.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            currentX = e.touches[0].clientX;
+            const deltaX = currentX - startX;
+            const currentTransform = -currentSlide * 100;
+            const newTransform = currentTransform + (deltaX / swiperContainer.offsetWidth) * 100;
+            swiperWrapper.style.transform = `translateX(${newTransform}%)`;
+        });
+
+        swiperContainer.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            
+            const deltaX = startX - currentX;
+            const threshold = 50;
+            
+            swiperContainer.style.transition = '';
+            
+            if (Math.abs(deltaX) > threshold) {
+                if (deltaX > 0) {
+                    updateSlide(currentSlide + 1);
+                } else {
+                    updateSlide(currentSlide - 1);
+                }
+            } else {
+                // Snap back to current slide
+                swiperWrapper.style.transform = `translateX(${-currentSlide * 100}%)`;
+            }
+            
+            isDragging = false;
+        });
+
+        // Enhanced mouse drag support
+        swiperContainer.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            isDragging = true;
+            swiperContainer.style.cursor = 'grabbing';
+            swiperContainer.style.transition = 'transform 0.1s ease';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            currentX = e.clientX;
+            const deltaX = currentX - startX;
+            const currentTransform = -currentSlide * 100;
+            const newTransform = currentTransform + (deltaX / swiperContainer.offsetWidth) * 100;
+            swiperWrapper.style.transform = `translateX(${newTransform}%)`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            
+            const deltaX = startX - currentX;
+            const threshold = 50;
+            
+            swiperContainer.style.transition = '';
+            
+            if (Math.abs(deltaX) > threshold) {
+                if (deltaX > 0) {
+                    updateSlide(currentSlide + 1);
+                } else {
+                    updateSlide(currentSlide - 1);
+                }
+            } else {
+                swiperWrapper.style.transform = `translateX(${-currentSlide * 100}%)`;
+            }
+            
+            isDragging = false;
+            swiperContainer.style.cursor = 'grab';
+        });
+
+        // Enhanced keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                updateSlide(currentSlide - 1);
+            } else if (e.key === 'ArrowRight') {
+                updateSlide(currentSlide + 1);
+            } else if (e.key >= '1' && e.key <= '5') {
+                updateSlide(parseInt(e.key) - 1);
+            }
+        });
+
+        
+
+        // CTA button enhancement
+        document.querySelector('.cta-btn').addEventListener('click', () => {
+            const btn = document.querySelector('.cta-btn');
+            btn.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                btn.style.transform = '';
+                // Here you could add navigation to a product page or modal
+                console.log('CTA clicked - Navigate to product selection');
+            }, 200);
+        });
+
+        // Initialize with enhanced particles
+        generateThemedParticles();
+
+        // Initialize lifestyle visual with strawberry theme
+        updateLifestyleVisual('strawberry', false);
+
+        // Lifestyle visual interactions
+        const heroLifestyle = document.getElementById('heroLifestyle');
+        if (heroLifestyle) {
+            heroLifestyle.addEventListener('click', () => {
+                if (heroLifestyle.classList.contains('theme-active')) {
+                    // Add a fun click animation
+                    heroLifestyle.style.transform = 'translateX(0) translateY(-10px) rotate(2deg) scale(1.05)';
+                    setTimeout(() => {
+                        heroLifestyle.style.transform = 'translateX(0) translateY(0) rotate(-2deg) scale(1)';
+                    }, 200);
+                    
+                    // Generate extra particles on click
+                    generateLifestyleParticles();
+                }
+            });
+        }
+
+        function generateLifestyleParticles() {
+            const colors = body.classList.contains('led-mode') 
+                ? ['var(--accent-color)', '#FF0040', '#00FFFF'] 
+                : ['var(--accent-color)', 'var(--glow-color)'];
+            
+            for (let i = 0; i < 6; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.setAttribute('data-dynamic', 'true');
+                particle.style.position = 'fixed';
+                particle.style.top = '30%';
+                particle.style.right = '15%';
+                particle.style.width = (Math.random() * 15 + 10) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.borderRadius = '50%';
+                particle.style.zIndex = '9999';
+                particle.style.pointerEvents = 'none';
+                particle.style.animation = `rebelParticle ${Math.random() * 2 + 1}s ease-out forwards`;
+                
+                // Random direction
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 100 + 50;
+                particle.style.setProperty('--end-x', Math.cos(angle) * distance + 'px');
+                particle.style.setProperty('--end-y', Math.sin(angle) * distance + 'px');
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 2000);
+            }
+        }
+
+        // Mobile Menu Functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function openMobileMenu() {
+            hamburger.classList.add('active');
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Generate menu particles
+            generateMobileMenuParticles();
+            
+            // Update menu brand text based on current mode
+            const brandText = document.querySelector('.mobile-menu-brand .brand-text');
+            if (body.classList.contains('led-mode')) {
+                brandText.textContent = 'Light Up. Stand Out.';
+            } else {
+                brandText.textContent = 'Bold Flavor. Zero Apologies.';
+            }
+        }
+
+        function closeMobileMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Remove menu particles
+            document.querySelectorAll('.mobile-menu-particle').forEach(particle => {
+                particle.remove();
+            });
+        }
+
+        function generateMobileMenuParticles() {
+            const particleCount = body.classList.contains('led-mode') ? 12 : 8;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'mobile-menu-particle';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = (Math.random() * 20 + 10) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                
+                if (body.classList.contains('led-mode')) {
+                    particle.style.background = `radial-gradient(circle, var(--accent-color), transparent)`;
+                    particle.style.boxShadow = `0 0 15px var(--accent-color)`;
+                }
+                
+                mobileMenu.appendChild(particle);
+            }
+        }
+
+        // Event Listeners for Mobile Menu
+        hamburger.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+        // Close menu when clicking nav links
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
+                // Smooth scroll to section
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Prevent body scroll when menu is open
+        mobileMenu.addEventListener('touchmove', (e) => {
+            if (mobileMenu.classList.contains('active')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Confidence stats animation on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bigNumbers = entry.target.querySelectorAll('.big-number');
+                    bigNumbers.forEach((num, index) => {
+                        setTimeout(() => {
+                            num.style.animation = 'none';
+                            num.style.animation = 'countUp 1.5s ease-out forwards';
+                        }, index * 200);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(document.querySelector('.social-proof'));
+
+        // Add count-up animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes countUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px) scale(0.5);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Lazy-load and autoplay lifestyle videos on view
+        const lazyVideos = Array.from(document.querySelectorAll('.lazy-video'));
+        if (lazyVideos.length) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target;
+                    const source = video.querySelector('source');
+                    if (entry.isIntersecting) {
+                        if (source && !source.getAttribute('src')) {
+                            source.setAttribute('src', source.getAttribute('data-src'));
+                            video.load();
+                        }
+                        // Attempt autoplay when visible
+                        video.play().catch(() => {/* ignore autoplay block */});
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            lazyVideos.forEach(v => videoObserver.observe(v));
+        }
+    </script>
+</body>
+</html>

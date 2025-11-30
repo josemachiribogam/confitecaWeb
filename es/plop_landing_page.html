@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plop! - No Attention, No Attraction</title>
-    <link rel="icon" type="image/png" href="Assets/plop/plop_logo/plop_logo.png">
+    <title>Plop! - Sin atención no hay atracción</title>
+    <link rel="icon" type="image/png" href="../Assets/plop/plop_logo/plop_logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/plop.min.css">
+    <link rel="stylesheet" href="../css/plop.min.css">
     <style>
         /* Mobile-only: split hero into top (text) and bottom (lifestyle) halves */
         @media (max-width: 768px) {
@@ -66,6 +66,43 @@
                 padding-right: 5%;
             }
         }
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-left: 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .language-toggle a {
+            text-decoration: none;
+            color: var(--electric-pink, #ff3fae);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 999px;
+            padding: 0.2rem 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .language-toggle a:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255,255,255,0.7);
+        }
+        .language-toggle a.active {
+            background: linear-gradient(135deg, #ff5f94, #ffb347);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 18px rgba(255, 95, 148, 0.4);
+        }
+        .language-toggle span {
+            color: rgba(255,255,255,0.6);
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .language-toggle {
+                display: none;
+            }
+        }
     </style>
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -87,18 +124,23 @@
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">
-                <img src="Assets/_optimized/plop/plop_logo.webp" alt="Plop!" width="120" height="120" loading="lazy" decoding="async" srcset="Assets/_optimized/plop/plop_logo.webp 120w, Assets/_optimized/plop/plop_logo.webp 240w" sizes="(max-width: 768px) 100px, 120px" />
+                <img src="../Assets/_optimized/plop/plop_logo.webp" alt="Plop!" width="120" height="120" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/plop_logo.webp 120w, ../Assets/_optimized/plop/plop_logo.webp 240w" sizes="(max-width: 768px) 100px, 120px" />
             </a>
             <div class="mode-indicator" id="modeIndicator">
-                <span class="mode-text">REGULAR</span>
+                <span class="mode-text">MODO REGULAR</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#flavors">Flavors</a></li>
-                <li><a href="#vibe">Vibe</a></li>
-                <li><a href="#formats">Formats</a></li>
-                <li><a href="#confidence">Confidence</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#flavors">Sabores</a></li>
+                <li><a href="#vibe">Vibra</a></li>
+                <li><a href="#formats">Formatos</a></li>
+                <li><a href="#confidence">Confianza</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
+            <div class="language-toggle">
+                <a href="../en/plop_landing_page.html">EN</a>
+                <span>/</span>
+                <a href="plop_landing_page.html" class="active">ES</a>
+            </div>
             <div class="hamburger" id="hamburger">
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
@@ -111,14 +153,19 @@
     <div class="mobile-menu" id="mobileMenu">
         <button class="mobile-menu-close" id="mobileMenuClose">×</button>
         <ul class="mobile-nav-links">
-            <li><a href="#flavors" class="mobile-nav-link">Flavors</a></li>
-            <li><a href="#vibe" class="mobile-nav-link">Vibe</a></li>
-            <li><a href="#formats" class="mobile-nav-link">Formats</a></li>
-            <li><a href="#confidence" class="mobile-nav-link">Confidence</a></li>
-            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            <li><a href="#flavors" class="mobile-nav-link">Sabores</a></li>
+            <li><a href="#vibe" class="mobile-nav-link">Vibra</a></li>
+            <li><a href="#formats" class="mobile-nav-link">Formatos</a></li>
+            <li><a href="#confidence" class="mobile-nav-link">Confianza</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contacto</a></li>
         </ul>
         <div class="mobile-menu-brand">
-            <div class="brand-text">Bold Flavor. Zero Apologies.</div>
+            <div class="brand-text">Sabor audaz. Cero disculpas.</div>
+        </div>
+        <div class="language-toggle" style="justify-content: center; margin-top: 1.5rem; display: flex;">
+            <a href="../en/plop_landing_page.html">EN</a>
+            <span>/</span>
+            <a href="plop_landing_page.html" class="active">ES</a>
         </div>
     </div>
 
@@ -126,11 +173,11 @@
     <section class="hero">
         <div class="hero-content">
             <!-- <div class="brand-mantra">No Attention, No Attraction</div> -->
-            <div class="flavor-subtitle" id="flavorSubtitle">Sour Strawberry</div>
-            <h1>Bold Flavor. <br>Zero Apologies.</h1>
-            <div class="hero-subtitle">Confidence comes in a wrapper.</div>
+            <div class="flavor-subtitle" id="flavorSubtitle">Fresa ácida</div>
+            <h1>Sabor atrevido.<br>Cero disculpas.</h1>
+            <div class="hero-subtitle">La confianza viene envuelta.</div>
             <div class="confidence-boost">
-                Plop is the flavor-charged lollipop made for people who want to stand out — not fit in. Loud design, wild flavors, and attitude in every stick.
+                Plop es la paleta cargada de sabor para quienes quieren destacar, no encajar. Diseño ruidoso, sabores salvajes y actitud en cada palito.
             </div>
         </div>
         
@@ -138,11 +185,11 @@
                 <div class="hero-lifestyle" id="heroLifestyle">
             <div class="lifestyle-container">
                 <div class="lifestyle-glow"></div>
-                <img src="Assets/_optimized/plop/plop_fresa_lifestyle.webp" alt="Plop Strawberry Lifestyle" class="lifestyle-image" width="508" height="638" loading="lazy" decoding="async" />
+                <img src="../Assets/_optimized/plop/plop_fresa_lifestyle.webp" alt="Plop Strawberry Lifestyle" class="lifestyle-image" width="508" height="638" loading="lazy" decoding="async" />
                 <div class="lifestyle-overlay">
                     <div class="lifestyle-text">
-                        <div class="lifestyle-title">This is Plop Energy</div>
-                        <div class="lifestyle-subtitle">Real moments, real attitude</div>
+                        <div class="lifestyle-title">Esto es energía Plop</div>
+                        <div class="lifestyle-subtitle">Momentos reales, actitud real</div>
                     </div>
                 </div>
             </div>
@@ -152,182 +199,182 @@
     <!-- Product Swiper -->
     <section class="swiper-section" id="flavors">
         <div class="section-header">
-            <h2 class="section-title">Choose Your Personality</h2>
-            <p class="section-subtitle">Every flavor tells a story. What's yours?</p>
+            <h2 class="section-title">Elige tu personalidad</h2>
+            <p class="section-subtitle">Cada sabor cuenta una historia. ¿Cuál es la tuya?</p>
         </div>
         
         <div class="swiper-container">
             <div class="swiper-wrapper" id="swiperWrapper">
                 <!-- Strawberry -->
-                <div class="swiper-slide" data-theme="strawberry" data-flavor="Sour Strawberry">
+                <div class="swiper-slide" data-theme="strawberry" data-flavor="Fresa Ácida">
                     <div class="product-card strawberry-animation">
                         <div class="product-image">
-                            <img src="Assets/_optimized/plop/GP FRESA.webp" alt="Sour Strawberry Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="Assets/_optimized/plop/GP FRESA.webp 180w, Assets/_optimized/plop/GP FRESA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/GP FRESA.webp" alt="Paletas Plop sabor fresa ácida" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP FRESA.webp 180w, ../Assets/_optimized/plop/GP FRESA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
                         </div>
-                        <h3 class="product-name">Sour Strawberry</h3>
-                        <div class="product-attitude">The Passionate</div>
+                        <h3 class="product-name">Fresa Ácida</h3>
+                        <div class="product-attitude">La Apasionada</div>
                         <p class="product-description">
-                            For those who live intensely. An explosion of red energy that screams "here I am" 
-                            without asking permission. Perfect for moments when you need everyone to turn and look.
+                            Para quienes viven intensamente. Una explosión de energía roja que grita “aquí estoy”
+                            sin pedir permiso. Perfecta para los momentos en los que necesitas que todos giren a verte.
                         </p>
                             <div class="flavor-stats">
                                 <div class="stat">
                                 <span class="stat-value">120/10</span>
-                                    <span class="stat-label">Intensity</span>
+                                    <span class="stat-label">Intensidad</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">130/10</span>
-                                    <span class="stat-label">Attitude</span>
+                                    <span class="stat-label">Actitud</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">115/10</span>
-                                    <span class="stat-label">Rebellion</span>
+                                    <span class="stat-label">Rebeldía</span>
                                 </div>
                             </div>
                     </div>
                 </div>
 
                 <!-- Grape -->
-                <div class="swiper-slide" data-theme="grape" data-flavor="Intense Grape">
+                <div class="swiper-slide" data-theme="grape" data-flavor="Uva Intensa">
                     <div class="product-card grape-animation">
                         <div class="product-image">
-                            <img src="Assets/_optimized/plop/GP UVA.webp" alt="Intense Grape Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="Assets/_optimized/plop/GP UVA.webp 180w, Assets/_optimized/plop/GP UVA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/GP UVA.webp" alt="Paletas Plop sabor uva intensa" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP UVA.webp 180w, ../Assets/_optimized/plop/GP UVA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
                         </div>
-                        <h3 class="product-name">Intense Grape</h3>
-                        <div class="product-attitude">The Mysterious</div>
+                        <h3 class="product-name">Uva Intensa</h3>
+                        <div class="product-attitude">La Misteriosa</div>
                         <p class="product-description">
-                            The flavor of those who observe and conquer. Deep, complex, with that rebellious elegance 
-                            that doesn't need to shout to be noticed. For those who prefer silent seduction.
+                            El sabor de quienes observan y conquistan. Profundo, complejo, con esa elegancia rebelde
+                            que no necesita gritar para ser notada. Para los que prefieren la seducción silenciosa.
                         </p>
                             <div class="flavor-stats">
                                 <div class="stat">
                                 <span class="stat-value">110/10</span>
-                                    <span class="stat-label">Intensity</span>
+                                    <span class="stat-label">Intensidad</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">115/10</span>
-                                    <span class="stat-label">Attitude</span>
+                                    <span class="stat-label">Actitud</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">140/10</span>
-                                    <span class="stat-label">Mystery</span>
+                                    <span class="stat-label">Misterio</span>
                                 </div>
                             </div>
                     </div>
                 </div>
 
                 <!-- Green Apple -->
-                <div class="swiper-slide" data-theme="green-apple" data-flavor="Green Apple">
+                <div class="swiper-slide" data-theme="green-apple" data-flavor="Manzana Verde">
                     <div class="product-card apple-animation">
                         <div class="product-image">
-                            <img src="Assets/_optimized/plop/GP MANZANA.webp" alt="Green Apple Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="Assets/_optimized/plop/GP MANZANA.webp 180w, Assets/_optimized/plop/GP MANZANA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/GP MANZANA.webp" alt="Paletas Plop sabor manzana verde" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP MANZANA.webp 180w, ../Assets/_optimized/plop/GP MANZANA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
                         </div>
-                        <h3 class="product-name">Green Apple</h3>
-                        <div class="product-attitude">The Innovator</div>
+                        <h3 class="product-name">Manzana Verde</h3>
+                        <div class="product-attitude">La Innovadora</div>
                         <p class="product-description">
-                            Fresh, disruptive, always one step ahead. It's the flavor of those who set trends 
-                            and don't follow rules. For moments when you want to show your most authentic and original side.
+                            Fresca, disruptiva y siempre un paso adelante. El sabor de quienes marcan tendencia
+                            y no siguen reglas. Para cuando quieres mostrar tu lado más auténtico y original.
                         </p>
                             <div class="flavor-stats">
                                 <div class="stat">
                                 <span class="stat-value">105/10</span>
-                                    <span class="stat-label">Intensity</span>
+                                    <span class="stat-label">Intensidad</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">130/10</span>
-                                    <span class="stat-label">Freshness</span>
+                                    <span class="stat-label">Frescura</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">135/10</span>
-                                    <span class="stat-label">Originality</span>
+                                    <span class="stat-label">Originalidad</span>
                                 </div>
                             </div>
                     </div>
                 </div>
 
                 <!-- Orange -->
-                <div class="swiper-slide" data-theme="orange" data-flavor="Explosive Orange">
+                <div class="swiper-slide" data-theme="orange" data-flavor="Naranja Explosiva">
                     <div class="product-card orange-animation">
                         <div class="product-image">
-                            <img src="Assets/_optimized/plop/GP MARACUYA.webp" alt="Explosive Orange Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="Assets/_optimized/plop/GP MARACUYA.webp 180w, Assets/_optimized/plop/GP MARACUYA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/GP MARACUYA.webp" alt="Paletas Plop sabor naranja explosiva" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP MARACUYA.webp 180w, ../Assets/_optimized/plop/GP MARACUYA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
                         </div>
-                        <h3 class="product-name">Explosive Orange</h3>
-                        <div class="product-attitude">The Charismatic</div>
+                        <h3 class="product-name">Naranja Explosiva</h3>
+                        <div class="product-attitude">La Carismática</div>
                         <p class="product-description">
-                            Pure energy that's contagious. The life of the party, the one who lights up the room just by walking in. 
-                            For moments when your personality needs to be the center of attention.
+                            Energía pura que contagia. La vida de la fiesta, la que ilumina la sala apenas entra.
+                            Para cuando tu personalidad necesita ser el centro de atención.
                         </p>
                             <div class="flavor-stats">
                                 <div class="stat">
                                 <span class="stat-value">140/10</span>
-                                    <span class="stat-label">Energy</span>
+                                    <span class="stat-label">Energía</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">135/10</span>
-                                    <span class="stat-label">Charisma</span>
+                                    <span class="stat-label">Carisma</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">120/10</span>
-                                    <span class="stat-label">Fun</span>
+                                    <span class="stat-label">Diversión</span>
                                 </div>
                             </div>
                     </div>
                 </div>
 
                 <!-- Blue Razz -->
-                <div class="swiper-slide" data-theme="blue-razz" data-flavor="Electric Blue">
+                <div class="swiper-slide" data-theme="blue-razz" data-flavor="Azul Eléctrico">
                     <div class="product-card blue-animation">
                         <div class="product-image">
-                            <img src="Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY.webp" alt="Electric Blue Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY.webp 180w, Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY.webp" alt="Paletas Plop sabor azul eléctrico" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY.webp 180w, ../Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
                     </div>
-                        <h3 class="product-name">Electric Blue</h3>
-                        <div class="product-attitude">The Visionary</div>
+                        <h3 class="product-name">Azul Eléctrico</h3>
+                        <div class="product-attitude">La Visionaria</div>
                         <p class="product-description">
-                            Different by nature. The flavor that breaks expectations and creates new realities. 
-                            For those who aren't afraid to stand out by being completely unique and authentic.
+                            Diferente por naturaleza. El sabor que rompe expectativas y crea nuevas realidades.
+                            Para quienes no temen destacar siendo totalmente únicos y auténticos.
                         </p>
                             <div class="flavor-stats">
                                 <div class="stat">
                                 <span class="stat-value">130/10</span>
-                                    <span class="stat-label">Uniqueness</span>
+                                    <span class="stat-label">Singularidad</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">125/10</span>
-                                    <span class="stat-label">Impact</span>
+                                    <span class="stat-label">Impacto</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">145/10</span>
-                                    <span class="stat-label">Future</span>
+                                    <span class="stat-label">Futuro</span>
                                 </div>
                             </div>
                     </div>
                 </div>
 
                 <!-- LED Strawberry -->
-                <div class="swiper-slide" data-theme="led-strawberry" data-flavor="LED Strawberry" data-led="true">
+                <div class="swiper-slide" data-theme="led-strawberry" data-flavor="LED Fresa" data-led="true">
                     <div class="product-card led-animation">
                         <div class="product-image led-glow">
-                            <img src="Assets/_optimized/plop/plop-LED-SURTIDO_FRESA.webp" alt="LED Strawberry Plop with Glow Stick" width="180" height="180" loading="lazy" decoding="async" srcset="Assets/_optimized/plop/plop-LED-SURTIDO_FRESA.webp 180w, Assets/_optimized/plop/plop-LED-SURTIDO_FRESA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/plop-LED-SURTIDO_FRESA.webp" alt="Plop LED sabor fresa con glow stick" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/plop-LED-SURTIDO_FRESA.webp 180w, ../Assets/_optimized/plop/plop-LED-SURTIDO_FRESA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
                             <div class="led-effect"></div>
                         </div>
                         <h3 class="product-name">LED Strawberry</h3>
-                        <div class="product-attitude">The Club Rebel</div>
+                        <div class="product-attitude">La rebelde del club</div>
                         <p class="product-description">
-                            Light up the night with glow stick power! Explosive strawberry flavor that comes with a LED stick. 
-                            Perfect for parties, festivals, and making every moment electric. YEAH!
+                            Prende la noche con poder neón. Sabor fresa explosivo que incluye glow stick.
+                            Perfecto para fiestas, festivales y momentos que merecen vibrar. ¡YEAH!
                         </p>
                             <div class="flavor-stats">
                                 <div class="stat">
                                 <span class="stat-value">150/10</span>
-                                    <span class="stat-label">Glow Power</span>
+                                    <span class="stat-label">Poder brillante</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">145/10</span>
-                                    <span class="stat-label">Party Vibe</span>
+                                    <span class="stat-label">Vibra fiestera</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">135/10</span>
-                                    <span class="stat-label">Electric</span>
+                                    <span class="stat-label">Electricidad</span>
                                 </div>
                             </div>
                     </div>
@@ -337,27 +384,27 @@
                 <div class="swiper-slide" data-theme="led-blue" data-flavor="LED Cereza Blue" data-led="true">
                     <div class="product-card led-animation">
                         <div class="product-image led-glow">
-                            <img src="Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY.webp" alt="LED Cereza Blue Plop with Glow Stick" width="180" height="180" loading="lazy" decoding="async" srcset="Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY.webp 180w, Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY.webp" alt="Plop LED sabor cereza blue con glow stick" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY.webp 180w, ../Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
                             <div class="led-effect"></div>
                         </div>
                         <h3 class="product-name">LED Cereza Blue</h3>
-                        <div class="product-attitude">The Neon Legend</div>
+                        <div class="product-attitude">La leyenda neón</div>
                         <p class="product-description">
-                            Cherry blueberry fusion with electric blue glow! The ultimate party accessory that tastes as wild as it looks. 
-                            Designed for the dance floor, concerts, and unforgettable nights. OMG!
+                            Fusión de cereza y arándano con brillo azul eléctrico. El accesorio definitivo que sabe tan salvaje como luce.
+                            Diseñado para la pista, los conciertos y las noches inolvidables. ¡OMG!
                         </p>
                             <div class="flavor-stats">
                                 <div class="stat">
                                 <span class="stat-value">150/10</span>
-                                    <span class="stat-label">Neon Power</span>
+                                    <span class="stat-label">Poder neón</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">140/10</span>
-                                    <span class="stat-label">Festival Ready</span>
+                                    <span class="stat-label">Listo para festivales</span>
                                 </div>
                                 <div class="stat">
                                 <span class="stat-value">150/10</span>
-                                    <span class="stat-label">Legendary</span>
+                                    <span class="stat-label">Legendaria</span>
                                 </div>
                             </div>
                     </div>
@@ -387,8 +434,8 @@
     <section class="lifestyle-section" id="vibe">
         <div class="lifestyle-container">
             <div class="section-header">
-                <h2 class="section-title">This Is How We Plop</h2>
-                <p class="section-subtitle">Real moments, real attitude, real you. See the Plop energy in action.</p>
+                <h2 class="section-title">Así se vive Plop</h2>
+                <p class="section-subtitle">Momentos reales, actitud real, tú al máximo. Mira la energía Plop en acción.</p>
             </div>
             
             <div class="videos-grid">
@@ -396,11 +443,11 @@
                     <div class="video-card">
                         <div class="video-container">
                             <video class="lazy-video" muted loop playsinline preload="metadata">
-                                <source data-src="Assets/plop/plop_lifestyle_videos/GP FRESA LIKE A 10seg VERTICAL.mp4" type="video/mp4">
+                                <source data-src="../Assets/plop/plop_lifestyle_videos/GP FRESA LIKE A 10seg VERTICAL.mp4" type="video/mp4">
                             </video>
                             <div class="video-overlay">
-                                <div class="video-title">Strawberry Vibes</div>
-                                <div class="video-subtitle">When you need that passionate energy • Click to see more on TikTok</div>
+                                <div class="video-title">Vibras de fresa</div>
+                                <div class="video-subtitle">Cuando necesitas esa energía apasionada • Haz clic para ver más en TikTok</div>
                             </div>
                         </div>
                     </div>
@@ -410,11 +457,11 @@
                     <div class="video-card">
                         <div class="video-container">
                             <video class="lazy-video" muted loop playsinline preload="metadata">
-                                <source data-src="Assets/plop/plop_lifestyle_videos/GP CEREZA ACIDA ROMPE D 10seg  VERTICAL.mp4" type="video/mp4">
+                                <source data-src="../Assets/plop/plop_lifestyle_videos/GP CEREZA ACIDA ROMPE D 10seg  VERTICAL.mp4" type="video/mp4">
                             </video>
                             <div class="video-overlay">
-                                <div class="video-title">Break The Rules</div>
-                                <div class="video-subtitle">Sour cherry attitude that can't be ignored • Click to see more on TikTok</div>
+                                <div class="video-title">Rompe las reglas</div>
+                                <div class="video-subtitle">Actitud de cereza ácida imposible de ignorar • Haz clic para ver más en TikTok</div>
                             </div>
                         </div>
                     </div>
@@ -424,11 +471,11 @@
                     <div class="video-card">
                         <div class="video-container">
                             <video class="lazy-video" muted loop playsinline preload="metadata">
-                                <source data-src="Assets/plop/plop_lifestyle_videos/PLOP_VIDEO_02_v3.mp4" type="video/mp4">
+                                <source data-src="../Assets/plop/plop_lifestyle_videos/PLOP_VIDEO_02_v3.mp4" type="video/mp4">
                             </video>
                             <div class="video-overlay">
-                                <div class="video-title">Pure Plop Energy</div>
-                                <div class="video-subtitle">This is what being yourself looks like • Click to see more on TikTok</div>
+                                <div class="video-title">Energía Plop pura</div>
+                                <div class="video-subtitle">Así se ve ser tú mismx • Haz clic para ver más en TikTok</div>
                             </div>
                         </div>
                     </div>
@@ -436,30 +483,30 @@
             </div>
             
             <div class="lifestyle-cta">
-                <p class="lifestyle-message">Ready to own your moment? Follow us on TikTok for more!</p>
+                <p class="lifestyle-message">¿Listx para adueñarte del momento? Síguenos en TikTok para más.</p>
             </div>
         </div>
     </section>
 
     <!-- Social Proof Section -->
     <section class="social-proof" id="confidence">
-        <h2>The Power Of Being Yourself</h2>
+        <h2>El poder de ser tú mismx</h2>
         <div class="confidence-stats">
             <div class="confidence-stat">
                 <span class="big-number">120%</span>
-                <span class="stat-text">Feel More Like Themselves</span>
+                <span class="stat-text">Se sienten más auténticxs</span>
             </div>
             <div class="confidence-stat">
                 <span class="big-number">130%</span>
-                <span class="stat-text">Spark More Conversations</span>
+                <span class="stat-text">Provocan más conversaciones</span>
             </div>
             <div class="confidence-stat">
                 <span class="big-number">125%</span>
-                <span class="stat-text">Express Themselves Authentically</span>
+                <span class="stat-text">Se expresan con autenticidad</span>
             </div>
             <div class="confidence-stat">
                 <span class="big-number">140%</span>
-                <span class="stat-text">Recommend The Experience</span>
+                <span class="stat-text">Recomiendan la experiencia</span>
             </div>
         </div>
     </section>
@@ -468,100 +515,100 @@
     <section class="display-formats-section" id="formats">
         <div class="display-container">
             <div class="section-header">
-                <h2 class="section-title">Choose Your Display Style</h2>
-                <p class="section-subtitle">From retail displays to grab-and-go bags, Plop adapts to every sales environment and moment.</p>
+                <h2 class="section-title">Elige tu estilo de exhibición</h2>
+                <p class="section-subtitle">Desde exhibidores de mostrador hasta fundas on-the-go, Plop se adapta a cada entorno y momento de venta.</p>
             </div>
             
             <div class="display-grid">
                 <div class="display-card">
                     <div class="display-image">
-                        <img src="Assets/_optimized/plop/GP-DISPLAY-CERRADO-V1-Current-View.webp" alt="Plop Display Box - Perfect for Retail" width="1200" height="1200" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/GP-DISPLAY-CERRADO-V1-Current-View.webp" alt="Display Plop perfecto para retail" width="1200" height="1200" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">Retail Display Box</h3>
-                    <p class="display-description">Eye-catching counter displays that demand attention. Perfect for convenience stores, pharmacies, and impulse purchases.</p>
+                    <h3 class="display-title">Display de mostrador</h3>
+                    <p class="display-description">Exhibidores llamativos que exigen atención. Perfectos para tiendas de conveniencia, farmacias y compras por impulso.</p>
                     <div class="display-features">
-                        <span class="feature-tag">High Visibility</span>
-                        <span class="feature-tag">Easy Access</span>
+                        <span class="feature-tag">Alta visibilidad</span>
+                        <span class="feature-tag">Acceso rápido</span>
                     </div>
                 </div>
 
                 <div class="display-card">
                     <div class="display-image">
-                        <img src="Assets/_optimized/plop/GP-FUNDA-SURTIDO.webp" alt="Mixed Flavor Bags - Variety in Every Pack" width="833" height="1200" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/GP-FUNDA-SURTIDO.webp" alt="Fundas surtidas - Variedad en cada pack" width="833" height="1200" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">Mixed Flavor Bags</h3>
-                    <p class="display-description">Variety packs with all your favorite flavors. Can't decide? Get them all and let your mood choose.</p>
+                    <h3 class="display-title">Fundas surtidas</h3>
+                    <p class="display-description">Packs de variedad con todos tus sabores favoritos. ¿No puedes decidir? Llévalos todos y deja que tu mood escoja.</p>
                     <div class="display-features">
-                        <span class="feature-tag">All Flavors</span>
-                        <span class="feature-tag">Great Value</span>
+                        <span class="feature-tag">Todos los sabores</span>
+                        <span class="feature-tag">Gran valor</span>
                     </div>
                 </div>
 
                 <div class="display-card">
                     <div class="display-image">
-                        <img src="Assets/_optimized/plop/funda-fresa.webp" alt="Individual Flavor Bags - Pure Strawberry Power" width="1012" height="944" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/funda-fresa.webp" alt="Fundas mono-sabor - Poder fresa" width="1012" height="944" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">Single Flavor Bags</h3>
-                    <p class="display-description">When you know exactly what you want. Pure, concentrated flavor experience for the dedicated.</p>
+                    <h3 class="display-title">Fundas mono-sabor</h3>
+                    <p class="display-description">Para cuando sabes exactamente lo que quieres. Experiencia pura y concentrada para fans dedicadxs.</p>
                     <div class="display-features">
-                        <span class="feature-tag">Flavor Focus</span>
-                        <span class="feature-tag">Bulk Option</span>
+                        <span class="feature-tag">Foco en sabor</span>
+                        <span class="feature-tag">Opción al por mayor</span>
                     </div>
                 </div>
 
                 <div class="display-card led-exclusive">
                     <div class="display-image">
-                        <img src="Assets/_optimized/plop/LED-PRINT-display.webp" alt="LED Display - Light Up the Night" width="1175" height="1200" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/LED-PRINT-display.webp" alt="Display LED - Ilumina la noche" width="1175" height="1200" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">LED Night Display</h3>
-                    <p class="display-description">Special LED displays for clubs, festivals, and night events. When regular displays aren't electric enough.</p>
+                    <h3 class="display-title">Display LED nocturno</h3>
+                    <p class="display-description">Displays con LED para clubs, festivales y eventos nocturnos. Cuando un exhibidor normal no es lo suficientemente eléctrico.</p>
                     <div class="display-features">
-                        <span class="feature-tag">Party Ready</span>
-                        <span class="feature-tag">Glow Power</span>
+                        <span class="feature-tag">Listo para la fiesta</span>
+                        <span class="feature-tag">Poder glow</span>
                     </div>
                 </div>
 
                 <div class="display-card">
                     <div class="display-image">
-                        <img src="Assets/_optimized/plop/GP-SHAKE-FUNDA.webp" alt="Shake Series - Mix It Up" width="833" height="1200" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/GP-SHAKE-FUNDA.webp" alt="Shake Series - Mezcla premium" width="833" height="1200" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">Shake Series Packs</h3>
-                    <p class="display-description">Our premium shake flavors in convenient grab bags. For when you want to level up your flavor game.</p>
+                    <h3 class="display-title">Packs Shake Series</h3>
+                    <p class="display-description">Nuestros sabores premium tipo shake en fundas prácticas. Para cuando quieres subir el nivel de sabor.</p>
                     <div class="display-features">
-                        <span class="feature-tag">Premium Line</span>
-                        <span class="feature-tag">Unique Flavors</span>
+                        <span class="feature-tag">Línea premium</span>
+                        <span class="feature-tag">Sabores únicos</span>
                     </div>
                 </div>
 
                 <div class="display-card">
                     <div class="display-image">
-                        <img src="Assets/_optimized/plop/GP_MARACUYA 23.webp" alt="Individual Units - Single Serve Power" width="921" height="1200" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/GP_MARACUYA 23.webp" alt="Unidades individuales - Poder instantáneo" width="921" height="1200" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">Individual Units</h3>
-                    <p class="display-description">Single serves for spontaneous moments. When you want that instant boost right now.</p>
+                    <h3 class="display-title">Unidades individuales</h3>
+                    <p class="display-description">Porciones individuales para momentos espontáneos. Cuando quieres ese boost al instante.</p>
                     <div class="display-features">
-                        <span class="feature-tag">Impulse Buy</span>
-                        <span class="feature-tag">Instant Gratification</span>
+                        <span class="feature-tag">Compra impulso</span>
+                        <span class="feature-tag">Gratificación instantánea</span>
                     </div>
                 </div>
             </div>
 
             <div class="display-cta">
-                <h3>Ready to Stock Plop?</h3>
-                <p>Multiple formats mean maximum sales opportunities. Let's talk about what works best for your space.</p>
-                <button class="cta-btn">Get Stocking Info</button>
+                <h3>¿Listx para exhibir Plop?</h3>
+                <p>Múltiples formatos significan máximas oportunidades. Hablemos de lo que mejor funciona en tu espacio.</p>
+                <button class="cta-btn">Quiero información</button>
             </div>
         </div>
     </section>
 
     <!-- Enhanced CTA Section -->
     <section class="cta-section">
-        <h2>Your Moment Is Now</h2>
+        <h2>Tu momento es ahora</h2>
         <div class="cta-subtitle">
-            Don't wait any longer to be the most authentic and magnetic version of yourself. 
-            Every flavor is a new opportunity to shine.
+            No esperes más para ser la versión más auténtica y magnética de ti. 
+            Cada sabor es una nueva oportunidad para brillar.
         </div>
-        <button class="cta-btn">Find Your Flavor</button>
+        <button class="cta-btn">Encuentra tu sabor</button>
     </section>
 
     <script>
@@ -609,42 +656,42 @@
             if (isLED) {
                 body.classList.add('led-mode');
                 // Update mode indicator
-                modeIndicator.querySelector('.mode-text').textContent = 'LED MODE';
+                modeIndicator.querySelector('.mode-text').textContent = 'MODO LED';
                 // Update hero text for LED experience
-                document.querySelector('h1').innerHTML = 'Light Up.<br>Stand Out.';
+                document.querySelector('h1').innerHTML = 'Enciende la noche.<br>Destaca.';
                 document.querySelector('.confidence-boost').innerHTML = 
-                    'Plop LED brings the party to life with glow stick power and explosive flavors. Made for the night owls, festival goers, and club rebels who want to be seen.';
+                    'Plop LED prende la fiesta con glow sticks y sabores explosivos. Perfecto para noctámbulxs, festivalerxs y club kids que quieren ser vistos.';
                 
                 // Update lifestyle section for LED mode
                 const lifestyleTitle = document.querySelector('.lifestyle-section .section-title');
                 const lifestyleSubtitle = document.querySelector('.lifestyle-section .section-subtitle');
-                if (lifestyleTitle) lifestyleTitle.textContent = 'Electric Nights & LED Lights';
-                if (lifestyleSubtitle) lifestyleSubtitle.textContent = 'When the sun goes down, the glow sticks come out. This is Plop LED energy in action.';
+                if (lifestyleTitle) lifestyleTitle.textContent = 'Noches eléctricas y luces LED';
+                if (lifestyleSubtitle) lifestyleSubtitle.textContent = 'Cuando cae el sol, salen los glow sticks. Así vibra la energía Plop LED.';
                 
                 // Update mobile menu brand text if menu is open
                 const brandText = document.querySelector('.mobile-menu-brand .brand-text');
                 if (brandText && mobileMenu.classList.contains('active')) {
-                    brandText.textContent = 'Light Up. Stand Out.';
+                    brandText.textContent = 'Enciende y destaca.';
                 }
             } else {
                 body.classList.remove('led-mode');
                 // Update mode indicator
-                modeIndicator.querySelector('.mode-text').textContent = 'REGULAR';
+                modeIndicator.querySelector('.mode-text').textContent = 'MODO REGULAR';
                 // Restore original hero text
-                document.querySelector('h1').innerHTML = 'Bold Flavor. <br>Zero Apologies.';
+                document.querySelector('h1').innerHTML = 'Sabor atrevido.<br>Cero disculpas.';
                 document.querySelector('.confidence-boost').innerHTML = 
-                    'Plop is the flavor-charged lollipop made for those who want to stand out — not fit in. Loud design, wild flavors, and attitude in every stick.';
+                    'Plop es la paleta cargada de sabor para quienes quieren destacar, no encajar. Diseño ruidoso, sabores salvajes y actitud en cada palito.';
                 
                 // Restore original lifestyle section
                 const lifestyleTitle = document.querySelector('.lifestyle-section .section-title');
                 const lifestyleSubtitle = document.querySelector('.lifestyle-section .section-subtitle');
-                if (lifestyleTitle) lifestyleTitle.textContent = 'This Is How We Plop';
-                if (lifestyleSubtitle) lifestyleSubtitle.textContent = 'Real moments, real attitude, real you. See the Plop energy in action.';
+                if (lifestyleTitle) lifestyleTitle.textContent = 'Así se vive Plop';
+                if (lifestyleSubtitle) lifestyleSubtitle.textContent = 'Momentos reales, actitud real. Mira la energía Plop en acción.';
                 
                 // Update mobile menu brand text if menu is open
                 const brandText = document.querySelector('.mobile-menu-brand .brand-text');
                 if (brandText && mobileMenu.classList.contains('active')) {
-                    brandText.textContent = 'Bold Flavor. Zero Apologies.';
+                    brandText.textContent = 'Sabor audaz. Cero disculpas.';
                 }
             }
             
@@ -693,11 +740,11 @@
                 lifestyleElement.style.transform = 'translateX(0) translateY(0) rotate(-2deg) scale(1)';
                 
                 if (isLED) {
-                    lifestyleTitle.textContent = 'Electric Vibes';
-                    lifestyleSubtitle.textContent = 'Light up the night';
+                    lifestyleTitle.textContent = 'Vibras eléctricas';
+                    lifestyleSubtitle.textContent = 'Ilumina la noche';
                 } else {
-                    lifestyleTitle.textContent = 'This is Plop Energy';
-                    lifestyleSubtitle.textContent = 'Real moments, real attitude';
+                    lifestyleTitle.textContent = 'Esto es energía Plop';
+                    lifestyleSubtitle.textContent = 'Momentos reales, actitud real';
                 }
             } else {
                 // Secondary display for other flavors
@@ -705,8 +752,8 @@
                 lifestyleElement.style.opacity = '0.4';
                 lifestyleElement.style.transform = 'translateX(30px) translateY(20px) rotate(-5deg) scale(0.9)';
                 
-                lifestyleTitle.textContent = 'Feel The Energy';
-                lifestyleSubtitle.textContent = 'Every flavor has attitude';
+                lifestyleTitle.textContent = 'Siente la energía';
+                lifestyleSubtitle.textContent = 'Cada sabor tiene actitud';
             }
         }
 
@@ -963,9 +1010,9 @@
             // Update menu brand text based on current mode
             const brandText = document.querySelector('.mobile-menu-brand .brand-text');
             if (body.classList.contains('led-mode')) {
-                brandText.textContent = 'Light Up. Stand Out.';
+                brandText.textContent = 'Enciende y destaca.';
             } else {
-                brandText.textContent = 'Bold Flavor. Zero Apologies.';
+                brandText.textContent = 'Sabor audaz. Cero disculpas.';
             }
         }
 
