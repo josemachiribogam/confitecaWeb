@@ -41,22 +41,17 @@
     <div class="joy-particle" style="bottom: 30%; left: 30%; width: 20px; height: 20px; animation-delay: 5s;"></div>
 
     <!-- TRANSLUCENT NAVIGATION - AGOGO STYLE -->
-    <header style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(30px); border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; min-height: 100px; position: fixed; top: 0; width: 100%; z-index: 1000;">
+    <header style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(30px); border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; min-height: 100px; position: fixed; top: 0; width: 100%; z-index: 1000;">
         <!-- Logo -->
-        <img class="logo" src="../Assets/_optimized/agogo/agogo_logo-160.webp" alt="Agogó" width="160" height="80" srcset="../Assets/_optimized/agogo/agogo_logo-160.webp 160w, ../Assets/_optimized/agogo/agogo_logo-320.webp 320w" sizes="(max-width: 1024px) 120px, 160px" decoding="async" fetchpriority="high" style="height: 80px; filter: drop-shadow(0 0 20px var(--glow-color)); transition: all 0.3s ease;">
-        
-        <!-- Mode Indicator -->
-        <div id="modeIndicator" style="position: absolute; left: 50%; transform: translateX(-50%); background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; backdrop-filter: blur(15px); transition: all 0.3s ease;">
-            <span class="mode-text" style="font-size: 0.9rem; font-weight: 700; color: var(--text-primary); letter-spacing: 0.1em; text-transform: uppercase;">Felicidad original</span>
-        </div>
+        <a href="../index.html" class="logo-link"><img class="logo" src="../Assets/_optimized/agogo/agogo_logo-160.webp" alt="Agogó" width="160" height="80" srcset="../Assets/_optimized/agogo/agogo_logo-160.webp 160w, ../Assets/_optimized/agogo/agogo_logo-320.webp 320w" sizes="(max-width: 1024px) 120px, 160px" decoding="async" fetchpriority="high" style="height: 80px; filter: drop-shadow(0 0 20px var(--glow-color)); transition: all 0.3s ease;"></a>
         
         <!-- Desktop Links -->
-        <nav id="desktopLinks" style="display: flex; gap: 20px;">
+        <nav id="desktopLinks" style="flex: 1; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; order: 2;">
             <a href="#flavors" style="color: white; text-decoration: none; font-weight: 600;">Sabores</a>
             <a href="#joy" style="color: white; text-decoration: none; font-weight: 600;">Felicidad</a>
             <a href="#contact" style="color: white; text-decoration: none; font-weight: 600;">Contacto</a>
         </nav>
-        <div style="display: flex; gap: 6px; align-items: center; margin-left: 20px;">
+        <div style="display: flex; gap: 6px; align-items: center; margin-left: 20px; order: 4;">
             <a href="../en/agogo_landing_page.html" style="text-decoration: none; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 6px 14px; font-weight: 600;">EN</a>
             <a href="agogo_landing_page.html" style="text-decoration: none; color: #ffefba; border: 0; border-radius: 999px; padding: 6px 14px; font-weight: 700; background: linear-gradient(135deg, #ff6b35, #ffd700); box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);">ES</a>
         </div>
@@ -76,6 +71,7 @@
             cursor: pointer;
             backdrop-filter: blur(15px);
             transition: all 0.3s ease;
+            order: 5;
         ">
             <div style="width: 25px; height: 3px; background: white; border-radius: 2px; transition: all 0.3s ease;"></div>
             <div style="width: 25px; height: 3px; background: white; border-radius: 2px; transition: all 0.3s ease;"></div>
