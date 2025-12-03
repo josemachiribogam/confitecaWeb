@@ -7,6 +7,11 @@
     <style>
         :root {
             color-scheme: light dark;
+            --confiteca-red: #a00e3b;
+            --hot-pink: #ff5e99;
+            --peach: #ffb347;
+            --cream: #fff8f3;
+            --ink: #1f0a12;
         }
         body {
             font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -15,8 +20,14 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background: radial-gradient(circle at top, #fff5f5, #fde6ff);
-            color: #a00e3b;
+            background:
+                radial-gradient(1200px 800px at 50% -10%, rgba(255, 246, 248, 1), rgba(255, 230, 245, 0.9)),
+                repeating-linear-gradient(135deg,
+                    rgba(255, 94, 153, 0.06) 0px,
+                    rgba(255, 94, 153, 0.06) 12px,
+                    rgba(160, 14, 59, 0.05) 12px,
+                    rgba(160, 14, 59, 0.05) 24px);
+            color: var(--confiteca-red);
             text-align: center;
             padding: 2rem;
         }
@@ -27,14 +38,71 @@
             box-shadow: 0 30px 80px rgba(160, 14, 59, 0.15);
             max-width: 480px;
             width: min(100%, 480px);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(600px 300px at -20% -20%, rgba(255, 94, 153, 0.08), transparent 60%),
+                        radial-gradient(500px 260px at 120% 120%, rgba(255, 179, 71, 0.08), transparent 60%);
+            pointer-events: none;
+        }
+        .brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+        .brand-mark {
+            width: 64px;
+            height: 64px;
+            position: relative;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 35% 38%, var(--ink) 2px, transparent 3px),
+                radial-gradient(circle at 65% 38%, var(--ink) 2px, transparent 3px);
+            mask: radial-gradient(circle at 50% 50%, #000 72%, transparent 73%);
+        }
+        .brand-mark::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background:
+                conic-gradient(from 200deg, transparent 0 230deg, var(--confiteca-red) 230deg 310deg, transparent 310deg 360deg);
+            transform: translateZ(0);
+            animation: smilePulse 2.6s ease-in-out infinite;
+        }
+        @keyframes smilePulse {
+            0%, 100% { filter: drop-shadow(0 0 0 rgba(160, 14, 59, 0)); transform: scale(1); }
+            50% { filter: drop-shadow(0 6px 14px rgba(160, 14, 59, 0.25)); transform: scale(1.03); }
+        }
+        .brand-wordmark {
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--confiteca-red), var(--hot-pink) 50%, var(--peach));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         h1 {
             font-size: clamp(2rem, 4vw, 2.8rem);
             margin-bottom: 1rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--confiteca-red), var(--hot-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         p {
             font-size: 1.1rem;
             margin-bottom: 2rem;
+            color: rgba(31, 10, 18, 0.7);
         }
         .lang-links {
             display: flex;
@@ -43,29 +111,40 @@
             justify-content: center;
         }
         a {
-            background: linear-gradient(135deg, #ff5e99, #ffb347);
+            background: linear-gradient(135deg, var(--hot-pink), var(--peach));
             color: #fff;
             text-decoration: none;
             padding: 0.9rem 1.8rem;
             border-radius: 999px;
             font-weight: 600;
             letter-spacing: 0.04em;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            box-shadow: 0 8px 22px rgba(255, 94, 153, 0.25);
         }
         a:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 94, 153, 0.3);
+            box-shadow: 0 12px 28px rgba(255, 94, 153, 0.35);
+        }
+        .hint {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: rgba(31, 10, 18, 0.55);
         }
     </style>
 </head>
 <body>
     <div class="card">
+        <div class="brand" aria-hidden="true">
+            <div class="brand-mark"></div>
+            <div class="brand-wordmark">Confiteca</div>
+        </div>
         <h1>Confiteca is loading your experience…</h1>
         <p>Please select your preferred language if you are not redirected automatically.</p>
         <div class="lang-links">
             <a href="en/index.html">English / EN</a>
             <a href="es/index.html">Español / ES</a>
         </div>
+        <div class="hint">Auto-selecting based on your browser language</div>
     </div>
 
     <script>
