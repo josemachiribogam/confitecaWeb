@@ -1203,6 +1203,25 @@
             align-items: center;
             animation: ugcVideoAppear 0.6s ease-out;
         }
+        .ugc-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #FFD700;
+            background: rgba(0,0,0,0.7);
+            color: #FFD700;
+            font-size: 1.4rem;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 3;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        .ugc-close:hover {
+            background: rgba(255,215,0,0.15);
+        }
 
         .ugc-dramatic-header {
             font-family: 'Bungee', cursive;
@@ -2359,24 +2378,24 @@
         /* Product background images - apply to all screen sizes */
         .product-lollipop.fresa {
             background-image: image-set(
-                url('Assets/_optimized/superhyper/super-hyper-fresa-plop-lollipop-400.webp') 1x,
-                url('Assets/_optimized/superhyper/super-hyper-fresa-plop-lollipop-800.webp') 2x
+                url('../Assets/_optimized/superhyper/super-hyper-fresa-plop-lollipop-400.webp') 1x,
+                url('../Assets/_optimized/superhyper/super-hyper-fresa-plop-lollipop-800.webp') 2x
             );
             background-position: center center !important;
         }
 
         .product-lollipop.limon {
             background-image: image-set(
-                url('Assets/_optimized/superhyper/super-hyper-limon-hot-lollipop-plop-400.webp') 1x,
-                url('Assets/_optimized/superhyper/super-hyper-limon-hot-lollipop-plop-800.webp') 2x
+                url('../Assets/_optimized/superhyper/super-hyper-limon-hot-lollipop-plop-400.webp') 1x,
+                url('../Assets/_optimized/superhyper/super-hyper-limon-hot-lollipop-plop-800.webp') 2x
             );
             background-position: center center !important;
         }
 
         .product-lollipop.mango {
             background-image: image-set(
-                url('Assets/_optimized/superhyper/super-hyper-mango-hot-lollipop-plop-400.webp') 1x,
-                url('Assets/_optimized/superhyper/super-hyper-mango-hot-lollipop-plop-800.webp') 2x
+                url('../Assets/_optimized/superhyper/super-hyper-mango-hot-lollipop-plop-400.webp') 1x,
+                url('../Assets/_optimized/superhyper/super-hyper-mango-hot-lollipop-plop-800.webp') 2x
             );
             background-position: center center !important;
         }
@@ -2736,8 +2755,8 @@
                             <div class="corner-ornament bottom-left"></div>
                             <div class="corner-ornament bottom-right"></div>
                         </div>
-                        <video class="hero-video" muted loop playsinline preload="metadata">
-                            <source src="../Assets/superhiperacido/superhyper-lifestyle-videos/hall-of-fame-faces-super-hyper.mp4" type="video/mp4">
+                        <video class="hero-video" muted loop playsinline preload="metadata" autoplay>
+                            <source src="../Assets/superhiperacido/superhyper-lifestyle-videos/hall-of-fame-faces-super-hyper-22.mp4" type="video/mp4">
                         </video>
                         <div class="hero-overlay">
                             <div class="impact-effects">
@@ -2763,8 +2782,8 @@
                 <div class="fame-warriors">
                     <div class="warrior-card warrior-left" data-warrior="1">
                         <div class="warrior-frame">
-                            <video class="warrior-video" muted loop playsinline preload="metadata">
-                                <source src="../Assets/superhiperacido/superhyper-lifestyle-videos/hall-of-fame-faces-super-hyper-2.mp4" type="video/mp4">
+                            <video class="warrior-video" muted loop playsinline preload="metadata" autoplay>
+                                <source src="../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-girl.mp4" type="video/mp4">
                             </video>
                             <div class="warrior-overlay">
                                 <div class="warrior-effects">
@@ -2781,8 +2800,8 @@
                     
                     <div class="warrior-card warrior-right" data-warrior="2">
                         <div class="warrior-frame">
-                            <video class="warrior-video" muted loop playsinline preload="metadata">
-                                <source src="../Assets/superhiperacido/superhyper-lifestyle-videos/hall-of-fame-faces-superhyper-3.mp4" type="video/mp4">
+                            <video class="warrior-video" muted loop playsinline preload="metadata" autoplay>
+                                <source src="../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-guy.mp4" type="video/mp4">
                             </video>
                             <div class="warrior-overlay">
                                 <div class="warrior-effects">
@@ -2840,6 +2859,7 @@
     <!-- UGC Reaction Video Overlay -->
     <div class="ugc-reaction-overlay" id="ugcOverlay">
         <div class="ugc-video-container">
+            <button id="ugcClose" class="ugc-close" aria-label="Cerrar">×</button>
             <div class="ugc-dramatic-header" id="ugcHeader">Esto es lo que pasa cuando te atreves</div>
             <video class="ugc-video" id="ugcVideo" muted autoplay playsinline loop>
                 <source src="" type="video/mp4">
@@ -2859,14 +2879,14 @@
         // Product configurations for CALOR and ÁCIDO modes
         const productsByMode = {
             hot: [
-                { class: 'limon', flavor: 'LIME CALOR', image: 'Assets/superhiperacido/superhiperacido_product_photos/super-hyper-limon-hot-lollipop-plop.png' },
-                { class: 'mango', flavor: 'MANGO CALOR', image: 'Assets/superhiperacido/superhiperacido_product_photos/super-hyper-mango-hot-lollipop-plop.png' },
-                { class: 'fresa', flavor: 'STRAWBERRY CALOR', image: 'Assets/superhiperacido/superhiperacido_product_photos/super-hyper-fresa-plop-lollipop.png' }
+                { class: 'limon', flavor: 'LIME CALOR', image: '../Assets/superhiperacido/superhiperacido_product_photos/super-hyper-limon-hot-lollipop-plop.png' },
+                { class: 'mango', flavor: 'MANGO CALOR', image: '../Assets/superhiperacido/superhiperacido_product_photos/super-hyper-mango-hot-lollipop-plop.png' },
+                { class: 'fresa', flavor: 'STRAWBERRY CALOR', image: '../Assets/superhiperacido/superhiperacido_product_photos/super-hyper-fresa-plop-lollipop.png' }
             ],
             sour: [
-                { class: 'fresa', flavor: 'STRAWBERRY ÁCIDO', image: 'Assets/superhiperacido/superhiperacido_product_photos/super-hyper-fresa-plop-lollipop.png' },
-                { class: 'limon', flavor: 'LIME ÁCIDO', image: 'Assets/superhiperacido/superhiperacido_product_photos/super-hyper-limon-hot-lollipop-plop.png' },
-                { class: 'mango', flavor: 'MANGO ÁCIDO', image: 'Assets/superhiperacido/superhiperacido_product_photos/super-hyper-mango-hot-lollipop-plop.png' }
+                { class: 'fresa', flavor: 'STRAWBERRY ÁCIDO', image: '../Assets/superhiperacido/superhiperacido_product_photos/super-hyper-fresa-plop-lollipop.png' },
+                { class: 'limon', flavor: 'LIME ÁCIDO', image: '../Assets/superhiperacido/superhiperacido_product_photos/super-hyper-limon-hot-lollipop-plop.png' },
+                { class: 'mango', flavor: 'MANGO ÁCIDO', image: '../Assets/superhiperacido/superhiperacido_product_photos/super-hyper-mango-hot-lollipop-plop.png' }
             ]
         };
 
@@ -2962,8 +2982,8 @@
         function updateFavicon(mode) {
             const favicon = document.querySelector('link[rel="icon"]');
             const faviconPath = mode === 'hot' 
-                ? 'Assets/superhiperacido/superhiperacido_logo/superhyperhot-favicon.png'
-                : 'Assets/superhiperacido/superhiperacido_logo/superhyper-sour-favicon.png';
+                ? '../Assets/superhiperacido/superhiperacido_logo/superhyperhot-favicon.png'
+                : '../Assets/superhiperacido/superhiperacido_logo/superhyper-sour-favicon.png';
             
             if (favicon) {
                 favicon.href = faviconPath;
@@ -3004,13 +3024,13 @@
                     heroTitleLine2.textContent = 'FIRE';
                     heroTitleLine2.style.color = '#ff4500';
                     meterTitle.textContent = 'HEAT METER';
-                    logo.src = 'Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
+                    logo.src = '../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
                     updateFavicon('hot');
                 } else {
                     heroTitleLine2.textContent = 'ÁCIDO';
                     heroTitleLine2.style.color = '#00ffff';
                     meterTitle.textContent = 'ÁCIDO METER';
-                    logo.src = 'Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
+                    logo.src = '../Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
                     updateFavicon('sour');
                 }
                 
@@ -3061,12 +3081,12 @@
                     heroTitleLine2.textContent = 'FIRE';
                     heroTitleLine2.style.color = '#ff4500';
                     meterTitle.textContent = 'HEAT METER';
-                    logo.src = 'Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
+                    logo.src = '../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
                 } else {
                     heroTitleLine2.textContent = 'ÁCIDO';
                     heroTitleLine2.style.color = '#00ffff';
                     meterTitle.textContent = 'ÁCIDO METER';
-                    logo.src = 'Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
+                    logo.src = '../Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
                 }
                 
                 // Update product and challenge displays based on mode
@@ -3594,6 +3614,7 @@
                         max-width: 400px;
                         animation: popIn 0.6s ease-out;
                     ">
+                        <button aria-label="Cerrar" onclick="this.parentElement.parentElement.remove()" style="position:absolute; top:-16px; right:-16px; width:36px; height:36px; border-radius:50%; border:2px solid #FFD700; background:rgba(0,0,0,0.7); color:#FFD700; font-size:1rem; cursor:pointer;">×</button>
                         <h3 style="color: #FFD700; margin-bottom: 15px; font-size: 1.5rem;">${flavor}</h3>
                         <p style="margin-bottom: 20px; line-height: 1.4;">${flavorMessages[flavorClass]}</p>
                         <div style="margin-top: 20px;">
@@ -3699,21 +3720,21 @@
 
         // UGC Reaction Video System
         const ugcVideos = [
-            {
-                src: 'Assets/superhiperacido/superhyper-lifestyle-videos/super-hyper-reaction-ugc-1.mp4',
-                header: 'Esto es lo que pasa cuando te atreves',
-                footer: 'STILL THINK YOU CAN HANDLE IT?'
-            },
-            {
-                src: 'Assets/superhiperacido/superhyper-lifestyle-videos/super-hyper-reaction-ugc-2.mp4',
-                header: 'THE AFTERMATH OF EXTREMO',
-                footer: 'YOUR TURN TO FACE THE HEAT'
-            },
-            {
-                src: 'Assets/superhiperacido/superhyper-lifestyle-videos/super-hyper-reaction-ugc-3.mp4',
-                header: 'WITNESS THE POWER OF SHA',
-                footer: '¿TE ATREVES?'
-            }
+            { src: '../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-girl.mp4',
+              header: 'Esto es lo que pasa cuando te atreves',
+              footer: '¿SIGUES CREYENDO QUE PUEDES?' },
+            { src: '../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-girl 2.mp4',
+              header: 'Reacciones reales. Calor real.',
+              footer: '¿LO SOPORTAS?' },
+            { src: '../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-guy.mp4',
+              header: 'El después del extremo',
+              footer: 'TU TURNO DE ENFRENTAR EL CALOR' },
+            { src: '../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-guy2.mp4',
+              header: 'Sé testigo del poder de SHA',
+              footer: '¿TE ATREVES?' },
+            { src: '../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-guy3.mp4',
+              header: 'Reacciones reales, sin filtro',
+              footer: '¿LO SOPORTAS?' }
         ];
 
         const ugcOverlay = document.getElementById('ugcOverlay');
@@ -3734,10 +3755,6 @@
             // Show overlay with dramatic entrance
             ugcOverlay.classList.add('active');
             
-            // Auto-hide after video duration (assuming ~5-10 seconds)
-            setTimeout(() => {
-                hideUGCReaction();
-            }, 8000); // 8 seconds viewing time
         }
 
         function hideUGCReaction() {
@@ -3755,6 +3772,10 @@
             if (e.target === ugcOverlay) {
                 hideUGCReaction();
             }
+        });
+        document.getElementById('ugcClose').addEventListener('click', (e) => {
+            e.stopPropagation();
+            hideUGCReaction();
         });
 
         // Handle window resize for meter responsiveness
@@ -3977,6 +3998,10 @@
                                     heroVideo.play().catch(e => console.log('Auto-play failed:', e));
                                 }, 500);
                             }
+                            const warriorVideos = document.querySelectorAll('.warrior-video');
+                            warriorVideos.forEach((wv, idx) => {
+                                wv.play().catch(e => console.log('Warrior auto-play failed:', idx, e));
+                            });
                         } else {
                             // Section is out of view, pause all videos
                             const allVideos = document.querySelectorAll('.hero-video, .warrior-video');
