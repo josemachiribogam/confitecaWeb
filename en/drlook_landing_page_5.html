@@ -8742,7 +8742,8 @@
     </section>
     
     <script>
-                // Simple Lab Mode System
+        // Simple Lab Mode System
+        const isMobileDevice = window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768;
         let labModeActive = false;
         
         // EPIC LAB MODE TRANSFORMATION
@@ -8757,6 +8758,8 @@
             }
             
             isLabMode = true;
+            labModeActive = true;
+            const labLite = isMobileDevice;
             const labButton = document.getElementById('labToggle');
             
             console.log('🧪 ACTIVATING LAB MODE - PREPARE FOR TRANSFORMATION!');
@@ -8777,9 +8780,13 @@
             console.log('📄 Adding page transformation class...');
             document.body.classList.add('lab-transforming');
             
-            // 3. Generate explosion of lab particles
-            console.log('💥 Generating lab explosion...');
-            generateLabExplosion();
+            // 3. Generate explosion of lab particles (desktop/full experience only)
+            if (!labLite) {
+                console.log('💥 Generating lab explosion...');
+                generateLabExplosion();
+            } else {
+                console.log('💥 Skipping heavy explosion for mobile LAB LITE');
+            }
             
             // 4. Smooth scroll to hero section to see the transformation
             setTimeout(() => {
@@ -8801,9 +8808,13 @@
                 console.log('🎭 Transforming hero elements...');
                 transformHeroToLab();
                 
-                // 6. Add sound effect
-                console.log('🔊 Playing lab activation sound...');
-                playLabActivationSound();
+                // 6. Add sound effect (desktop only – mobile LAB LITE skips WebAudio)
+                if (!labLite) {
+                    console.log('🔊 Playing lab activation sound...');
+                    playLabActivationSound();
+                } else {
+                    console.log('🔊 Skipping activation sound for mobile LAB LITE');
+                }
                 
                 // 7. Show surprise message
                 console.log('💬 Showing lab activation message...');
@@ -8827,6 +8838,7 @@
         
         function deactivateLabMode() {
             isLabMode = false;
+            labModeActive = false;
             const labButton = document.getElementById('labToggle');
             
             console.log('🧪 Exiting lab mode...');
@@ -8989,18 +9001,27 @@
                 });
             }, 1200);
             
-            // Add floating lab particles around the page
-            setTimeout(() => {
-                createFloatingLabParticles();
-            }, 1200);
+            // Add floating lab particles around the page (desktop/full experience only)
+            if (!isMobileDevice) {
+                setTimeout(() => {
+                    createFloatingLabParticles();
+                }, 1200);
+            }
                     
             // Transform hero background
                     setTimeout(() => {
                 const hero = document.querySelector('.hero');
                 if (hero) {
-                    hero.style.background = 'linear-gradient(135deg, #000511, #001122, #001a33, #000f22, #001133)';
-                    hero.style.backgroundSize = '400% 400%';
-                    hero.style.animation = 'labModeGradient 8s ease infinite';
+                    if (isMobileDevice) {
+                        // Simpler, static background for LAB LITE on mobile
+                        hero.style.background = 'linear-gradient(135deg, #000511, #001122)';
+                        hero.style.backgroundSize = '';
+                        hero.style.animation = '';
+                    } else {
+                        hero.style.background = 'linear-gradient(135deg, #000511, #001122, #001a33, #000f22, #001133)';
+                        hero.style.backgroundSize = '400% 400%';
+                        hero.style.animation = 'labModeGradient 8s ease infinite';
+                    }
                 }
             }, 800);
         }
