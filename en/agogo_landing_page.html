@@ -16,6 +16,16 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Fredoka+One&display=swap"></noscript>
     <link rel="preload" as="style" href="../css/agogo.min.css" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/agogo.min.css"></noscript>
+
+    <style>
+        /* Make CTAs more compact on mobile so they fit cleanly */
+        @media (max-width: 768px) {
+            .cta-section .cta-btn,
+            .display-cta .cta-btn {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
     <script type="text/javascript">
         (function () {
             const CONSENT_KEY = 'cookies_consent';
