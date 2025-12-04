@@ -148,20 +148,6 @@
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="brand" aria-hidden="true">
-            <div class="brand-mark"></div>
-            <div class="brand-wordmark">Confiteca</div>
-        </div>
-        <h1>Confiteca is loading your experience…</h1>
-        <p>Please select your preferred language if you are not redirected automatically.</p>
-        <div class="lang-links">
-            <a href="en/index.html">English / EN</a>
-            <a href="es/index.html">Español / ES</a>
-        </div>
-        <div class="hint">Auto-selecting based on your browser language</div>
-    </div>
-
     <script>
         (function redirectByLanguage() {
             try {
@@ -178,7 +164,7 @@
                 const prefersSpanish = userLanguage.startsWith('es');
                 const targetLang = prefersSpanish ? 'es' : 'en';
 
-                url.pathname = `${basePath}${targetLang}/index.html`.replace(/\/+/g, '/');
+                url.pathname = `${basePath}${targetLang}/`.replace(/\/+/g, '/');
                 window.location.replace(url.toString());
             } catch (error) {
                 console.error('Language redirect failed', error);
