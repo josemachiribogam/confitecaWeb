@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política Integral de Gestión | Confiteca</title>
+    <link rel="icon" type="image/png" href="../Assets/confiteca/confiteca_logo/confiteca_smile_icon_square.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="../css/confiteca.min.css" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/confiteca.min.css"></noscript>
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="Política Integral del Sistema de Gestión de CONFITECA C.A. - Calidad, Seguridad Alimentaria, Medio Ambiente, Seguridad Ocupacional y Responsabilidad Social.">
+    <style>
+        :root {
+            --confiteca-red: #e63946;
+            --hot-pink: #ff006e;
+            --electric-yellow: #ffff00;
+            --lime-green: #8fff00;
+            --confiteca-blue: #1e88e5;
+            --deep-purple: #7209b7;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Space Grotesk', system-ui, sans-serif; 
+            background: #fafafa;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Floating Candy Elements */
+        .floating-candy {
+            position: fixed;
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.15;
+            animation: float-candy 8s ease-in-out infinite;
+        }
+
+        @keyframes float-candy {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-30px) rotate(90deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            75% { transform: translateY(-40px) rotate(270deg); }
+        }
+
+        /* Hero Header */
+        .policy-hero {
+            background: linear-gradient(135deg, #0d47a1, var(--confiteca-blue), #00acc1);
+            background-size: 300% 300%;
+            animation: gradient-shift 6s ease infinite;
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .policy-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.15)"/><circle cx="60" cy="70" r="2.5" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="80" r="1.8" fill="rgba(255,255,255,0.12)"/></svg>');
+        }
+
+        .hero-shapes {
+            position: absolute;
+            width: 100%; height: 100%;
+            top: 0; left: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50% 30% 70% 40%;
+            animation: morph 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 200px; height: 200px;
+            background: rgba(255,255,255,0.08);
+            top: -50px; right: -50px;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px; height: 150px;
+            background: rgba(143,255,0,0.1);
+            bottom: -30px; left: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 100px; height: 100px;
+            background: rgba(255,255,255,0.1);
+            top: 30%; left: 5%;
+            animation-delay: 4s;
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 50% 30% 70% 40%; transform: rotate(0deg) scale(1); }
+            50% { border-radius: 30% 60% 40% 70%; transform: rotate(180deg) scale(1.1); }
+        }
+
+        .policy-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .policy-hero p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--electric-yellow);
+            font-weight: 700;
+            font-style: italic;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Main Content */
+        .policy-container { 
+            max-width: 1000px; 
+            margin: -3rem auto 0;
+            padding: 0 1.5rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .policy-content {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .policy-content::before {
+            content: '🏭✨🌿';
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            opacity: 0.08;
+        }
+
+        /* Download Button */
+        .download-section {
+            background: linear-gradient(135deg, rgba(13,71,161,0.05) 0%, rgba(0,172,193,0.05) 100%);
+            border: 2px dashed rgba(13,71,161,0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .download-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #0d47a1, var(--confiteca-blue));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(13,71,161,0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(13,71,161,0.4);
+        }
+
+        .download-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Commitment Cards */
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .commitment-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .commitment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--card-accent, var(--confiteca-blue));
+        }
+
+        .commitment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-color: rgba(13,71,161,0.2);
+        }
+
+        .commitment-card.quality { --card-accent: #4caf50; }
+        .commitment-card.environment { --card-accent: #8bc34a; }
+        .commitment-card.safety { --card-accent: #ff9800; }
+        .commitment-card.security { --card-accent: #9c27b0; }
+        .commitment-card.social { --card-accent: #e91e63; }
+        .commitment-card.direction { --card-accent: var(--confiteca-blue); }
+
+        .commitment-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .commitment-card h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .commitment-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        
+        .policy-content h2 { 
+            font-size: 1.6rem; 
+            margin: 3rem 0 1.25rem; 
+            color: var(--text-primary);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .policy-content h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #0d47a1, var(--confiteca-blue));
+            border-radius: 2px;
+        }
+        
+        .policy-content h2:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Section dividers */
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, #0d47a1, var(--confiteca-blue), #00acc1, var(--lime-green), #4caf50);
+            border-radius: 2px;
+            margin: 3rem 0;
+            opacity: 0.3;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .intro-text strong {
+            color: var(--confiteca-blue);
+        }
+        
+        .section-header { display: none; }
+        
+        footer .footer-bottom a { 
+            color: var(--confiteca-red); 
+            font-weight: 600; 
+            text-decoration: none; 
+        }
+        
+        footer .footer-bottom a:hover { 
+            color: var(--hot-pink); 
+            text-decoration: underline; 
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .policy-hero {
+                padding: 7rem 1.5rem 4rem;
+            }
+            .policy-container { 
+                margin-top: -2rem;
+                padding: 0 1rem 3rem;
+            }
+            .policy-content {
+                padding: 2rem 1.5rem;
+                border-radius: 24px;
+            }
+            .policy-content h2 {
+                font-size: 1.3rem;
+            }
+            .commitment-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Candy Elements -->
+    <div class="floating-candy" style="top: 15%; left: 3%; animation-delay: 0s;">🏭</div>
+    <div class="floating-candy" style="top: 40%; right: 5%; animation-delay: 2s;">🌿</div>
+    <div class="floating-candy" style="bottom: 30%; left: 5%; animation-delay: 4s;">✨</div>
+    <div class="floating-candy" style="top: 70%; right: 8%; animation-delay: 6s;">🛡️</div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="../es/index.html"><img src="../Assets/confiteca/confiteca_logo/confiteca_logo.png" alt="Confiteca" class="logo"></a>
+            <ul class="nav-links">
+                <li><a href="../es/index.html#brands">Marcas</a></li>
+                <li><a href="../es/index.html#about">Nosotros</a></li>
+                <li><a href="../es/index.html#careers">Talento</a></li>
+                <li><a href="../es/index.html#contact">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="policy-hero">
+        <div class="hero-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <h1>Política Integral de Gestión</h1>
+        <p>CONFITECA C.A.</p>
+        <p class="hero-tagline">"Alegría al alcance de todos"</p>
+        <div class="hero-badge">📋 FR-0045D</div>
+    </header>
+
+    <main class="policy-container">
+        <article class="policy-content fade-in">
+            
+            <div class="download-section">
+                <p>📄 Descarga el documento oficial completo en formato PDF</p>
+                <a href="../privacy-policy/FR-0045D POLÍTICA INTEGRAL DEL SISTEMA DE GESTIÓN DE CONFITECA.pdf" class="download-btn" download>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Descargar PDF
+                </a>
+            </div>
+
+            <h2>🎯 Nuestro Compromiso</h2>
+            <p class="intro-text">
+                <strong>CONFITECA C.A.</strong> se compromete a mantener los más altos estándares en todos los aspectos de nuestra operación, garantizando calidad, seguridad y responsabilidad en cada uno de nuestros procesos.
+            </p>
+
+            <div class="section-divider"></div>
+
+            <h2>🏢 Áreas de Compromiso</h2>
+
+            <div class="commitment-grid">
+                <div class="commitment-card direction">
+                    <div class="commitment-icon">👔</div>
+                    <h3>Compromiso de la Dirección</h3>
+                    <p>Asignar los recursos económicos, tecnológicos y humanos competentes requeridos, con el fin de fortalecer los Sistemas de Gestión de la empresa.</p>
+                </div>
+
+                <div class="commitment-card quality">
+                    <div class="commitment-icon">✅</div>
+                    <h3>Calidad y Seguridad Alimentaria</h3>
+                    <p>Producir y distribuir productos con los más altos estándares de calidad e inocuidad, para asegurar que nuestros clientes consuman un producto seguro y de calidad. Establecemos y revisamos los objetivos y programas para llevar un adecuado cumplimiento del SGIA, garantizando el cumplimiento de los requisitos legales y reglamentarios.</p>
+                </div>
+
+                <div class="commitment-card environment">
+                    <div class="commitment-icon">🌿</div>
+                    <h3>Medio Ambiente</h3>
+                    <p>Implementar metodologías de mejora para una producción más sostenible que garantice el mejor manejo de recursos y menor impacto ambiental.</p>
+                </div>
+
+                <div class="commitment-card safety">
+                    <div class="commitment-icon">🦺</div>
+                    <h3>Seguridad y Salud Ocupacional</h3>
+                    <p>Desarrollar acciones que permitan proteger la vida, la salud y la integridad física de todos y cada uno de los colaboradores de la empresa en el desempeño de su actividad laboral.</p>
+                </div>
+
+                <div class="commitment-card security">
+                    <div class="commitment-icon">🛡️</div>
+                    <h3>Seguridad y Control SGCS BASC</h3>
+                    <p>Mantener la integridad de sus procesos, respecto a la prevención de delitos de corrupción y soborno, lavado de activos, entre otros. Cumplir con los requisitos legales, reglamentarios y normativas aplicables al país y a la organización.</p>
+                </div>
+
+                <div class="commitment-card social">
+                    <div class="commitment-icon">❤️</div>
+                    <h3>Responsabilidad Social</h3>
+                    <p>La empresa se compromete a trabajar en beneficio de cada uno de los trabajadores para evitar el abuso laboral, discriminación, trabajo forzoso y explotación infantil.</p>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <h2>📋 Principios Adicionales</h2>
+            <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                <li>Fomentamos una comunicación interna y externa fluida con nuestros clientes y partes interesadas, para asegurar una mejora continua en nuestros productos y procesos.</li>
+                <li>Promovemos la formación de nuestro personal, garantizando la competencia en relación a la inocuidad de los alimentos.</li>
+                <li>Mejorar y contribuir al mejoramiento continuo a través del Sistemas de Gestión que mantengan estándares e índices de eficacia y eficiencia.</li>
+                <li>Promover la seguridad en el uso de tecnologías de la información.</li>
+            </ul>
+
+        </article>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Universo Confiteca</h4>
+                    <p>Casa matriz en Ecuador</p>
+                    <p>Alegría en 30+ países</p>
+                    <p>Manufactura en Ecuador, Colombia y Perú</p>
+                    <p><em>Alegría al alcance de todos</em></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="./privacy-policy.html">Política de Privacidad</a>
+                    <a href="./cookies-policy.html">Política de Cookies</a>
+                    <a href="./politica-gestion.html">Política de Gestión</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Conecta</h4>
+                    <a href="https://www.linkedin.com/company/confitecaoficial/">LinkedIn</a>
+                    <a href="mailto:support@confiteca.com">Contáctanos</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Confiteca C.A. | <a href="./privacy-policy.html">Política de Privacidad</a> | <a href="./cookies-policy.html">Política de Cookies</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+
