@@ -5,107 +5,209 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Privacidad | Confiteca</title>
     <link rel="icon" type="image/png" href="../Assets/confiteca/confiteca_logo/confiteca_smile_icon_square.png">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="preload" as="style" href="../css/confiteca.min.css" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/confiteca.min.css"></noscript>
     <meta name="robots" content="index,follow">
     <meta name="description" content="Política de Privacidad de CONFITECA C.A. - Información sobre el tratamiento de datos personales conforme a la LOPDP de Ecuador.">
     <style>
         :root {
-            --confiteca-primary: #a00e3b;
-            --confiteca-dark: #1d0b13;
-            --confiteca-text: #2c2530;
-            --confiteca-light: #faf8f9;
-            --confiteca-accent: #ff5e99;
+            --confiteca-red: #e63946;
+            --hot-pink: #ff006e;
+            --electric-yellow: #ffff00;
+            --lime-green: #8fff00;
+            --confiteca-blue: #1e88e5;
+            --deep-purple: #7209b7;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
         }
         
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { 
-            font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; 
-            margin: 0; 
-            background: linear-gradient(180deg, #fdfcfd 0%, #f5f0f2 100%);
+            font-family: 'Space Grotesk', system-ui, sans-serif; 
+            background: #fafafa;
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Floating Candy Elements */
+        .floating-candy {
+            position: fixed;
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.15;
+            animation: float-candy 8s ease-in-out infinite;
+        }
+
+        @keyframes float-candy {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-30px) rotate(90deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            75% { transform: translateY(-40px) rotate(270deg); }
+        }
+
+        /* Hero Header */
+        .policy-hero {
+            background: linear-gradient(135deg, var(--confiteca-red), var(--hot-pink), var(--confiteca-blue));
+            background-size: 300% 300%;
+            animation: gradient-shift 6s ease infinite;
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .policy-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.15)"/><circle cx="60" cy="70" r="2.5" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="80" r="1.8" fill="rgba(255,255,255,0.12)"/></svg>');
+        }
+
+        .hero-shapes {
+            position: absolute;
+            width: 100%; height: 100%;
+            top: 0; left: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50% 30% 70% 40%;
+            animation: morph 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 200px; height: 200px;
+            background: rgba(255,255,255,0.08);
+            top: -50px; right: -50px;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px; height: 150px;
+            background: rgba(255,255,0,0.1);
+            bottom: -30px; left: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 100px; height: 100px;
+            background: rgba(255,255,255,0.1);
+            top: 30%; left: 5%;
+            animation-delay: 4s;
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 50% 30% 70% 40%; transform: rotate(0deg) scale(1); }
+            50% { border-radius: 30% 60% 40% 70%; transform: rotate(180deg) scale(1.1); }
+        }
+
+        .policy-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .policy-hero p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 2;
         }
         
+        /* Main Content */
         .policy-container { 
             max-width: 900px; 
-            margin: 0 auto; 
-            padding: 3rem 1.5rem 4rem; 
-            margin-top: 80px;
+            margin: -3rem auto 0;
+            padding: 0 1.5rem 4rem;
+            position: relative;
+            z-index: 10;
         }
-        
-        .policy-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .policy-title { 
-            font-family: "Playfair Display", Georgia, serif;
-            font-size: clamp(2.25rem, 5vw, 3rem); 
-            margin: 0 0 0.5rem; 
-            color: var(--confiteca-dark);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-        
-        .policy-subtitle {
-            font-size: 1.1rem;
-            color: var(--confiteca-text);
-            opacity: 0.8;
-            margin: 0 0 1.5rem;
-        }
-        
-        .policy-meta { 
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 2rem; 
-        }
-        
-        .badge { 
-            display: inline-block; 
-            background: rgba(160,14,59,0.08); 
-            color: var(--confiteca-primary); 
-            border-radius: 999px; 
-            padding: 0.35rem 0.9rem; 
-            font-weight: 600; 
-            font-size: 0.8rem;
-            border: 1px solid rgba(160,14,59,0.12);
-        }
-        
+
         .policy-content {
             background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .policy-content::before {
+            content: '🍭🍬🫧';
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            opacity: 0.08;
         }
         
         .policy-content h2 { 
-            font-family: "Playfair Display", Georgia, serif;
-            font-size: 1.5rem; 
-            margin: 2.5rem 0 1rem; 
-            color: var(--confiteca-dark);
-            font-weight: 600;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(160,14,59,0.1);
+            font-size: 1.6rem; 
+            margin: 3rem 0 1.25rem; 
+            color: var(--text-primary);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .policy-content h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--confiteca-red), var(--hot-pink));
+            border-radius: 2px;
         }
         
-        .policy-content h2:first-child {
+        .policy-content h2:first-of-type {
             margin-top: 0;
         }
         
         .policy-content h3 { 
-            font-size: 1.15rem; 
-            margin: 1.5rem 0 0.75rem; 
-            color: var(--confiteca-dark);
-            font-weight: 600;
+            font-size: 1.2rem; 
+            margin: 2rem 0 0.75rem; 
+            color: var(--hot-pink);
+            font-weight: 700;
         }
         
         .policy-content p, .policy-content li { 
             line-height: 1.8; 
-            color: var(--confiteca-text);
+            color: var(--text-secondary);
             font-size: 1rem;
         }
         
@@ -122,68 +224,232 @@
             margin-bottom: 0.5rem;
             padding-left: 0.25rem;
         }
+
+        .policy-content li::marker {
+            color: var(--hot-pink);
+        }
         
         .policy-content a {
-            color: var(--confiteca-primary);
+            color: var(--confiteca-red);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .policy-content a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--hot-pink);
+            transition: width 0.3s ease;
         }
         
         .policy-content a:hover {
-            color: var(--confiteca-accent);
-            text-decoration: underline;
+            color: var(--hot-pink);
+        }
+
+        .policy-content a:hover::after {
+            width: 100%;
         }
         
         .definition-term {
-            font-weight: 600;
-            color: var(--confiteca-dark);
+            font-weight: 700;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, rgba(230,57,70,0.1), rgba(255,0,110,0.05));
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
         }
-        
-        .contact-box {
-            background: linear-gradient(135deg, rgba(160,14,59,0.06) 0%, rgba(255,94,153,0.04) 100%);
-            border: 1px solid rgba(160,14,59,0.12);
-            border-radius: 12px;
+
+        /* Highlight boxes for important info */
+        .info-box {
+            background: linear-gradient(135deg, rgba(255,0,110,0.05) 0%, rgba(30,136,229,0.05) 100%);
+            border-left: 4px solid var(--hot-pink);
+            border-radius: 0 16px 16px 0;
             padding: 1.5rem;
             margin: 1.5rem 0;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+        
+        /* Contact box */
+        .contact-box {
+            background: linear-gradient(135deg, var(--confiteca-red), var(--hot-pink));
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255,0,110,0.3);
+        }
+
+        .contact-box::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .contact-box p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
         }
         
         .contact-box a {
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-box a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+
+        .contact-box a::after {
+            display: none;
+        }
+
+        /* Section dividers */
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, var(--confiteca-red), var(--hot-pink), var(--electric-yellow), var(--lime-green), var(--confiteca-blue));
+            border-radius: 2px;
+            margin: 3rem 0;
+            opacity: 0.3;
+        }
+
+        /* Accordion sections for long lists */
+        .accordion-section {
+            background: #f8f9ff;
+            border-radius: 16px;
+            margin: 1rem 0;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-section:hover {
+            border-color: rgba(255,0,110,0.2);
+        }
+
+        .accordion-header {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(255,0,110,0.05);
+        }
+
+        .accordion-header::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--hot-pink);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-section.open .accordion-header::after {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-section.open .accordion-content {
+            max-height: 2000px;
+            padding: 0 1.5rem 1.5rem;
         }
         
         nav .logo { height: 40px; }
         .section-header { display: none; }
         
         footer .footer-bottom a { 
-            color: var(--confiteca-primary); 
+            color: var(--confiteca-red); 
             font-weight: 600; 
             text-decoration: none; 
         }
         
         footer .footer-bottom a:hover { 
-            color: var(--confiteca-accent); 
+            color: var(--hot-pink); 
             text-decoration: underline; 
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         @media (max-width: 768px) {
+            .policy-hero {
+                padding: 7rem 1.5rem 4rem;
+            }
             .policy-container { 
-                margin-top: 70px;
-                padding: 2rem 1rem 3rem;
+                margin-top: -2rem;
+                padding: 0 1rem 3rem;
             }
             .policy-content {
-                padding: 1.5rem;
-                border-radius: 16px;
+                padding: 2rem 1.5rem;
+                border-radius: 24px;
             }
             .policy-content h2 {
                 font-size: 1.3rem;
+            }
+            .contact-box {
+                padding: 2rem 1.5rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Floating Candy Elements -->
+    <div class="floating-candy" style="top: 15%; left: 3%; animation-delay: 0s;">🍭</div>
+    <div class="floating-candy" style="top: 40%; right: 5%; animation-delay: 2s;">🍬</div>
+    <div class="floating-candy" style="bottom: 30%; left: 5%; animation-delay: 4s;">🫧</div>
+    <div class="floating-candy" style="top: 70%; right: 8%; animation-delay: 6s;">🍫</div>
+
     <nav>
         <div class="nav-container">
             <a href="/"><img src="../Assets/confiteca/confiteca_logo/confiteca_logo.png" alt="Confiteca" class="logo"></a>
@@ -196,215 +462,258 @@
         </div>
     </nav>
 
-    <main class="policy-container">
-        <header class="policy-header">
-            <h1 class="policy-title">Política de Privacidad</h1>
-            <p class="policy-subtitle">CONFITECA C.A.</p>
-            <div class="policy-meta">
-                <span class="badge">Vigente desde Marzo 2024</span>
-            </div>
-        </header>
+    <!-- Hero Section -->
+    <header class="policy-hero">
+        <div class="hero-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <h1>Política de Privacidad</h1>
+        <p>CONFITECA C.A.</p>
+        <div class="hero-badge">📋 Vigente desde Marzo 2024</div>
+    </header>
 
-        <article class="policy-content">
-            <h2>Compromiso con tu Privacidad</h2>
+    <main class="policy-container">
+        <article class="policy-content fade-in">
+            <h2>🔒 Compromiso con tu Privacidad</h2>
             <p>CONFITECA C.A. está comprometida en tratar la información de manera lícita, transparente, oportuna y limitada a lo necesario en relación con los fines pertinentes.</p>
             <p>Esta política tiene como propósito dar cumplimiento a las disposiciones legales del Ecuador, particularmente dar cumplimiento a lo establecido en la Ley Orgánica de Protección de Datos Personales (en adelante, "LOPDP"), su Reglamento General y normas complementarias.</p>
 
-            <h2>¿Quién es el responsable del tratamiento de tus datos personales?</h2>
-            <p><strong>CONFITECA C.A.</strong>, en su calidad de responsable, se encuentra domiciliada en la provincia del Pichincha, cantón Quito, ciudad de Quito, calles Panamericana Sur S35-60 Condor Ñan.</p>
+            <div class="section-divider"></div>
 
-            <h2>¿Qué debe saber sobre el tratamiento de datos personales?</h2>
+            <h2>🏢 ¿Quién es el responsable del tratamiento de tus datos personales?</h2>
+            <div class="info-box">
+                <p><strong>CONFITECA C.A.</strong>, en su calidad de responsable, se encuentra domiciliada en la provincia del Pichincha, cantón Quito, ciudad de Quito, calles Panamericana Sur S35-60 Condor Ñan.</p>
+            </div>
+
+            <h2>📚 ¿Qué debe saber sobre el tratamiento de datos personales?</h2>
             
-            <p><span class="definition-term">"LOPDP":</span> Ley Orgánica de Protección de Datos Personales publicada en el Registro Oficial Suplemento 459 de 26 de mayo de 2021.</p>
-            
-            <p><span class="definition-term">"Reglamento":</span> Reglamento de la Ley Orgánica de Protección de Datos Personales, Decreto Ejecutivo 904. Registro Oficial Suplemento 435 de 13-nov.-2023.</p>
-            
-            <p><span class="definition-term">"Responsable del Tratamiento":</span> CONFITECA C.A. quien determina la finalidad y los medios para el tratamiento de los datos personales.</p>
-            
-            <p><span class="definition-term">"Titular":</span> Persona natural cuyos datos son objeto de tratamiento.</p>
-            
-            <p><span class="definition-term">"Encargado de la Protección de Datos":</span> El Encargado de la Protección de Datos (en su caso) o Responsable de la Protección de Datos identificado/nombrado por CONFITECA C.A. y que actúa bajo sus instrucciones.</p>
-            
-            <p><span class="definition-term">"Actividad de Tratamiento":</span> Cualquier operación o conjunto de operaciones que se lleve a cabo sobre Datos Personales o conjuntos de Datos Personales.</p>
-            
-            <p><span class="definition-term">"Incidencia en materia de protección de datos":</span> Violación de los Datos Personales (violación de la seguridad) como la destrucción, pérdida o alteración accidental o ilegal de la información.</p>
-            
-            <p><span class="definition-term">"Datos personales":</span> Dato que identifica o hace identificable a una persona natural, directa o indirectamente.</p>
-            
-            <p><span class="definition-term">"Datos de Categoría Especial":</span> Se considerarán categorías especiales de datos personales los siguientes:</p>
-            <ul>
-                <li>Datos sensibles</li>
-                <li>Datos de niñas, niños y adolescentes</li>
-                <li>Datos de salud</li>
-                <li>Datos de personas con discapacidad y de sus sustitutos, relativos a la discapacidad</li>
+            <div class="accordion-section">
+                <div class="accordion-header">Definiciones Legales</div>
+                <div class="accordion-content">
+                    <p><span class="definition-term">"LOPDP":</span> Ley Orgánica de Protección de Datos Personales publicada en el Registro Oficial Suplemento 459 de 26 de mayo de 2021.</p>
+                    
+                    <p><span class="definition-term">"Reglamento":</span> Reglamento de la Ley Orgánica de Protección de Datos Personales, Decreto Ejecutivo 904. Registro Oficial Suplemento 435 de 13-nov.-2023.</p>
+                    
+                    <p><span class="definition-term">"Responsable del Tratamiento":</span> CONFITECA C.A. quien determina la finalidad y los medios para el tratamiento de los datos personales.</p>
+                    
+                    <p><span class="definition-term">"Titular":</span> Persona natural cuyos datos son objeto de tratamiento.</p>
+                    
+                    <p><span class="definition-term">"Encargado de la Protección de Datos":</span> El Encargado de la Protección de Datos (en su caso) o Responsable de la Protección de Datos identificado/nombrado por CONFITECA C.A. y que actúa bajo sus instrucciones.</p>
+                    
+                    <p><span class="definition-term">"Actividad de Tratamiento":</span> Cualquier operación o conjunto de operaciones que se lleve a cabo sobre Datos Personales o conjuntos de Datos Personales.</p>
+                    
+                    <p><span class="definition-term">"Incidencia en materia de protección de datos":</span> Violación de los Datos Personales (violación de la seguridad) como la destrucción, pérdida o alteración accidental o ilegal de la información.</p>
+                    
+                    <p><span class="definition-term">"Datos personales":</span> Dato que identifica o hace identificable a una persona natural, directa o indirectamente.</p>
+                </div>
+        </div>
+
+            <div class="accordion-section">
+                <div class="accordion-header">Categorías Especiales de Datos</div>
+                <div class="accordion-content">
+                    <p><span class="definition-term">"Datos de Categoría Especial":</span> Se considerarán categorías especiales de datos personales los siguientes:</p>
+                    <ul>
+                        <li>Datos sensibles</li>
+                        <li>Datos de niñas, niños y adolescentes</li>
+                        <li>Datos de salud</li>
+                        <li>Datos de personas con discapacidad y de sus sustitutos, relativos a la discapacidad</li>
                 <li>Datos crediticios</li>
             </ul>
-            
-            <p><span class="definition-term">"Datos crediticios":</span> Datos que integran el comportamiento económico de personas naturales o jurídicas, para analizar su capacidad financiera.</p>
-            
-            <p><span class="definition-term">"Datos sensibles":</span> Datos relativos a: etnia, identidad de género, identidad cultural, religión, ideología, filiación política, pasado judicial, condición migratoria, orientación sexual, salud, datos biométricos, datos genéticos y aquellos cuyo tratamiento indebido pueda dar origen a discriminación, atenten o puedan atentar contra los derechos y libertades fundamentales.</p>
-            
-            <p><span class="definition-term">"Socio comercial":</span> Cualquier persona natural o jurídica, autoridad pública, agencia u otra entidad que mantenga relaciones comerciales con CONFITECA C.A.</p>
-            
-            <p><span class="definition-term">"Proveedor del Servicio" o "Encargado del Tratamiento":</span> Cualquier persona jurídica, pública o privada, agencia u otra institución que preste sus servicios a CONFITECA C.A. en relación con el tratamiento de datos personales.</p>
-            
-            <p><span class="definition-term">"Cliente":</span> Toda persona, sea natural o jurídica, que obtenga la prestación de un servicio o bien, por parte de CONFITECA C.A.</p>
+                    
+                    <p><span class="definition-term">"Datos crediticios":</span> Datos que integran el comportamiento económico de personas naturales o jurídicas, para analizar su capacidad financiera.</p>
+                    
+                    <p><span class="definition-term">"Datos sensibles":</span> Datos relativos a: etnia, identidad de género, identidad cultural, religión, ideología, filiación política, pasado judicial, condición migratoria, orientación sexual, salud, datos biométricos, datos genéticos y aquellos cuyo tratamiento indebido pueda dar origen a discriminación, atenten o puedan atentar contra los derechos y libertades fundamentales.</p>
+                </div>
+            </div>
 
-            <h2>¿Cuál es el alcance de esta política?</h2>
+            <div class="accordion-section">
+                <div class="accordion-header">Actores del Tratamiento</div>
+                <div class="accordion-content">
+                    <p><span class="definition-term">"Socio comercial":</span> Cualquier persona natural o jurídica, autoridad pública, agencia u otra entidad que mantenga relaciones comerciales con CONFITECA C.A.</p>
+                    
+                    <p><span class="definition-term">"Proveedor del Servicio" o "Encargado del Tratamiento":</span> Cualquier persona jurídica, pública o privada, agencia u otra institución que preste sus servicios a CONFITECA C.A. en relación con el tratamiento de datos personales.</p>
+                    
+                    <p><span class="definition-term">"Cliente":</span> Toda persona, sea natural o jurídica, que obtenga la prestación de un servicio o bien, por parte de CONFITECA C.A.</p>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <h2>🎯 ¿Cuál es el alcance de esta política?</h2>
             <p>CONFITECA C.A. pone a disposición a los miembros de la Junta Directiva, Accionistas, Socios Comerciales, Proveedores, Visitantes, Clientes y Prospectos, la Política de Tratamiento de Datos Personales, recolectados en la prestación de servicios y/o productos ofrecidos por CONFITECA C.A.; con el propósito de comunicar la finalidad de la recolección de los datos, el uso, casos en los cuales se comparte la información y la forma de protección, así como los derechos que le asisten a los titulares de la información y los procedimientos implementados por CONFITECA C.A. para su ejercicio.</p>
             <p>CONFITECA C.A. garantiza aplicar un adecuado tratamiento de los datos personales de conformidad con los principios y disposiciones previstos en la ley.</p>
 
-            <h2>¿Qué tipo de datos personales serán tratados?</h2>
+            <h2>📊 ¿Qué tipo de datos personales serán tratados?</h2>
             <p>Los datos personales que son tratados por CONFITECA C.A. son datos personales y de categoría especial, a través de diferentes modalidades y fuentes.</p>
-            <p>Para el caso de datos sensibles será potestad del titular otorgar la autorización explícita para el tratamiento de dicha información. En los eventos de recepción de datos sensibles, CONFITECA C.A. garantiza mantener la seguridad y la confidencialidad de estos. En la recepción de datos personales y datos personales sensibles se emplearán estrictas medidas de seguridad y confidencialidad. CONFITECA C.A. y sus empleados se han comprometido a mantener la confidencialidad de cualquier tipo de Datos Personales y no revelar ningún Dato Personal a terceros no autorizados.</p>
-            <p>Los datos recolectados se almacenarán y/o procesarán en los servidores sean propios, o contratados con terceros y/o proveedores, localizados dentro o fuera del país que cumplan con las características de puerto seguro, y que garanticen todas las medidas de seguridad de la información, disponibles en medio físico y/o digital directamente en las oficinas de CONFITECA C.A. y/o en instalaciones de terceros y/o proveedores de CONFITECA C.A. Los datos personales serán almacenados y procesados con la autorización de sus titulares.</p>
+            <p>Para el caso de datos sensibles será potestad del titular otorgar la autorización explícita para el tratamiento de dicha información. En los eventos de recepción de datos sensibles, CONFITECA C.A. garantiza mantener la seguridad y la confidencialidad de estos.</p>
 
-            <h3>Datos personales de clientes</h3>
-            <p>Incluyen datos personales identificativos y de categoría especial, por ejemplo: nombre, apellidos, cédula o registro único de contribuyentes, dirección residencial, ciudad, calle principal, barrio, nombre conjunto, zona, número de teléfono, dirección de correo electrónico, nacionalidad, información crediticia, certificado bancario, soportes legales de patrimonio, información de facturación, información de exportación, información de envíos, género, ocupación principal, profesión, voz por grabación de comunicaciones telefónicas, imagen, video, empresa/lugar de trabajo, cargo actual, tipo de relación contractual, dirección de trabajo, ingresos, activos, patrimonio, entre otros.</p>
+            <div class="accordion-section">
+                <div class="accordion-header">👤 Datos personales de clientes</div>
+                <div class="accordion-content">
+                    <p>Incluyen datos personales identificativos y de categoría especial, por ejemplo: nombre, apellidos, cédula o registro único de contribuyentes, dirección residencial, ciudad, calle principal, barrio, nombre conjunto, zona, número de teléfono, dirección de correo electrónico, nacionalidad, información crediticia, certificado bancario, soportes legales de patrimonio, información de facturación, información de exportación, información de envíos, género, ocupación principal, profesión, voz por grabación de comunicaciones telefónicas, imagen, video, empresa/lugar de trabajo, cargo actual, tipo de relación contractual, dirección de trabajo, ingresos, activos, patrimonio, entre otros.</p>
+                </div>
+            </div>
 
-            <h3>Datos personales de proveedores/socios comerciales</h3>
-            <p>Datos de personas o miembros del personal de los proveedores, siendo estos datos personales y aquellos de categoría especial, por ejemplo: datos de afiliación al seguro social, información de contacto, registro único de contribuyentes o cédula, teléfono o medio de contacto, información contenida en correos electrónicos y otras comunicaciones comerciales, información de situación legal, condiciones de pago, identificación de población, región, dirección, estar sujetos a geolocalización, imagen, información sobre cuentas bancarias así como verificación de antecedentes en buró de crédito, antecedentes penales, información de cónyuge, referencias y garantes, tipo de negocio, datos de productos y servicios contratados, características de los productos y servicios contratados, contratos, facturación, consultas, peticiones y reclamaciones realizadas, entre otros.</p>
+            <div class="accordion-section">
+                <div class="accordion-header">🤝 Datos personales de proveedores/socios comerciales</div>
+                <div class="accordion-content">
+                    <p>Datos de personas o miembros del personal de los proveedores, siendo estos datos personales y aquellos de categoría especial, por ejemplo: datos de afiliación al seguro social, información de contacto, registro único de contribuyentes o cédula, teléfono o medio de contacto, información contenida en correos electrónicos y otras comunicaciones comerciales, información de situación legal, condiciones de pago, identificación de población, región, dirección, estar sujetos a geolocalización, imagen, información sobre cuentas bancarias así como verificación de antecedentes en buró de crédito, antecedentes penales, información de cónyuge, referencias y garantes, tipo de negocio, datos de productos y servicios contratados, características de los productos y servicios contratados, contratos, facturación, consultas, peticiones y reclamaciones realizadas, entre otros.</p>
+                </div>
+            </div>
 
-            <h3>Datos de participantes de sorteos o concursos</h3>
-            <p>Por ejemplo: datos identificativos, nombres, apellidos, número de identidad, número de contacto, correo electrónico, imagen y voz.</p>
+            <div class="accordion-section">
+                <div class="accordion-header">🎉 Datos de participantes de sorteos o concursos</div>
+                <div class="accordion-content">
+                    <p>Por ejemplo: datos identificativos, nombres, apellidos, número de identidad, número de contacto, correo electrónico, imagen y voz.</p>
+                </div>
+            </div>
 
-            <h2>¿Cuáles son las modalidades para el tratamiento de datos personales?</h2>
+            <div class="section-divider"></div>
+
+            <h2>⚙️ ¿Cuáles son las modalidades para el tratamiento de datos personales?</h2>
             <ul>
-                <li><strong>Datos entregados por el titular de manera directa punto a punto, o telefónicamente:</strong> El titular de derechos entrega datos identificativos (nombre, apellidos, cédula, teléfono, correo electrónico, ciudad, domicilio, etc.)</li>
+                <li><strong>Datos entregados por el titular de manera directa:</strong> El titular de derechos entrega datos identificativos (nombre, apellidos, cédula, teléfono, correo electrónico, ciudad, domicilio, etc.)</li>
                 <li><strong>Datos generados como consecuencia contractual:</strong> Los datos personales del titular son obtenidos conforme al desarrollo, mantenimiento o inicio de la relación entre este con CONFITECA C.A.</li>
                 <li><strong>Datos inferidos:</strong> Son obtenidos por la compañía mediante la realización de perfilados con el consentimiento previo del titular de datos personales.</li>
-                <li><strong>Datos procedentes de terceros:</strong> Los terceros pueden ser pertenecientes al sector público o privado, de información pública o de fuentes de acceso público (información procedente de registros públicos, diarios y boletines oficiales, repertorios telefónicos, listas de personas pertenecientes a grupos de profesionales, sistemas de información crediticia, redes sociales, etc.).</li>
+                <li><strong>Datos procedentes de terceros:</strong> Los terceros pueden ser pertenecientes al sector público o privado, de información pública o de fuentes de acceso público.</li>
             </ul>
-            <p>El cliente, colaborador o proveedor que proporcione datos falsos, quedará excluido de nuestra red de forma permanente; además CONFITECA C.A. se reserva tomar las medidas judiciales o extrajudiciales que ameriten.</p>
+            
+            <div class="info-box">
+                <p>⚠️ El cliente, colaborador o proveedor que proporcione datos falsos, quedará excluido de nuestra red de forma permanente; además CONFITECA C.A. se reserva tomar las medidas judiciales o extrajudiciales que ameriten.</p>
+            </div>
 
-            <h2>¿De dónde se recopilan los datos personales?</h2>
+            <h2>📍 ¿De dónde se recopilan los datos personales?</h2>
             <ul>
                 <li><strong>En calle:</strong> mediante levantamiento de información en el punto de venta</li>
-                <li><strong>Información entregada a la empresa</strong></li>
-                <li><strong>Redes sociales</strong></li>
-                <li><strong>Otros medios tecnológicos:</strong>
-                    <ul>
-                        <li>Mediante el intercambio de correos electrónicos</li>
-                        <li>A través de llamadas telefónicas</li>
-                        <li>Mediante formularios de eventos</li>
-                        <li>Mediante facturas de compra</li>
-                        <li>Mediante WhatsApp</li>
-                        <li>Mediante el formulario de ejercicio de derechos de la compañía</li>
-                        <li>Mediante la transmisión o transferencia por parte de aliados estratégicos</li>
-                    </ul>
-                </li>
-                <li><strong>Cookies:</strong>
-                    <ul>
-                        <li>El acceso al sitio web puede implicar el uso de cookies propias o de terceros, las cuales son pequeñas cantidades de información que se almacenan en el navegador del cliente o usuario, lo que implica que el sitio web puede consultar la actividad previa del navegador.</li>
-                        <li>Las cookies sirven para facilitar la navegación en el sitio web, hacerlo más amigable, recordar accesos y conocer la información sobre los hábitos. Sin embargo, usted puede permitir el uso de cookies o rechazarlo o también puede cambiar su configuración siempre que lo desee, pero recuerde que esto podría ocasionar que el sitio no funcione correctamente y que algunas opciones no estén disponibles.</li>
-                        <li>A través de las mencionadas tecnologías se puede recopilar información sobre la actividad del usuario en línea en el sitio web de CONFITECA C.A. y de terceros aliados, páginas web que visita, vínculos en los que hace clic y la cantidad de tiempo que pasa en los mismos, IP, URL, navegador que utiliza, ubicación desde donde se conecta entre otros. El usuario podrá eliminar o bloquear cookies utilizando las configuraciones en los diferentes exploradores, pero si elige cancelar las cookies, es posible que no pueda utilizar alguna de las características disponibles en los sitios web.</li>
-                    </ul>
-                </li>
+                <li>Información entregada a la empresa</li>
+                <li>Redes sociales</li>
+                <li><strong>Otros medios tecnológicos:</strong> correos electrónicos, llamadas telefónicas, formularios de eventos, facturas de compra, WhatsApp, formularios de ejercicio de derechos, aliados estratégicos</li>
+                <li><strong>Cookies:</strong> El acceso al sitio web puede implicar el uso de cookies propias o de terceros para facilitar la navegación, recordar accesos y conocer información sobre los hábitos de navegación.</li>
             </ul>
 
-            <h2>¿Para qué tratamos los datos personales?</h2>
+            <div class="section-divider"></div>
+
+            <h2>🎯 ¿Para qué tratamos los datos personales?</h2>
             
-            <h3>Finalidades de tratamiento de los datos con Socios Comerciales como aliados estratégicos</h3>
-            <ul>
-                <li>Con nuestros aliados estratégicos se realizarán actividades de mercadeo de los productos y servicios de CONFITECA C.A. y sus filiales.</li>
-                <li>Se recabarán los datos personales crediticios y generales del proveedor para su registro, inscripción o suscripción de este en el sistema y/o bases de datos de CONFITECA C.A. y sus filiales.</li>
-                <li>Encontrarse sujeto en conjunto con sus colaboradores a sistemas de videovigilancia por razones de seguridad y control o inspecciones de entrega de mercadería de CONFITECA C.A.</li>
-                <li>Evaluar de manera suficiente al proveedor con la finalidad de garantizar un nivel adecuado para el tratamiento de los datos requeridos para la ejecución del servicio.</li>
-                <li>Evaluar la calidad y desempeño del Proveedor en cumplimiento de sus funciones.</li>
-                <li>Documentar e instruir sobre el adecuado tratamiento de activos de información compartidos.</li>
-                <li>Cumplir con lo establecido en el estándar de relaciones con proveedores.</li>
-                <li>Proporcionar los datos recolectados de los proveedores a las autoridades de control y vigilancia, de policía, judiciales y/o administrativas, en virtud de un requerimiento legal.</li>
-                <li>Transferir y comunicar los datos personales a países que cumplan con niveles adecuados de protección de los datos, conforme a los estándares de seguridad.</li>
-                <li>Evaluar mecanismos técnicos y organizativos del proveedor para la protección de los datos personales.</li>
-                <li>Contratar a proveedores para adquirir servicios complementarios al desarrollo de negocio de la compañía.</li>
-                <li>Manejar los datos de proveedores y mayoristas con la finalidad de consolidar redes comerciales y de oferta de productos en el mercado nacional.</li>
-                <li>Concretar negociaciones y relaciones comerciales con actores y/o proveedores internacionales para exportación de productos.</li>
-                <li>Someter los servicios provistos a auditorías de control y de procesos con la finalidad de afianzar un control de calidad de los productos ofertados en el mercado.</li>
-                <li>Ser parte de planes y redes de fidelización, promocionales y de descuentos por la relación comercial mantenida.</li>
-                <li>Gestionar y formar parte de la relación comercial con la compañía, con lo cual se podrá realizar una verificación de datos, estado de buró crediticio, contacto con garantes y referencias de la solicitud.</li>
-                <li>Encuestas de nivel de servicio y envío de material publicitario.</li>
+            <div class="accordion-section">
+                <div class="accordion-header">Finalidades con Socios Comerciales</div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Actividades de mercadeo de productos y servicios de CONFITECA C.A. y sus filiales.</li>
+                        <li>Registro, inscripción o suscripción en el sistema y/o bases de datos.</li>
+                        <li>Sistemas de videovigilancia por razones de seguridad y control.</li>
+                        <li>Evaluación del proveedor para garantizar un nivel adecuado de tratamiento.</li>
+                        <li>Evaluación de calidad y desempeño del Proveedor.</li>
+                        <li>Documentar e instruir sobre el adecuado tratamiento de activos de información.</li>
+                        <li>Transferir datos personales a países con niveles adecuados de protección.</li>
+                        <li>Consolidar redes comerciales y de oferta de productos en el mercado nacional.</li>
+                        <li>Concretar negociaciones y relaciones comerciales internacionales.</li>
+                        <li>Auditorías de control y de procesos para control de calidad.</li>
+                        <li>Planes y redes de fidelización, promocionales y de descuentos.</li>
+                        <li>Encuestas de nivel de servicio y envío de material publicitario.</li>
             </ul>
+                </div>
+            </div>
 
-            <h3>Finalidades de tratamiento de datos personales de Clientes y posibles Clientes</h3>
-            <ul>
-                <li>Dar tratamiento y usar los datos personales suministrados por los clientes o prospectos, sea de forma física y electrónica, a través de contratos, cotizaciones, sitios web, aplicaciones, entre otros; para enviarles a los correos electrónicos registrados, o número de contacto información acerca del producto y/o servicio adquirido o que se desee adquirir.</li>
-                <li>Recabar datos personales de posibles clientes para tomar contacto y atender requerimientos específicos que mantenga en relación con la empresa.</li>
-                <li>Realizar un tratamiento de datos personales con la finalidad de dar cumplimiento a pedidos, órdenes de compra, guías de remisión correlacionadas a una actividad comercial, compraventa o base contractual, lo cual puede involucrar la comunicación y transferencia de datos a proveedores seleccionados por la empresa.</li>
-                <li>Recopilar datos para ser parte de la red comercial, acceder a planes de fidelización, participar en sorteos y concursos que ha de impulsar la compañía.</li>
-                <li>Recabar datos personales para la participación en eventos, programas y proyectos sociales respecto de los cuales pueden ser beneficiarios.</li>
-                <li>Recabar datos personales de clientes por medio de llamadas para reclamos por parte del área de control de calidad.</li>
-                <li>Recabar datos personales de clientes por medio de redes sociales para la atención a quejas, reclamos y requerimientos de usuarios, incluyendo la facultad de contactarles para procesar adecuadamente el requerimiento y atenderlo satisfactoriamente.</li>
-                <li>Recabar datos personales y datos personales crediticios relacionados al cumplimiento de obligaciones y mantenerlos conforme a obligaciones legales ante la Autoridad en materia tributaria.</li>
-                <li>Gestionar y formar parte de la relación comercial con la compañía, con lo cual se podrá realizar una verificación de datos, estado de buró crediticio, contacto con garantes y referencias de la solicitud.</li>
-                <li>Suministrar los datos recolectados a las autoridades de control y vigilancia, de policía, judiciales y/o administrativas, en virtud de un requerimiento legal y/o usar o revelar esta información.</li>
-                <li>Permitir el acceso a la información a los entes de control para llevar a cabo procesos de auditoría interna o externa.</li>
-                <li>Mantener vigente los datos personales de los titulares.</li>
-                <li>Evaluación crediticia del cliente o prospecto que desee la distribución de los servicios.</li>
-                <li>Utilizar la información recibida y/o recolectada, para fines de mercadeo de los productos y/o servicios, con aliados estratégicos con los que CONFITECA C.A. mantenga una relación de negocios.</li>
-                <li>Contactar telefónicamente para realizar encuestas, estudios y/o confirmación de datos personales necesarios para la ejecución de una relación contractual.</li>
-                <li>Contactar al cliente para gestión de cobranzas de manera directa, o mediante terceros autorizados.</li>
-                <li>Contactar al Titular a través de medios electrónicos – SMS o chat para el envío de noticias relacionadas con campañas de fidelización o mejora de servicio.</li>
-                <li>Contactar al Titular a través de correo electrónico para el envío de extractos, estados de cuenta o facturas en relación con las obligaciones derivadas del contrato celebrado entre las partes.</li>
-                <li>Mantener vigente los datos personales de los titulares.</li>
-                <li>Utilizar datos personales para intercambiar información, comunicaciones, solicitudes, aceptaciones y/o cualquier otra clase de expresiones de voluntad.</li>
-                <li>Captar las cookies, rastreadores GIF, etiquetas de pixel y Google Analytics a través de las cuales son posibles monitorear el comportamiento del usuario, así como brindar una mejor experiencia en su navegación.</li>
-                <li>Recopilar datos identificativos para atender requerimientos y consultas del cliente, cuando el usuario se ha contactado mediante redes sociales.</li>
-                <li>Se tratarán los datos personales de los clientes con el objetivo de enviar publicidad e información sobre nuevos productos.</li>
-                <li>Los datos se utilizarán para contactar a las personas que lo requieran y lo autoricen, con la finalidad de dar contestación a sus requerimientos.</li>
-                <li>Dar respuesta a los pedidos de información, ayuda o solicitud de servicios.</li>
-                <li>Notificar los cambios de la presente Política de Privacidad.</li>
-                <li>Dar cumplimiento a las obligaciones legalmente establecidas, así como verificar el cumplimiento de las obligaciones contractuales.</li>
+            <div class="accordion-section">
+                <div class="accordion-header">Finalidades con Clientes y Prospectos</div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Envío de información sobre productos y/o servicios adquiridos o deseados.</li>
+                        <li>Contacto para atender requerimientos específicos.</li>
+                        <li>Cumplimiento de pedidos, órdenes de compra, guías de remisión.</li>
+                        <li>Participación en sorteos, concursos, eventos y programas sociales.</li>
+                        <li>Atención a reclamos por parte del área de control de calidad.</li>
+                        <li>Atención a quejas y requerimientos mediante redes sociales.</li>
+                        <li>Cumplimiento de obligaciones legales ante la Autoridad tributaria.</li>
+                        <li>Verificación de datos y estado de buró crediticio.</li>
+                        <li>Suministrar datos a autoridades de control cuando sea requerido legalmente.</li>
+                        <li>Evaluación crediticia del cliente o prospecto.</li>
+                        <li>Marketing con aliados estratégicos.</li>
+                        <li>Encuestas, estudios y confirmación de datos personales.</li>
+                        <li>Gestión de cobranzas directa o mediante terceros autorizados.</li>
+                        <li>Envío de noticias sobre campañas de fidelización o mejora de servicio.</li>
+                        <li>Envío de extractos, estados de cuenta o facturas.</li>
+                        <li>Publicidad e información sobre nuevos productos.</li>
+                        <li>Notificación de cambios en la Política de Privacidad.</li>
             </ul>
+                </div>
+            </div>
 
-            <h3>Finalidades para tratamiento de datos de Participantes a sorteos o concursos</h3>
-            <ul>
-                <li>Identificar y validar al participante ganador.</li>
-                <li>Entregar el premio al participante.</li>
-                <li>Llevar a cabo cualquier actividad y/o notificación necesaria y/o indispensable que se deriven de la participación en el sorteo.</li>
-                <li>Los datos crediticios para la entrega y depósito del premio en caso de ser ganador.</li>
-                <li>Uso de imagen para dejar constancia de entrega del premio.</li>
-                <li>Para enviar publicidad.</li>
-                <li>Encuestas, sorteos, concursos y otras promociones.</li>
+            <div class="accordion-section">
+                <div class="accordion-header">Finalidades para Sorteos y Concursos</div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Identificar y validar al participante ganador.</li>
+                        <li>Entregar el premio al participante.</li>
+                        <li>Actividades y notificaciones derivadas de la participación.</li>
+                        <li>Datos crediticios para entrega y depósito del premio.</li>
+                        <li>Uso de imagen para constancia de entrega del premio.</li>
+                        <li>Envío de publicidad.</li>
+                        <li>Encuestas, sorteos, concursos y otras promociones.</li>
             </ul>
+                </div>
+            </div>
 
-            <h2>¿Cuándo se podrá transferir o comunicar los datos?</h2>
-            <p>CONFITECA C.A. no venderá, intercambiará, alquilará o compartirá la información personal del titular excepto en las formas establecidas en esta Política.</p>
-            <p>CONFITECA C.A. compartirá información con los proveedores de servicios o con las empresas con quienes CONFITECA C.A. tenga una relación de colaboración o alianza, que contribuyan a mejorar o facilitar las operaciones. CONFITECA C.A. velará porque se cumplan los estándares de protección, mediante la firma de contratos o convenios cuyo objeto sea la privacidad y confidencialidad de los datos personales del titular.</p>
-            <p>CONFITECA C.A. cooperará con las autoridades con las cuales debe actuar, para garantizar el cumplimiento de la Ley. CONFITECA C.A. colaborará con las autoridades competentes con el fin de salvaguardar la integridad y la seguridad de la comunidad y la de sus titulares de los datos. Sin perjuicio de ello, puede suceder en virtud de órdenes judiciales, cuando se encuentre permitido por ley, o en caso de prevención de lavado de activos o financiamiento del terrorismo, por lo que podrá revelar la información personal a las autoridades o terceras partes sin el consentimiento del titular.</p>
-            <p>CONFITECA C.A. mediante la autorización del titular estará facultado a transferir total o parcialmente datos personales a cualquiera de las sociedades controladas, controlantes y/o vinculadas con CONFITECA C.A., a cualquier título y en el momento, forma y condiciones que estime pertinente.</p>
+            <div class="section-divider"></div>
 
-            <h2>¿Cuáles son los niveles de seguridad de la información?</h2>
-            <p>CONFITECA C.A. cumplirá con todas las medidas técnicas y organizativas aplicables en materia de medidas de seguridad para la protección de los datos personales. Se utilizará los estándares de la industria para la protección de la confidencialidad de la información, incluyendo, en otras medidas: servidores con los mejores estándares de seguridad, uso de firewalls, antivirus, control de accesos, cambio continuo de contraseñas, archivos bloqueados entre otros. CONFITECA C.A. considera la información personal del titular como un activo que debe ser protegido de cualquier pérdida o acceso no autorizado, a tal fin CONFITECA C.A. emplea diversas técnicas de seguridad para proteger tales datos de accesos no autorizados por titulares de los datos de dentro o fuera de la compañía.</p>
-            <p>Solo podrán acceder a la información dentro de CONFITECA C.A. aquellos equipos o colaboradores que necesiten conocerla. CONFITECA C.A. se asegura de implementar los derechos y las políticas de administración dentro de la empresa, y tomar todas las medidas necesarias para garantizar que los colaboradores, los asesores y los proveedores de servicios mantengan los archivos en confidencialidad.</p>
-            <p>CONFITECA C.A. no se hace responsable por interceptaciones ilegales o violación de sus sistemas o bases de datos por parte de personas no autorizadas.</p>
+            <h2>🔄 ¿Cuándo se podrá transferir o comunicar los datos?</h2>
+            <p>CONFITECA C.A. <strong>no venderá, intercambiará, alquilará o compartirá</strong> la información personal del titular excepto en las formas establecidas en esta Política.</p>
+            <p>CONFITECA C.A. compartirá información con los proveedores de servicios o con las empresas con quienes tenga una relación de colaboración o alianza, velando porque se cumplan los estándares de protección mediante contratos o convenios de privacidad y confidencialidad.</p>
+            <p>CONFITECA C.A. cooperará con las autoridades competentes para salvaguardar la integridad y seguridad de la comunidad. Puede revelar información personal a autoridades o terceras partes en virtud de órdenes judiciales, cuando se encuentre permitido por ley, o en caso de prevención de lavado de activos o financiamiento del terrorismo.</p>
 
-            <h2>¿Cuáles son sus derechos y cómo puede ejercerlos?</h2>
-            <p>El titular estará facultado a ejercer sus derechos de acceso, de rectificación y actualización, de anonimato/encriptación, de oposición, a la portabilidad, a la suspensión del tratamiento, a no ser objeto de una decisión basada única o parcialmente en valoraciones automatizadas.</p>
-            <p>El titular podrá ejercer sus derechos sobre sus datos personales en cualquier momento, y CONFITECA C.A. deberá atender la consulta en el plazo máximo de quince (15) días contados a partir de la fecha de recibo de la misma. CONFITECA C.A. podrá requerir la aclaración o ampliación de la información al titular, contenida en la solicitud, dentro de cinco (5) días de recibida la solicitud. En consecuencia, el titular contará con el término de diez (10) días, a partir del día siguiente al que recibió la notificación, para aclarar o completar.</p>
-            <p>En el caso de que el titular aclare o complete dentro del término concedido, la solicitud será atendida por CONFITECA C.A. dentro del plazo correspondiente. El requerimiento que no sea atendido podrá ser archivado mediante notificación debidamente fundamentada al titular. Esto no impide la presentación de una nueva solicitud por parte del titular.</p>
-            <p>Los Titulares podrán en todo momento rectificar, conocer y actualizar sus datos, entre otros, frente a datos parciales, inexactos, incompletos, fraccionados, que induzcan a error, o aquellos cuyo tratamiento esté expresamente prohibido o no haya sido autorizado. Así mismo, el Titular o su representante podrán solicitar la corrección o actualización de sus datos.</p>
+            <h2>🛡️ ¿Cuáles son los niveles de seguridad de la información?</h2>
+            <p>CONFITECA C.A. cumplirá con todas las medidas técnicas y organizativas aplicables, incluyendo:</p>
+            <ul>
+                <li>Servidores con los mejores estándares de seguridad</li>
+                <li>Uso de firewalls y antivirus</li>
+                <li>Control de accesos</li>
+                <li>Cambio continuo de contraseñas</li>
+                <li>Archivos bloqueados</li>
+            </ul>
+            <p>Solo podrán acceder a la información aquellos equipos o colaboradores que necesiten conocerla. CONFITECA C.A. no se hace responsable por interceptaciones ilegales o violación de sus sistemas por parte de personas no autorizadas.</p>
+
+            <div class="section-divider"></div>
+
+            <h2>⚖️ ¿Cuáles son sus derechos y cómo puede ejercerlos?</h2>
+            <p>El titular está facultado a ejercer sus derechos de:</p>
+            <ul>
+                <li>✅ Acceso</li>
+                <li>✅ Rectificación y actualización</li>
+                <li>✅ Anonimato/encriptación</li>
+                <li>✅ Oposición</li>
+                <li>✅ Portabilidad</li>
+                <li>✅ Suspensión del tratamiento</li>
+                <li>✅ No ser objeto de decisiones automatizadas</li>
+            </ul>
             
-            <p>La comunicación será tramitada mediante solicitud escrita en donde se incluyan los siguientes datos:</p>
+            <div class="info-box">
+                <p><strong>⏱️ Plazos:</strong> CONFITECA C.A. atenderá consultas en máximo <strong>15 días</strong>. Puede solicitar aclaraciones dentro de <strong>5 días</strong>. El titular tiene <strong>10 días</strong> para responder.</p>
+            </div>
+
+            <p>La comunicación será tramitada mediante solicitud escrita incluyendo:</p>
             <ol>
-                <li>Identificación del Titular o del representante (Nombres y apellidos completos, número de cédula de identidad o pasaporte y dirección domiciliaria o electrónica para notificaciones). Así también se incluirán los datos de la o del representado.</li>
-                <li>Descripción clara y precisa de datos personales respecto de los cuales se busca ejercer alguno de los derechos y cualquier elemento que facilite la localización de los datos personales en la institución, mediante los cuales usted haya provisto.</li>
-                <li>Explicación clara y precisa de su petición.</li>
+                <li>Identificación del Titular o representante (nombres completos, cédula/pasaporte, dirección para notificaciones).</li>
+                <li>Descripción clara de los datos personales sobre los cuales se busca ejercer derechos.</li>
+                <li>Explicación clara de su petición.</li>
                 <li>Identificación del derecho o derechos que desea ejercer.</li>
-                <li>Incluir documentos que acreditan identidad y representación legal.</li>
+                <li>Documentos que acreditan identidad y representación legal.</li>
             </ol>
 
-            <h2>¿Cuáles son los canales de contacto?</h2>
-            <p>El titular podrá hacer cualquiera de las acciones antes descritas, comunicándose con CONFITECA C.A. a través de:</p>
+            <h2>📧 ¿Cuáles son los canales de contacto?</h2>
+            <p>El titular podrá hacer cualquiera de las acciones antes descritas comunicándose con CONFITECA C.A.:</p>
             <div class="contact-box">
                 <p>📧 Correo electrónico</p>
                 <a href="mailto:tusdatos@confiteca.com.ec">tusdatos@confiteca.com.ec</a>
             </div>
 
-            <h2>¿CONFITECA C.A. podrá hacer modificaciones a esta política?</h2>
-            <p>CONFITECA C.A. se reserva el derecho de modificar esta Política de Privacidad, y mantenerla actualizada en sus canales de comunicación. Se notificará al titular en caso de que las modificaciones requieran de una aceptación específica.</p>
+            <h2>🔄 ¿CONFITECA C.A. podrá hacer modificaciones a esta política?</h2>
+            <p>CONFITECA C.A. se reserva el derecho de modificar esta Política de Privacidad, manteniéndola actualizada en sus canales de comunicación. Se notificará al titular en caso de que las modificaciones requieran de una aceptación específica.</p>
 
-            <h2>¿Cuál es la vigencia de esta política?</h2>
-            <p>La presente Política empezará a regir a partir del mes de marzo de 2024. Los datos personales que sean recopilados, almacenados, utilizados o transmitidos permanecerán en las bases de datos de CONFITECA durante el tiempo que sea necesario para cumplir con las finalidades expuestas en este documento o para que la Empresa pueda cumplir con sus deberes legales.</p>
+            <h2>📅 ¿Cuál es la vigencia de esta política?</h2>
+            <p>La presente Política empezará a regir a partir del mes de <strong>marzo de 2024</strong>. Los datos personales que sean recopilados, almacenados, utilizados o transmitidos permanecerán en las bases de datos de CONFITECA durante el tiempo que sea necesario para cumplir con las finalidades expuestas en este documento o para que la Empresa pueda cumplir con sus deberes legales.</p>
             <p>Sin embargo, la información será revisada cada año para verificar la veracidad del dato y finalidad de seguir con su tratamiento.</p>
         </article>
     </main>
@@ -435,8 +744,38 @@
             </div>
         </div>
     </footer>
+
     <script>
-        // Append privacy notice under all forms automatically
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const section = header.parentElement;
+                section.classList.toggle('open');
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Open first accordion by default
+        document.querySelector('.accordion-section')?.classList.add('open');
+
+        // Privacy notice for forms
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('form').forEach(form => {
                 if (!form.querySelector('.privacy-notice')) {
@@ -447,22 +786,6 @@
                     note.style.marginTop = '0.75rem';
                     note.innerHTML = 'Al enviar este formulario, autorizo el tratamiento de mis datos personales de acuerdo con la <a href="/privacy-policy/">Política de Privacidad</a>.';
                     form.appendChild(note);
-                }
-                if (form.getAttribute('data-collects-sensitive') === 'true' && !form.querySelector('.sensitive-consent')) {
-                    const wrapper = document.createElement('label');
-                    wrapper.style.display = 'flex';
-                    wrapper.style.alignItems = 'center';
-                    wrapper.style.gap = '0.5rem';
-                    wrapper.style.marginTop = '0.75rem';
-                    wrapper.className = 'sensitive-consent';
-                    const input = document.createElement('input');
-                    input.type = 'checkbox';
-                    input.required = true;
-                    wrapper.appendChild(input);
-                    const text = document.createElement('span');
-                    text.textContent = 'Autorizo expresamente el tratamiento de mis datos personales de categoría especial.';
-                    wrapper.appendChild(text);
-                    form.appendChild(wrapper);
                 }
             });
         });
