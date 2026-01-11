@@ -587,8 +587,8 @@
                 <a href="https://www.tiktok.com/@plopecuador" target="_blank" rel="noopener noreferrer" class="video-link">
                     <div class="video-card">
                         <div class="video-container">
-                            <video class="lazy-video" muted loop playsinline preload="metadata">
-                                <source data-src="../Assets/plop/plop_lifestyle_videos/GP FRESA LIKE A 10seg VERTICAL.mp4" type="video/mp4">
+                            <video class="lazy-video" muted loop playsinline autoplay preload="auto">
+                                <source src="../Assets/plop/plop_lifestyle_videos/GP FRESA LIKE A 10seg VERTICAL.mp4" type="video/mp4">
                             </video>
                             <div class="video-overlay">
                                 <div class="video-title">Vibras de fresa</div>
@@ -601,8 +601,8 @@
                 <a href="https://www.tiktok.com/@plopecuador" target="_blank" rel="noopener noreferrer" class="video-link">
                     <div class="video-card">
                         <div class="video-container">
-                            <video class="lazy-video" muted loop playsinline preload="metadata">
-                                <source data-src="../Assets/plop/plop_lifestyle_videos/GP CEREZA ACIDA ROMPE D 10seg  VERTICAL.mp4" type="video/mp4">
+                            <video class="lazy-video" muted loop playsinline autoplay preload="auto">
+                                <source src="../Assets/plop/plop_lifestyle_videos/GP CEREZA ACIDA ROMPE D 10seg  VERTICAL.mp4" type="video/mp4">
                             </video>
                             <div class="video-overlay">
                                 <div class="video-title">Rompe las reglas</div>
@@ -615,8 +615,8 @@
                 <a href="https://www.tiktok.com/@plopecuador" target="_blank" rel="noopener noreferrer" class="video-link">
                     <div class="video-card">
                         <div class="video-container">
-                            <video class="lazy-video" muted loop playsinline preload="metadata">
-                                <source data-src="../Assets/plop/plop_lifestyle_videos/PLOP_VIDEO_02_v3.mp4" type="video/mp4">
+                            <video class="lazy-video" muted loop playsinline autoplay preload="auto">
+                                <source src="../Assets/plop/plop_lifestyle_videos/PLOP_VIDEO_02_v3.mp4" type="video/mp4">
                             </video>
                             <div class="video-overlay">
                                 <div class="video-title">Energía Plop pura</div>
@@ -1281,19 +1281,13 @@
         `;
         document.head.appendChild(style);
 
-        // Lazy-load and autoplay lifestyle videos on view
-        const lazyVideos = Array.from(document.querySelectorAll('.lazy-video'));
-        if (lazyVideos.length) {
+        // Play/pause lifestyle videos based on visibility
+        const lifestyleVideos = Array.from(document.querySelectorAll('.lazy-video'));
+        if (lifestyleVideos.length) {
             const videoObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     const video = entry.target;
-                    const source = video.querySelector('source');
                     if (entry.isIntersecting) {
-                        if (source && !source.getAttribute('src')) {
-                            source.setAttribute('src', source.getAttribute('data-src'));
-                            video.load();
-                        }
-                        // Attempt autoplay when visible
                         video.play().catch(() => {/* ignore autoplay block */});
                     } else {
                         video.pause();
@@ -1301,7 +1295,7 @@
                 });
             }, { threshold: 0.25 });
 
-            lazyVideos.forEach(v => videoObserver.observe(v));
+            lifestyleVideos.forEach(v => videoObserver.observe(v));
         }
     </script>
 </body>
