@@ -55,9 +55,23 @@
             }
 
             /* Make CTAs more compact on mobile so they fit cleanly */
-            .cta-section .cta-btn,
-            .display-cta .cta-btn {
+            .cta-section .cta-btn {
                 font-size: 0.7rem;
+            }
+            /* Increase navbar and logo height on mobile */
+            nav {
+                padding: 0.5rem 0;
+            }
+            nav .nav-container {
+                min-height: 120px;
+                align-items: center;
+            }
+            .logo img {
+                height: 100px;
+                width: auto;
+            }
+            .hamburger {
+                align-self: center;
             }
         }
         /* Lifestyle section: add horizontal padding on all viewports */
@@ -199,9 +213,6 @@
             <a href="../index.html" class="logo">
                 <img src="../Assets/_optimized/plop/plop_logo.webp" alt="Plop!" width="120" height="120" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/plop_logo.webp 120w, ../Assets/_optimized/plop/plop_logo.webp 240w" sizes="(max-width: 768px) 100px, 120px" />
             </a>
-            <div class="mode-indicator" id="modeIndicator">
-                <span class="mode-text">MODO REGULAR</span>
-            </div>
             <ul class="nav-links">
                 <li><a href="#flavors">Sabores</a></li>
                 <li><a href="#vibe">Vibra</a></li>
@@ -278,208 +289,267 @@
         
         <div class="swiper-container">
             <div class="swiper-wrapper" id="swiperWrapper">
-                <!-- Strawberry -->
+                <!-- Fresa Ácida -->
                 <div class="swiper-slide" data-theme="strawberry" data-flavor="Fresa Ácida">
                     <div class="product-card strawberry-animation">
                         <div class="product-image">
-                            <img src="../Assets/_optimized/plop/GP FRESA.webp" alt="Paletas Plop sabor fresa ácida" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP FRESA.webp 180w, ../Assets/_optimized/plop/GP FRESA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/products/FRESA-ACIDA.webp" alt="Paletas Plop sabor fresa ácida" width="180" height="180" loading="lazy" decoding="async" />
                         </div>
                         <h3 class="product-name">Fresa Ácida</h3>
                         <div class="product-attitude">La Apasionada</div>
                         <p class="product-description">
-                            Para quienes viven intensamente. Una explosión de energía roja que grita “aquí estoy”
+                            Para quienes viven intensamente. Una explosión de energía roja que grita "aquí estoy"
                             sin pedir permiso. Perfecta para los momentos en los que necesitas que todos giren a verte.
                         </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
+                        <div class="flavor-stats">
+                            <div class="stat">
                                 <span class="stat-value">120/10</span>
-                                    <span class="stat-label">Intensidad</span>
-                                </div>
-                                <div class="stat">
+                                <span class="stat-label">Intensidad</span>
+                            </div>
+                            <div class="stat">
                                 <span class="stat-value">130/10</span>
-                                    <span class="stat-label">Actitud</span>
-                                </div>
-                                <div class="stat">
+                                <span class="stat-label">Actitud</span>
+                            </div>
+                            <div class="stat">
                                 <span class="stat-value">115/10</span>
-                                    <span class="stat-label">Rebeldía</span>
-                                </div>
+                                <span class="stat-label">Rebeldía</span>
                             </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Grape -->
-                <div class="swiper-slide" data-theme="grape" data-flavor="Uva Intensa">
-                    <div class="product-card grape-animation">
+                <!-- Berries Frutos Rojos -->
+                <div class="swiper-slide" data-theme="berries" data-flavor="Berries Frutos Rojos">
+                    <div class="product-card berries-animation">
                         <div class="product-image">
-                            <img src="../Assets/_optimized/plop/GP UVA.webp" alt="Paletas Plop sabor uva intensa" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP UVA.webp 180w, ../Assets/_optimized/plop/GP UVA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/products/berries-frutos-rojos.webp" alt="Paletas Plop sabor berries frutos rojos" width="180" height="180" loading="lazy" decoding="async" />
                         </div>
-                        <h3 class="product-name">Uva Intensa</h3>
-                        <div class="product-attitude">La Misteriosa</div>
+                        <h3 class="product-name">Berries Frutos Rojos</h3>
+                        <div class="product-attitude">La Intensa</div>
                         <p class="product-description">
-                            El sabor de quienes observan y conquistan. Profundo, complejo, con esa elegancia rebelde
-                            que no necesita gritar para ser notada. Para los que prefieren la seducción silenciosa.
+                            Explosión de frutos rojos que despierta todos los sentidos. Frambuesa, fresa y mora 
+                            se fusionan en una experiencia vibrante para quienes no se conforman con lo común.
                         </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
-                                <span class="stat-value">110/10</span>
-                                    <span class="stat-label">Intensidad</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">115/10</span>
-                                    <span class="stat-label">Actitud</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">140/10</span>
-                                    <span class="stat-label">Misterio</span>
-                                </div>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">125/10</span>
+                                <span class="stat-label">Intensidad</span>
                             </div>
-                    </div>
-                </div>
-
-                <!-- Green Apple -->
-                <div class="swiper-slide" data-theme="green-apple" data-flavor="Manzana Verde">
-                    <div class="product-card apple-animation">
-                        <div class="product-image">
-                            <img src="../Assets/_optimized/plop/GP MANZANA.webp" alt="Paletas Plop sabor manzana verde" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP MANZANA.webp 180w, ../Assets/_optimized/plop/GP MANZANA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
-                        </div>
-                        <h3 class="product-name">Manzana Verde</h3>
-                        <div class="product-attitude">La Innovadora</div>
-                        <p class="product-description">
-                            Fresca, disruptiva y siempre un paso adelante. El sabor de quienes marcan tendencia
-                            y no siguen reglas. Para cuando quieres mostrar tu lado más auténtico y original.
-                        </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
-                                <span class="stat-value">105/10</span>
-                                    <span class="stat-label">Intensidad</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">130/10</span>
-                                    <span class="stat-label">Frescura</span>
-                                </div>
-                                <div class="stat">
+                            <div class="stat">
                                 <span class="stat-value">135/10</span>
-                                    <span class="stat-label">Originalidad</span>
-                                </div>
+                                <span class="stat-label">Frutalidad</span>
                             </div>
-                    </div>
-                </div>
-
-                <!-- Orange -->
-                <div class="swiper-slide" data-theme="orange" data-flavor="Naranja Explosiva">
-                    <div class="product-card orange-animation">
-                        <div class="product-image">
-                            <img src="../Assets/_optimized/plop/GP MARACUYA.webp" alt="Paletas Plop sabor naranja explosiva" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP MARACUYA.webp 180w, ../Assets/_optimized/plop/GP MARACUYA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
-                        </div>
-                        <h3 class="product-name">Naranja Explosiva</h3>
-                        <div class="product-attitude">La Carismática</div>
-                        <p class="product-description">
-                            Energía pura que contagia. La vida de la fiesta, la que ilumina la sala apenas entra.
-                            Para cuando tu personalidad necesita ser el centro de atención.
-                        </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
-                                <span class="stat-value">140/10</span>
-                                    <span class="stat-label">Energía</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">135/10</span>
-                                    <span class="stat-label">Carisma</span>
-                                </div>
-                                <div class="stat">
+                            <div class="stat">
                                 <span class="stat-value">120/10</span>
-                                    <span class="stat-label">Diversión</span>
-                                </div>
+                                <span class="stat-label">Vibra</span>
                             </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Blue Razz -->
-                <div class="swiper-slide" data-theme="blue-razz" data-flavor="Azul Eléctrico">
+                <!-- Berries Mora Azul -->
+                <div class="swiper-slide" data-theme="blue-razz" data-flavor="Berries Mora Azul">
                     <div class="product-card blue-animation">
                         <div class="product-image">
-                            <img src="../Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY.webp" alt="Paletas Plop sabor azul eléctrico" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY.webp 180w, ../Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
-                    </div>
-                        <h3 class="product-name">Azul Eléctrico</h3>
-                        <div class="product-attitude">La Visionaria</div>
+                            <img src="../Assets/_optimized/plop/products/berries-mora-azul.webp" alt="Paletas Plop sabor berries mora azul" width="180" height="180" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="product-name">Berries Mora Azul</h3>
+                        <div class="product-attitude">La Misteriosa</div>
                         <p class="product-description">
-                            Diferente por naturaleza. El sabor que rompe expectativas y crea nuevas realidades.
-                            Para quienes no temen destacar siendo totalmente únicos y auténticos.
+                            El azul profundo de la mora en su máxima expresión. Un sabor sofisticado 
+                            para quienes prefieren destacar con elegancia y misterio.
                         </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
-                                <span class="stat-value">130/10</span>
-                                    <span class="stat-label">Singularidad</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">125/10</span>
-                                    <span class="stat-label">Impacto</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">145/10</span>
-                                    <span class="stat-label">Futuro</span>
-                                </div>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">115/10</span>
+                                <span class="stat-label">Intensidad</span>
                             </div>
+                            <div class="stat">
+                                <span class="stat-value">140/10</span>
+                                <span class="stat-label">Misterio</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">130/10</span>
+                                <span class="stat-label">Elegancia</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- LED Strawberry -->
+                <!-- Leche y Chocolate -->
+                <div class="swiper-slide" data-theme="chocolate" data-flavor="Leche y Chocolate">
+                    <div class="product-card chocolate-animation">
+                        <div class="product-image">
+                            <img src="../Assets/_optimized/plop/products/LECHE-CHOCOLATE.webp" alt="Paletas Plop sabor leche y chocolate" width="180" height="180" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="product-name">Leche y Chocolate</h3>
+                        <div class="product-attitude">La Indulgente</div>
+                        <p class="product-description">
+                            Cremosidad pura que abraza el alma. La combinación perfecta de leche y chocolate 
+                            para quienes buscan un momento de dulzura reconfortante.
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">110/10</span>
+                                <span class="stat-label">Cremosidad</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                <span class="stat-label">Indulgencia</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">130/10</span>
+                                <span class="stat-label">Confort</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sandía Ácida -->
+                <div class="swiper-slide" data-theme="green-apple" data-flavor="Sandía Ácida">
+                    <div class="product-card apple-animation">
+                        <div class="product-image">
+                            <img src="../Assets/_optimized/plop/products/SANDIA-ACIDApsd.webp" alt="Paletas Plop sabor sandía ácida" width="180" height="180" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="product-name">Sandía Ácida</h3>
+                        <div class="product-attitude">La Refrescante</div>
+                        <p class="product-description">
+                            El verano en cada lamida. Sandía jugosa con un toque ácido que despierta 
+                            y refresca. Para quienes viven cada día como si fuera vacaciones.
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">125/10</span>
+                                <span class="stat-label">Frescura</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">120/10</span>
+                                <span class="stat-label">Acidez</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">140/10</span>
+                                <span class="stat-label">Verano</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Surtido -->
+                <div class="swiper-slide" data-theme="grape" data-flavor="Surtido">
+                    <div class="product-card grape-animation">
+                        <div class="product-image">
+                            <img src="../Assets/_optimized/plop/products/SURTIDO-Fresa-Uva-ManzanaVerde-Cereza.webp" alt="Paletas Plop surtido - Fresa, Uva, Manzana Verde, Cereza" width="180" height="180" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="product-name">Surtido</h3>
+                        <div class="product-attitude">La Versátil</div>
+                        <p class="product-description">
+                            ¿Por qué elegir uno si puedes tenerlos todos? Fresa, uva, manzana verde y cereza 
+                            en un solo pack. Para los que abrazan la variedad y nunca se aburren.
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                <span class="stat-label">Variedad</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">135/10</span>
+                                <span class="stat-label">Diversión</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                <span class="stat-label">Sorpresa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LED Fresa -->
                 <div class="swiper-slide" data-theme="led-strawberry" data-flavor="LED Fresa" data-led="true">
                     <div class="product-card led-animation">
                         <div class="product-image led-glow">
-                            <img src="../Assets/_optimized/plop/plop-LED-SURTIDO_FRESA.webp" alt="Plop LED sabor fresa con glow stick" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/plop-LED-SURTIDO_FRESA.webp 180w, ../Assets/_optimized/plop/plop-LED-SURTIDO_FRESA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/products/Plop-LED-Fresa.webp" alt="Plop LED sabor fresa con glow stick rojo" width="180" height="180" loading="lazy" decoding="async" />
                             <div class="led-effect"></div>
                         </div>
-                        <h3 class="product-name">LED Strawberry</h3>
-                        <div class="product-attitude">La rebelde del club</div>
+                        <h3 class="product-name">LED Fresa</h3>
+                        <div class="product-attitude">La Rebelde del Club</div>
                         <p class="product-description">
-                            Prende la noche con poder neón. Sabor fresa explosivo que incluye glow stick.
+                            Prende la noche con poder neón rojo. Sabor fresa explosivo que incluye glow stick.
                             Perfecto para fiestas, festivales y momentos que merecen vibrar. ¡YEAH!
                         </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
+                        <div class="flavor-stats">
+                            <div class="stat">
                                 <span class="stat-value">150/10</span>
-                                    <span class="stat-label">Poder brillante</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">145/10</span>
-                                    <span class="stat-label">Vibra fiestera</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">135/10</span>
-                                    <span class="stat-label">Electricidad</span>
-                                </div>
+                                <span class="stat-label">Poder Rojo</span>
                             </div>
+                            <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                <span class="stat-label">Vibra Fiestera</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">135/10</span>
+                                <span class="stat-label">Electricidad</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- LED Blue -->
-                <div class="swiper-slide" data-theme="led-blue" data-flavor="LED Cereza Blue" data-led="true">
+                <!-- LED Cereza -->
+                <div class="swiper-slide" data-theme="led-cherry" data-flavor="LED Cereza" data-led="true">
                     <div class="product-card led-animation">
                         <div class="product-image led-glow">
-                            <img src="../Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY.webp" alt="Plop LED sabor cereza blue con glow stick" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY.webp 180w, ../Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/products/Plop-LED-Cereza.webp" alt="Plop LED sabor cereza con glow stick rosa" width="180" height="180" loading="lazy" decoding="async" />
                             <div class="led-effect"></div>
                         </div>
-                        <h3 class="product-name">LED Cereza Blue</h3>
-                        <div class="product-attitude">La leyenda neón</div>
+                        <h3 class="product-name">LED Cereza</h3>
+                        <div class="product-attitude">La Estrella Rosa</div>
                         <p class="product-description">
-                            Fusión de cereza y arándano con brillo azul eléctrico. El accesorio definitivo que sabe tan salvaje como luce.
-                            Diseñado para la pista, los conciertos y las noches inolvidables. ¡OMG!
+                            Cereza intensa con brillo rosa eléctrico. El accesorio definitivo para brillar 
+                            en la pista. Diseñado para quienes hacen de cada noche un espectáculo.
                         </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
-                                <span class="stat-value">150/10</span>
-                                    <span class="stat-label">Poder neón</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">140/10</span>
-                                    <span class="stat-label">Listo para festivales</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">150/10</span>
-                                    <span class="stat-label">Legendaria</span>
-                                </div>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                <span class="stat-label">Poder Rosa</span>
                             </div>
+                            <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                <span class="stat-label">Glamour</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">140/10</span>
+                                <span class="stat-label">Brillo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LED Blueberry -->
+                <div class="swiper-slide" data-theme="led-blue" data-flavor="LED Blueberry" data-led="true">
+                    <div class="product-card led-animation">
+                        <div class="product-image led-glow">
+                            <img src="../Assets/_optimized/plop/products/Plop-LED-Blueberry.webp" alt="Plop LED sabor blueberry con glow stick azul" width="180" height="180" loading="lazy" decoding="async" />
+                            <div class="led-effect"></div>
+                        </div>
+                        <h3 class="product-name">LED Blueberry</h3>
+                        <div class="product-attitude">La Leyenda Neón</div>
+                        <p class="product-description">
+                            Arándano azul con brillo eléctrico que hipnotiza. El poder del azul neón 
+                            para las noches legendarias. Diseñado para festivales y conciertos. ¡OMG!
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                <span class="stat-label">Poder Azul</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                <span class="stat-label">Festival Ready</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                <span class="stat-label">Legendaria</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -497,8 +567,10 @@
                 <div class="flavor-dot" data-index="2"></div>
                 <div class="flavor-dot" data-index="3"></div>
                 <div class="flavor-dot" data-index="4"></div>
-                <div class="flavor-dot led-dot" data-index="5"></div>
+                <div class="flavor-dot" data-index="5"></div>
                 <div class="flavor-dot led-dot" data-index="6"></div>
+                <div class="flavor-dot led-dot" data-index="7"></div>
+                <div class="flavor-dot led-dot" data-index="8"></div>
             </div>
         </div>
     </section>
@@ -595,22 +667,22 @@
             <div class="display-grid">
                 <div class="display-card">
                     <div class="display-image">
-                        <img src="../Assets/_optimized/plop/GP-DISPLAY-CERRADO-V1-Current-View.webp" alt="Display Plop perfecto para retail" width="1200" height="1200" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/displays/bolsa-fresa-acida.webp" alt="Bolsa Plop Fresa Ácida" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">Display de mostrador</h3>
-                    <p class="display-description">Exhibidores llamativos que exigen atención. Perfectos para tiendas de conveniencia, farmacias y compras por impulso.</p>
+                    <h3 class="display-title">Bolsa Fresa Ácida</h3>
+                    <p class="display-description">El clásico que nunca falla. Fresa ácida intensa en bolsa práctica para compartir o disfrutar tú solx.</p>
                     <div class="display-features">
-                        <span class="feature-tag">Alta visibilidad</span>
-                        <span class="feature-tag">Acceso rápido</span>
+                        <span class="feature-tag">Favorito del público</span>
+                        <span class="feature-tag">Para compartir</span>
                     </div>
                 </div>
 
                 <div class="display-card">
                     <div class="display-image">
-                        <img src="../Assets/_optimized/plop/GP-FUNDA-SURTIDO.webp" alt="Fundas surtidas - Variedad en cada pack" width="833" height="1200" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/displays/bolsa-surtido.webp" alt="Bolsa Plop Surtido" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">Fundas surtidas</h3>
-                    <p class="display-description">Packs de variedad con todos tus sabores favoritos. ¿No puedes decidir? Llévalos todos y deja que tu mood escoja.</p>
+                    <h3 class="display-title">Bolsa Surtido</h3>
+                    <p class="display-description">¿Por qué elegir uno? Variedad de sabores en una sola bolsa. Fresa, uva, manzana verde y cereza.</p>
                     <div class="display-features">
                         <span class="feature-tag">Todos los sabores</span>
                         <span class="feature-tag">Gran valor</span>
@@ -619,74 +691,92 @@
 
                 <div class="display-card">
                     <div class="display-image">
-                        <img src="../Assets/_optimized/plop/funda-fresa.webp" alt="Fundas mono-sabor - Poder fresa" width="1012" height="944" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/displays/bolsa-berries.webp" alt="Bolsa Plop Berries" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">Fundas mono-sabor</h3>
-                    <p class="display-description">Para cuando sabes exactamente lo que quieres. Experiencia pura y concentrada para fans dedicadxs.</p>
+                    <h3 class="display-title">Bolsa Berries</h3>
+                    <p class="display-description">La fusión perfecta de frutos rojos. Intensidad frutal en cada paleta para los amantes de los berries.</p>
                     <div class="display-features">
-                        <span class="feature-tag">Foco en sabor</span>
-                        <span class="feature-tag">Opción al por mayor</span>
+                        <span class="feature-tag">Nuevo sabor</span>
+                        <span class="feature-tag">Frutalidad intensa</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/displays/bolsa-sandia.webp" alt="Bolsa Plop Sandía" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Bolsa Sandía</h3>
+                    <p class="display-description">Refrescante sabor veraniego con el toque ácido que te despierta. Sandía jugosa en cada lamida.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Súper refrescante</span>
+                        <span class="feature-tag">Sabor verano</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/displays/bolsa-leche-chocolate.webp" alt="Bolsa Plop Leche y Chocolate" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Bolsa Leche y Chocolate</h3>
+                    <p class="display-description">Cremosidad irresistible. La combinación perfecta de leche y chocolate para los momentos indulgentes.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Ultra cremoso</span>
+                        <span class="feature-tag">Indulgente</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/displays/bolsa-agridulce.webp" alt="Bolsa Plop Agridulce" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Bolsa Agridulce</h3>
+                    <p class="display-description">El balance perfecto entre dulce y ácido. Para quienes disfrutan de contrastes y sensaciones únicas.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Balance perfecto</span>
+                        <span class="feature-tag">Sensación única</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/displays/bolsa-mini-mango-sal.webp" alt="Bolsa Mini Plop Mango con Sal" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Mini Mango con Sal</h3>
+                    <p class="display-description">El twist mexicano que conquista. Mango tropical con un toque de sal. Tamaño mini, sabor gigante.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Sabor tropical</span>
+                        <span class="feature-tag">Tamaño mini</span>
                     </div>
                 </div>
 
                 <div class="display-card led-exclusive">
                     <div class="display-image">
-                        <img src="../Assets/_optimized/plop/LED-PRINT-display.webp" alt="Display LED - Ilumina la noche" width="1175" height="1200" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/displays/display-led.webp" alt="Display Plop LED" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">Display LED nocturno</h3>
-                    <p class="display-description">Displays con LED para clubs, festivales y eventos nocturnos. Cuando un exhibidor normal no es lo suficientemente eléctrico.</p>
+                    <h3 class="display-title">Display LED</h3>
+                    <p class="display-description">El display que prende la fiesta. Perfecto para clubs, festivales y eventos nocturnos. Con glow sticks incluidos.</p>
                     <div class="display-features">
                         <span class="feature-tag">Listo para la fiesta</span>
                         <span class="feature-tag">Poder glow</span>
                     </div>
                 </div>
-
-                <div class="display-card">
-                    <div class="display-image">
-                        <img src="../Assets/_optimized/plop/GP-SHAKE-FUNDA.webp" alt="Shake Series - Mezcla premium" width="833" height="1200" loading="lazy" decoding="async" />
-                    </div>
-                    <h3 class="display-title">Packs Shake Series</h3>
-                    <p class="display-description">Nuestros sabores premium tipo shake en fundas prácticas. Para cuando quieres subir el nivel de sabor.</p>
-                    <div class="display-features">
-                        <span class="feature-tag">Línea premium</span>
-                        <span class="feature-tag">Sabores únicos</span>
-                    </div>
-                </div>
-
-                <div class="display-card">
-                    <div class="display-image">
-                        <img src="../Assets/_optimized/plop/GP_MARACUYA 23.webp" alt="Unidades individuales - Poder instantáneo" width="921" height="1200" loading="lazy" decoding="async" />
-                    </div>
-                    <h3 class="display-title">Unidades individuales</h3>
-                    <p class="display-description">Porciones individuales para momentos espontáneos. Cuando quieres ese boost al instante.</p>
-                    <div class="display-features">
-                        <span class="feature-tag">Compra impulso</span>
-                        <span class="feature-tag">Gratificación instantánea</span>
-                    </div>
-                </div>
             </div>
 
-            <div class="display-cta">
-                <h3>¿Listx para exhibir Plop?</h3>
-                <p>Múltiples formatos significan máximas oportunidades. Hablemos de lo que mejor funciona en tu espacio.</p>
-                <a class="cta-btn" href="mailto:sales@confiteca.com">Quiero información</a>
             </div>
-        </div>
     </section>
 
     <!-- Enhanced CTA Section -->
-    <section class="cta-section">
-        <h2>Tu momento es ahora</h2>
+    <section class="cta-section" id="contact">
+        <h2>¿Listx para exhibir Plop?</h2>
         <div class="cta-subtitle">
-            No esperes más para ser la versión más auténtica y magnética de ti. 
-            Cada sabor es una nueva oportunidad para brillar.
+            Múltiples formatos significan máximas oportunidades. Hablemos de lo que mejor funciona en tu espacio.
         </div>
-        <button class="cta-btn">Encuentra tu sabor</button>
+        <a class="cta-btn" href="mailto:sales@confiteca.com">Quiero información</a>
     </section>
 
     <script>
         let currentSlide = 0;
-        const totalSlides = 7;
+        const totalSlides = 9;
         const swiperWrapper = document.getElementById('swiperWrapper');
         const flavorSubtitle = document.getElementById('flavorSubtitle');
         const body = document.body;
@@ -698,7 +788,10 @@
             'green-apple': 'theme-green-apple',
             'orange': 'theme-orange',
             'blue-razz': 'theme-blue-razz',
+            'berries': 'theme-berries',
+            'chocolate': 'theme-chocolate',
             'led-strawberry': 'theme-led-strawberry',
+            'led-cherry': 'theme-led-cherry',
             'led-blue': 'theme-led-blue'
         };
 
@@ -725,11 +818,8 @@
             body.classList.add(themes[theme]);
             
             // Toggle LED mode
-            const modeIndicator = document.getElementById('modeIndicator');
             if (isLED) {
                 body.classList.add('led-mode');
-                // Update mode indicator
-                modeIndicator.querySelector('.mode-text').textContent = 'MODO LED';
                 // Update hero text for LED experience
                 document.querySelector('h1').innerHTML = 'Enciende la noche.<br>Destaca.';
                 document.querySelector('.confidence-boost').innerHTML = 
@@ -748,8 +838,6 @@
                 }
             } else {
                 body.classList.remove('led-mode');
-                // Update mode indicator
-                modeIndicator.querySelector('.mode-text').textContent = 'MODO REGULAR';
                 // Restore original hero text
                 document.querySelector('h1').innerHTML = 'Sabor atrevido.<br>Cero disculpas.';
                 document.querySelector('.confidence-boost').innerHTML = 

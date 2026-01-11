@@ -70,6 +70,26 @@
             --rebel-gradient: linear-gradient(135deg, #3B82F6, #93C5FD, #2563EB);
         }
 
+        /* Berries Theme - Deep magenta/berry purple */
+        .theme-berries {
+            --bg-primary: #9D174D;
+            --bg-secondary: #BE185D;
+            --accent-color: #F472B6;
+            --glow-color: #EC4899;
+            --particle-color: #FBCFE8;
+            --rebel-gradient: linear-gradient(135deg, #9D174D, #F472B6, #BE185D);
+        }
+
+        /* Milk & Chocolate Theme - Warm brown/cream */
+        .theme-chocolate {
+            --bg-primary: #78350F;
+            --bg-secondary: #92400E;
+            --accent-color: #FDE68A;
+            --glow-color: #D97706;
+            --particle-color: #FEF3C7;
+            --rebel-gradient: linear-gradient(135deg, #78350F, #FDE68A, #92400E);
+        }
+
         /* LED Dark Mode Themes */
         .theme-led-strawberry {
             --bg-primary: #0A0A0A;
@@ -78,6 +98,16 @@
             --glow-color: #FF0040;
             --particle-color: #FF0040;
             --rebel-gradient: linear-gradient(135deg, #0A0A0A, #1A1A1A, #FF0040);
+        }
+
+        /* LED Cherry Theme - Hot pink/magenta glow */
+        .theme-led-cherry {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --accent-color: #FF00FF;
+            --glow-color: #FF00FF;
+            --particle-color: #FF69B4;
+            --rebel-gradient: linear-gradient(135deg, #0A0A0A, #1A1A1A, #FF00FF);
         }
 
         .theme-led-blue {
@@ -1770,15 +1800,21 @@
 
             /* Mobile navigation adjustments */
             nav {
-                height: 80px;
+                height: 120px;
+                padding: 0.5rem 0;
             }
 
             .nav-container {
                 padding: 0 1rem;
+                align-items: center;
             }
 
             .logo img {
-                height: 60px;
+                height: 100px;
+            }
+
+            .hamburger {
+                align-self: center;
             }
             
             .swiper-container {
@@ -2019,15 +2055,16 @@
 
             /* Adjust navigation for very small screens */
             nav {
-                height: 70px;
+                height: 120px;
             }
 
             .logo img {
-                height: 50px;
+                height: 100px;
             }
 
             .hamburger {
                 padding: 0.3rem;
+                align-self: center;
             }
 
             .hamburger-line {

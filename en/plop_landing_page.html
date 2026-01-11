@@ -55,9 +55,60 @@
             }
 
             /* Make CTAs more compact on mobile so they fit cleanly */
-            .cta-section .cta-btn,
-            .display-cta .cta-btn {
+            .cta-section .cta-btn {
                 font-size: 0.7rem;
+            }
+            /* Increase navbar and logo height on mobile */
+            nav {
+                padding: 0.5rem 0;
+            }
+            nav .nav-container {
+                min-height: 120px;
+                align-items: center;
+            }
+            .logo img {
+                height: 100px;
+                width: auto;
+            }
+            .hamburger {
+                align-self: center;
+            }
+        }
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-left: 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .language-toggle a {
+            text-decoration: none;
+            color: var(--electric-pink, #ff3fae);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 999px;
+            padding: 0.2rem 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .language-toggle a:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255,255,255,0.7);
+        }
+        .language-toggle a.active {
+            background: linear-gradient(135deg, #ff5f94, #ffb347);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 18px rgba(255, 95, 148, 0.4);
+        }
+        .language-toggle span {
+            color: rgba(255,255,255,0.6);
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .language-toggle {
+                display: none;
             }
         }
         /* Lifestyle section: add horizontal padding on all viewports */
@@ -163,9 +214,6 @@
             <a href="../index.html" class="logo">
                 <img src="../Assets/_optimized/plop/plop_logo.webp" alt="Plop!" width="120" height="120" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/plop_logo.webp 120w, ../Assets/_optimized/plop/plop_logo.webp 240w" sizes="(max-width: 768px) 100px, 120px" />
             </a>
-            <div class="mode-indicator" id="modeIndicator">
-                <span class="mode-text">REGULAR</span>
-            </div>
             <ul class="nav-links">
                 <li><a href="#flavors">Flavors</a></li>
                 <li><a href="#vibe">Vibe</a></li>
@@ -173,6 +221,11 @@
                 <li><a href="#confidence">Confidence</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="language-toggle">
+                <a href="plop_landing_page.html" class="active">EN</a>
+                <span>/</span>
+                <a href="../es/plop_landing_page.html">ES</a>
+            </div>
             <div class="hamburger" id="hamburger">
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
@@ -193,6 +246,11 @@
         </ul>
         <div class="mobile-menu-brand">
             <div class="brand-text">Bold Flavor. Zero Apologies.</div>
+        </div>
+        <div class="language-toggle" style="justify-content: center; margin-top: 1.5rem; display: flex;">
+            <a href="plop_landing_page.html" class="active">EN</a>
+            <span>/</span>
+            <a href="../es/plop_landing_page.html">ES</a>
         </div>
     </div>
 
@@ -232,11 +290,11 @@
         
         <div class="swiper-container">
             <div class="swiper-wrapper" id="swiperWrapper">
-                <!-- Strawberry -->
+                <!-- Sour Strawberry -->
                 <div class="swiper-slide" data-theme="strawberry" data-flavor="Sour Strawberry">
                     <div class="product-card strawberry-animation">
                         <div class="product-image">
-                            <img src="../Assets/_optimized/plop/GP FRESA.webp" alt="Sour Strawberry Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP FRESA.webp 180w, ../Assets/_optimized/plop/GP FRESA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/products/FRESA-ACIDA.webp" alt="Sour Strawberry Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" />
                         </div>
                         <h3 class="product-name">Sour Strawberry</h3>
                         <div class="product-attitude">The Passionate</div>
@@ -244,136 +302,165 @@
                             For those who live intensely. An explosion of red energy that screams "here I am" 
                             without asking permission. Perfect for moments when you need everyone to turn and look.
                         </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
+                        <div class="flavor-stats">
+                            <div class="stat">
                                 <span class="stat-value">120/10</span>
-                                    <span class="stat-label">Intensity</span>
-                                </div>
-                                <div class="stat">
+                                <span class="stat-label">Intensity</span>
+                            </div>
+                            <div class="stat">
                                 <span class="stat-value">130/10</span>
-                                    <span class="stat-label">Attitude</span>
-                                </div>
-                                <div class="stat">
+                                <span class="stat-label">Attitude</span>
+                            </div>
+                            <div class="stat">
                                 <span class="stat-value">115/10</span>
-                                    <span class="stat-label">Rebellion</span>
-                                </div>
+                                <span class="stat-label">Rebellion</span>
                             </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Grape -->
-                <div class="swiper-slide" data-theme="grape" data-flavor="Intense Grape">
-                    <div class="product-card grape-animation">
+                <!-- Berries Red Fruits -->
+                <div class="swiper-slide" data-theme="berries" data-flavor="Berries Red Fruits">
+                    <div class="product-card berries-animation">
                         <div class="product-image">
-                            <img src="../Assets/_optimized/plop/GP UVA.webp" alt="Intense Grape Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP UVA.webp 180w, ../Assets/_optimized/plop/GP UVA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/products/berries-frutos-rojos.webp" alt="Berries Red Fruits Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" />
                         </div>
-                        <h3 class="product-name">Intense Grape</h3>
-                        <div class="product-attitude">The Mysterious</div>
+                        <h3 class="product-name">Berries Red Fruits</h3>
+                        <div class="product-attitude">The Intense</div>
                         <p class="product-description">
-                            The flavor of those who observe and conquer. Deep, complex, with that rebellious elegance 
-                            that doesn't need to shout to be noticed. For those who prefer silent seduction.
+                            Explosion of red berries that awakens all senses. Raspberry, strawberry and blackberry 
+                            fuse into a vibrant experience for those who don't settle for ordinary.
                         </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
-                                <span class="stat-value">110/10</span>
-                                    <span class="stat-label">Intensity</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">115/10</span>
-                                    <span class="stat-label">Attitude</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">140/10</span>
-                                    <span class="stat-label">Mystery</span>
-                                </div>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">125/10</span>
+                                <span class="stat-label">Intensity</span>
                             </div>
-                    </div>
-                </div>
-
-                <!-- Green Apple -->
-                <div class="swiper-slide" data-theme="green-apple" data-flavor="Green Apple">
-                    <div class="product-card apple-animation">
-                        <div class="product-image">
-                            <img src="../Assets/_optimized/plop/GP MANZANA.webp" alt="Green Apple Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP MANZANA.webp 180w, ../Assets/_optimized/plop/GP MANZANA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
-                        </div>
-                        <h3 class="product-name">Green Apple</h3>
-                        <div class="product-attitude">The Innovator</div>
-                        <p class="product-description">
-                            Fresh, disruptive, always one step ahead. It's the flavor of those who set trends 
-                            and don't follow rules. For moments when you want to show your most authentic and original side.
-                        </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
-                                <span class="stat-value">105/10</span>
-                                    <span class="stat-label">Intensity</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">130/10</span>
-                                    <span class="stat-label">Freshness</span>
-                                </div>
-                                <div class="stat">
+                            <div class="stat">
                                 <span class="stat-value">135/10</span>
-                                    <span class="stat-label">Originality</span>
-                                </div>
+                                <span class="stat-label">Fruitiness</span>
                             </div>
-                    </div>
-                </div>
-
-                <!-- Orange -->
-                <div class="swiper-slide" data-theme="orange" data-flavor="Explosive Orange">
-                    <div class="product-card orange-animation">
-                        <div class="product-image">
-                            <img src="../Assets/_optimized/plop/GP MARACUYA.webp" alt="Explosive Orange Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP MARACUYA.webp 180w, ../Assets/_optimized/plop/GP MARACUYA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
-                        </div>
-                        <h3 class="product-name">Explosive Orange</h3>
-                        <div class="product-attitude">The Charismatic</div>
-                        <p class="product-description">
-                            Pure energy that's contagious. The life of the party, the one who lights up the room just by walking in. 
-                            For moments when your personality needs to be the center of attention.
-                        </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
-                                <span class="stat-value">140/10</span>
-                                    <span class="stat-label">Energy</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">135/10</span>
-                                    <span class="stat-label">Charisma</span>
-                                </div>
-                                <div class="stat">
+                            <div class="stat">
                                 <span class="stat-value">120/10</span>
-                                    <span class="stat-label">Fun</span>
-                                </div>
+                                <span class="stat-label">Vibe</span>
                             </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Blue Razz -->
-                <div class="swiper-slide" data-theme="blue-razz" data-flavor="Electric Blue">
+                <!-- Berries Blueberry -->
+                <div class="swiper-slide" data-theme="blue-razz" data-flavor="Berries Blueberry">
                     <div class="product-card blue-animation">
                         <div class="product-image">
-                            <img src="../Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY.webp" alt="Electric Blue Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY.webp 180w, ../Assets/_optimized/plop/GP CEREZA NEON BLUEBERRY@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
-                    </div>
-                        <h3 class="product-name">Electric Blue</h3>
-                        <div class="product-attitude">The Visionary</div>
+                            <img src="../Assets/_optimized/plop/products/berries-mora-azul.webp" alt="Berries Blueberry Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="product-name">Berries Blueberry</h3>
+                        <div class="product-attitude">The Mysterious</div>
                         <p class="product-description">
-                            Different by nature. The flavor that breaks expectations and creates new realities. 
-                            For those who aren't afraid to stand out by being completely unique and authentic.
+                            Deep blueberry at its finest expression. A sophisticated flavor 
+                            for those who prefer to stand out with elegance and mystery.
                         </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
-                                <span class="stat-value">130/10</span>
-                                    <span class="stat-label">Uniqueness</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">125/10</span>
-                                    <span class="stat-label">Impact</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">145/10</span>
-                                    <span class="stat-label">Future</span>
-                                </div>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">115/10</span>
+                                <span class="stat-label">Intensity</span>
                             </div>
+                            <div class="stat">
+                                <span class="stat-value">140/10</span>
+                                <span class="stat-label">Mystery</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">130/10</span>
+                                <span class="stat-label">Elegance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Milk & Chocolate -->
+                <div class="swiper-slide" data-theme="chocolate" data-flavor="Milk & Chocolate">
+                    <div class="product-card chocolate-animation">
+                        <div class="product-image">
+                            <img src="../Assets/_optimized/plop/products/LECHE-CHOCOLATE.webp" alt="Milk & Chocolate Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="product-name">Milk & Chocolate</h3>
+                        <div class="product-attitude">The Indulgent</div>
+                        <p class="product-description">
+                            Pure creaminess that hugs the soul. The perfect combination of milk and chocolate 
+                            for those seeking a moment of comforting sweetness.
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">110/10</span>
+                                <span class="stat-label">Creaminess</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                <span class="stat-label">Indulgence</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">130/10</span>
+                                <span class="stat-label">Comfort</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sour Watermelon -->
+                <div class="swiper-slide" data-theme="green-apple" data-flavor="Sour Watermelon">
+                    <div class="product-card apple-animation">
+                        <div class="product-image">
+                            <img src="../Assets/_optimized/plop/products/SANDIA-ACIDApsd.webp" alt="Sour Watermelon Plop Lollipops" width="180" height="180" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="product-name">Sour Watermelon</h3>
+                        <div class="product-attitude">The Refreshing</div>
+                        <p class="product-description">
+                            Summer in every lick. Juicy watermelon with a sour twist that awakens 
+                            and refreshes. For those who live every day like it's vacation.
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">125/10</span>
+                                <span class="stat-label">Freshness</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">120/10</span>
+                                <span class="stat-label">Sourness</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">140/10</span>
+                                <span class="stat-label">Summer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assorted -->
+                <div class="swiper-slide" data-theme="grape" data-flavor="Assorted">
+                    <div class="product-card grape-animation">
+                        <div class="product-image">
+                            <img src="../Assets/_optimized/plop/products/SURTIDO-Fresa-Uva-ManzanaVerde-Cereza.webp" alt="Assorted Plop Lollipops - Strawberry, Grape, Green Apple, Cherry" width="180" height="180" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="product-name">Assorted</h3>
+                        <div class="product-attitude">The Versatile</div>
+                        <p class="product-description">
+                            Why choose one when you can have them all? Strawberry, grape, green apple and cherry 
+                            in one pack. For those who embrace variety and never get bored.
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                <span class="stat-label">Variety</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">135/10</span>
+                                <span class="stat-label">Fun</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                <span class="stat-label">Surprise</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -381,59 +468,89 @@
                 <div class="swiper-slide" data-theme="led-strawberry" data-flavor="LED Strawberry" data-led="true">
                     <div class="product-card led-animation">
                         <div class="product-image led-glow">
-                            <img src="../Assets/_optimized/plop/plop-LED-SURTIDO_FRESA.webp" alt="LED Strawberry Plop with Glow Stick" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/plop-LED-SURTIDO_FRESA.webp 180w, ../Assets/_optimized/plop/plop-LED-SURTIDO_FRESA@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/products/Plop-LED-Fresa.webp" alt="LED Strawberry Plop with red glow stick" width="180" height="180" loading="lazy" decoding="async" />
                             <div class="led-effect"></div>
                         </div>
                         <h3 class="product-name">LED Strawberry</h3>
                         <div class="product-attitude">The Club Rebel</div>
                         <p class="product-description">
-                            Light up the night with glow stick power! Explosive strawberry flavor that comes with a LED stick. 
-                            Perfect for parties, festivals, and making every moment electric. YEAH!
+                            Light up the night with red neon power. Explosive strawberry flavor with glow stick.
+                            Perfect for parties, festivals, and moments that deserve to vibrate. YEAH!
                         </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
+                        <div class="flavor-stats">
+                            <div class="stat">
                                 <span class="stat-value">150/10</span>
-                                    <span class="stat-label">Glow Power</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">145/10</span>
-                                    <span class="stat-label">Party Vibe</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">135/10</span>
-                                    <span class="stat-label">Electric</span>
-                                </div>
+                                <span class="stat-label">Red Power</span>
                             </div>
+                            <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                <span class="stat-label">Party Vibe</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">135/10</span>
+                                <span class="stat-label">Electric</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- LED Blue -->
-                <div class="swiper-slide" data-theme="led-blue" data-flavor="LED Cereza Blue" data-led="true">
+                <!-- LED Cherry -->
+                <div class="swiper-slide" data-theme="led-cherry" data-flavor="LED Cherry" data-led="true">
                     <div class="product-card led-animation">
                         <div class="product-image led-glow">
-                            <img src="../Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY.webp" alt="LED Cereza Blue Plop with Glow Stick" width="180" height="180" loading="lazy" decoding="async" srcset="../Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY.webp 180w, ../Assets/_optimized/plop/plop_LED-SURTIDO_BLUEBERRY@2x.webp 360w" sizes="(max-width:768px) 35vw, 180px" />
+                            <img src="../Assets/_optimized/plop/products/Plop-LED-Cereza.webp" alt="LED Cherry Plop with pink glow stick" width="180" height="180" loading="lazy" decoding="async" />
                             <div class="led-effect"></div>
                         </div>
-                        <h3 class="product-name">LED Cereza Blue</h3>
+                        <h3 class="product-name">LED Cherry</h3>
+                        <div class="product-attitude">The Pink Star</div>
+                        <p class="product-description">
+                            Intense cherry with electric pink glow. The ultimate accessory to shine 
+                            on the dance floor. Designed for those who make every night a spectacle.
+                        </p>
+                        <div class="flavor-stats">
+                            <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                <span class="stat-label">Pink Power</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                <span class="stat-label">Glamour</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">140/10</span>
+                                <span class="stat-label">Shine</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LED Blueberry -->
+                <div class="swiper-slide" data-theme="led-blue" data-flavor="LED Blueberry" data-led="true">
+                    <div class="product-card led-animation">
+                        <div class="product-image led-glow">
+                            <img src="../Assets/_optimized/plop/products/Plop-LED-Blueberry.webp" alt="LED Blueberry Plop with blue glow stick" width="180" height="180" loading="lazy" decoding="async" />
+                            <div class="led-effect"></div>
+                        </div>
+                        <h3 class="product-name">LED Blueberry</h3>
                         <div class="product-attitude">The Neon Legend</div>
                         <p class="product-description">
-                            Cherry blueberry fusion with electric blue glow! The ultimate party accessory that tastes as wild as it looks. 
-                            Designed for the dance floor, concerts, and unforgettable nights. OMG!
+                            Blue blueberry with hypnotizing electric glow. The power of blue neon 
+                            for legendary nights. Designed for festivals and concerts. OMG!
                         </p>
-                            <div class="flavor-stats">
-                                <div class="stat">
+                        <div class="flavor-stats">
+                            <div class="stat">
                                 <span class="stat-value">150/10</span>
-                                    <span class="stat-label">Neon Power</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">140/10</span>
-                                    <span class="stat-label">Festival Ready</span>
-                                </div>
-                                <div class="stat">
-                                <span class="stat-value">150/10</span>
-                                    <span class="stat-label">Legendary</span>
-                                </div>
+                                <span class="stat-label">Blue Power</span>
                             </div>
+                            <div class="stat">
+                                <span class="stat-value">145/10</span>
+                                <span class="stat-label">Festival Ready</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">150/10</span>
+                                <span class="stat-label">Legendary</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -451,8 +568,10 @@
                 <div class="flavor-dot" data-index="2"></div>
                 <div class="flavor-dot" data-index="3"></div>
                 <div class="flavor-dot" data-index="4"></div>
-                <div class="flavor-dot led-dot" data-index="5"></div>
+                <div class="flavor-dot" data-index="5"></div>
                 <div class="flavor-dot led-dot" data-index="6"></div>
+                <div class="flavor-dot led-dot" data-index="7"></div>
+                <div class="flavor-dot led-dot" data-index="8"></div>
             </div>
         </div>
     </section>
@@ -549,22 +668,22 @@
             <div class="display-grid">
                 <div class="display-card">
                     <div class="display-image">
-                        <img src="../Assets/_optimized/plop/GP-DISPLAY-CERRADO-V1-Current-View.webp" alt="Plop Display Box - Perfect for Retail" width="1200" height="1200" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/displays/bolsa-fresa-acida.webp" alt="Sour Strawberry Plop Bag" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">Retail Display Box</h3>
-                    <p class="display-description">Eye-catching counter displays that demand attention. Perfect for convenience stores, pharmacies, and impulse purchases.</p>
+                    <h3 class="display-title">Sour Strawberry Bag</h3>
+                    <p class="display-description">The classic that never fails. Intense sour strawberry in a practical bag to share or enjoy alone.</p>
                     <div class="display-features">
-                        <span class="feature-tag">High Visibility</span>
-                        <span class="feature-tag">Easy Access</span>
+                        <span class="feature-tag">Fan Favorite</span>
+                        <span class="feature-tag">For Sharing</span>
                     </div>
                 </div>
 
                 <div class="display-card">
                     <div class="display-image">
-                        <img src="../Assets/_optimized/plop/GP-FUNDA-SURTIDO.webp" alt="Mixed Flavor Bags - Variety in Every Pack" width="833" height="1200" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/displays/bolsa-surtido.webp" alt="Assorted Plop Bag" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">Mixed Flavor Bags</h3>
-                    <p class="display-description">Variety packs with all your favorite flavors. Can't decide? Get them all and let your mood choose.</p>
+                    <h3 class="display-title">Assorted Bag</h3>
+                    <p class="display-description">Why choose one? Variety of flavors in a single bag. Strawberry, grape, green apple and cherry.</p>
                     <div class="display-features">
                         <span class="feature-tag">All Flavors</span>
                         <span class="feature-tag">Great Value</span>
@@ -573,74 +692,92 @@
 
                 <div class="display-card">
                     <div class="display-image">
-                        <img src="../Assets/_optimized/plop/funda-fresa.webp" alt="Individual Flavor Bags - Pure Strawberry Power" width="1012" height="944" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/displays/bolsa-berries.webp" alt="Berries Plop Bag" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">Single Flavor Bags</h3>
-                    <p class="display-description">When you know exactly what you want. Pure, concentrated flavor experience for the dedicated.</p>
+                    <h3 class="display-title">Berries Bag</h3>
+                    <p class="display-description">The perfect fusion of red fruits. Intense fruitiness in every lollipop for berry lovers.</p>
                     <div class="display-features">
-                        <span class="feature-tag">Flavor Focus</span>
-                        <span class="feature-tag">Bulk Option</span>
+                        <span class="feature-tag">New Flavor</span>
+                        <span class="feature-tag">Intense Fruitiness</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/displays/bolsa-sandia.webp" alt="Watermelon Plop Bag" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Watermelon Bag</h3>
+                    <p class="display-description">Refreshing summer flavor with the sour twist that wakes you up. Juicy watermelon in every lick.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Super Refreshing</span>
+                        <span class="feature-tag">Summer Flavor</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/displays/bolsa-leche-chocolate.webp" alt="Milk & Chocolate Plop Bag" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Milk & Chocolate Bag</h3>
+                    <p class="display-description">Irresistible creaminess. The perfect combination of milk and chocolate for indulgent moments.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Ultra Creamy</span>
+                        <span class="feature-tag">Indulgent</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/displays/bolsa-agridulce.webp" alt="Sweet & Sour Plop Bag" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Sweet & Sour Bag</h3>
+                    <p class="display-description">The perfect balance between sweet and sour. For those who enjoy contrasts and unique sensations.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Perfect Balance</span>
+                        <span class="feature-tag">Unique Sensation</span>
+                    </div>
+                </div>
+
+                <div class="display-card">
+                    <div class="display-image">
+                        <img src="../Assets/_optimized/plop/displays/bolsa-mini-mango-sal.webp" alt="Mini Mango with Salt Plop Bag" loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="display-title">Mini Mango with Salt</h3>
+                    <p class="display-description">The Mexican twist that conquers. Tropical mango with a touch of salt. Mini size, giant flavor.</p>
+                    <div class="display-features">
+                        <span class="feature-tag">Tropical Flavor</span>
+                        <span class="feature-tag">Mini Size</span>
                     </div>
                 </div>
 
                 <div class="display-card led-exclusive">
                     <div class="display-image">
-                        <img src="../Assets/_optimized/plop/LED-PRINT-display.webp" alt="LED Display - Light Up the Night" width="1175" height="1200" loading="lazy" decoding="async" />
+                        <img src="../Assets/_optimized/plop/displays/display-led.webp" alt="LED Plop Display" loading="lazy" decoding="async" />
                     </div>
-                    <h3 class="display-title">LED Night Display</h3>
-                    <p class="display-description">Special LED displays for clubs, festivals, and night events. When regular displays aren't electric enough.</p>
+                    <h3 class="display-title">LED Display</h3>
+                    <p class="display-description">The display that lights up the party. Perfect for clubs, festivals and night events. With glow sticks included.</p>
                     <div class="display-features">
                         <span class="feature-tag">Party Ready</span>
                         <span class="feature-tag">Glow Power</span>
                     </div>
                 </div>
-
-                <div class="display-card">
-                    <div class="display-image">
-                        <img src="../Assets/_optimized/plop/GP-SHAKE-FUNDA.webp" alt="Shake Series - Mix It Up" width="833" height="1200" loading="lazy" decoding="async" />
-                    </div>
-                    <h3 class="display-title">Shake Series Packs</h3>
-                    <p class="display-description">Our premium shake flavors in convenient grab bags. For when you want to level up your flavor game.</p>
-                    <div class="display-features">
-                        <span class="feature-tag">Premium Line</span>
-                        <span class="feature-tag">Unique Flavors</span>
-                    </div>
-                </div>
-
-                <div class="display-card">
-                    <div class="display-image">
-                        <img src="../Assets/_optimized/plop/GP_MARACUYA 23.webp" alt="Individual Units - Single Serve Power" width="921" height="1200" loading="lazy" decoding="async" />
-                    </div>
-                    <h3 class="display-title">Individual Units</h3>
-                    <p class="display-description">Single serves for spontaneous moments. When you want that instant boost right now.</p>
-                    <div class="display-features">
-                        <span class="feature-tag">Impulse Buy</span>
-                        <span class="feature-tag">Instant Gratification</span>
-                    </div>
-                </div>
             </div>
 
-            <div class="display-cta">
-                <h3>Ready to Stock Plop?</h3>
-                <p>Multiple formats mean maximum sales opportunities. Let's talk about what works best for your space.</p>
-                <a class="cta-btn" href="mailto:sales@confiteca.com">Get Stocking Info</a>
             </div>
-        </div>
     </section>
 
     <!-- Enhanced CTA Section -->
-    <section class="cta-section">
-        <h2>Your Moment Is Now</h2>
+    <section class="cta-section" id="contact">
+        <h2>Ready to Stock Plop?</h2>
         <div class="cta-subtitle">
-            Don't wait any longer to be the most authentic and magnetic version of yourself. 
-            Every flavor is a new opportunity to shine.
+            Multiple formats mean maximum sales opportunities. Let's talk about what works best for your space.
         </div>
-        <button class="cta-btn">Find Your Flavor</button>
+        <a class="cta-btn" href="mailto:sales@confiteca.com">Get Stocking Info</a>
     </section>
 
     <script>
         let currentSlide = 0;
-        const totalSlides = 7;
+        const totalSlides = 9;
         const swiperWrapper = document.getElementById('swiperWrapper');
         const flavorSubtitle = document.getElementById('flavorSubtitle');
         const body = document.body;
@@ -652,7 +789,10 @@
             'green-apple': 'theme-green-apple',
             'orange': 'theme-orange',
             'blue-razz': 'theme-blue-razz',
+            'berries': 'theme-berries',
+            'chocolate': 'theme-chocolate',
             'led-strawberry': 'theme-led-strawberry',
+            'led-cherry': 'theme-led-cherry',
             'led-blue': 'theme-led-blue'
         };
 
@@ -679,11 +819,8 @@
             body.classList.add(themes[theme]);
             
             // Toggle LED mode
-            const modeIndicator = document.getElementById('modeIndicator');
             if (isLED) {
                 body.classList.add('led-mode');
-                // Update mode indicator
-                modeIndicator.querySelector('.mode-text').textContent = 'LED MODE';
                 // Update hero text for LED experience
                 document.querySelector('h1').innerHTML = 'Light Up.<br>Stand Out.';
                 document.querySelector('.confidence-boost').innerHTML = 
@@ -702,8 +839,6 @@
                 }
             } else {
                 body.classList.remove('led-mode');
-                // Update mode indicator
-                modeIndicator.querySelector('.mode-text').textContent = 'REGULAR';
                 // Restore original hero text
                 document.querySelector('h1').innerHTML = 'Bold Flavor. <br>Zero Apologies.';
                 document.querySelector('.confidence-boost').innerHTML = 
