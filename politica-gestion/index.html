@@ -6,8 +6,7 @@
     <title>Política Integral de Gestión | Confiteca</title>
     <link rel="icon" type="image/png" href="../Assets/confiteca/confiteca_logo/confiteca_smile_icon_square.png">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="preload" as="style" href="../css/confiteca.min.css" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="../css/confiteca.min.css"></noscript>
+    <link rel="stylesheet" href="../css/confiteca.min.css">
     <meta name="robots" content="index,follow">
     <meta name="description" content="Política Integral del Sistema de Gestión de CONFITECA C.A. - Calidad, Seguridad Alimentaria, Medio Ambiente, Seguridad Ocupacional y Responsabilidad Social.">
     <style>
@@ -357,22 +356,39 @@
         }
         
         @media (max-width: 768px) {
+            /* Disable fade-in animation on mobile to ensure content is visible */
+            .fade-in {
+                opacity: 1;
+                transform: translateY(0);
+            }
             .policy-hero {
-                padding: 7rem 1.5rem 4rem;
+                padding: 6rem 1rem 3rem;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
             }
             .policy-container { 
                 margin-top: -2rem;
                 padding: 0 1rem 3rem;
             }
             .policy-content {
-                padding: 2rem 1.5rem;
-                border-radius: 24px;
+                padding: 1.5rem 1rem;
+                border-radius: 20px;
             }
             .policy-content h2 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
             .commitment-grid {
                 grid-template-columns: 1fr;
+            }
+            .floating-candy {
+                display: none;
+            }
+            .hero-shapes .shape {
+                display: none;
             }
         }
     </style>
