@@ -2376,28 +2376,45 @@
             }
         }
 
-        /* Product background images - apply to all screen sizes */
-        .product-lollipop.fresa {
-            background-image: image-set(
-                url('../Assets/_optimized/superhyper/super-hyper-fresa-plop-lollipop-400.webp') 1x,
-                url('../Assets/_optimized/superhyper/super-hyper-fresa-plop-lollipop-800.webp') 2x
-            );
+        /* Product background images - HOT mode products */
+        .product-lollipop.hot-fresa {
+            background-image: url('../Assets/_optimized/superhyper/units/super-hyper-fresa-plop-lollipop-HOT.webp');
             background-position: center center !important;
         }
 
-        .product-lollipop.limon {
-            background-image: image-set(
-                url('../Assets/_optimized/superhyper/super-hyper-limon-hot-lollipop-plop-400.webp') 1x,
-                url('../Assets/_optimized/superhyper/super-hyper-limon-hot-lollipop-plop-800.webp') 2x
-            );
+        .product-lollipop.hot-limon {
+            background-image: url('../Assets/_optimized/superhyper/units/super-hyper-limon-hot-lollipop-plop-HOT.webp');
             background-position: center center !important;
         }
 
-        .product-lollipop.mango {
-            background-image: image-set(
-                url('../Assets/_optimized/superhyper/super-hyper-mango-hot-lollipop-plop-400.webp') 1x,
-                url('../Assets/_optimized/superhyper/super-hyper-mango-hot-lollipop-plop-800.webp') 2x
-            );
+        .product-lollipop.hot-mango {
+            background-image: url('../Assets/_optimized/superhyper/units/super-hyper-mango-hot-lollipop-plop-HOT.webp');
+            background-position: center center !important;
+        }
+
+        .product-lollipop.hot-plop-combo {
+            background-image: url('../Assets/_optimized/superhyper/units/HOT-Plop-SHH-individual-mango-strawberry-lemon-3-units.webp');
+            background-position: center center !important;
+        }
+
+        .product-lollipop.hot-kataboom {
+            background-image: url('../Assets/_optimized/superhyper/units/HOT-Kataboom-SHH-individual-3-units-Mango-Strawberry-Lemon-liquid-center.webp');
+            background-position: center center !important;
+        }
+
+        /* Product background images - SOUR mode products */
+        .product-lollipop.sour-acidometro {
+            background-image: url('../Assets/_optimized/superhyper/units/SOUR-SHA-20cm-gum-acidometro-individual.webp');
+            background-position: center center !important;
+        }
+
+        .product-lollipop.sour-bolax5 {
+            background-image: url('../Assets/_optimized/superhyper/units/SOUR-SHA-bolax5-individual.webp');
+            background-position: center center !important;
+        }
+
+        .product-lollipop.sour-centro-polvo {
+            background-image: url('../Assets/_optimized/superhyper/units/SOUR-GUM-SHA-centro-polvo-individual.webp');
             background-position: center center !important;
         }
 
@@ -2469,6 +2486,135 @@
             100% {
                 opacity: 0;
                 transform: translateY(-150px) scale(0.8) rotate(15deg);
+            }
+        }
+
+        /* Display Section */
+        .display-section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .display-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .display-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .display-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, var(--glow-color, rgba(255,215,0,0.1)) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .display-card:hover::before {
+            opacity: 1;
+        }
+
+        .display-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #FFD700;
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .display-card.hot-display {
+            --glow-color: rgba(210, 0, 31, 0.2);
+            border-color: rgba(210, 0, 31, 0.4);
+        }
+
+        .display-card.hot-display:hover {
+            border-color: #D2001F;
+            box-shadow: 0 20px 40px rgba(210, 0, 31, 0.4);
+        }
+
+        .display-card.sour-display {
+            --glow-color: rgba(76, 175, 80, 0.2);
+            border-color: rgba(76, 175, 80, 0.4);
+        }
+
+        .display-card.sour-display:hover {
+            border-color: #4CAF50;
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.4);
+        }
+
+        .display-image {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .display-card:hover .display-image {
+            transform: scale(1.05);
+        }
+
+        .display-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            color: #FFD700;
+            text-shadow: 2px 2px 0 #000;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .display-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .display-specs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .spec-tag {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 20px;
+            padding: 0.4rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #FFD700;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        @media (max-width: 768px) {
+            .display-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .display-image {
+                height: 220px;
             }
         }
 
@@ -2719,6 +2865,18 @@
             </div>
         </section>
 
+        <!-- Display Formats Section -->
+        <section class="display-section" id="displays">
+            <h2 class="hero-title" style="font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 1rem;">
+                DISPLAY FORMATS
+            </h2>
+            <p class="hero-subtitle" style="font-size: 1.2rem; margin-bottom: 3rem;">Perfect for retail, events, and maximum impact</p>
+            
+            <div class="display-grid" id="displayGrid">
+                <!-- Displays will be dynamically inserted here based on mode -->
+            </div>
+        </section>
+
         <!-- Hall of Fame Section -->
         <section class="hall-of-fame-section" id="hallOfFame">
             <!-- Epic Background Effects -->
@@ -2784,7 +2942,7 @@
                     <div class="warrior-card warrior-left" data-warrior="1">
                         <div class="warrior-frame">
                             <video class="warrior-video" muted loop playsinline preload="metadata" autoplay>
-                                <source src="../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-girl.mp4" type="video/mp4">
+                                <source src="../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-girl 2.mp4" type="video/mp4">
                             </video>
                             <div class="warrior-overlay">
                                 <div class="warrior-effects">
@@ -2880,14 +3038,16 @@
         // Product configurations for HOT and SOUR modes
         const productsByMode = {
             hot: [
-                { class: 'limon', flavor: 'LIME HOT', image: '../Assets/superhiperacido/superhiperacido_product_photos/super-hyper-limon-hot-lollipop-plop.png' },
-                { class: 'mango', flavor: 'MANGO HOT', image: '../Assets/superhiperacido/superhiperacido_product_photos/super-hyper-mango-hot-lollipop-plop.png' },
-                { class: 'fresa', flavor: 'STRAWBERRY HOT', image: '../Assets/superhiperacido/superhiperacido_product_photos/super-hyper-fresa-plop-lollipop.png' }
+                { class: 'hot-fresa', flavor: 'STRAWBERRY HOT 🍓🔥', type: 'lollipop' },
+                { class: 'hot-limon', flavor: 'LIME HOT 🍋🔥', type: 'lollipop' },
+                { class: 'hot-mango', flavor: 'MANGO HOT 🥭🔥', type: 'lollipop' },
+                { class: 'hot-plop-combo', flavor: 'PLOP HOT COMBO 🔥', type: 'combo' },
+                { class: 'hot-kataboom', flavor: 'KATABOOM HOT 💥', type: 'gum' }
             ],
             sour: [
-                { class: 'fresa', flavor: 'STRAWBERRY SOUR', image: '../Assets/superhiperacido/superhiperacido_product_photos/super-hyper-fresa-plop-lollipop.png' },
-                { class: 'limon', flavor: 'LIME SOUR', image: '../Assets/superhiperacido/superhiperacido_product_photos/super-hyper-limon-hot-lollipop-plop.png' },
-                { class: 'mango', flavor: 'MANGO SOUR', image: '../Assets/superhiperacido/superhiperacido_product_photos/super-hyper-mango-hot-lollipop-plop.png' }
+                { class: 'sour-acidometro', flavor: 'ACIDÓMETRO 20CM ⚡', type: 'gum' },
+                { class: 'sour-bolax5', flavor: 'SOUR BALLS x5 💚', type: 'gum' },
+                { class: 'sour-centro-polvo', flavor: 'SOUR POWDER CENTER 💥', type: 'gum' }
             ]
         };
 
@@ -2901,7 +3061,51 @@
             sour: [
                 { emoji: '😖', title: 'PUCKER POWER', description: 'Keep a straight face for 30 seconds. Impossible? Prove us wrong!' },
                 { emoji: '💧', title: 'ACID RAIN', description: 'The most sour experience on the planet. Your tears will tell the story!' },
-                { emoji: '⚡', title: 'ELECTRIC SHOCK', description: 'Three SOUR lollipops simultaneously. Your taste buds will never be the same!' }
+                { emoji: '⚡', title: 'ELECTRIC SHOCK', description: 'The Acidómetro 20cm challenge. How far can you go before you pucker?' }
+            ]
+        };
+
+        // Display configurations for HOT and SOUR modes
+        const displaysByMode = {
+            hot: [
+                { 
+                    image: '../Assets/_optimized/superhyper/displays/HOT-Plop-Lollipop-Bag-24units-3flavors-Lemon-Strawberry-Mango.webp',
+                    title: 'PLOP HOT BAG - 24 UNITS',
+                    description: 'The perfect retail bag with 24 fiery lollipops. Three explosive flavors: Strawberry, Lemon, and Mango HOT.',
+                    specs: ['24 Units', '3 Flavors', 'Retail Ready']
+                },
+                { 
+                    image: '../Assets/_optimized/superhyper/displays/HOT-Plop-doy-pack-x6-lollipop-3flavors-strawberry-lemon-mango.webp',
+                    title: 'PLOP HOT DOY PACK - 6 UNITS',
+                    description: 'Grab-and-go format with 6 HOT lollipops. Perfect for impulse purchases at checkout.',
+                    specs: ['6 Units', 'Grab & Go', 'Impulse Buy']
+                },
+                { 
+                    image: '../Assets/_optimized/superhyper/displays/HOT-Kataboom-Super Hyper Hot-Box-Liquid Center Gum-ASsorted-Lemon-Strawberry-Mango.webp',
+                    title: 'KATABOOM HOT BOX',
+                    description: 'Liquid center gum that EXPLODES with heat! Premium display box with assorted flavors.',
+                    specs: ['Liquid Center', 'Assorted', 'Premium Box']
+                }
+            ],
+            sour: [
+                { 
+                    image: '../Assets/_optimized/superhyper/displays/SOUR-Super Hyper-acidómetro-box-gum-20cm-15units.webp',
+                    title: 'ACIDÓMETRO BOX - 15 UNITS',
+                    description: '20cm tubes of pure sour power! Premium display box with 15 units for the ultimate challenge.',
+                    specs: ['15 Units', '20cm Each', 'Challenge Ready']
+                },
+                { 
+                    image: '../Assets/_optimized/superhyper/displays/SOUR-Super-Hyper-Box-35units-x5unitsachets-sour-shell.webp',
+                    title: 'SOUR BALLS BOX - 35 SACHETS',
+                    description: 'Crunchy sour shell gum balls! Each sachet contains 5 explosive pieces.',
+                    specs: ['35 Sachets', '5 Units Each', 'Sour Shell']
+                },
+                { 
+                    image: '../Assets/_optimized/superhyper/displays/SOUR-Bubble-gum-filled-w-sour-powder- 100units-box.webp',
+                    title: 'SOUR POWDER CENTER - 100 UNITS',
+                    description: 'Bubble gum with SECRET sour powder center! High-volume display for maximum sales.',
+                    specs: ['100 Units', 'Powder Center', 'High Volume']
+                }
             ]
         };
 
@@ -2979,6 +3183,27 @@
             attachChallengeListeners();
         }
 
+        // Function to update display formats based on mode
+        function updateDisplayGrid(mode) {
+            const displayGrid = document.getElementById('displayGrid');
+            displayGrid.innerHTML = ''; // Clear existing displays
+            
+            const displays = displaysByMode[mode] || [];
+            displays.forEach(display => {
+                const displayCard = document.createElement('div');
+                displayCard.className = `display-card ${mode}-display`;
+                displayCard.innerHTML = `
+                    <img src="${display.image}" alt="${display.title}" class="display-image" loading="lazy" decoding="async" />
+                    <h3 class="display-title">${display.title}</h3>
+                    <p class="display-description">${display.description}</p>
+                    <div class="display-specs">
+                        ${display.specs.map(spec => `<span class="spec-tag">${spec}</span>`).join('')}
+                    </div>
+                `;
+                displayGrid.appendChild(displayCard);
+            });
+        }
+
         // Function to update favicon dynamically
         function updateFavicon(mode) {
             const favicon = document.querySelector('link[rel="icon"]');
@@ -3035,9 +3260,10 @@
                     updateFavicon('sour');
                 }
                 
-                // Update product and challenge displays based on mode
+                // Update product, challenge, and display formats based on mode
                 updateProductDisplay(choice);
                 updateChallengeDisplay(choice);
+                updateDisplayGrid(choice);
                 
                 // Animate transition
                 choiceScreen.classList.add('hidden');
@@ -3090,9 +3316,10 @@
                     logo.src = '../Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
                 }
                 
-                // Update product and challenge displays based on mode
+                // Update product, challenge, and display formats based on mode
                 updateProductDisplay(newMode);
                 updateChallengeDisplay(newMode);
+                updateDisplayGrid(newMode);
                 
                 // Add visual feedback (subtle scale animation only)
                 modeIndicator.style.transform = 'scale(1.1)';
@@ -3511,16 +3738,23 @@
 
         // Emoji creation function for product hover
         function createEmojiEffects(lollipop, container) {
-            const flavorClass = lollipop.classList[1]; // fresa, limon, mango
+            const flavorClass = lollipop.classList[1]; // hot-fresa, sour-acidometro, etc.
             
             // Define emoji combinations for each flavor
             const emojiCombos = {
-                fresa: ['🍓', '🔥', '💥', '🌶️'],
-                limon: ['🍋', '🔥', '⚡', '💚', '🌶️'], 
-                mango: ['🥭', '🔥', '🧡', '💥', '🌶️']
+                // HOT products
+                'hot-fresa': ['🍓', '🔥', '💥', '🌶️'],
+                'hot-limon': ['🍋', '🔥', '⚡', '🌶️'], 
+                'hot-mango': ['🥭', '🔥', '🧡', '💥', '🌶️'],
+                'hot-plop-combo': ['🔥', '🍓', '🍋', '🥭', '💥'],
+                'hot-kataboom': ['💥', '🔥', '💣', '🌶️', '🧨'],
+                // SOUR products
+                'sour-acidometro': ['⚡', '💚', '😖', '🍋', '💧'],
+                'sour-bolax5': ['💚', '⚡', '🟢', '😵', '💥'],
+                'sour-centro-polvo': ['💥', '💚', '🤯', '⚡', '😱']
             };
             
-            const emojis = emojiCombos[flavorClass] || ['🔥', '💥'];
+            const emojis = emojiCombos[flavorClass] || ['🔥', '💥', '⚡'];
             
             // Create multiple floating emojis
             for (let i = 0; i < 6; i++) {
@@ -3586,13 +3820,20 @@
                 
                 // Get flavor info
                 const flavor = lollipop.dataset.flavor;
-                const flavorClass = lollipop.classList[1]; // fresa, limon, mango
+                const flavorClass = lollipop.classList[1]; // hot-fresa, sour-acidometro, etc.
                 
                 // Create flavor experience popup
                 const flavorMessages = {
-                    fresa: "🍓 STRAWBERRY HOT: The classic fire starter! Sweet meets heat in the most explosive way possible!",
-                    limon: "🟢 LIME HOT: Tangy torture! The perfect balance of citrus sourness and burning sensation!",
-                    mango: "🥭 MANGO HOT: Tropical inferno! Sweet tropical flavor followed by an intense heat wave!"
+                    // HOT products
+                    'hot-fresa': "🍓🔥 STRAWBERRY HOT: The classic fire starter! Sweet strawberry meets intense heat in the most explosive way possible!",
+                    'hot-limon': "🍋🔥 LIME HOT: Tangy torture! The perfect balance of citrus sourness and burning sensation!",
+                    'hot-mango': "🥭🔥 MANGO HOT: Tropical inferno! Sweet tropical mango flavor followed by an intense heat wave!",
+                    'hot-plop-combo': "🔥💥 PLOP HOT COMBO: The ultimate trio! Strawberry, Lemon, and Mango lollipops - triple the heat, triple the dare!",
+                    'hot-kataboom': "💥🔥 KATABOOM HOT: Liquid center gum that EXPLODES with heat! Three intense flavors in one fiery experience!",
+                    // SOUR products  
+                    'sour-acidometro': "⚡💚 ACIDÓMETRO 20CM: The ultimate sour challenge! A 20cm tube of pure sour power - how far can you go?",
+                    'sour-bolax5': "💚⚡ SOUR BALLS x5: Five explosive sour gum balls with a crunchy shell! Each one more intense than the last!",
+                    'sour-centro-polvo': "💥💚 SOUR POWDER CENTER: Bubble gum with a SECRET sour powder center! The surprise that makes you pucker!"
                 };
                 
                 const popup = document.createElement('div');
@@ -3721,10 +3962,10 @@
 
         // UGC Reaction Video System
         const ugcVideos = [
-            { src: '../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-girl.mp4',
+            { src: '../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-girl 2.mp4',
               header: 'THIS IS WHAT HAPPENS WHEN YOU DARE',
               footer: 'STILL THINK YOU CAN HANDLE IT?' },
-            { src: '../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-girl 2.mp4',
+            { src: '../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-guy.mp4',
               header: 'REAL REACTIONS. REAL HEAT.',
               footer: 'CAN YOU HANDLE IT?' },
             { src: '../Assets/superhiperacido/superhyper-lifestyle-videos/superhyper-customer-reaction-ugc-guy.mp4',
