@@ -2158,12 +2158,22 @@
             }
 
             .tiktok-card {
-                padding: 1.5rem;
-                max-height: 500px;
-                border-radius: 25px;
+                padding: 0.5rem;
+                border-radius: 20px;
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
+                max-height: none;
+                aspect-ratio: 9/16;
                 margin: 0 auto;
+            }
+            
+            .tiktok-embed {
+                border-radius: 16px;
+                overflow: hidden;
+            }
+            
+            .tiktok-video {
+                border-radius: 16px;
             }
 
             .tiktok-play-button {
@@ -2387,8 +2397,8 @@
             }
 
             .tiktok-card {
-                padding: 1rem;
-                max-height: 450px;
+                padding: 0.5rem;
+                max-width: 260px;
             }
 
             .tiktok-play-button {
