@@ -2,11 +2,22 @@ TO-DOs para Confiteca:
 -Confiteca.com b2b manter la estructura acutal -- para la b2c hacer dominios especficios sin poder volver a confiteca.com
 -Dr. Look: Pelucaloka ya no se produce / pruning
 -PLOP: cambiar imagenes a plop vs Globopop
--TODOS LOS LANDINGS: Para la parte del catalogo - pedir que mismos productos quieren: Nombres y Fotos
+# -TODOS LOS LANDINGS: Para la parte del catalogo - pedir que mismos productos quieren: Nombres y Fotos
+    # -Plop
+    # -Super Hyper
+    # -Agogo
+    # -Dr. Look
 -Press: agregar link a las entrevistas  
 -GOOGLE ANALYTICS: pedir a Amarilis. 
--VASC & ley de proteccion de datos & COOKIES! Darse de baja de la platafomra 
+-AGOGO: 
+  # -The video cards are not showing the full video.
+  -The video card is not displaying the video right away it is taking some timet to load which creates an awkward UX.
 
+
+# -PLOP: In MOBILE - Hide the substitle of the hero (where the flavor subtitle is)
+# -Cambiar "Alegria Al Alcance de Todos" por "How es tu mejor dia para ser feliz"
+# -VASC & ley de proteccion de datos & COOKIES! Darse de baja de la platafomra 
+# - Quitar Globoplop del footer
 # -Para los CTAs: PEDIR Amarilis hace los email sales@confiteca.com
 # -Para contact us: pedir que manden el correo support@confiteca.com
 # /**-Redireccion a /en o /es dependiendo del idioma del browser**/

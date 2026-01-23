@@ -498,6 +498,12 @@
             transform: scale(1.05);
         }
 
+        @media (max-width: 1024px) {
+            .logo {
+                height: 65px;
+            }
+        }
+
         .mode-indicator {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.2rem;
@@ -2164,7 +2170,7 @@
                 position: relative;
                 cursor: pointer;
                 filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
-                overflow: hidden;
+                overflow: visible;
                 display: block;
             }
 
@@ -3251,12 +3257,14 @@
                     heroTitleLine2.style.color = '#ff4500';
                     meterTitle.textContent = 'HEAT METER';
                     logo.src = '../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
+                    logo.srcset = '../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png 180w, ../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png 300w';
                     updateFavicon('hot');
                 } else {
                     heroTitleLine2.textContent = 'SOUR';
                     heroTitleLine2.style.color = '#00ffff';
                     meterTitle.textContent = 'SOUR METER';
-                    logo.src = '../Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
+                    logo.src = '../Assets/_optimized/superhyper/superhiperacido_logo-300.webp';
+                    logo.srcset = '../Assets/_optimized/superhyper/superhiperacido_logo-180.webp 180w, ../Assets/_optimized/superhyper/superhiperacido_logo-300.webp 300w';
                     updateFavicon('sour');
                 }
                 
@@ -3309,11 +3317,13 @@
                     heroTitleLine2.style.color = '#ff4500';
                     meterTitle.textContent = 'HEAT METER';
                     logo.src = '../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
+                    logo.srcset = '../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png 180w, ../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png 300w';
                 } else {
                     heroTitleLine2.textContent = 'SOUR';
                     heroTitleLine2.style.color = '#00ffff';
                     meterTitle.textContent = 'SOUR METER';
-                    logo.src = '../Assets/superhiperacido/superhiperacido_logo/superhiperacido_logo.png';
+                    logo.src = '../Assets/_optimized/superhyper/superhiperacido_logo-300.webp';
+                    logo.srcset = '../Assets/_optimized/superhyper/superhiperacido_logo-180.webp 180w, ../Assets/_optimized/superhyper/superhiperacido_logo-300.webp 300w';
                 }
                 
                 // Update product, challenge, and display formats based on mode
