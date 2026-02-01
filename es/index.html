@@ -1081,10 +1081,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // Close menu when clicking on nav links
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
                 closeMobileMenu();
-                // Smooth scroll to section
+                
+                // Allow mailto: and external links to work normally
+                if (href.startsWith('mailto:') || href.startsWith('http') || href.startsWith('tel:')) {
+                    return; // Don't prevent default, let the link work
+                }
+                
+                // Smooth scroll to section for anchor links
                 e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     setTimeout(() => {
                         target.scrollIntoView({
