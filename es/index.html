@@ -1082,14 +1082,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
-                closeMobileMenu();
                 
-                // Allow mailto: and external links to work normally
+                // Allow mailto:, tel:, and external links to work normally
                 if (href.startsWith('mailto:') || href.startsWith('http') || href.startsWith('tel:')) {
+                    // Close menu after a tiny delay to let the action happen first
+                    setTimeout(closeMobileMenu, 100);
                     return; // Don't prevent default, let the link work
                 }
                 
-                // Smooth scroll to section for anchor links
+                // For anchor links, close menu and smooth scroll
+                closeMobileMenu();
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
