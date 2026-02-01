@@ -788,62 +788,79 @@
         // =====================================================
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzIupxEsYuOaAqiQMoPDXWyqBEXeD6eM7WN-pgGVmQVwF6goFVsuVjsaZX2i6I8hPlqlQ/exec';
         
+        // Create hidden iframe for form submission (required for Google Apps Script)
+        const hiddenIframe = document.createElement('iframe');
+        hiddenIframe.name = 'hidden_iframe';
+        hiddenIframe.id = 'hidden_iframe';
+        hiddenIframe.style.display = 'none';
+        document.body.appendChild(hiddenIframe);
+        
         // Form submission handler - sends to Google Sheet + Email
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const submitBtn = this.querySelector('.submit-btn');
+            const form = this;
+            const submitBtn = form.querySelector('.submit-btn');
             const originalBtnContent = submitBtn.innerHTML;
             
             // Show loading state
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span class="btn-content"><span>Enviando...</span><span>⏳</span></span>';
             
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
+            // Add metadata fields to form
+            let timestampField = form.querySelector('input[name="timestamp"]');
+            if (!timestampField) {
+                timestampField = document.createElement('input');
+                timestampField.type = 'hidden';
+                timestampField.name = 'timestamp';
+                form.appendChild(timestampField);
+            }
+            timestampField.value = new Date().toISOString();
             
-            // Add metadata
-            data.timestamp = new Date().toISOString();
-            data.page_url = window.location.href;
-            data.language = 'es';
+            let pageUrlField = form.querySelector('input[name="page_url"]');
+            if (!pageUrlField) {
+                pageUrlField = document.createElement('input');
+                pageUrlField.type = 'hidden';
+                pageUrlField.name = 'page_url';
+                form.appendChild(pageUrlField);
+            }
+            pageUrlField.value = window.location.href;
             
-            try {
-                // Send to Google Apps Script using URL-encoded form data
-                // This works better with CORS restrictions and local testing
-                const formBody = new URLSearchParams();
-                for (const key in data) {
-                    formBody.append(key, data[key]);
-                }
-                
-                const response = await fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors', // Required for Google Apps Script
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: formBody.toString()
-                });
-                
-                // Since mode is 'no-cors', we can't read the response
-                // But if no error was thrown, assume success
-                console.log('Form submitted successfully:', data);
+            let languageField = form.querySelector('input[name="language"]');
+            if (!languageField) {
+                languageField = document.createElement('input');
+                languageField.type = 'hidden';
+                languageField.name = 'language';
+                form.appendChild(languageField);
+            }
+            languageField.value = 'es';
+            
+            // Set form to submit to Google Apps Script via hidden iframe
+            form.action = GOOGLE_SCRIPT_URL;
+            form.method = 'POST';
+            form.target = 'hidden_iframe';
+            
+            // Listen for iframe load (indicates submission complete)
+            hiddenIframe.onload = function() {
+                console.log('Form submitted successfully');
                 
                 // Show success message
                 document.getElementById('contactForm').style.display = 'none';
                 document.querySelector('.form-header').style.display = 'none';
                 document.getElementById('successMessage').classList.add('show');
-                
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                
-                // Reset button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnContent;
-                
-                // Show error (you could make this prettier)
-                alert('Lo sentimos, hubo un error al enviar tu mensaje. Por favor intenta de nuevo o escríbenos a support@confiteca.com');
-            }
+            };
+            
+            // Submit the form
+            form.submit();
+            
+            // Fallback: Show success after timeout (in case onload doesn't fire)
+            setTimeout(function() {
+                if (document.getElementById('contactForm').style.display !== 'none') {
+                    document.getElementById('contactForm').style.display = 'none';
+                    document.querySelector('.form-header').style.display = 'none';
+                    document.getElementById('successMessage').classList.add('show');
+                }
+            }, 3000);
         });
 
         // Add hover effect to inquiry options
