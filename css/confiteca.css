@@ -1211,7 +1211,7 @@
         @media (max-width: 1024px) {
             .hero {
                 align-items: flex-start;
-                padding-top: 25%;
+                padding-top: 20%;
             }
             
             .nav-links {
@@ -1306,11 +1306,6 @@
             .logo-hero {
                 width: 150px;
                 margin-bottom: 0.5rem;
-            }
-
-            .hero {
-                align-items: flex-start;
-                padding-top: 20%;
             }
 
             .hero-content {

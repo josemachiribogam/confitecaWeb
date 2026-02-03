@@ -295,7 +295,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li><a href="#about">Nosotros</a></li>
                 <li><a href="#innovation">Innovación</a></li>
                 <li><a href="#careers">Talento</a></li>
-                <li><a href="mailto:support@confiteca.com">Contacto</a></li>
+                <li><a href="contact.html">Contacto</a></li>
             </ul>
             <div class="language-toggle">
                 <a href="../en/index.html">EN</a>
@@ -325,7 +325,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li><a href="#about">🏭 Quiénes somos</a></li>
                 <li><a href="#innovation">🚀 Innovación</a></li>
                 <li><a href="#careers">⭐ Talento</a></li>
-                <li><a href="mailto:support@confiteca.com">📧 Contacto</a></li>
+                <li><a href="contact.html">📧 Contacto</a></li>
             </ul>
             <div class="language-toggle mobile">
                 <a href="../en/index.html">EN</a>
@@ -360,8 +360,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Nuestro imperio dulce</h2>
-                <p>De chicles a chocolates, de paletas a caramelos duros: nuestras marcas llenan cada categoría y generación con sabores audaces y experiencias memorables.</p>
+                <h2>Las Marcas Más Dulces</h2>
+                <p>De chicles a chocolates, de chupetes a caramelos duros: nuestras marcas llenan cada categoría y generación con sabores audaces y experiencias memorables.</p>
             </div>
             
             <!-- Top 8 Brands -->
@@ -369,10 +369,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="plop_landing_page.html" class="brand-card-link">
                     <div class="brand-card fade-in">
                         <div class="brand-logo">
-                            <img src="../Assets/plop/plop_logo/plop_logo.png" alt="Plop! - Paletas modernas con centro de chicle sin azúcar" />
+                            <img src="../Assets/plop/plop_logo/plop_logo.png" alt="Plop! - Chupetes modernos con centro de chicle sin azúcar" />
                         </div>
                         <h3>Plop!</h3>
-                        <div class="brand-category">Paletas con chicle</div>
+                        <div class="brand-category">Chupetes con chicle</div>
                         <p>Impulsa a cada joven a hacerse notar siendo auténtico. Chupetes vibrantes que convierten la expresión personal en una experiencia sensorial imposible de ignorar.</p>
                     </div>
                 </a>
@@ -415,7 +415,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="flip-card-front">
                             <div class="brand-card fade-in">
                                 <div class="brand-logo">
-                                    <img src="../Assets/tumix/tumix_logo/tumix_logo.png" alt="Tumix - La marca insignia de chicles y paletas del Ecuador desde 1994" />
+                                    <img src="../Assets/tumix/tumix_logo/tumix_logo.png" alt="Tumix - La marca insignia de chicles y chupetes del Ecuador desde 1994" />
                                 </div>
                                 <h3>Tumix</h3>
                                 <div class="brand-category">Chicles de menta</div>
@@ -1083,10 +1083,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
                 
-                // Allow mailto:, tel:, and external links to work normally
-                if (href.startsWith('mailto:') || href.startsWith('http') || href.startsWith('tel:')) {
-                    // Close menu after a tiny delay to let the action happen first
-                    setTimeout(closeMobileMenu, 100);
+                // Allow mailto:, tel:, external links, and .html pages to work normally
+                if (href.startsWith('mailto:') || href.startsWith('http') || href.startsWith('tel:') || href.endsWith('.html')) {
+                    // Close menu and let the navigation happen
+                    closeMobileMenu();
                     return; // Don't prevent default, let the link work
                 }
                 

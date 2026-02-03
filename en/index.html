@@ -300,7 +300,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li><a href="#about">About</a></li>
                 <li><a href="#innovation">Innovation</a></li>
                 <li><a href="#careers">Careers</a></li>
-                <li><a href="mailto:support@confiteca.com">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="language-toggle">
                 <a href="index.html" class="active">EN</a>
@@ -330,7 +330,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li><a href="#about">🏭 About Us</a></li>
                 <li><a href="#innovation">🚀 Innovation</a></li>
                 <li><a href="#careers">⭐ Careers</a></li>
-                <li><a href="mailto:support@confiteca.com">📧 Contact</a></li>
+                <li><a href="contact.html">📧 Contact</a></li>
             </ul>
             <div class="language-toggle mobile">
                 <a href="index.html" class="active">EN</a>
@@ -365,7 +365,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Our Sweet Empire</h2>
+                <h2>Our Sweet Brands</h2>
                 <p>From gum to chocolate, lollipops to hard candies—our diverse brand family delivers joy across every category and generation with bold flavors and unforgettable experiences.</p>
             </div>
             
@@ -1098,10 +1098,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
                 
-                // Allow mailto:, tel:, and external links to work normally
-                if (href.startsWith('mailto:') || href.startsWith('http') || href.startsWith('tel:')) {
-                    // Close menu after a tiny delay to let the action happen first
-                    setTimeout(closeMobileMenu, 100);
+                // Allow mailto:, tel:, external links, and .html pages to work normally
+                if (href.startsWith('mailto:') || href.startsWith('http') || href.startsWith('tel:') || href.endsWith('.html')) {
+                    // Close menu and let the navigation happen
+                    closeMobileMenu();
                     return; // Don't prevent default, let the link work
                 }
                 

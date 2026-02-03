@@ -14,12 +14,8 @@
         }
 
         :root {
-            --confiteca-red: #e63946;
-            --confiteca-blue: #1e88e5;
-            --hot-pink: #ff006e;
-            --lime-green: #8fff00;
-            --deep-purple: #7209b7;
-            --electric-yellow: #ffff00;
+            --confiteca-red: #EA0B2A;
+            --confiteca-blue: #26abe2;
             --text-primary: #1a1a1a;
             --text-secondary: #666;
             --white: #ffffff;
@@ -28,7 +24,12 @@
         body {
             font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(45deg,
+                var(--confiteca-red) 0%,
+                var(--confiteca-blue) 35%,
+                var(--confiteca-blue) 70%,
+                var(--confiteca-red) 100%
+            );
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             overflow-x: hidden;
@@ -57,47 +58,40 @@
             75% { transform: translateY(-40px) rotate(20deg); }
         }
 
-        /* Navigation */
+        /* Navigation with Glassmorphism */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            z-index: 1000;
+            padding: 0.2rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0 2rem;
+            min-height: 60px;
         }
-
+        
         .nav-logo {
-            height: 50px;
-            filter: brightness(0) invert(1);
-            transition: transform 0.3s ease;
+            width: 120px;
+            height: auto;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.2));
+            transition: all 0.3s ease;
+            background: transparent;
+            mix-blend-mode: multiply;
         }
 
         .nav-logo:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-back {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.15);
-            transition: all 0.3s ease;
-        }
-
-        .nav-back:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateX(-5px);
+            transform: scale(1.05) rotate(2deg);
         }
 
         /* Main Container */
@@ -106,7 +100,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 120px 2rem 4rem;
+            padding: 150px 2rem 4rem;
             position: relative;
             z-index: 2;
         }
@@ -137,10 +131,7 @@
 
         .contact-info h1 span {
             display: block;
-            background: linear-gradient(90deg, var(--electric-yellow), var(--lime-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--confiteca-red);
         }
 
         .contact-info p {
@@ -195,7 +186,7 @@
             left: 0;
             right: 0;
             height: 6px;
-            background: linear-gradient(90deg, var(--confiteca-red), var(--hot-pink), var(--deep-purple), var(--confiteca-blue));
+            background: linear-gradient(90deg, var(--confiteca-red), var(--confiteca-blue), var(--confiteca-red));
         }
 
         .form-header {
@@ -255,9 +246,9 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--hot-pink);
+            border-color: var(--confiteca-red);
             background: white;
-            box-shadow: 0 0 0 4px rgba(255, 0, 110, 0.1);
+            box-shadow: 0 0 0 4px rgba(234, 11, 42, 0.12);
         }
 
         .form-group input::placeholder,
@@ -322,8 +313,8 @@
         }
 
         .inquiry-option input:checked + label {
-            border-color: var(--hot-pink);
-            background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(114, 9, 183, 0.1));
+            border-color: var(--confiteca-red);
+            background: rgba(234, 11, 42, 0.08);
         }
 
         .inquiry-option input:checked + label .icon {
@@ -336,7 +327,7 @@
             font-size: 1.1rem;
             font-weight: 700;
             color: white;
-            background: linear-gradient(135deg, var(--confiteca-red), var(--hot-pink));
+            background: var(--confiteca-red);
             border: none;
             border-radius: 50px;
             cursor: pointer;
@@ -437,6 +428,18 @@
         }
 
         /* Responsive */
+        /* Mobile Navigation */
+        @media (max-width: 1024px) {
+            .nav-container {
+                padding: 0 1rem;
+                min-height: 50px;
+            }
+
+            nav {
+                padding: 0.1rem 0;
+            }
+        }
+
         @media (max-width: 968px) {
             .contact-wrapper {
                 grid-template-columns: 1fr;
@@ -466,7 +469,7 @@
 
         @media (max-width: 600px) {
             .contact-container {
-                padding: 80px 1rem 3rem;
+                padding: 30% 1rem 3rem;
                 min-height: auto;
             }
 
@@ -598,16 +601,13 @@
     <div class="floating-candy" style="bottom: 20%; left: 10%; animation-delay: 3s;">🫧</div>
     <div class="floating-candy" style="top: 60%; right: 5%; animation-delay: 4.5s;">🍫</div>
     <div class="floating-candy" style="bottom: 35%; right: 15%; animation-delay: 2s;">🌟</div>
-    <div class="floating-candy" style="top: 45%; left: 3%; animation-delay: 5s;">💜</div>
+    <div class="floating-candy" style="top: 45%; left: 3%; animation-delay: 5s;">🍭</div>
 
     <!-- Navigation -->
     <nav>
-        <a href="index.html">
-            <img src="../Assets/confiteca/confiteca_logo/confiteca_logo.png" alt="Confiteca" class="nav-logo">
-        </a>
-        <div style="display: flex; align-items: center; gap: 1.5rem;">
-            <a href="index.html" class="nav-back">
-                <span>←</span> Volver al Inicio
+        <div class="nav-container">
+            <a href="index.html">
+                <img src="../Assets/confiteca/confiteca_logo/confiteca_logo.png" alt="Confiteca" class="nav-logo">
             </a>
             <div class="language-toggle">
                 <a href="../en/contact.html">EN</a>
