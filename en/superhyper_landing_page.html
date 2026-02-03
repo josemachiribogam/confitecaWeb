@@ -585,12 +585,24 @@
 
         @media (max-width: 1024px) {
             .hero {
-                min-height: auto; /* Allow hero to be more compact on mobile */
-                padding-top: 35%; /* Ensure content is below fixed nav */
+                min-height: 100vh;
+                padding-top: 100px; /* Fixed space for navbar */
                 padding-bottom: 2rem;
                 padding-left: 2rem;
                 padding-right: 2rem;
-                justify-content: flex-start; /* Start from top instead of center */
+                justify-content: center;
+            }
+        }
+        
+        /* Fix for short/wide screens */
+        @media (max-width: 1024px) and (max-height: 700px) {
+            .hero {
+                padding-top: 80px;
+                padding-bottom: 1rem;
+            }
+            
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 3rem);
             }
         }
 
