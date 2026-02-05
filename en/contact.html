@@ -845,6 +845,14 @@
             // Listen for iframe load (indicates submission complete)
             hiddenIframe.onload = function() {
                 console.log('Form submitted successfully');
+
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                event: 'contact_form_submit',
+                form_id: 'contactForm',
+                page_url: window.location.href,
+                language: 'en'
+            });
                 
                 // Show success message
                 document.getElementById('contactForm').style.display = 'none';
