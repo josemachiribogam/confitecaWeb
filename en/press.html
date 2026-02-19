@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press & Media | Confiteca - Making Headlines Since 1964</title>
+    <link rel="icon" type="image/png" href="../Assets/confiteca/confiteca_logo/confiteca_smile_icon_square.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/confiteca.min.css">
+    <style>
+        :root {
+            --confiteca-red: #EA0B2A;
+            --confiteca-blue: #26abe2;
+        }
+
+        /* Press Hero */
+        .press-hero {
+            min-height: 70vh;
+            background: linear-gradient(135deg, var(--confiteca-red) 0%, #ff006e 50%, var(--confiteca-blue) 100%);
+            background-size: 400% 400%;
+            animation: gradient-shift 8s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        .press-hero::before {
+            content: '📰📺🎙️📻✨';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float-icons 10s ease-in-out infinite;
+        }
+
+        @keyframes float-icons {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            50% { transform: translate(-50%, -55%) rotate(5deg); }
+        }
+
+        .press-hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .press-hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .press-hero p {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Press Stats */
+        .press-stats {
+            background: white;
+            padding: 4rem 0;
+            border-bottom: 3px solid #ffff00;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--confiteca-red), #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        /* Featured Section */
+        .featured-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff5f5 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--confiteca-red), #ff006e, var(--confiteca-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Press Cards */
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .press-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .press-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border-color: var(--confiteca-red);
+        }
+
+        .press-card-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9ff, #fff);
+            border-bottom: 3px solid #ffff00;
+        }
+
+        .press-type {
+            display: inline-block;
+            background: var(--confiteca-red);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .press-type.podcast {
+            background: #ff006e;
+        }
+
+        .press-type.article {
+            background: var(--confiteca-blue);
+        }
+
+        .press-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+
+        .press-date {
+            font-size: 0.9rem;
+            color: #999;
+            font-weight: 600;
+        }
+
+        .press-card-body {
+            padding: 2rem;
+        }
+
+        .press-excerpt {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .press-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--confiteca-red), #ff006e);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(234, 11, 42, 0.3);
+        }
+
+        .press-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(234, 11, 42, 0.4);
+        }
+
+        .press-btn.podcast {
+            background: linear-gradient(135deg, #ff006e, #7209b7);
+            box-shadow: 0 8px 25px rgba(255, 0, 110, 0.3);
+        }
+
+        .press-btn.podcast:hover {
+            box-shadow: 0 12px 35px rgba(255, 0, 110, 0.4);
+        }
+
+        .press-btn.article {
+            background: linear-gradient(135deg, var(--confiteca-blue), #1565c0);
+            box-shadow: 0 8px 25px rgba(38, 171, 226, 0.3);
+        }
+
+        .press-btn.article:hover {
+            box-shadow: 0 12px 35px rgba(38, 171, 226, 0.4);
+        }
+
+        /* Contact CTA */
+        .press-contact {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .press-contact h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .press-contact p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: #ffff00;
+            color: #1a1a1a;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 255, 0, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 0, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .press-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .press-hero {
+                min-height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">
+                <img src="../Assets/confiteca/confiteca_logo/confiteca_logo.png" alt="Confiteca - Spreading Joy Since 1964" class="logo">
+            </a>
+            
+            <!-- Desktop Menu -->
+            <ul class="nav-links">
+                <li><a href="index.html#brands">Brands</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#innovation">Innovation</a></li>
+                <li><a href="index.html#careers">Careers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="language-toggle">
+                <a href="press.html" class="active">EN</a>
+                <span>/</span>
+                <a href="../es/press.html">ES</a>
+            </div>
+
+            <!-- Mobile Hamburger -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-header">
+                <h3>Confiteca</h3>
+                <p>Sweet Universe Navigation</p>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html#brands">🍭 Our Brands</a></li>
+                <li><a href="index.html#about">🏭 About Us</a></li>
+                <li><a href="index.html#innovation">🚀 Innovation</a></li>
+                <li><a href="index.html#careers">⭐ Careers</a></li>
+                <li><a href="contact.html">📧 Contact</a></li>
+            </ul>
+            <div class="language-toggle mobile">
+                <a href="press.html" class="active">EN</a>
+                <span>/</span>
+                <a href="../es/press.html">ES</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Press Hero -->
+    <section class="press-hero">
+        <div class="press-hero-content">
+            <h1>Press & Media</h1>
+            <p>Discover how Confiteca is making headlines around the world with our sweet innovations and global impact</p>
+        </div>
+    </section>
+
+    <!-- Press Stats -->
+    <section class="press-stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">60+</span>
+                <span class="stat-label">Years of Stories</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Countries Reached</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Iconic Brands</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">1964</span>
+                <span class="stat-label">Since</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Coverage -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="section-title">Featured Coverage</h2>
+            <p class="section-subtitle">See what the media is saying about Confiteca's journey to sweeten the world</p>
+
+            <div class="press-grid">
+                <!-- Podcast: OpenBox -->
+                <div class="press-card">
+                    <div class="press-card-header">
+                        <span class="press-type podcast">🎙️ Podcast</span>
+                        <h3>OpenBox Podcast: Inside Confiteca's Sweet Success</h3>
+                        <p class="press-date">2024</p>
+                    </div>
+                    <div class="press-card-body">
+                        <p class="press-excerpt">
+                            Join us for an in-depth conversation about Confiteca's 60-year journey, innovation strategies, and how we're bringing joy to over 100 countries worldwide.
+                        </p>
+                        <a href="https://podcasts.apple.com/pe/podcast/openbox-podcast/id1719153602?i=1000659566477" target="_blank" class="press-btn podcast">
+                            <span>🎧 Listen on Apple</span>
+                        </a>
+                        <a href="https://open.spotify.com/episode/0mk3HAyG1sKuBtsFi89NbE" target="_blank" class="press-btn podcast" style="margin-left: 1rem;">
+                            <span>🎵 Listen on Spotify</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article: Gestión -->
+                <div class="press-card">
+                    <div class="press-card-header">
+                        <span class="press-type article">📰 Article</span>
+                        <h3>Confiteca Expands with New Chocolate Production Line</h3>
+                        <p class="press-date">Gestión</p>
+                    </div>
+                    <div class="press-card-body">
+                        <p class="press-excerpt">
+                            Confiteca announces major expansion with a new production line dedicated to chocolate creams and premium confections, strengthening its position in the Latin American market.
+                        </p>
+                        <a href="https://gestion.pe/economia/empresas/confiteca-incorporara-nueva-linea-de-produccion-de-cremas-de-chocolate-golosinas-chocolate-noticia/" target="_blank" class="press-btn article">
+                            <span>📖 Read Article</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article: El Universo -->
+                <div class="press-card">
+                    <div class="press-card-header">
+                        <span class="press-type article">📰 Article</span>
+                        <h3>Peak Season: Confiteca's Production Reaches New Heights</h3>
+                        <p class="press-date">El Universo • December 2017</p>
+                    </div>
+                    <div class="press-card-body">
+                        <p class="press-excerpt">
+                            During high season, Confiteca's facility operates at maximum capacity for five consecutive months, producing millions of units to meet growing global demand.
+                        </p>
+                        <a href="https://www.eluniverso.com/noticias/2017/12/12/nota/6522958/temporada-alta-planta-confiteca-lleva-cinco-meses/" target="_blank" class="press-btn article">
+                            <span>📖 Read Article</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Press Contact CTA -->
+    <section class="press-contact">
+        <h2>Media Inquiries</h2>
+        <p>Are you a journalist or media professional interested in covering Confiteca? We'd love to hear from you.</p>
+        <a href="contact.html" class="contact-btn">Get in Touch</a>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Confiteca Universe</h4>
+                    <p>Global headquarters in Ecuador</p>
+                    <p>Spreading joy since 1964</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Our Epic Brands</h4>
+                    <a href="plop_landing_page.html">Plop</a>
+                    <a href="drlook_landing_page_5.html">Dr. Look</a>
+                    <a href="superhyper_landing_page.html">Super Hyper</a>
+                    <a href="agogo_landing_page.html">Agogo</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="press.html">Press</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <a href="https://www.linkedin.com/company/confitecaoficial/">LinkedIn</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Confiteca C.A. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="cookies-policy.html">Cookies Policy</a> | <a href="management-policy.html">Management Policy</a> | Made with 🍭 in Ecuador</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+
+        function toggleMobileMenu() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', toggleMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
