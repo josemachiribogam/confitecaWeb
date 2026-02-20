@@ -2531,6 +2531,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+            margin-bottom: 4rem;
         }
 
         .display-card {
@@ -2798,7 +2799,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="choice-side hot-side" data-choice="hot">
             <div class="choice-content">
                 <div class="choice-emoji">🔥</div>
-                <h2 class="choice-title">CALOR</h2>
+                <h2 class="choice-title">PICANTE</h2>
                 <p class="choice-subtitle">¿Te atreves?</p>
             </div>
             <!-- Flame particles -->
@@ -2885,7 +2886,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Challenge Section -->
         <section class="challenge-section" id="challenges">
             <h2 class="hero-title" style="font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 1rem;">
-                EXTREMO DESAFÍOS
+               DESAFÍOS EXTREMOS
             </h2>
             <p class="hero-subtitle" style="font-size: 1.2rem;">¿Te atreves a probar algo distinto?</p>
             
@@ -2904,9 +2905,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 FORMATOS DE EXHIBICIÓN
             </h2>
             <p class="hero-subtitle" style="font-size: 1.2rem; margin-bottom: 3rem;">Perfecto para retail, eventos y máximo impacto</p>
-            
+
             <div class="display-grid" id="displayGrid">
                 <!-- Displays will be dynamically inserted here based on mode -->
+            </div>
+
+            <div class="display-cta">
+                <h3>¿TE ATREVES A EXHIBIR EL EXTREMO?</h3>
+                <p>Múltiples formatos de exhibición para maximizar ventas y desafiar a tus clientes. Hablemos de lo que funciona mejor para tu punto de venta.</p>
+                <a class="cta-btn" href="contact.html">QUIERO INFORMACIÓN</a>
             </div>
         </section>
 
@@ -2927,8 +2934,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <span class="badge-text">SALÓN DE LA FAMA</span>
                 </div>
                 <h2 class="fame-epic-title">
-                    <span class="title-line-1">ÉPICO</span>
-                    <span class="title-line-2">CARAS</span>
+                    <span class="title-line-1">CARAS</span>
+                    <span class="title-line-2">EPICAS</span>
                 </h2>
                 <p class="fame-epic-subtitle">
                     <span class="subtitle-highlight">REACCIONES QUE CUENTAN LA HISTORIA</span>
@@ -3282,14 +3289,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 if (choice === 'hot') {
                     heroTitleLine2.textContent = 'FIRE';
                     heroTitleLine2.style.color = '#ff4500';
-                    meterTitle.textContent = 'HEAT METER';
+                    meterTitle.textContent = 'HEATMETRO';
                     logo.src = '../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
                     logo.srcset = '../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png 180w, ../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png 300w';
                     updateFavicon('hot');
                 } else {
                     heroTitleLine2.textContent = 'ÁCIDO';
                     heroTitleLine2.style.color = '#00ffff';
-                    meterTitle.textContent = 'ÁCIDO METER';
+                    meterTitle.textContent = 'ÁCIDOMETRO';
                     logo.src = '../Assets/_optimized/superhyper/superhiperacido_logo-300.webp';
                     logo.srcset = '../Assets/_optimized/superhyper/superhiperacido_logo-180.webp 180w, ../Assets/_optimized/superhyper/superhiperacido_logo-300.webp 300w';
                     updateFavicon('sour');
@@ -3342,13 +3349,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 if (newMode === 'hot') {
                     heroTitleLine2.textContent = 'FIRE';
                     heroTitleLine2.style.color = '#ff4500';
-                    meterTitle.textContent = 'HEAT METER';
+                    meterTitle.textContent = 'HEATMETRO';
                     logo.src = '../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
                     logo.srcset = '../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png 180w, ../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png 300w';
                 } else {
                     heroTitleLine2.textContent = 'ÁCIDO';
                     heroTitleLine2.style.color = '#00ffff';
-                    meterTitle.textContent = 'ÁCIDO METER';
+                    meterTitle.textContent = 'ÁCIDOMETRO';
                     logo.src = '../Assets/_optimized/superhyper/superhiperacido_logo-300.webp';
                     logo.srcset = '../Assets/_optimized/superhyper/superhiperacido_logo-180.webp 180w, ../Assets/_optimized/superhyper/superhiperacido_logo-300.webp 300w';
                 }
