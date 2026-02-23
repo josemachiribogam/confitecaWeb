@@ -865,6 +865,12 @@
                         </div>
                     </div>
 
+                    <!-- Distribution: Region/Province (Conditional Field) -->
+                    <div class="form-group" id="regionField" style="display: none;">
+                        <label for="region">Región / Provincia *</label>
+                        <input type="text" id="region" name="region" placeholder="ej: California, Ontario, Buenos Aires, etc.">
+                    </div>
+
                     <!-- Careers: Area of Interest (Conditional Field) -->
                     <div class="form-group" id="careerInterestField" style="display: none;">
                         <label for="careerInterest">Área de Interés / Tipo de Posición que Buscas *</label>
@@ -1012,19 +1018,30 @@
             }, 3000);
         });
 
-        // Toggle "Area of Interest" field based on inquiry type
+        // Toggle conditional fields based on inquiry type
         document.querySelectorAll('input[name="inquiry"]').forEach(radio => {
             radio.addEventListener('change', function() {
                 const careerField = document.getElementById('careerInterestField');
                 const careerInput = document.getElementById('careerInterest');
+                const regionField = document.getElementById('regionField');
+                const regionInput = document.getElementById('region');
+
+                // Reset all conditional fields
+                careerField.style.display = 'none';
+                careerInput.required = false;
+                careerInput.value = '';
                 
+                regionField.style.display = 'none';
+                regionInput.required = false;
+                regionInput.value = '';
+
+                // Show relevant field based on selection
                 if (this.value === 'careers') {
                     careerField.style.display = 'block';
                     careerInput.required = true;
-                } else {
-                    careerField.style.display = 'none';
-                    careerInput.required = false;
-                    careerInput.value = ''; // Clear the field
+                } else if (this.value === 'distribution') {
+                    regionField.style.display = 'block';
+                    regionInput.required = true;
                 }
             });
         });
