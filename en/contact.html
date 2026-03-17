@@ -271,6 +271,110 @@
             padding-right: 3rem;
         }
 
+        /* CV/Resume Upload */
+        .cv-upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .cv-upload-area:hover,
+        .cv-upload-area.dragover {
+            border-color: var(--confiteca-red);
+            background: rgba(234, 11, 42, 0.04);
+        }
+
+        .cv-upload-area .upload-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-upload-area .upload-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .cv-upload-area .upload-text strong {
+            color: var(--confiteca-red);
+        }
+
+        .cv-upload-area .upload-hint {
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-top: 0.35rem;
+        }
+
+        .cv-file-info {
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: rgba(234, 11, 42, 0.06);
+            border: 2px solid var(--confiteca-red);
+            border-radius: 12px;
+            margin-top: 0.5rem;
+        }
+
+        .cv-file-info.show {
+            display: flex;
+        }
+
+        .cv-file-info .file-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .cv-file-info .file-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cv-file-info .file-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .cv-file-info .file-size {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .cv-file-info .file-remove {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            padding: 0.25rem;
+            transition: color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .cv-file-info .file-remove:hover {
+            color: var(--confiteca-red);
+        }
+
+        .cv-error {
+            display: none;
+            font-size: 0.8rem;
+            color: var(--confiteca-red);
+            margin-top: 0.35rem;
+            font-weight: 500;
+        }
+
+        .cv-error.show {
+            display: block;
+        }
+
         /* Fun Radio Buttons */
         .inquiry-type {
             display: grid;
@@ -877,6 +981,28 @@
                         <input type="text" id="careerInterest" name="careerInterest" placeholder="e.g., Marketing, Sales, Production, R&D, etc.">
                     </div>
 
+                    <!-- Careers: CV/Resume Upload (Conditional Field) -->
+                    <div class="form-group" id="cvUploadField" style="display: none;">
+                        <label>CV / Resume</label>
+                        <div class="cv-upload-area" id="cvDropArea">
+                            <div class="upload-icon">📄</div>
+                            <div class="upload-text">
+                                <strong>Click to upload</strong> or drag and drop<br>
+                            </div>
+                            <div class="upload-hint">PDF, DOC, or DOCX (max 5 MB)</div>
+                        </div>
+                        <input type="file" id="cvFileInput" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display: none;">
+                        <div class="cv-file-info" id="cvFileInfo">
+                            <span class="file-icon">📎</span>
+                            <div class="file-details">
+                                <div class="file-name" id="cvFileName"></div>
+                                <div class="file-size" id="cvFileSize"></div>
+                            </div>
+                            <button type="button" class="file-remove" id="cvRemoveBtn" title="Remove file">✕</button>
+                        </div>
+                        <div class="cv-error" id="cvError"></div>
+                    </div>
+
                     <!-- Message -->
                     <div class="form-group">
                         <label for="message">Your Message *</label>
@@ -914,7 +1040,7 @@
         // =====================================================
         // GOOGLE APPS SCRIPT URL - Replace with your deployed script URL
         // =====================================================
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMhqMpzjX_P5G_YNtBfSxPEhJWFaippQVr5V6eIzNkxPM75oT_6UM_LDdsTv1sXAbU/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyLCGTgvzux_pQrB-oUUZRtLvISxattQuiIaM9DGesH4SzYVz-TH_jqTJNRojhwnyyD/exec';
         
         // Create hidden iframe for form submission (required for Google Apps Script)
         const hiddenIframe = document.createElement('iframe');
@@ -963,11 +1089,29 @@
             }
             languageField.value = 'en';
             
+            // Inject CV file data as hidden fields if present
+            let cvDataField = form.querySelector('input[name="cvData"]');
+            let cvNameField = form.querySelector('input[name="cvFileName"]');
+            if (!cvDataField) {
+                cvDataField = document.createElement('input');
+                cvDataField.type = 'hidden';
+                cvDataField.name = 'cvData';
+                form.appendChild(cvDataField);
+            }
+            if (!cvNameField) {
+                cvNameField = document.createElement('input');
+                cvNameField.type = 'hidden';
+                cvNameField.name = 'cvFileName';
+                form.appendChild(cvNameField);
+            }
+            cvDataField.value = cvBase64Data || '';
+            cvNameField.value = cvSelectedFileName || '';
+
             // Set form to submit to Google Apps Script via hidden iframe
             form.action = GOOGLE_SCRIPT_URL;
             form.method = 'POST';
             form.target = 'hidden_iframe';
-            
+
             // Listen for iframe load (indicates submission complete)
             hiddenIframe.onload = function() {
                 console.log('Form submitted successfully');
@@ -979,27 +1123,27 @@
                 page_url: window.location.href,
                 language: 'en'
             });
-                
+
                 // Get selected inquiry type
                 const selectedInquiry = document.querySelector('input[name="inquiry"]:checked')?.value;
-                
+
                 // Show success message
                 document.getElementById('contactForm').style.display = 'none';
                 document.querySelector('.form-header').style.display = 'none';
-                
+
                 const successMessage = document.getElementById('successMessage');
                 const linkedinCTA = document.getElementById('linkedinCTA');
                 const successText = document.getElementById('successText');
-                
+
                 // If Careers inquiry, show LinkedIn CTA
                 if (selectedInquiry === 'careers') {
-                    successText.textContent = "Thanks for your interest in joining our team! We'll review your information and reach out soon.";
+                    successText.textContent = "Thanks for your interest in joining our team! We'll review your CV and reach out soon.";
                     linkedinCTA.style.display = 'inline-block';
                 }
-                
+
                 successMessage.classList.add('show');
             };
-            
+
             // Submit the form
             form.submit();
             
@@ -1017,20 +1161,112 @@
                     
                     // If Careers inquiry, show LinkedIn CTA
                     if (selectedInquiry === 'careers') {
-                        successText.textContent = "Thanks for your interest in joining our team! We'll review your information and reach out soon.";
+                        successText.textContent = "Thanks for your interest in joining our team! We'll review your CV and reach out soon.";
                         linkedinCTA.style.display = 'inline-block';
                     }
-                    
+
                     successMessage.classList.add('show');
                 }
             }, 3000);
         });
+
+        // =====================================================
+        // CV/Resume File Upload Logic
+        // =====================================================
+        const cvDropArea = document.getElementById('cvDropArea');
+        const cvFileInput = document.getElementById('cvFileInput');
+        const cvFileInfo = document.getElementById('cvFileInfo');
+        const cvFileNameEl = document.getElementById('cvFileName');
+        const cvFileSizeEl = document.getElementById('cvFileSize');
+        const cvRemoveBtn = document.getElementById('cvRemoveBtn');
+        const cvError = document.getElementById('cvError');
+        const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
+        const ALLOWED_TYPES = [
+            'application/pdf',
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        ];
+        let cvBase64Data = null;
+        let cvSelectedFileName = null;
+
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        function validateAndProcessFile(file) {
+            cvError.classList.remove('show');
+            cvError.textContent = '';
+
+            if (!file) return;
+
+            if (!ALLOWED_TYPES.includes(file.type)) {
+                cvError.textContent = 'Please upload a PDF, DOC, or DOCX file.';
+                cvError.classList.add('show');
+                return;
+            }
+
+            if (file.size > MAX_FILE_SIZE) {
+                cvError.textContent = 'File is too large. Maximum size is 5 MB.';
+                cvError.classList.add('show');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                cvBase64Data = e.target.result.split(',')[1]; // Remove data:...;base64, prefix
+                cvSelectedFileName = file.name;
+                cvFileNameEl.textContent = file.name;
+                cvFileSizeEl.textContent = formatFileSize(file.size);
+                cvDropArea.style.display = 'none';
+                cvFileInfo.classList.add('show');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function removeFile() {
+            cvBase64Data = null;
+            cvSelectedFileName = null;
+            cvFileInput.value = '';
+            cvFileInfo.classList.remove('show');
+            cvDropArea.style.display = '';
+            cvError.classList.remove('show');
+        }
+
+        cvDropArea.addEventListener('click', () => cvFileInput.click());
+
+        cvDropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            cvDropArea.classList.add('dragover');
+        });
+
+        cvDropArea.addEventListener('dragleave', () => {
+            cvDropArea.classList.remove('dragover');
+        });
+
+        cvDropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            cvDropArea.classList.remove('dragover');
+            if (e.dataTransfer.files.length) {
+                validateAndProcessFile(e.dataTransfer.files[0]);
+            }
+        });
+
+        cvFileInput.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                validateAndProcessFile(e.target.files[0]);
+            }
+        });
+
+        cvRemoveBtn.addEventListener('click', removeFile);
 
         // Toggle conditional fields based on inquiry type
         document.querySelectorAll('input[name="inquiry"]').forEach(radio => {
             radio.addEventListener('change', function() {
                 const careerField = document.getElementById('careerInterestField');
                 const careerInput = document.getElementById('careerInterest');
+                const cvUploadField = document.getElementById('cvUploadField');
                 const regionField = document.getElementById('regionField');
                 const regionInput = document.getElementById('region');
 
@@ -1038,7 +1274,10 @@
                 careerField.style.display = 'none';
                 careerInput.required = false;
                 careerInput.value = '';
-                
+
+                cvUploadField.style.display = 'none';
+                removeFile();
+
                 regionField.style.display = 'none';
                 regionInput.required = false;
                 regionInput.value = '';
@@ -1047,6 +1286,7 @@
                 if (this.value === 'careers') {
                     careerField.style.display = 'block';
                     careerInput.required = true;
+                    cvUploadField.style.display = 'block';
                 } else if (this.value === 'distribution') {
                     regionField.style.display = 'block';
                     regionInput.required = true;
