@@ -2928,7 +2928,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li><a href="#hero">HOME</a></li>
                 <li><a href="#challenges">CHALLENGES</a></li>
                 <li><a href="#products">PRODUCTS</a></li>
-                <li><a href="#dare">DARE A FRIEND</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
             </ul>
             <div style="display: flex; gap: 12px; margin-top: 1.5rem;">
                 <a href="superhyper_landing_page.html" style="text-decoration: none; color: #ffd700; border-radius: 24px; padding: 10px 20px; font-weight: 700; background: rgba(255,215,0,0.2); box-shadow: 0 8px 18px rgba(0,0,0,0.3);">EN</a>
@@ -2970,7 +2970,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
 
             <div class="dare-button">
-                <button class="dare-btn" id="dareBtn">DARE A FRIEND →</button>
+                <a class="dare-btn" href="contact.html" style="display: inline-block; text-decoration: none;">GET PRODUCT INFO →</a>
             </div>
         </section>
 
@@ -3145,11 +3145,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <script>
-        // Loading and initialization
+        // Loading and initialization - REMOVED: Skip loading screen and go straight to choice
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loadingScreen').classList.add('hidden');
-            }, 2000);
+            // Immediately hide loading screen
+            document.getElementById('loadingScreen').classList.add('hidden');
         });
 
         // Product configurations for HOT and SOUR modes
@@ -3162,9 +3161,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 { class: 'hot-kataboom', flavor: 'KATABOOM HOT 💥', type: 'gum' }
             ],
             sour: [
-                { class: 'sour-acidometro', flavor: 'ACIDÓMETRO 20CM ⚡', type: 'gum' },
+                { class: 'sour-centro-polvo', flavor: 'SOUR POWDER CENTER 💥', type: 'gum' },
                 { class: 'sour-bolax5', flavor: 'SOUR BALLS x5 💚', type: 'gum' },
-                { class: 'sour-centro-polvo', flavor: 'SOUR POWDER CENTER 💥', type: 'gum' }
+                { class: 'sour-acidometro', flavor: 'ACIDÓMETRO 20CM ⚡', type: 'gum' }
             ]
         };
 
@@ -3812,6 +3811,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         // Dare button - Enhanced with brand personality (Explorador, Bandido, Bufón)
+        // COMMENTED OUT: Button now links to contact page instead of sharing
+        /*
         const dareBtn = document.getElementById('dareBtn');
         const dareMessages = [
             // Explorador (50%) - adventurous, curious
@@ -3858,6 +3859,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }, 2000);
             }
         });
+        */
 
         // Emoji creation function for product hover
         function createEmojiEffects(lollipop, container) {

@@ -68,7 +68,7 @@
 
         /* Navigation with Glassmorphism */
         nav {
-            position: fixed;
+            /* position: fixed; */ /* REMOVED: Nav is no longer fixed */
             top: 0;
             width: 100%;
             background: rgba(255,255,255,0.1);
@@ -108,7 +108,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 150px 2rem 4rem;
+            padding: 2rem; /* UPDATED: Removed top padding since nav is no longer fixed */
             position: relative;
             z-index: 2;
         }
@@ -581,7 +581,7 @@
 
         @media (max-width: 600px) {
             .contact-container {
-                padding: 30% 1rem 3rem;
+                padding: 1rem; /* UPDATED: Removed top padding */
                 min-height: auto;
             }
 
@@ -773,10 +773,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     o simplemente quieras compartir tu amor por nuestros dulces — ¡nos encantaría escucharte!
                 </p>
                 <ul class="contact-perks">
-                    <li>
-                        <span class="perk-icon">⚡</span>
-                        <span>Respuesta rápida en 24-48 horas</span>
-                    </li>
                     <li>
                         <span class="perk-icon">🌎</span>
                         <span>Alcance global, experiencia local</span>

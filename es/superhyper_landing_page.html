@@ -2928,7 +2928,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li><a href="#hero">INICIO</a></li>
                 <li><a href="#challenges">DESAFÍOS</a></li>
                 <li><a href="#products">PRODUCTOS</a></li>
-                <li><a href="#dare">RETA A UN AMIGO</a></li>
+                <li><a href="contact.html">CONTACTO</a></li>
             </ul>
             <div style="display: flex; gap: 12px; margin-top: 1.5rem;">
                 <a href="../en/superhyper_landing_page.html" style="text-decoration: none; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.4); border-radius: 24px; padding: 10px 20px; font-weight: 600;">EN</a>
@@ -2970,7 +2970,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
 
             <div class="dare-button">
-                <button class="dare-btn" id="dareBtn">RETA A UN AMIGO →</button>
+                <a class="dare-btn" href="contact.html" style="display: inline-block; text-decoration: none;">OBTENER INFORMACIÓN →</a>
             </div>
         </section>
 
@@ -3145,11 +3145,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <script>
-        // Loading and initialization
+        // Loading and initialization - REMOVED: Skip loading screen and go straight to choice
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loadingScreen').classList.add('hidden');
-            }, 2000);
+            // Immediately hide loading screen
+            document.getElementById('loadingScreen').classList.add('hidden');
         });
 
         // Product configurations for CALOR and ÁCIDO modes
@@ -3162,9 +3161,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 { class: 'hot-kataboom', flavor: 'KATABOOM HOT 💥', type: 'gum' }
             ],
             sour: [
-                { class: 'sour-acidometro', flavor: 'ACIDÓMETRO 20CM ⚡', type: 'gum' },
+                { class: 'sour-centro-polvo', flavor: 'CENTRO DE POLVO 💥', type: 'gum' },
                 { class: 'sour-bolax5', flavor: 'BOLAS ÁCIDAS x5 💚', type: 'gum' },
-                { class: 'sour-centro-polvo', flavor: 'CENTRO DE POLVO 💥', type: 'gum' }
+                { class: 'sour-acidometro', flavor: 'ACIDÓMETRO 20CM ⚡', type: 'gum' }
             ]
         };
 
@@ -3812,29 +3811,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         // Dare button - Enhanced with brand personality (Explorador, Bandido, Bufón)
+        // COMMENTED OUT: Button now links to contact page instead of sharing
+        /*
         const dareBtn = document.getElementById('dareBtn');
         const dareMessages = [
             // Explorador (50%) - adventurous, curious
             "I just explored the unknown with Super Hyper ${mode}! Do you dare to discover what happens? 🔥⚡",
             "I discovered my limit with SHA ${mode}... What's yours? The only way to know is by daring 🌶️💚",
             "I navigated uncharted territory with Super Hyper. Want to join the adventure? 🚀",
-            
+
             // Bandido (35%) - rebellious, rule-breaking
             "I broke all the rules with Super Hyper ${mode}! Do you have the guts to follow me? 😈🔥",
             "I defied the impossible and survived SHA ${mode}. Your turn to rebel 💥",
             "I ignored all warnings... and it was incredible! Ready to join the rebellion? 🔥⚡",
-            
+
             // Bufón (15%) - playful, fun-loving
             "My face completely transformed with SHA ${mode}! 😂 Want to see what face you make? 🤪",
             "SHA ${mode} made me cry... but from laughter! Do you dare to laugh with me? 😭😂"
         ];
-        
+
         dareBtn.addEventListener('click', () => {
             // Select random message based on brand personality distribution
             const randomMessage = dareMessages[Math.floor(Math.random() * dareMessages.length)];
             const modeText = selectedMode?.toUpperCase() || 'EXTREMO';
             const shareText = randomMessage.replace('${mode}', modeText);
-            
+
             if (navigator.share) {
                 navigator.share({
                     title: 'Super Hyper Challenge - Do You Dare?',
@@ -3844,20 +3845,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             } else {
                 // Fallback - copy to clipboard
                 navigator.clipboard.writeText(shareText + ' ' + window.location.href);
-                
+
                 // Visual feedback with personality
                 const feedbackMessages = [
                     'LINK COPIED! 🔗',
                     'READY TO SHARE! 💥',
                     'CHALLENGE READY! 🚀'
                 ];
-                
+
                 dareBtn.textContent = feedbackMessages[Math.floor(Math.random() * feedbackMessages.length)];
                 setTimeout(() => {
                     dareBtn.innerHTML = 'RETA A UN AMIGO →';
                 }, 2000);
             }
         });
+        */
 
         // Emoji creation function for product hover
         function createEmojiEffects(lollipop, container) {
