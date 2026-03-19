@@ -587,7 +587,7 @@
         @media (max-width: 1024px) {
             .hero {
                 min-height: 100vh;
-                padding-top: 100px; /* Fixed space for navbar */
+                /* padding-top: 100px; */ /* REMOVED: Fixed space for navbar */
                 padding-bottom: 2rem;
                 padding-left: 2rem;
                 padding-right: 2rem;
@@ -598,10 +598,10 @@
         /* Fix for short/wide screens */
         @media (max-width: 1024px) and (max-height: 700px) {
             .hero {
-                padding-top: 80px;
+                /* padding-top: 80px; */ /* REMOVED */
                 padding-bottom: 1rem;
             }
-            
+
             .hero-title {
                 font-size: clamp(2rem, 8vw, 3rem);
             }
@@ -3110,6 +3110,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </section>
 
         <!-- Super Hyper Reaction Meter -->
+        <!-- COMMENTED OUT: Too many animations/distractions
         <div class="reaction-meter" id="reactionMeter">
             <div class="meter-title" id="meterTitle">INTENSITY</div>
             <div class="meter-labels">
@@ -3123,6 +3124,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="meter-fill" id="meterFill"></div>
             </div>
         </div>
+        -->
 
         <!-- Footer -->
         <footer>
@@ -3358,20 +3360,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 modeIndicator.className = `mode-indicator ${choice}-mode`;
                 modeIndicator.innerHTML = `<span>${choice.toUpperCase()} MODE: ON</span>`;
                 
-                // Update hero title, meter, logo, and favicon
-                const meterTitle = document.getElementById('meterTitle');
+                // Update hero title, logo, and favicon (meter removed)
+                // const meterTitle = document.getElementById('meterTitle');
                 const logo = document.querySelector('.logo');
                 if (choice === 'hot') {
                     heroTitleLine2.textContent = 'FIRE';
                     heroTitleLine2.style.color = '#ff4500';
-                    meterTitle.textContent = 'HEAT METER';
+                    // meterTitle.textContent = 'HEAT METER';
                     logo.src = '../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png';
                     logo.srcset = '../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png 180w, ../Assets/superhiperacido/superhiperacido_logo/logo-super-hyper-hot.png 300w';
                     updateFavicon('hot');
                 } else {
                     heroTitleLine2.textContent = 'SOUR';
                     heroTitleLine2.style.color = '#00ffff';
-                    meterTitle.textContent = 'SOUR METER';
+                    // meterTitle.textContent = 'SOUR METER';
                     logo.src = '../Assets/_optimized/superhyper/superhiperacido_logo-300.webp';
                     logo.srcset = '../Assets/_optimized/superhyper/superhiperacido_logo-180.webp 180w, ../Assets/_optimized/superhyper/superhiperacido_logo-300.webp 300w';
                     updateFavicon('sour');
@@ -3387,12 +3389,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 setTimeout(() => {
                     mainContent.classList.add('active');
                     navbar.classList.add('visible');
-                    animateMeter();
+                    // animateMeter(); // Meter removed
                     
                     // Show mode indicator after transition
                     modeIndicator.classList.remove('inactive');
                     
-                    // Initialize meter for current viewport
+                    // Initialize meter for current viewport (meter removed)
+                    /*
                     if (window.innerWidth <= 1024) {
                         meterFill.style.width = '5%';
                         meterFill.style.height = '100%';
@@ -3400,6 +3403,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         meterFill.style.height = '5%';
                         meterFill.style.width = '100%';
                     }
+                    */
                 }, 500);
             });
         });
@@ -3990,10 +3994,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </div>
                     </div>
                 `;
-                document.body.appendChild(popup);
+                // REMOVED: Popup was too spammy - no longer showing
+                // document.body.appendChild(popup);
                 
                 // Extreme reaction on product click
-                triggerExtremeReaction();
+                // triggerExtremeReaction(); // REMOVED: Too many animations
                 
                 // Animate the clicked lollipop
                 lollipop.style.animation = 'none';
