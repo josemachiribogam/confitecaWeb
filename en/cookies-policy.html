@@ -35,6 +35,32 @@
             .policy-container { margin-top: 15%; }
         }
     </style>
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function () {
+            const CONSENT_KEY = 'cookies_consent';
+            const PREFS_KEY = 'cookies_preferences';
+            function getConsent() { try { return localStorage.getItem(CONSENT_KEY) || ''; } catch(e) { return ''; } }
+            function getPrefs() { try { return JSON.parse(localStorage.getItem(PREFS_KEY) || '{}'); } catch(e) { return {}; } }
+            function loadClarity() {
+                if (window.__clarityLoaded) return;
+                window.__clarityLoaded = true;
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "u4g15ahjfe");
+            }
+            function applyConsent() {
+                const consent = getConsent();
+                const prefs = getPrefs();
+                const analyticsAllowed = consent === 'accepted' || (consent === 'customized' && prefs.analytics === true);
+                if (analyticsAllowed) loadClarity();
+            }
+            applyConsent();
+        })();
+    </script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
