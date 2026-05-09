@@ -125,46 +125,36 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  padding: 0.55rem 0.6rem 0.55rem 1.1rem;
+  padding: 0.55rem 0.7rem 0.55rem 1.4rem;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: saturate(160%) blur(14px);
   -webkit-backdrop-filter: saturate(160%) blur(14px);
   border-radius: 999px;
   box-shadow: 0 12px 40px rgba(12, 12, 20, 0.18);
-  font-size: 0.9rem;
-  font-weight: 600;
   max-width: calc(100vw - 2rem);
 }
 .expo-nav__logo {
-  height: 36px;
+  height: 52px;
   width: auto;
+  display: block;
 }
-.expo-nav__links {
-  display: flex;
-  gap: 1.1rem;
-  list-style: none;
-}
-.expo-nav__links a {
-  position: relative;
-  padding: 0.25rem 0;
-  transition: color 0.2s;
-}
-.expo-nav__links a:hover { color: var(--c-red); }
 .expo-nav__cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.55rem 1.1rem;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
   background: var(--c-ink);
   color: #fff;
   border-radius: 999px;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   transition: transform 0.2s var(--ease-spring), background 0.2s;
 }
 .expo-nav__cta:hover { background: var(--c-red); transform: translateY(-2px); }
-@media (max-width: 720px) {
-  .expo-nav__links { display: none; }
+@media (max-width: 480px) {
+  .expo-nav { padding: 0.45rem 0.55rem 0.45rem 1rem; gap: 0.85rem; }
+  .expo-nav__logo { height: 40px; }
+  .expo-nav__cta { padding: 0.65rem 1rem; font-size: 0.82rem; }
 }
 
 /* =========================================================
@@ -322,11 +312,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   50% { transform: translate(-50%, -50%) scale(1.08); opacity: 0.3; }
 }
 @media (max-width: 980px) {
-  .hero__stage { height: clamp(360px, 75vw, 460px); max-width: 560px; margin: 0 auto; }
-  .hero__stage-float--3 { display: none; }
+  .hero__stage { height: clamp(420px, 90vw, 560px); max-width: 560px; margin: 0 auto; }
 }
 @media (max-width: 640px) {
-  .hero__stage-float--1, .hero__stage-float--2 { display: none; }
+  .hero__stage { height: clamp(380px, 95vw, 460px); }
+  .hero__stage-main img { width: clamp(220px, 56vw, 320px); }
+  .hero__stage-float img { width: clamp(96px, 26vw, 150px); }
+  .hero__stage-burst { width: clamp(300px, 80vw, 420px); height: clamp(300px, 80vw, 420px); }
+  .hero__stage-float--1 { top: 2%; right: 0; }
+  .hero__stage-float--2 { bottom: 2%; left: -2%; }
+  .hero__stage-float--3 { top: 58%; right: 2%; }
 }
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
@@ -538,6 +533,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: absolute;
   inset: 0;
   z-index: -2;
+  background-size: cover;
+  background-repeat: no-repeat;
   transition: transform 0.6s var(--ease-out);
 }
 .door::after {
@@ -545,31 +542,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.7) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.45) 55%, rgba(0, 0, 0, 0.88) 100%);
 }
 .door:hover { transform: translateY(-6px); }
-.door:hover::before { transform: scale(1.08); }
-.door--dl::before { background: linear-gradient(140deg, var(--dl-cyan), var(--dl-violet-deep)); }
-.door--shh::before { background: linear-gradient(140deg, var(--sh-fire), var(--sh-night)); }
-.door--shs::before { background: linear-gradient(140deg, var(--ss-acid), var(--ss-poison)); }
-.door__art {
-  position: absolute;
-  z-index: -1;
-  right: -8%;
-  top: 6%;
-  max-height: 62%;
-  max-width: 78%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  transform: rotate(-5deg);
-  filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.45));
-  transition: transform 0.5s var(--ease-out);
-  pointer-events: none;
-  user-select: none;
+.door:hover::before { transform: scale(1.06); }
+.door--dl::before {
+  background-image: url('../../Assets/drlook/new_assets_drlook/Fondo%20bodegon%20productos.png');
+  background-position: center;
 }
-.door:hover .door__art {
-  transform: rotate(-2deg) scale(1.07);
+.door--shh::before {
+  background-image: url('../../Assets/superhiperacido/New-superhyper-hot/Fondo%20bodegon.png');
+  background-position: top center;
+}
+.door--shs::before {
+  background-image: url('../../Assets/superhiperacido/New-superhyper-acid/Fondo%20productos.png');
+  background-position: top center;
 }
 .door__num {
   font-family: 'Bungee', sans-serif;
@@ -1186,106 +1173,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .foot__links a:hover { color: #fff; }
 
 /* =========================================================
-   TASTING PASSPORT (signature interaction)
-   ========================================================= */
-.passport {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  z-index: 90;
-  width: 240px;
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-  transform: translateY(120%);
-  transition: transform 0.6s var(--ease-spring);
-}
-.passport.is-visible { transform: translateY(0); }
-.passport.is-collapsed .passport__body { display: none; }
-.passport.is-complete { animation: pulse-glow 2s ease-in-out infinite; }
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25), 0 0 0 0 rgba(230, 57, 70, 0.5); }
-  50% { box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25), 0 0 0 10px rgba(230, 57, 70, 0); }
-}
-.passport__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1rem;
-  background: var(--c-ink);
-  color: #fff;
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  font-weight: 700;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.passport__count {
-  background: var(--c-red);
-  border-radius: 999px;
-  padding: 0.15rem 0.5rem;
-  font-size: 0.7rem;
-}
-.passport__body {
-  padding: 1rem;
-}
-.passport__intro {
-  font-size: 0.78rem;
-  color: var(--c-ink-soft);
-  margin-bottom: 0.75rem;
-  line-height: 1.4;
-}
-.passport__stamps {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-.stamp {
-  flex: 1;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 2px dashed rgba(0, 0, 0, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  position: relative;
-  transition: all 0.5s var(--ease-spring);
-  background: var(--c-mist);
-  font-weight: 800;
-  color: rgba(0, 0, 0, 0.2);
-}
-.stamp.is-stamped {
-  border-style: solid;
-  color: #fff;
-  transform: rotate(-8deg) scale(1.1);
-}
-.stamp[data-brand="dl"].is-stamped { background: var(--dl-cyan); border-color: var(--dl-cyan-deep); }
-.stamp[data-brand="shh"].is-stamped { background: var(--sh-fire); border-color: var(--sh-fire-deep); }
-.stamp[data-brand="shs"].is-stamped { background: var(--ss-acid-deep); border-color: var(--ss-poison); }
-.passport__cta {
-  display: block;
-  width: 100%;
-  padding: 0.7rem;
-  background: var(--c-mist);
-  color: var(--c-ink-soft);
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-align: center;
-  pointer-events: none;
-  opacity: 0.6;
-  transition: all 0.4s;
-}
-.passport.is-complete .passport__cta {
-  background: var(--c-red);
-  color: #fff;
-  pointer-events: auto;
-  opacity: 1;
-}
-
-/* =========================================================
    REVEAL ANIMATIONS
    ========================================================= */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
@@ -1305,15 +1192,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 <!-- ============== STICKY NAV ============== -->
 <nav class="expo-nav" aria-label="Page navigation">
-  <a href="#hero"><img class="expo-nav__logo" src="../../Assets/confiteca/confiteca_logo/confiteca_logo.png" alt="Confiteca"></a>
-  <ul class="expo-nav__links">
-    <li><a href="#dr-look">Dr. Look</a></li>
-    <li><a href="#super-hyper-hot">Hot</a></li>
-    <li><a href="#super-hyper-sour">Sour</a></li>
-    <li><a href="#capabilities">Capabilities</a></li>
-  </ul>
+  <a href="#hero" aria-label="Confiteca"><img class="expo-nav__logo" src="../../Assets/confiteca/confiteca_logo/confiteca_logo.png" alt="Confiteca"></a>
   <a href="#booth" class="expo-nav__cta">
-    Visit Booth
+    Visit Booth 3629
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
   </a>
 </nav>
@@ -1434,21 +1315,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     </div>
     <div class="doors">
       <a href="#dr-look" class="door door--dl reveal reveal--delay-1">
-        <img class="door__art" src="../../Assets/drlook/dr_look_character_images/DR%20LOOK_Pose_01_2%202.png" alt="" aria-hidden="true">
         <div class="door__num">01</div>
         <div class="door__name">Dr. Look</div>
         <div class="door__tagline">Sweet. Crazy. Genius.</div>
         <div class="door__enter">Enter the lab <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
       </a>
       <a href="#super-hyper-hot" class="door door--shh reveal reveal--delay-2">
-        <img class="door__art" src="../../Assets/superhiperacido/New-superhyper-hot/Fondo%20bodegon.png" alt="" aria-hidden="true">
         <div class="door__num">02</div>
         <div class="door__name">Super Hyper Hot</div>
         <div class="door__tagline">Fuel the fire.</div>
         <div class="door__enter">Light it up <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
       </a>
       <a href="#super-hyper-sour" class="door door--shs reveal reveal--delay-3">
-        <img class="door__art" src="../../Assets/superhiperacido/New-superhyper-acid/Fondo%20productos.png" alt="" aria-hidden="true">
         <div class="door__num">03</div>
         <div class="door__name">Super Hyper Sour</div>
         <div class="door__tagline">Shock your senses.</div>
@@ -2062,23 +1940,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   </div>
 </footer>
 
-<!-- ============== TASTING PASSPORT ============== -->
-<aside class="passport" id="passport" aria-label="Tasting passport">
-  <header class="passport__head" id="passportHead">
-    <span>🎟️ Tasting Passport</span>
-    <span class="passport__count"><span id="passportCount">0</span> / 3</span>
-  </header>
-  <div class="passport__body">
-    <p class="passport__intro">Scroll through each brand world to collect your stamps. Three stamps unlock a tasting at our booth.</p>
-    <div class="passport__stamps">
-      <div class="stamp" data-brand="dl" title="Dr. Look">DL</div>
-      <div class="stamp" data-brand="shh" title="Super Hyper Hot">SH</div>
-      <div class="stamp" data-brand="shs" title="Super Hyper Sour">SS</div>
-    </div>
-    <a href="#booth" class="passport__cta" id="passportCta">Reserve a tasting →</a>
-  </div>
-</aside>
-
 <script>
 (function () {
   'use strict';
@@ -2160,43 +2021,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   }, { threshold: 0.4 });
   document.querySelectorAll('.meter').forEach(m => meterObserver.observe(m));
 
-  /* ---------- Tasting Passport ---------- */
-  const passport = document.getElementById('passport');
-  const passportCount = document.getElementById('passportCount');
-  const passportCta = document.getElementById('passportCta');
-  const passportHead = document.getElementById('passportHead');
-  const stamped = new Set();
-
-  // Show passport once user starts scrolling past the hero
-  const heroObs = new IntersectionObserver(([entry]) => {
-    if (!entry.isIntersecting) {
-      passport.classList.add('is-visible');
-    }
-  }, { threshold: 0 });
-  const hero = document.querySelector('.hero');
-  if (hero) heroObs.observe(hero);
-
-  // Stamp each brand world
-  const worldObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const brand = entry.target.dataset.brand;
-      if (!brand || stamped.has(brand)) return;
-      stamped.add(brand);
-      const stamp = passport.querySelector(`.stamp[data-brand="${brand}"]`);
-      if (stamp) stamp.classList.add('is-stamped');
-      passportCount.textContent = stamped.size;
-      if (stamped.size === 3) {
-        passport.classList.add('is-complete');
-        passportCta.textContent = '🎉 Reserve your tasting →';
-      }
-      worldObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.world').forEach(w => worldObserver.observe(w));
-
-  // Collapse on header click
-  passportHead.addEventListener('click', () => passport.classList.toggle('is-collapsed'));
 })();
 </script>
 </body>
