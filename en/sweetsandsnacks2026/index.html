@@ -1,0 +1,2203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confiteca @ Sweets & Snacks 2026 — Las Vegas</title>
+<meta name="description" content="Visit Confiteca at Sweets & Snacks Expo 2026 in Las Vegas. Discover the new Dr. Look, Super Hyper Hot, and Super Hyper Sour lineup — 63 years of Latin American confectionery, engineered for the world.">
+<link rel="icon" type="image/png" href="../../Assets/confiteca/confiteca_logo/confiteca_smile_icon_square.png">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Confiteca @ Sweets & Snacks 2026">
+<meta property="og:description" content="Three new worlds. One Latin American candy house. Find us in Las Vegas.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.confiteca.com/en/sweetsandsnacks2026">
+
+<!-- ================================================================
+EXPO LANDING — TODOs FOR THE TEAM TO FILL IN
+================================================================
+1. <span data-fill="dates">May 19–21, 2026</span> → Confirm exact dates
+2. <a data-fill="meeting">...</a>                 → Calendar link (Calendly etc.)
+3. <a data-fill="email">jluidvinosky@confiteca.com</a> → Confirm sales contact
+================================================================ -->
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee:wght@400&family=Space+Grotesk:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+:root {
+  /* Confiteca corporate */
+  --c-red: #e63946;
+  --c-red-deep: #c1121f;
+  --c-blue: #1e88e5;
+  --c-blue-deep: #0d47a1;
+  --c-cream: #fff5e9;
+  --c-ink: #0c0c14;
+  --c-ink-soft: #2b2d3a;
+  --c-paper: #ffffff;
+  --c-mist: #f6f7fb;
+
+  /* Dr. Look — lab cyan + violet */
+  --dl-cyan: #1aa6e8;
+  --dl-cyan-deep: #0c6fa0;
+  --dl-violet: #6e3aff;
+  --dl-violet-deep: #2e1278;
+  --dl-ink: #0a1430;
+
+  /* Super Hyper Hot — flame */
+  --sh-fire: #ff3a00;
+  --sh-fire-deep: #8a0e00;
+  --sh-ember: #ffb000;
+  --sh-spark: #ffeb00;
+  --sh-night: #0a0805;
+
+  /* Super Hyper Sour — electric green */
+  --ss-acid: #b6f02a;
+  --ss-acid-deep: #4d8a00;
+  --ss-bolt: #ffeb00;
+  --ss-poison: #0a3a00;
+  --ss-night: #02100a;
+
+  /* Spacing & motion */
+  --gutter: clamp(1.25rem, 2.5vw, 2.5rem);
+  --section-pad: clamp(4rem, 8vw, 8rem);
+  --radius: 18px;
+  --radius-lg: 28px;
+  --shadow-soft: 0 6px 30px rgba(12, 12, 20, 0.08);
+  --shadow-md: 0 18px 50px rgba(12, 12, 20, 0.18);
+  --shadow-pop: 0 30px 80px rgba(12, 12, 20, 0.35);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--c-ink);
+  background: var(--c-paper);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+.display {
+  font-family: 'Bungee', 'Space Grotesk', sans-serif;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* =========================================================
+   STICKY NAV
+   ========================================================= */
+.expo-nav {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.55rem 0.6rem 0.55rem 1.1rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  border-radius: 999px;
+  box-shadow: 0 12px 40px rgba(12, 12, 20, 0.18);
+  font-size: 0.9rem;
+  font-weight: 600;
+  max-width: calc(100vw - 2rem);
+}
+.expo-nav__logo {
+  height: 36px;
+  width: auto;
+}
+.expo-nav__links {
+  display: flex;
+  gap: 1.1rem;
+  list-style: none;
+}
+.expo-nav__links a {
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color 0.2s;
+}
+.expo-nav__links a:hover { color: var(--c-red); }
+.expo-nav__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--c-ink);
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: transform 0.2s var(--ease-spring), background 0.2s;
+}
+.expo-nav__cta:hover { background: var(--c-red); transform: translateY(-2px); }
+@media (max-width: 720px) {
+  .expo-nav__links { display: none; }
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 7rem 0 5rem;
+  background: radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.18), transparent 60%),
+              linear-gradient(135deg, var(--c-red) 0%, var(--c-red-deep) 55%, #7a0a14 100%);
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.hero__shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero__shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.45;
+  animation: drift 18s ease-in-out infinite;
+}
+.hero__shape--a { width: 480px; height: 480px; background: var(--c-blue); top: -120px; right: -100px; }
+.hero__shape--b { width: 360px; height: 360px; background: #ffb347; bottom: -80px; left: 10%; animation-delay: -6s; }
+.hero__shape--c { width: 280px; height: 280px; background: #ff5e99; top: 35%; left: -80px; animation-delay: -12s; }
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.08); }
+}
+
+.hero__container {
+  position: relative;
+  z-index: 2;
+}
+.hero__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+}
+@media (max-width: 980px) {
+  .hero__layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+.hero__content { position: relative; z-index: 2; }
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 1rem;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+  backdrop-filter: blur(8px);
+}
+.hero__eyebrow strong {
+  font-family: 'Bungee', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+.hero .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #66ff8a;
+  box-shadow: 0 0 12px #66ff8a;
+  animation: pulse 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* Product stage — agogo-pattern composition */
+.hero__stage {
+  position: relative;
+  width: 100%;
+  height: clamp(460px, 56vw, 680px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+/* Ambient burst halo behind the hero product */
+.hero__stage-burst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(420px, 48vw, 600px);
+  height: clamp(420px, 48vw, 600px);
+  background: radial-gradient(circle, var(--sh-spark) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.22;
+  animation: burstPulse 3.2s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+/* Main hero product — centered, dominant */
+.hero__stage-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  pointer-events: none;
+}
+.hero__stage-main img {
+  width: clamp(280px, 32vw, 440px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 28px 50px rgba(0, 0, 0, 0.45));
+  animation: heroFloat 6s ease-in-out infinite;
+  will-change: transform;
+}
+/* Floating satellite products */
+.hero__stage-float {
+  position: absolute;
+  z-index: 2;
+  animation: floatAround 8s ease-in-out infinite;
+  pointer-events: none;
+  will-change: transform;
+}
+.hero__stage-float img {
+  width: clamp(140px, 18vw, 220px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.4));
+}
+.hero__stage-float--1 { top: 4%; right: 2%; animation-delay: 0s; }
+.hero__stage-float--2 { bottom: 6%; left: 0%; animation-delay: 2s; }
+.hero__stage-float--3 { top: 60%; right: 6%; animation-delay: 4s; }
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+@keyframes floatAround {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-14px) rotate(2deg); }
+  50% { transform: translateY(-8px) rotate(0deg); }
+  75% { transform: translateY(-4px) rotate(-2deg); }
+}
+@keyframes burstPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.18; }
+  50% { transform: translate(-50%, -50%) scale(1.08); opacity: 0.3; }
+}
+@media (max-width: 980px) {
+  .hero__stage { height: clamp(360px, 75vw, 460px); max-width: 560px; margin: 0 auto; }
+  .hero__stage-float--3 { display: none; }
+}
+@media (max-width: 640px) {
+  .hero__stage-float--1, .hero__stage-float--2 { display: none; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+.hero__title {
+  font-size: clamp(2.6rem, 7vw, 5.4rem);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+.hero__title .accent {
+  display: inline-block;
+  background: linear-gradient(120deg, #fff 30%, var(--sh-spark) 50%, #fff 70%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 0%; }
+}
+.hero__sub {
+  max-width: 640px;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.55;
+  opacity: 0.92;
+  margin-bottom: 2.5rem;
+}
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.1rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s, background 0.25s, color 0.25s;
+  white-space: nowrap;
+}
+.btn--primary {
+  background: #fff;
+  color: var(--c-red-deep);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+.btn--primary:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35); }
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(8px);
+}
+.btn--ghost:hover { background: rgba(255, 255, 255, 0.18); transform: translateY(-3px); }
+.btn--dark {
+  background: var(--c-ink);
+  color: #fff;
+}
+.btn--dark:hover { background: var(--c-red); transform: translateY(-3px); }
+
+/* Marquee strip below hero */
+.marquee {
+  background: var(--c-ink);
+  color: var(--sh-spark);
+  padding: 1.1rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'Bungee', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+}
+.marquee__track {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+  padding-left: 100%;
+}
+.marquee__track span { padding: 0 1.2rem; }
+.marquee__track .dot { color: var(--c-red); }
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* =========================================================
+   CREDENTIALS STRIP
+   ========================================================= */
+.creds {
+  padding: var(--section-pad) 0;
+  background: var(--c-mist);
+  position: relative;
+}
+.creds__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.creds__title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+.creds__sub {
+  color: var(--c-ink-soft);
+  max-width: 580px;
+  margin: 0 auto;
+}
+.creds__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+.stat-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+.stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.stat-card__num {
+  font-family: 'Bungee', sans-serif;
+  font-size: 2.6rem;
+  background: linear-gradient(135deg, var(--c-red), var(--c-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.stat-card__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-ink-soft);
+  letter-spacing: 0.04em;
+}
+
+.certs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.cert-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--c-ink-soft);
+}
+.cert-pill svg { color: var(--c-red); }
+.cert-pill--soon { opacity: 0.6; font-style: italic; }
+
+/* =========================================================
+   LINEUP INTRO & BRAND DOORS
+   ========================================================= */
+.lineup {
+  padding: var(--section-pad) 0;
+  background: var(--c-paper);
+  text-align: center;
+}
+.lineup__title {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  margin-bottom: 1rem;
+}
+.lineup__sub {
+  font-size: 1.15rem;
+  color: var(--c-ink-soft);
+  max-width: 640px;
+  margin: 0 auto 4rem;
+}
+.doors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  text-align: left;
+}
+.door {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 380px;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  color: #fff;
+  isolation: isolate;
+  transition: transform 0.4s var(--ease-out);
+  cursor: pointer;
+}
+.door::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  transition: transform 0.6s var(--ease-out);
+}
+.door::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.7) 100%);
+}
+.door:hover { transform: translateY(-6px); }
+.door:hover::before { transform: scale(1.08); }
+.door--dl::before { background: linear-gradient(140deg, var(--dl-cyan), var(--dl-violet-deep)); }
+.door--shh::before { background: linear-gradient(140deg, var(--sh-fire), var(--sh-night)); }
+.door--shs::before { background: linear-gradient(140deg, var(--ss-acid), var(--ss-poison)); }
+.door__art {
+  position: absolute;
+  z-index: -1;
+  right: -8%;
+  top: 6%;
+  max-height: 62%;
+  max-width: 78%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transform: rotate(-5deg);
+  filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.45));
+  transition: transform 0.5s var(--ease-out);
+  pointer-events: none;
+  user-select: none;
+}
+.door:hover .door__art {
+  transform: rotate(-2deg) scale(1.07);
+}
+.door__num {
+  font-family: 'Bungee', sans-serif;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+.door__name {
+  font-family: 'Bungee', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+.door__tagline {
+  font-size: 0.95rem;
+  opacity: 0.92;
+  margin-bottom: 1.25rem;
+}
+.door__enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.door__enter svg { transition: transform 0.3s; }
+.door:hover .door__enter svg { transform: translateX(6px); }
+
+/* =========================================================
+   BRAND WORLD — SHARED
+   ========================================================= */
+.world {
+  position: relative;
+  padding: var(--section-pad) 0;
+  overflow: hidden;
+  color: #fff;
+}
+.world__intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+@media (max-width: 900px) {
+  .world__intro { grid-template-columns: 1fr; gap: 2rem; }
+}
+.world__logo {
+  height: 70px;
+  width: auto;
+  margin-bottom: 1.25rem;
+}
+.world__title {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.95;
+  margin-bottom: 1.25rem;
+}
+.world__story {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  opacity: 0.9;
+  max-width: 520px;
+}
+.world__hero-art {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 320px;
+}
+.world__hero-art img {
+  max-height: 460px;
+  width: auto;
+  filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.4));
+  animation: bob 6s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Floating background elements per world */
+.world__bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* =========================================================
+   DR. LOOK WORLD
+   ========================================================= */
+.world--dl {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(110, 58, 255, 0.45), transparent 50%),
+    radial-gradient(circle at 10% 80%, rgba(26, 166, 232, 0.3), transparent 50%),
+    linear-gradient(180deg, var(--dl-cyan-deep) 0%, var(--dl-ink) 100%);
+}
+.world--dl::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.05) 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.04) 1px, transparent 1.5px);
+  background-size: 40px 40px, 60px 60px;
+  pointer-events: none;
+}
+.world--dl .world__bg-shape--a { background: var(--dl-violet); width: 400px; height: 400px; top: 10%; right: -100px; }
+.world--dl .world__bg-shape--b { background: var(--dl-cyan); width: 300px; height: 300px; bottom: 5%; left: -80px; }
+
+/* Dr. Look product grid */
+.dl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.dl-card {
+  position: relative;
+  background: linear-gradient(160deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s, border-color 0.4s;
+  overflow: hidden;
+}
+.dl-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.dl-card__photo {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+.dl-card__photo img {
+  max-height: 100%;
+  width: auto;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.4));
+  transition: transform 0.5s var(--ease-spring);
+}
+.dl-card:hover .dl-card__photo img { transform: scale(1.08) rotate(-2deg); }
+.dl-card__photo--placeholder {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1.5px dashed rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  text-align: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.dl-card__photo--placeholder span:first-child { font-size: 3rem; }
+.dl-card__name {
+  font-family: 'Bungee', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+.dl-card__pitch {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.85;
+  margin-bottom: 1.25rem;
+}
+.dl-card__flavors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+.flavor-pill {
+  padding: 0.3rem 0.75rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.dl-card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+.dl-card__id { font-family: 'Bungee', sans-serif; letter-spacing: 0.1em; }
+.dl-card__specs-toggle {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.dl-card__specs-toggle:hover { opacity: 1; }
+
+.dl-card__specs {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+}
+.dl-card.is-open .dl-card__specs { display: block; }
+.dl-card__specs dl {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.4rem 1rem;
+}
+.dl-card__specs dt { opacity: 0.7; }
+.dl-card__specs dd { font-weight: 600; text-align: right; }
+
+/* =========================================================
+   SUPER HYPER HOT WORLD
+   ========================================================= */
+.world--shh {
+  background:
+    radial-gradient(circle at 70% 30%, rgba(255, 58, 0, 0.35), transparent 55%),
+    radial-gradient(circle at 20% 80%, rgba(255, 176, 0, 0.25), transparent 50%),
+    linear-gradient(180deg, var(--sh-fire-deep) 0%, var(--sh-night) 80%);
+}
+.world--shh::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 50% 50%, rgba(255, 235, 0, 0.04) 0%, transparent 70%);
+  background-size: 8px 8px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.world--shh .world__bg-shape--a { background: var(--sh-fire); width: 500px; height: 500px; top: 5%; right: -150px; opacity: 0.5; }
+.world--shh .world__bg-shape--b { background: var(--sh-ember); width: 350px; height: 350px; bottom: 10%; left: -100px; opacity: 0.4; }
+
+/* Heat / Sour meter */
+.meter {
+  margin: 0 auto 4rem;
+  max-width: 720px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+}
+.meter__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.meter__bar {
+  position: relative;
+  height: 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.meter__fill {
+  position: absolute;
+  inset: 0 100% 0 0;
+  background: linear-gradient(90deg, var(--sh-ember), var(--sh-fire), var(--sh-fire-deep));
+  border-radius: 999px;
+  transition: right 1.4s var(--ease-out);
+  box-shadow: 0 0 20px rgba(255, 58, 0, 0.6);
+}
+.meter--sour .meter__fill {
+  background: linear-gradient(90deg, var(--ss-bolt), var(--ss-acid), var(--ss-acid-deep));
+  box-shadow: 0 0 20px rgba(182, 240, 42, 0.6);
+}
+.meter__labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  opacity: 0.7;
+  margin-top: 0.6rem;
+  letter-spacing: 0.06em;
+}
+
+/* Product family card with format toggle */
+.family {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1.2fr;
+  gap: 2.5rem;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+@media (max-width: 800px) {
+  .family { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.family__photo {
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.family__photo img {
+  max-height: 100%;
+  width: auto;
+  filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.5));
+  transition: opacity 0.3s, transform 0.5s var(--ease-spring);
+}
+.family__photo img.is-swapping { opacity: 0; transform: scale(0.9); }
+.family__name {
+  font-family: 'Bungee', sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  margin-bottom: 0.6rem;
+  line-height: 1;
+}
+.family__pitch {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+.family__flavors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+.family__flavors .flavor-pill { background: rgba(255,255,255,0.1); }
+
+.format-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+.format-tab {
+  padding: 0.55rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.25s;
+}
+.format-tab:hover { background: rgba(255, 255, 255, 0.1); }
+.format-tab.is-active {
+  background: #fff;
+  color: var(--c-ink);
+  border-color: #fff;
+}
+
+.family__specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.family__specs > div { display: flex; justify-content: space-between; gap: 0.5rem; }
+.family__specs span:first-child { opacity: 0.7; }
+.family__specs span:last-child { font-weight: 700; }
+
+/* =========================================================
+   SUPER HYPER SOUR WORLD
+   ========================================================= */
+.world--shs {
+  background:
+    radial-gradient(circle at 75% 25%, rgba(182, 240, 42, 0.35), transparent 55%),
+    radial-gradient(circle at 15% 75%, rgba(255, 235, 0, 0.2), transparent 50%),
+    linear-gradient(180deg, var(--ss-poison) 0%, var(--ss-night) 90%);
+}
+.world--shs::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(75deg, transparent 0 80px, rgba(255, 235, 0, 0.03) 80px 81px);
+  pointer-events: none;
+}
+.world--shs .world__bg-shape--a { background: var(--ss-acid); width: 500px; height: 500px; top: 5%; right: -150px; opacity: 0.45; }
+.world--shs .world__bg-shape--b { background: var(--ss-bolt); width: 320px; height: 320px; bottom: 10%; left: -90px; opacity: 0.35; }
+
+/* =========================================================
+   CAPABILITIES STRIP
+   ========================================================= */
+.caps {
+  background: var(--c-ink);
+  color: #fff;
+  padding: var(--section-pad) 0;
+  position: relative;
+  overflow: hidden;
+}
+.caps::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(230, 57, 70, 0.2), transparent 60%);
+  pointer-events: none;
+}
+.caps__container { position: relative; }
+.caps__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.caps__title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 1rem;
+}
+.caps__sub {
+  font-size: 1.1rem;
+  opacity: 0.75;
+  max-width: 580px;
+  margin: 0 auto;
+}
+.caps__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+@media (max-width: 900px) {
+  .caps__grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+.lines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+.line-tile {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  transition: transform 0.3s, background 0.3s;
+}
+.line-tile:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.1); }
+.line-tile__icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.line-tile__name { font-size: 0.9rem; font-weight: 700; }
+.line-tile__detail { font-size: 0.72rem; opacity: 0.65; margin-top: 0.2rem; }
+.line-tile--soon { opacity: 0.55; border-style: dashed; }
+
+.plants {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.plant {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+}
+.plant__flag {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+.plant--ec .plant__flag { background: linear-gradient(135deg, #ffeb00, #1e88e5); }
+.plant--co .plant__flag { background: linear-gradient(135deg, #ffeb00, #c1121f); }
+.plant--pe .plant__flag { background: linear-gradient(135deg, #c1121f, #fff); }
+.plant__info h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+.plant__info p { font-size: 0.82rem; opacity: 0.7; }
+
+/* =========================================================
+   BOOTH & CONTACT
+   ========================================================= */
+.booth {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(135deg, var(--c-red) 0%, var(--c-red-deep) 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.booth::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(30, 136, 229, 0.4), transparent 50%);
+}
+.booth__container { position: relative; }
+.booth__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .booth__grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+.booth__title {
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  margin-bottom: 1.5rem;
+  line-height: 0.95;
+}
+.booth__sub {
+  font-size: 1.15rem;
+  opacity: 0.92;
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+}
+.booth__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.booth-stat {
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius);
+  backdrop-filter: blur(10px);
+}
+.booth-stat__label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 0.4rem;
+}
+.booth-stat__value {
+  font-family: 'Bungee', sans-serif;
+  font-size: 1.4rem;
+}
+.booth__ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--c-ink);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-pop);
+}
+.contact-card__title {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--c-red);
+  margin-bottom: 1rem;
+}
+.contact-card__name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+.contact-card__role {
+  font-size: 0.9rem;
+  color: var(--c-ink-soft);
+  margin-bottom: 1.5rem;
+}
+.contact-card__row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.contact-card__row svg { color: var(--c-red); flex-shrink: 0; }
+.contact-card__row a:hover { color: var(--c-red); }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.foot {
+  padding: 3rem 0 2rem;
+  background: var(--c-ink);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+}
+.foot__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.foot__brand { display: flex; align-items: center; gap: 0.75rem; }
+.foot__brand img { height: 28px; }
+.foot__motto { font-style: italic; opacity: 0.6; }
+.foot__links { display: flex; gap: 1.25rem; }
+.foot__links a:hover { color: #fff; }
+
+/* =========================================================
+   TASTING PASSPORT (signature interaction)
+   ========================================================= */
+.passport {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 90;
+  width: 240px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transform: translateY(120%);
+  transition: transform 0.6s var(--ease-spring);
+}
+.passport.is-visible { transform: translateY(0); }
+.passport.is-collapsed .passport__body { display: none; }
+.passport.is-complete { animation: pulse-glow 2s ease-in-out infinite; }
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25), 0 0 0 0 rgba(230, 57, 70, 0.5); }
+  50% { box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25), 0 0 0 10px rgba(230, 57, 70, 0); }
+}
+.passport__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--c-ink);
+  color: #fff;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.passport__count {
+  background: var(--c-red);
+  border-radius: 999px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.7rem;
+}
+.passport__body {
+  padding: 1rem;
+}
+.passport__intro {
+  font-size: 0.78rem;
+  color: var(--c-ink-soft);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+.passport__stamps {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.stamp {
+  flex: 1;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px dashed rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  position: relative;
+  transition: all 0.5s var(--ease-spring);
+  background: var(--c-mist);
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.2);
+}
+.stamp.is-stamped {
+  border-style: solid;
+  color: #fff;
+  transform: rotate(-8deg) scale(1.1);
+}
+.stamp[data-brand="dl"].is-stamped { background: var(--dl-cyan); border-color: var(--dl-cyan-deep); }
+.stamp[data-brand="shh"].is-stamped { background: var(--sh-fire); border-color: var(--sh-fire-deep); }
+.stamp[data-brand="shs"].is-stamped { background: var(--ss-acid-deep); border-color: var(--ss-poison); }
+.passport__cta {
+  display: block;
+  width: 100%;
+  padding: 0.7rem;
+  background: var(--c-mist);
+  color: var(--c-ink-soft);
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: all 0.4s;
+}
+.passport.is-complete .passport__cta {
+  background: var(--c-red);
+  color: #fff;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* =========================================================
+   REVEAL ANIMATIONS
+   ========================================================= */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal--delay-1 { transition-delay: 0.1s; }
+.reveal--delay-2 { transition-delay: 0.2s; }
+.reveal--delay-3 { transition-delay: 0.3s; }
+.reveal--delay-4 { transition-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============== STICKY NAV ============== -->
+<nav class="expo-nav" aria-label="Page navigation">
+  <a href="#hero"><img class="expo-nav__logo" src="../../Assets/confiteca/confiteca_logo/confiteca_logo.png" alt="Confiteca"></a>
+  <ul class="expo-nav__links">
+    <li><a href="#dr-look">Dr. Look</a></li>
+    <li><a href="#super-hyper-hot">Hot</a></li>
+    <li><a href="#super-hyper-sour">Sour</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+  </ul>
+  <a href="#booth" class="expo-nav__cta">
+    Visit Booth
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+  </a>
+</nav>
+
+<!-- ============== HERO ============== -->
+<section id="hero" class="hero">
+  <div class="hero__shapes">
+    <div class="hero__shape hero__shape--a"></div>
+    <div class="hero__shape hero__shape--b"></div>
+    <div class="hero__shape hero__shape--c"></div>
+  </div>
+  <div class="hero__container container">
+    <div class="hero__layout">
+      <div class="hero__content">
+        <div class="hero__eyebrow">
+          <span class="dot"></span>
+          <span><strong>Confiteca</strong> · Sweets &amp; Snacks 2026 · Las Vegas</span>
+        </div>
+        <h1 class="hero__title display">
+          Three new worlds.<br>
+          One <span class="accent">candy house</span>.
+        </h1>
+        <p class="hero__sub">
+          63 years of Latin American confectionery, with three bold new lineups for 2026 — <strong>Dr. Look</strong>, <strong>Super Hyper Hot</strong>, and <strong>Super Hyper Sour</strong>.
+        </p>
+        <div class="hero__ctas">
+          <a href="#booth" class="btn btn--primary">
+            Find Booth <span data-fill="booth">3629</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#booth" class="btn btn--ghost">
+            Book a Tasting
+          </a>
+        </div>
+      </div>
+      <div class="hero__stage" aria-hidden="true">
+        <div class="hero__stage-burst"></div>
+        <div class="hero__stage-main">
+          <img src="../../Assets/superhiperacido/superhyper-product-photos-units/HOT-Plop-SHH-individual-mango-strawberry-lemon-3-units.png" alt="">
+        </div>
+        <div class="hero__stage-float hero__stage-float--1">
+          <img src="../../Assets/drlook/new_assets_drlook/Fuzzgum%20doypack%20Front.png" alt="">
+        </div>
+        <div class="hero__stage-float hero__stage-float--2">
+          <img src="../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%20lollipop%20laydown%20bag.png" alt="">
+        </div>
+        <div class="hero__stage-float hero__stage-float--3">
+          <img src="../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%20lollipop%20doypack.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>SINCE 1963</span><span class="dot">●</span>
+    <span>30+ COUNTRIES</span><span class="dot">●</span>
+    <span>16+ BRANDS</span><span class="dot">●</span>
+    <span>3 PLANTS</span><span class="dot">●</span>
+    <span>MILLIONS OF UNITS / MONTH</span><span class="dot">●</span>
+    <span>A COMMITMENT TO JOY</span><span class="dot">●</span>
+    <span>SINCE 1963</span><span class="dot">●</span>
+    <span>30+ COUNTRIES</span><span class="dot">●</span>
+    <span>16+ BRANDS</span><span class="dot">●</span>
+    <span>3 PLANTS</span><span class="dot">●</span>
+    <span>MILLIONS OF UNITS / MONTH</span><span class="dot">●</span>
+    <span>A COMMITMENT TO JOY</span><span class="dot">●</span>
+  </div>
+</div>
+
+<!-- ============== CREDENTIALS ============== -->
+<section class="creds">
+  <div class="container">
+    <div class="creds__header reveal">
+      <div class="eyebrow" style="color: var(--c-red); margin-bottom: 0.75rem;">SCALE YOU CAN STOCK</div>
+      <h2 class="creds__title">Latin America's confectionery house — built for global shelves.</h2>
+      <p class="creds__sub">Vertically integrated manufacturing, 25+ year distributor partnerships, and certifications that travel.</p>
+    </div>
+    <div class="creds__stats reveal">
+      <div class="stat-card"><span class="stat-card__num">63<sup>+</sup></span><span class="stat-card__label">Years of joy</span></div>
+      <div class="stat-card"><span class="stat-card__num">30<sup>+</sup></span><span class="stat-card__label">Countries served</span></div>
+      <div class="stat-card"><span class="stat-card__num">16<sup>+</sup></span><span class="stat-card__label">Brands</span></div>
+      <div class="stat-card"><span class="stat-card__num">3</span><span class="stat-card__label">Production plants</span></div>
+      <div class="stat-card"><span class="stat-card__num">7<sup>+</sup></span><span class="stat-card__label">Production lines</span></div>
+      <div class="stat-card"><span class="stat-card__num">100K<sup>+</sup></span><span class="stat-card__label">Points of sale</span></div>
+    </div>
+    <div class="certs reveal">
+      <span class="cert-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        ISO 22000
+      </span>
+      <span class="cert-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        BPM
+      </span>
+      <span class="cert-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        BASC
+      </span>
+      <span class="cert-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        HACCP
+      </span>
+      <span class="cert-pill cert-pill--soon">FSSC 22000 — coming soon</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== LINEUP DOORS ============== -->
+<section class="lineup">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow" style="color: var(--c-red); margin-bottom: 0.75rem;">THE 2026 NNII LINEUP</div>
+      <h2 class="lineup__title display">Pick a door.</h2>
+      <p class="lineup__sub">Three of our boldest brands push further this year — a chaotic young scientist, an inferno of spicy gum, and a sour shock that'll wake the floor.</p>
+    </div>
+    <div class="doors">
+      <a href="#dr-look" class="door door--dl reveal reveal--delay-1">
+        <img class="door__art" src="../../Assets/drlook/dr_look_character_images/DR%20LOOK_Pose_01_2%202.png" alt="" aria-hidden="true">
+        <div class="door__num">01</div>
+        <div class="door__name">Dr. Look</div>
+        <div class="door__tagline">Sweet. Crazy. Genius.</div>
+        <div class="door__enter">Enter the lab <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="#super-hyper-hot" class="door door--shh reveal reveal--delay-2">
+        <img class="door__art" src="../../Assets/superhiperacido/New-superhyper-hot/Fondo%20bodegon.png" alt="" aria-hidden="true">
+        <div class="door__num">02</div>
+        <div class="door__name">Super Hyper Hot</div>
+        <div class="door__tagline">Fuel the fire.</div>
+        <div class="door__enter">Light it up <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="#super-hyper-sour" class="door door--shs reveal reveal--delay-3">
+        <img class="door__art" src="../../Assets/superhiperacido/New-superhyper-acid/Fondo%20productos.png" alt="" aria-hidden="true">
+        <div class="door__num">03</div>
+        <div class="door__name">Super Hyper Sour</div>
+        <div class="door__tagline">Shock your senses.</div>
+        <div class="door__enter">Get jolted <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== DR. LOOK WORLD ============== -->
+<section id="dr-look" class="world world--dl" data-brand="dl">
+  <div class="world__bg-shape world__bg-shape--a"></div>
+  <div class="world__bg-shape world__bg-shape--b"></div>
+  <div class="container">
+    <div class="world__intro">
+      <div class="reveal">
+        <img class="world__logo" src="../../Assets/drlook/logo_dr_look/Logo_Dr.Look_Horizontal.png" alt="Dr. Look logo">
+        <h2 class="world__title display">Sweet.<br>Crazy.<br>Genius.</h2>
+        <p class="world__story">Dr. Look is no ordinary scientist. He's a brilliantly chaotic genius whose experiments rarely go as planned — and that's exactly where the magic happens. Every mistake, every explosion, every unexpected reaction in his laboratory gives birth to a new, wild, and delicious candy that kids can't resist.</p>
+      </div>
+      <div class="world__hero-art reveal reveal--delay-2">
+        <img src="../../Assets/drlook/new_assets_drlook/PersonajeYProductos.png" alt="Dr. Look character">
+      </div>
+    </div>
+
+    <div class="dl-grid">
+      <!-- Foot Finger Tongue -->
+      <article class="dl-card reveal" data-brand-card="dl">
+        <div class="dl-card__photo">
+          <img src="../../Assets/drlook/new_assets_drlook/Individuales%20LPD.png" alt="Dr. Look Foot, Finger, Tongue dipping sour powder">
+        </div>
+        <h3 class="dl-card__name">Foot, Finger, Tongue</h3>
+        <p class="dl-card__pitch">Three weird shapes. One pot of dipping sour powder. The reaction face does the marketing.</p>
+        <div class="dl-card__flavors">
+          <span class="flavor-pill">Blue Raspberry</span>
+          <span class="flavor-pill">Watermelon</span>
+          <span class="flavor-pill">Green Apple</span>
+        </div>
+        <div class="dl-card__meta">
+          <span class="dl-card__id">ID 4380</span>
+          <button class="dl-card__specs-toggle" type="button">
+            See specs
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="dl-card__specs">
+          <dl>
+            <dt>Format</dt><dd>Dipping sour powder</dd>
+            <dt>Unit weight</dt><dd>40 g · 1.41 oz</dd>
+            <dt>Units / display</dt><dd>12</dd>
+            <dt>Display weight</dt><dd>480 g · 16.93 oz</dd>
+            <dt>Displays / case</dt><dd>12</dd>
+            <dt>Case gross</dt><dd>9.39 kg · 20.7 lb</dd>
+            <dt>Tl × Hi</dt><dd>6 × 5</dd>
+          </dl>
+        </div>
+      </article>
+
+      <!-- Chocotwister -->
+      <article class="dl-card reveal reveal--delay-1" data-brand-card="dl">
+        <div class="dl-card__photo">
+          <img src="../../Assets/drlook/new_assets_drlook/ChocoTwister.png" alt="Dr. Look Chocotwister chocolate cream">
+        </div>
+        <h3 class="dl-card__name">Chocotwister</h3>
+        <p class="dl-card__pitch">Twist the foot. Watch the chocolate spiral. Repeat. The "taste the fun" SKU that practically demos itself.</p>
+        <div class="dl-card__flavors">
+          <span class="flavor-pill">Milk Chocolate</span>
+        </div>
+        <div class="dl-card__meta">
+          <span class="dl-card__id">ID 4382</span>
+          <button class="dl-card__specs-toggle" type="button">
+            See specs
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="dl-card__specs">
+          <dl>
+            <dt>Format</dt><dd>Milk chocolate cream</dd>
+            <dt>Unit weight</dt><dd>35 g · 1.23 oz</dd>
+            <dt>Units / display</dt><dd>12</dd>
+            <dt>Display weight</dt><dd>420 g · 14.82 oz</dd>
+            <dt>Displays / case</dt><dd>12</dd>
+            <dt>Case gross</dt><dd>9.07 kg · 20 lb</dd>
+            <dt>Tl × Hi</dt><dd>6 × 5</dd>
+          </dl>
+        </div>
+      </article>
+
+      <!-- FuzzGum -->
+      <article class="dl-card reveal reveal--delay-2" data-brand-card="dl">
+        <div class="dl-card__photo">
+          <img src="../../Assets/drlook/new_assets_drlook/FuzzGum.png" alt="Dr. Look FuzzGum cotton candy bubble gum">
+        </div>
+        <h3 class="dl-card__name">FuzzGum</h3>
+        <p class="dl-card__pitch">Bubble gum that thinks it's cotton candy. Pink, fluffy, undeniable shelf magnet for the kids' aisle.</p>
+        <div class="dl-card__flavors">
+          <span class="flavor-pill">Cotton Candy</span>
+        </div>
+        <div class="dl-card__meta">
+          <span class="dl-card__id">ID 29946</span>
+          <button class="dl-card__specs-toggle" type="button">
+            See specs
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="dl-card__specs">
+          <dl>
+            <dt>Format</dt><dd>Cotton candy bubble gum</dd>
+            <dt>Unit weight</dt><dd>12 g · 0.42 oz</dd>
+            <dt>Units / bag</dt><dd>6</dd>
+            <dt>Bag weight</dt><dd>72 g · 2.53 oz</dd>
+            <dt>Bags / case</dt><dd>12</dd>
+            <dt>Case gross</dt><dd>2.04 kg · 4.49 lb</dd>
+            <dt>Tl × Hi</dt><dd>7 × 5</dd>
+          </dl>
+        </div>
+      </article>
+
+      <!-- Slime -->
+      <article class="dl-card reveal" data-brand-card="dl">
+        <div class="dl-card__photo">
+          <img src="../../Assets/drlook/new_assets_drlook/Slime%20abierto.png" alt="Dr. Look Slime liquid candy">
+        </div>
+        <h3 class="dl-card__name">Slime</h3>
+        <p class="dl-card__pitch">Liquid candy in a slime cup. Pour, sip, post. Built for the social-first shopper.</p>
+        <div class="dl-card__flavors">
+          <span class="flavor-pill">Grape</span>
+          <span class="flavor-pill">Blueberry</span>
+          <span class="flavor-pill">Strawberry</span>
+        </div>
+        <div class="dl-card__meta">
+          <span class="dl-card__id">ID 4381</span>
+          <button class="dl-card__specs-toggle" type="button">
+            See specs
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="dl-card__specs">
+          <dl>
+            <dt>Format</dt><dd>Liquid candy</dd>
+            <dt>Unit weight</dt><dd>30 g · 1.06 oz</dd>
+            <dt>Units / display</dt><dd>12</dd>
+            <dt>Display weight</dt><dd>360 g · 12.70 oz</dd>
+            <dt>Displays / case</dt><dd>12</dd>
+            <dt>Case gross</dt><dd>5.90 kg · 13 lb</dd>
+            <dt>Tl × Hi</dt><dd>8 × 7</dd>
+          </dl>
+        </div>
+      </article>
+
+      <!-- Flushie -->
+      <article class="dl-card reveal reveal--delay-1" data-brand-card="dl">
+        <div class="dl-card__photo">
+          <img src="../../Assets/drlook/new_assets_drlook/Flushie%20open.png" alt="Dr. Look Flushie toilet-shaped lollipop">
+        </div>
+        <h3 class="dl-card__name">Flushie</h3>
+        <p class="dl-card__pitch">A lollipop in a tiny toilet. Yes, really. The "have you SEEN this?" hero of the category.</p>
+        <div class="dl-card__flavors">
+          <span class="flavor-pill">Strawberry</span>
+          <span class="flavor-pill">Blueberry</span>
+          <span class="flavor-pill">Green Apple</span>
+          <span class="flavor-pill">Cola</span>
+        </div>
+        <div class="dl-card__meta">
+          <span class="dl-card__id">ID 3281</span>
+          <button class="dl-card__specs-toggle" type="button">
+            See specs
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="dl-card__specs">
+          <dl>
+            <dt>Format</dt><dd>Dipping sour powder</dd>
+            <dt>Unit weight</dt><dd>21 g · 0.74 oz</dd>
+            <dt>Units / display</dt><dd>12</dd>
+            <dt>Display weight</dt><dd>252 g · 8.89 oz</dd>
+            <dt>Displays / case</dt><dd>9</dd>
+            <dt>Case gross</dt><dd>5.76 kg · 12.7 lb</dd>
+            <dt>Tl × Hi</dt><dd>6 × 4</dd>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SUPER HYPER HOT WORLD ============== -->
+<section id="super-hyper-hot" class="world world--shh" data-brand="shh">
+  <div class="world__bg-shape world__bg-shape--a"></div>
+  <div class="world__bg-shape world__bg-shape--b"></div>
+  <div class="container">
+    <div class="world__intro">
+      <div class="reveal">
+        <img class="world__logo" src="../../Assets/_optimized/superhyper/logo-super-hyper-hot-180.webp" alt="Super Hyper Hot logo">
+        <h2 class="world__title display">Fuel<br>the fire.</h2>
+        <p class="world__story">Super Hyper isn't just a lollipop or a bubble gum — it's a challenge. Designed for those who dare to push their limits, it delivers extreme heat that leaves you speechless, teary-eyed, and coming back for more. Get ready for unexpected reactions.</p>
+      </div>
+      <div class="world__hero-art reveal reveal--delay-2">
+        <img src="../../Assets/superhiperacido/New-superhyper-hot/Chupetes%20solos%20SHH.png" alt="Super Hyper Hot lollipops">
+      </div>
+    </div>
+
+    <div class="meter reveal" data-meter="hot">
+      <div class="meter__head">
+        <span>🔥 Heat level</span>
+        <span class="meter__value">FUEL</span>
+      </div>
+      <div class="meter__bar"><div class="meter__fill"></div></div>
+      <div class="meter__labels">
+        <span>WARM</span><span>SPICY</span><span>HOT</span><span>UNSPEAKABLE</span>
+      </div>
+    </div>
+
+    <!-- Spicy Liquid Filled Bubble Gum -->
+    <article class="family reveal" data-brand-card="shh" data-family="shh-liquid">
+      <div class="family__photo">
+        <img src="../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%204.8%20Doypack.png" alt="Super Hyper Hot spicy liquid filled gum balls">
+      </div>
+      <div class="family__info">
+        <h3 class="family__name">Spicy Liquid Filled Bubble Gum</h3>
+        <p class="family__pitch">Single bite, double burn. A liquid spicy core wrapped in bubble gum — built to dare and built to repeat.</p>
+        <div class="family__flavors">
+          <span class="flavor-pill">Cherry</span>
+          <span class="flavor-pill">Lime</span>
+          <span class="flavor-pill">Passion Fruit</span>
+        </div>
+        <div class="format-tabs" role="tablist">
+          <button class="format-tab is-active" data-fmt='{"id":"4370","label":"Bag 12pc","unit":"4.8 g","pack":"12 / bag","case":"57.7 g · 2.03 oz, 15 bags / case","gross":"1.18 kg · 2.6 lb","ti":"15 × 11","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%204.8%20Doypack.png"}'>Bag · 12pc</button>
+          <button class="format-tab" data-fmt='{"id":"4371","label":"Laydown 70pc","unit":"4.8 g","pack":"70 / laydown bag","case":"336 g · 11.85 oz, 12 / case","gross":"4.85 kg · 10.7 lb","ti":"7 × 7","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%204.8%20laydown%20bag.png"}'>Laydown · 70pc</button>
+          <button class="format-tab" data-fmt='{"id":"4372","label":"Tupper 170pc","unit":"4.8 g","pack":"170 / tupper jar","case":"816 g · 28.78 oz, 10 / case","gross":"10.93 kg · 24.1 lb","ti":"6 × 5","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%204.8%20tupper.png"}'>Tupper · 170pc</button>
+          <button class="format-tab" data-fmt='{"id":"4373","label":"XL Bag 12pc","unit":"8.2 g","pack":"12 / bag","case":"98.4 g · 3.47 oz, 12 / case","gross":"1.50 kg · 3.3 lb","ti":"15 × 11","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%208.2%20doypack.png"}'>XL Bag · 12pc</button>
+          <button class="format-tab" data-fmt='{"id":"4374","label":"XL Laydown 40pc","unit":"8.2 g","pack":"40 / laydown bag","case":"328 g · 11.57 oz, 12 / case","gross":"4.76 kg · 10.5 lb","ti":"7 × 7","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%208.2%20laydown%20bag.png"}'>XL Laydown · 40pc</button>
+          <button class="format-tab" data-fmt='{"id":"4375","label":"XL Tupper 110pc","unit":"8.2 g","pack":"110 / tupper jar","case":"902 g · 31.82 oz, 10 / case","gross":"11.88 kg · 26.2 lb","ti":"6 × 5","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%208.2%20tupper.png"}'>XL Tupper · 110pc</button>
+        </div>
+        <div class="family__specs">
+          <div><span>Item ID</span><span class="js-spec-id">4370</span></div>
+          <div><span>Unit weight</span><span class="js-spec-unit">4.8 g</span></div>
+          <div><span>Pack</span><span class="js-spec-pack">12 / bag</span></div>
+          <div><span>Case</span><span class="js-spec-case">57.7 g · 2.03 oz, 15 bags / case</span></div>
+          <div><span>Case gross</span><span class="js-spec-gross">1.18 kg · 2.6 lb</span></div>
+          <div><span>Tl × Hi</span><span class="js-spec-ti">15 × 11</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Spicy Powder-Filled Bubble Gum X5 -->
+    <article class="family reveal" data-brand-card="shh">
+      <div class="family__photo">
+        <img src="../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%20shock%20x5%20spicy%20doypack.png" alt="Super Hyper Hot spicy powder-filled bubble gum X5">
+      </div>
+      <div class="family__info">
+        <h3 class="family__name">Spicy Powder-Filled Bubble Gum X5</h3>
+        <p class="family__pitch">Five gum balls, one stick. Crack the shell, hit the spicy powder core, share the screams.</p>
+        <div class="family__flavors">
+          <span class="flavor-pill">Cherry</span>
+          <span class="flavor-pill">Mango</span>
+          <span class="flavor-pill">Lime</span>
+          <span class="flavor-pill">Watermelon</span>
+          <span class="flavor-pill">Passion Fruit</span>
+        </div>
+        <div class="format-tabs" role="tablist">
+          <button class="format-tab is-active" data-fmt='{"id":"4369","label":"Bag x5","unit":"17.5 g (5×3.5g)","pack":"5 / bag","case":"87.5 g · 3.09 oz, 12 / case","gross":"1.32 kg · 2.9 lb","ti":"15 × 11","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%20shock%20x5%20spicy%20doypack.png"}'>Bag · 5pc</button>
+          <button class="format-tab" data-fmt='{"id":"4324","label":"Display 36pc","unit":"17.5 g (5×3.5g)","pack":"36 / display","case":"630 g · 22.22 oz, 16 / case","gross":"11.25 kg · 24.8 lb","ti":"6 × 8","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%20shock%20x5%20spicy%20display.png"}'>Display · 36pc</button>
+        </div>
+        <div class="family__specs">
+          <div><span>Item ID</span><span class="js-spec-id">4369</span></div>
+          <div><span>Unit weight</span><span class="js-spec-unit">17.5 g (5×3.5g)</span></div>
+          <div><span>Pack</span><span class="js-spec-pack">5 / bag</span></div>
+          <div><span>Case</span><span class="js-spec-case">87.5 g · 3.09 oz, 12 / case</span></div>
+          <div><span>Case gross</span><span class="js-spec-gross">1.32 kg · 2.9 lb</span></div>
+          <div><span>Tl × Hi</span><span class="js-spec-ti">15 × 11</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Spicy Bubble Gum Stick 20cm -->
+    <article class="family reveal" data-brand-card="shh">
+      <div class="family__photo">
+        <img src="../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20Hot%20stick%2020%20cm.png" alt="Super Hyper Hot 8-inch spicy bubble gum stick">
+      </div>
+      <div class="family__info">
+        <h3 class="family__name">Spicy Bubble Gum Stick · 8&quot;</h3>
+        <p class="family__pitch">Eight inches of escalating heat. The hand-held challenge SKU that turns checkout into a dare.</p>
+        <div class="family__flavors">
+          <span class="flavor-pill">Cherry</span>
+          <span class="flavor-pill">Passion Fruit</span>
+          <span class="flavor-pill">Lime</span>
+        </div>
+        <div class="format-tabs" role="tablist">
+          <button class="format-tab is-active" data-fmt='{"id":"29976","label":"Display 15pc","unit":"22 g · 0.78 oz","pack":"15 / display","case":"330 g · 11.64 oz, 24 / case","gross":"9.34 kg · 20.59 lb","ti":"7 × 6","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20Hot%20stick%2020%20cm.png"}'>Display · 15pc</button>
+        </div>
+        <div class="family__specs">
+          <div><span>Item ID</span><span class="js-spec-id">29976</span></div>
+          <div><span>Unit weight</span><span class="js-spec-unit">22 g · 0.78 oz</span></div>
+          <div><span>Pack</span><span class="js-spec-pack">15 / display</span></div>
+          <div><span>Case</span><span class="js-spec-case">330 g · 11.64 oz, 24 / case</span></div>
+          <div><span>Case gross</span><span class="js-spec-gross">9.34 kg · 20.59 lb</span></div>
+          <div><span>Tl × Hi</span><span class="js-spec-ti">7 × 6</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Spicy Lollipop Gum Center -->
+    <article class="family reveal" data-brand-card="shh">
+      <div class="family__photo">
+        <img src="../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%20lollipop%20doypack.png" alt="Super Hyper Hot spicy lollipop with gum center">
+      </div>
+      <div class="family__info">
+        <h3 class="family__name">Spicy Lollipop · Gum Center</h3>
+        <p class="family__pitch">Lick first, chew later — and wait for the heat to land. Choose your case from kid-pack to club-store.</p>
+        <div class="family__flavors">
+          <span class="flavor-pill">Strawberry</span>
+          <span class="flavor-pill">Lime</span>
+          <span class="flavor-pill">Mango</span>
+        </div>
+        <div class="format-tabs" role="tablist">
+          <button class="format-tab is-active" data-fmt='{"id":"4376","label":"Bag 6pk","unit":"16 g · 0.56 oz","pack":"6 / bag","case":"96 g · 3.39 oz, 12 / case","gross":"1.45 kg · 3.20 lb","ti":"15 × 11","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%20lollipop%20doypack.png"}'>Bag · 6pk</button>
+          <button class="format-tab" data-fmt='{"id":"4377","label":"Laydown 21pk","unit":"16 g · 0.56 oz","pack":"21 / laydown bag","case":"336 g · 11.85 oz, 12 / case","gross":"4.67 kg · 10.3 lb","ti":"8 × 7","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%20lollipop%20laydown%20bag.png"}'>Laydown · 21pk</button>
+          <button class="format-tab" data-fmt='{"id":"4378","label":"Display 60pk","unit":"16 g · 0.56 oz","pack":"60 / display","case":"960 g · 33.86 oz, 10 / case","gross":"11.07 kg · 24.4 lb","ti":"7 × 7","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%20lollipop%20box.png"}'>Display · 60pk</button>
+          <button class="format-tab" data-fmt='{"id":"4379","label":"XL Bag 60pk","unit":"16 g · 0.56 oz","pack":"60 / XL bag","case":"960 g · 33.86 oz, 12 / case","gross":"12.61 kg · 27.8 lb","ti":"7 × 7","photo":"../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20-%20HOT%20lollipop%20XL%20doypack.png"}'>XL Bag · 60pk</button>
+        </div>
+        <div class="family__specs">
+          <div><span>Item ID</span><span class="js-spec-id">4376</span></div>
+          <div><span>Unit weight</span><span class="js-spec-unit">16 g · 0.56 oz</span></div>
+          <div><span>Pack</span><span class="js-spec-pack">6 / bag</span></div>
+          <div><span>Case</span><span class="js-spec-case">96 g · 3.39 oz, 12 / case</span></div>
+          <div><span>Case gross</span><span class="js-spec-gross">1.45 kg · 3.20 lb</span></div>
+          <div><span>Tl × Hi</span><span class="js-spec-ti">15 × 11</span></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============== SUPER HYPER SOUR WORLD ============== -->
+<section id="super-hyper-sour" class="world world--shs" data-brand="shs">
+  <div class="world__bg-shape world__bg-shape--a"></div>
+  <div class="world__bg-shape world__bg-shape--b"></div>
+  <div class="container">
+    <div class="world__intro">
+      <div class="reveal">
+        <img class="world__logo" src="../../Assets/_optimized/superhyper/superhiperacido_logo-180.webp" alt="Super Hyper Sour logo">
+        <h2 class="world__title display">Shock<br>your<br>senses.</h2>
+        <p class="world__story">The acid sibling of the Super Hyper family. A sour shock so intense it earns its own face — speechless, teary-eyed, and reaching for one more. The ultimate game with friends: who can handle it? Who taps out first?</p>
+      </div>
+      <div class="world__hero-art reveal reveal--delay-2">
+        <img src="../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%20shock%20x5%20individual.png" alt="Super Hyper Sour gum balls">
+      </div>
+    </div>
+
+    <div class="meter meter--sour reveal" data-meter="sour">
+      <div class="meter__head">
+        <span>⚡ Sour level</span>
+        <span class="meter__value">SHOCK</span>
+      </div>
+      <div class="meter__bar"><div class="meter__fill"></div></div>
+      <div class="meter__labels">
+        <span>TANGY</span><span>ZESTY</span><span>SOUR</span><span>OVERDRIVE</span>
+      </div>
+    </div>
+
+    <!-- Sour Powder Filled Bubble Gum -->
+    <article class="family reveal" data-brand-card="shs">
+      <div class="family__photo">
+        <img src="../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%208%20grs%20doypack.png" alt="Super Hyper Sour powder-filled bubble gum">
+      </div>
+      <div class="family__info">
+        <h3 class="family__name">Sour Powder-Filled Bubble Gum</h3>
+        <p class="family__pitch">A sour powder bomb at the core. Bite, react, stop, restart. Three formats from impulse-buy to club store.</p>
+        <div class="family__flavors">
+          <span class="flavor-pill">Watermelon</span>
+          <span class="flavor-pill">Mango</span>
+          <span class="flavor-pill">Passion Fruit</span>
+        </div>
+        <div class="format-tabs" role="tablist">
+          <button class="format-tab is-active" data-fmt='{"id":"4362","label":"Bag 12pc","unit":"8 g · 0.28 oz","pack":"12 / bag","case":"96 g · 3.39 oz, 12 / case","gross":"1.45 kg · 3.20 lb","ti":"15 × 11","photo":"../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%208%20grs%20doypack.png"}'>Bag · 12pc</button>
+          <button class="format-tab" data-fmt='{"id":"4363","label":"Laydown 45pc","unit":"8 g · 0.28 oz","pack":"45 / laydown bag","case":"320 g · 11.29 oz, 12 / case","gross":"4.67 kg · 10.3 lb","ti":"7 × 7","photo":"../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%208%20grs%20laydown%20bag.png"}'>Laydown · 45pc</button>
+          <button class="format-tab" data-fmt='{"id":"4364","label":"Tupper 110pc","unit":"8 g · 0.28 oz","pack":"110 / tupper jar","case":"880 g · 31.04 oz, 10 / case","gross":"11.66 kg · 25.7 lb","ti":"6 × 5","photo":"../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-%20SOUR%208%20grs%20tupper.png"}'>Tupper · 110pc</button>
+        </div>
+        <div class="family__specs">
+          <div><span>Item ID</span><span class="js-spec-id">4362</span></div>
+          <div><span>Unit weight</span><span class="js-spec-unit">8 g · 0.28 oz</span></div>
+          <div><span>Pack</span><span class="js-spec-pack">12 / bag</span></div>
+          <div><span>Case</span><span class="js-spec-case">96 g · 3.39 oz, 12 / case</span></div>
+          <div><span>Case gross</span><span class="js-spec-gross">1.45 kg · 3.20 lb</span></div>
+          <div><span>Tl × Hi</span><span class="js-spec-ti">15 × 11</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Sour Powder Filled Bubble Gum X5 -->
+    <article class="family reveal" data-brand-card="shs">
+      <div class="family__photo">
+        <img src="../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%20shock%20x5%20doypack.png" alt="Super Hyper Sour X5 stick">
+      </div>
+      <div class="family__info">
+        <h3 class="family__name">Sour Powder-Filled Bubble Gum X5</h3>
+        <p class="family__pitch">Five sour balls per stick. The shareable format your front-of-line racks have been begging for.</p>
+        <div class="family__flavors">
+          <span class="flavor-pill">Blue Raspberry</span>
+          <span class="flavor-pill">Cherry</span>
+          <span class="flavor-pill">Lime</span>
+          <span class="flavor-pill">Green Apple</span>
+        </div>
+        <div class="format-tabs" role="tablist">
+          <button class="format-tab is-active" data-fmt='{"id":"4361","label":"Bag x5","unit":"17.5 g (5×3.5g)","pack":"5 / bag","case":"87.5 g · 3.09 oz, 12 / case","gross":"1.32 kg · 2.9 lb","ti":"15 × 11","photo":"../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%20shock%20x5%20doypack.png"}'>Bag · 5pc</button>
+          <button class="format-tab" data-fmt='{"id":"4323","label":"Display 36pc","unit":"17.5 g (5×3.5g)","pack":"36 / display","case":"630 g · 22.22 oz, 16 / case","gross":"11.25 kg · 24.8 lb","ti":"6 × 8","photo":"../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%20shock%20x5%20display.png"}'>Display · 36pc</button>
+        </div>
+        <div class="family__specs">
+          <div><span>Item ID</span><span class="js-spec-id">4361</span></div>
+          <div><span>Unit weight</span><span class="js-spec-unit">17.5 g (5×3.5g)</span></div>
+          <div><span>Pack</span><span class="js-spec-pack">5 / bag</span></div>
+          <div><span>Case</span><span class="js-spec-case">87.5 g · 3.09 oz, 12 / case</span></div>
+          <div><span>Case gross</span><span class="js-spec-gross">1.32 kg · 2.9 lb</span></div>
+          <div><span>Tl × Hi</span><span class="js-spec-ti">15 × 11</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Sour Bubble Gum Stick 20cm -->
+    <article class="family reveal" data-brand-card="shs">
+      <div class="family__photo">
+        <img src="../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20Sour%20stick%2020%20cm.png" alt="Super Hyper Sour 8-inch bubble gum stick">
+      </div>
+      <div class="family__info">
+        <h3 class="family__name">Sour Bubble Gum Stick · 8&quot;</h3>
+        <p class="family__pitch">A full eight inches of sour endurance. Eat-as-you-go theatrics in a high-margin SKU.</p>
+        <div class="family__flavors">
+          <span class="flavor-pill">Watermelon</span>
+          <span class="flavor-pill">Mango</span>
+        </div>
+        <div class="format-tabs" role="tablist">
+          <button class="format-tab is-active" data-fmt='{"id":"21072","label":"Display 15pc","unit":"22 g · 0.77 oz","pack":"15 / display","case":"330 g · 11.64 oz, 20 / case","gross":"11.64 kg · 25.66 lb","ti":"9 × 6","photo":"../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20Sour%20stick%2020%20cm.png"}'>Display · 15pc</button>
+        </div>
+        <div class="family__specs">
+          <div><span>Item ID</span><span class="js-spec-id">21072</span></div>
+          <div><span>Unit weight</span><span class="js-spec-unit">22 g · 0.77 oz</span></div>
+          <div><span>Pack</span><span class="js-spec-pack">15 / display</span></div>
+          <div><span>Case</span><span class="js-spec-case">330 g · 11.64 oz, 20 / case</span></div>
+          <div><span>Case gross</span><span class="js-spec-gross">11.64 kg · 25.66 lb</span></div>
+          <div><span>Tl × Hi</span><span class="js-spec-ti">9 × 6</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Sour Lollipop Gum Center -->
+    <article class="family reveal" data-brand-card="shs">
+      <div class="family__photo">
+        <img src="../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%20lollipop%20doypack.png" alt="Super Hyper Sour lollipop with gum center">
+      </div>
+      <div class="family__info">
+        <h3 class="family__name">Sour Lollipop · Gum Center</h3>
+        <p class="family__pitch">A sour shell, a gum heart, and a face that says "I regret everything but I'll do it again." Four formats for every shelf.</p>
+        <div class="family__flavors">
+          <span class="flavor-pill">Passion Fruit</span>
+          <span class="flavor-pill">Cherry</span>
+        </div>
+        <div class="format-tabs" role="tablist">
+          <button class="format-tab is-active" data-fmt='{"id":"4365","label":"Bag 6pk","unit":"16 g · 0.56 oz","pack":"6 / bag","case":"96 g · 3.39 oz, 12 / case","gross":"1.54 kg · 3.5 lb","ti":"15 × 11","photo":"../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%20lollipop%20doypack.png"}'>Bag · 6pk</button>
+          <button class="format-tab" data-fmt='{"id":"4366","label":"Laydown 21pk","unit":"16 g · 0.56 oz","pack":"21 / laydown bag","case":"336 g · 11.85 oz, 12 / case","gross":"4.67 kg · 10.3 lb","ti":"8 × 7","photo":"../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%20lollipop%20laydown%20bag.png"}'>Laydown · 21pk</button>
+          <button class="format-tab" data-fmt='{"id":"4367","label":"Display 60pk","unit":"16 g · 0.56 oz","pack":"60 / display","case":"960 g · 33.86 oz, 10 / case","gross":"11.07 kg · 24.4 lb","ti":"7 × 7","photo":"../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%20lollipop%20box.png"}'>Display · 60pk</button>
+          <button class="format-tab" data-fmt='{"id":"4368","label":"XL Bag 60pk","unit":"16 g · 0.56 oz","pack":"60 / XL bag","case":"960 g · 33.86 oz, 12 / case","gross":"12.61 kg · 27.8 lb","ti":"7 × 7","photo":"../../Assets/superhiperacido/New-superhyper-acid/Super%20Hyper%20-SOUR%20lollipop%20doypack%20XL.png"}'>XL Bag · 60pk</button>
+        </div>
+        <div class="family__specs">
+          <div><span>Item ID</span><span class="js-spec-id">4365</span></div>
+          <div><span>Unit weight</span><span class="js-spec-unit">16 g · 0.56 oz</span></div>
+          <div><span>Pack</span><span class="js-spec-pack">6 / bag</span></div>
+          <div><span>Case</span><span class="js-spec-case">96 g · 3.39 oz, 12 / case</span></div>
+          <div><span>Case gross</span><span class="js-spec-gross">1.54 kg · 3.5 lb</span></div>
+          <div><span>Tl × Hi</span><span class="js-spec-ti">15 × 11</span></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============== CAPABILITIES ============== -->
+<section id="capabilities" class="caps">
+  <div class="container caps__container">
+    <div class="caps__header reveal">
+      <div class="eyebrow" style="color: var(--c-red); margin-bottom: 0.75rem;">BUILT TO SHIP</div>
+      <h2 class="caps__title display">From bold idea to international shelf.</h2>
+      <p class="caps__sub">Three plants. Seven production lines. Custom formats, white label, and private label development on request.</p>
+    </div>
+
+    <div class="caps__grid">
+      <div class="reveal">
+        <h3 style="font-size: 1.1rem; margin-bottom: 1rem; opacity: 0.8;">Production lines</h3>
+        <div class="lines-grid">
+          <div class="line-tile"><div class="line-tile__icon">⚪</div><div class="line-tile__name">Gum Balls</div><div class="line-tile__detail">Sugar · acid-coated · long</div></div>
+          <div class="line-tile"><div class="line-tile__icon">🟢</div><div class="line-tile__name">Chewing Gum</div><div class="line-tile__detail">Mint · fruit · stick · tablet</div></div>
+          <div class="line-tile"><div class="line-tile__icon">🍭</div><div class="line-tile__name">Lollipops</div><div class="line-tile__detail">Deposited · die-cut · novelty</div></div>
+          <div class="line-tile"><div class="line-tile__icon">🍬</div><div class="line-tile__name">Candy</div><div class="line-tile__detail">Hard · chewy · tablet</div></div>
+          <div class="line-tile"><div class="line-tile__icon">🟫</div><div class="line-tile__name">Chocolate</div><div class="line-tile__detail">Tablets · coated · deposited</div></div>
+          <div class="line-tile"><div class="line-tile__icon">🟧</div><div class="line-tile__name">Deposited</div><div class="line-tile__detail">Specialty &amp; premium</div></div>
+          <div class="line-tile"><div class="line-tile__icon">💧</div><div class="line-tile__name">Liquid Candy</div><div class="line-tile__detail">Novelty formats</div></div>
+          <div class="line-tile line-tile--soon"><div class="line-tile__icon">🐻</div><div class="line-tile__name">Gummies</div><div class="line-tile__detail">Coming 2027–28</div></div>
+        </div>
+      </div>
+      <div class="reveal reveal--delay-2">
+        <h3 style="font-size: 1.1rem; margin-bottom: 1rem; opacity: 0.8;">Three plants. One South America.</h3>
+        <div class="plants">
+          <div class="plant plant--ec">
+            <div class="plant__flag">🏭</div>
+            <div class="plant__info">
+              <h4>Ecuador — Headquarters</h4>
+              <p>Gum balls, chewing gum, lollipops, hard &amp; soft candies, chocolate, novelties</p>
+            </div>
+          </div>
+          <div class="plant plant--co">
+            <div class="plant__flag">🏭</div>
+            <div class="plant__info">
+              <h4>Colombia — Regional</h4>
+              <p>Gum, lollipops, hard candies, novelties</p>
+            </div>
+          </div>
+          <div class="plant plant--pe">
+            <div class="plant__flag">🏭</div>
+            <div class="plant__info">
+              <h4>Perú — Regional</h4>
+              <p>Lollipops (all formats), gum production, candies</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="certs reveal" style="border-top-color: rgba(255,255,255,0.1);">
+      <span class="cert-pill" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        ISO 22000
+      </span>
+      <span class="cert-pill" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        BPM
+      </span>
+      <span class="cert-pill" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        BASC
+      </span>
+      <span class="cert-pill" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        HACCP
+      </span>
+      <span class="cert-pill cert-pill--soon" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55);">FSSC 22000 — coming soon</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BOOTH & CONTACT ============== -->
+<section id="booth" class="booth">
+  <div class="container booth__container">
+    <div class="booth__grid">
+      <div class="reveal">
+        <div class="eyebrow" style="color: rgba(255,255,255,0.85); margin-bottom: 1rem;">VISIT US</div>
+        <h2 class="booth__title display">See you<br>in Vegas.</h2>
+        <p class="booth__sub">Try every product on this page. Talk margins, MOQs, and custom formats with our team. Walk out with a tasting plan for your stores.</p>
+        <div class="booth__stats">
+          <div class="booth-stat">
+            <span class="booth-stat__label">Booth</span>
+            <span class="booth-stat__value" data-fill="booth">3629</span>
+          </div>
+          <div class="booth-stat">
+            <span class="booth-stat__label">Dates</span>
+            <span class="booth-stat__value" data-fill="dates">May 19–21, 2026</span>
+          </div>
+          <div class="booth-stat">
+            <span class="booth-stat__label">Show</span>
+            <span class="booth-stat__value">Sweets &amp; Snacks</span>
+          </div>
+        </div>
+        <div class="booth__ctas">
+          <a href="#" class="btn btn--primary" data-fill="meeting">Book a Meeting</a>
+          <a href="mailto:jluidvinosky@confiteca.com?subject=Sweets%20%26%20Snacks%202026%20%E2%80%94%20Meeting%20Request" class="btn btn--ghost">Email the Team</a>
+        </div>
+      </div>
+      <div class="contact-card reveal reveal--delay-2">
+        <div class="contact-card__title">Sales · North America</div>
+        <div class="contact-card__name">Jorge Luidvinsky</div>
+        <div class="contact-card__role">Confiteca · Confectionery sales lead</div>
+        <div class="contact-card__row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7L12 13 2 7"/></svg>
+          <a href="mailto:jluidvinosky@confiteca.com" data-fill="email">jluidvinosky@confiteca.com</a>
+        </div>
+        <div class="contact-card__row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92V21a1 1 0 01-1.11 1A19.86 19.86 0 013.07 4.11 1 1 0 014.07 3H8.16a1 1 0 011 .76l1.27 4.43a1 1 0 01-.29 1L8.79 10.79a16 16 0 006.12 6.12l1.6-1.35a1 1 0 011-.29l4.43 1.27a1 1 0 01.06 1.99z"/></svg>
+          <a href="tel:+13059151077">+1 (305) 915-1077</a>
+        </div>
+        <div class="contact-card__row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          <a href="https://www.confiteca.com" target="_blank" rel="noopener">www.confiteca.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="foot">
+  <div class="container foot__row">
+    <div class="foot__brand">
+      <img src="../../Assets/confiteca/confiteca_logo/confiteca_smile_icon_square.png" alt="Confiteca">
+      <span class="foot__motto">Hoy es tu mejor día para ser feliz.</span>
+    </div>
+    <div class="foot__links">
+      <a href="https://www.confiteca.com/en/">Confiteca.com</a>
+      <a href="https://www.confiteca.com/en/press.html">Press</a>
+      <a href="https://www.linkedin.com/company/confitecaoficial/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div>&copy; 2026 Confiteca C.A.</div>
+  </div>
+</footer>
+
+<!-- ============== TASTING PASSPORT ============== -->
+<aside class="passport" id="passport" aria-label="Tasting passport">
+  <header class="passport__head" id="passportHead">
+    <span>🎟️ Tasting Passport</span>
+    <span class="passport__count"><span id="passportCount">0</span> / 3</span>
+  </header>
+  <div class="passport__body">
+    <p class="passport__intro">Scroll through each brand world to collect your stamps. Three stamps unlock a tasting at our booth.</p>
+    <div class="passport__stamps">
+      <div class="stamp" data-brand="dl" title="Dr. Look">DL</div>
+      <div class="stamp" data-brand="shh" title="Super Hyper Hot">SH</div>
+      <div class="stamp" data-brand="shs" title="Super Hyper Sour">SS</div>
+    </div>
+    <a href="#booth" class="passport__cta" id="passportCta">Reserve a tasting →</a>
+  </div>
+</aside>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- Reveal on scroll ---------- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ---------- Dr. Look spec toggle ---------- */
+  document.querySelectorAll('.dl-card__specs-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.dl-card');
+      const open = card.classList.toggle('is-open');
+      btn.firstChild.textContent = open ? 'Hide specs ' : 'See specs ';
+    });
+  });
+
+  /* ---------- Format tabs (SH Hot / Sour) ---------- */
+  document.querySelectorAll('.family').forEach(family => {
+    const tabs = family.querySelectorAll('.format-tab');
+    const img = family.querySelector('.family__photo img');
+    const fields = {
+      id: family.querySelector('.js-spec-id'),
+      unit: family.querySelector('.js-spec-unit'),
+      pack: family.querySelector('.js-spec-pack'),
+      case: family.querySelector('.js-spec-case'),
+      gross: family.querySelector('.js-spec-gross'),
+      ti: family.querySelector('.js-spec-ti'),
+    };
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        if (tab.classList.contains('is-active')) return;
+        tabs.forEach(t => t.classList.remove('is-active'));
+        tab.classList.add('is-active');
+        let data;
+        try { data = JSON.parse(tab.dataset.fmt); } catch (e) { return; }
+        if (img && data.photo) {
+          img.classList.add('is-swapping');
+          setTimeout(() => {
+            img.src = data.photo;
+            img.classList.remove('is-swapping');
+          }, 200);
+        } else if (img) {
+          img.classList.add('is-swapping');
+          setTimeout(() => img.classList.remove('is-swapping'), 350);
+        }
+        if (fields.id) fields.id.textContent = data.id;
+        if (fields.unit) fields.unit.textContent = data.unit;
+        if (fields.pack) fields.pack.textContent = data.pack;
+        if (fields.case) fields.case.textContent = data.case;
+        if (fields.gross) fields.gross.textContent = data.gross;
+        if (fields.ti) fields.ti.textContent = data.ti;
+      });
+    });
+  });
+
+  /* ---------- Heat / Sour meters ---------- */
+  const meterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const meter = entry.target;
+      const fill = meter.querySelector('.meter__fill');
+      if (fill) {
+        const target = meter.dataset.meter === 'sour' ? '5%' : '8%';
+        // animate to "max"
+        requestAnimationFrame(() => {
+          fill.style.right = '5%';
+        });
+      }
+      meterObserver.unobserve(meter);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.meter').forEach(m => meterObserver.observe(m));
+
+  /* ---------- Tasting Passport ---------- */
+  const passport = document.getElementById('passport');
+  const passportCount = document.getElementById('passportCount');
+  const passportCta = document.getElementById('passportCta');
+  const passportHead = document.getElementById('passportHead');
+  const stamped = new Set();
+
+  // Show passport once user starts scrolling past the hero
+  const heroObs = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) {
+      passport.classList.add('is-visible');
+    }
+  }, { threshold: 0 });
+  const hero = document.querySelector('.hero');
+  if (hero) heroObs.observe(hero);
+
+  // Stamp each brand world
+  const worldObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const brand = entry.target.dataset.brand;
+      if (!brand || stamped.has(brand)) return;
+      stamped.add(brand);
+      const stamp = passport.querySelector(`.stamp[data-brand="${brand}"]`);
+      if (stamp) stamp.classList.add('is-stamped');
+      passportCount.textContent = stamped.size;
+      if (stamped.size === 3) {
+        passport.classList.add('is-complete');
+        passportCta.textContent = '🎉 Reserve your tasting →';
+      }
+      worldObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.world').forEach(w => worldObserver.observe(w));
+
+  // Collapse on header click
+  passportHead.addEventListener('click', () => passport.classList.toggle('is-collapsed'));
+})();
+</script>
+</body>
+</html>
