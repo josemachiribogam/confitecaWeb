@@ -183,7 +183,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero {
   position: relative;
   min-height: 100vh;
-  padding: 1rem 0 5rem;
+  padding: 1rem 0 1rem;
   background: radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.18), transparent 60%),
               linear-gradient(135deg, var(--c-red) 0%, var(--c-red-deep) 55%, #7a0a14 100%);
   color: #fff;
@@ -382,7 +382,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .hero__title .accent {
   display: inline-block;
-  background: linear-gradient(120deg, #fff 30%, var(--sh-spark) 50%, #fff 70%);
+  background: linear-gradient(120deg, #fff 0%, var(--sh-spark) 50%, #fff 70%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -836,12 +836,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* =========================================================
    SUPER HYPER HOT WORLD
    ========================================================= */
-.world--shh {
+/* .world--shh {
   background:
     radial-gradient(circle at 70% 30%, rgba(255, 58, 0, 0.35), transparent 55%),
     radial-gradient(circle at 20% 80%, rgba(255, 176, 0, 0.25), transparent 50%),
     linear-gradient(180deg, var(--sh-fire-deep) 0%, var(--sh-night) 80%);
-}
+} */
+
+.world--shh {
+  background-image: url('../../Assets/superhiperacido/New-superhyper-hot/Fondo%20bodegon.png');
+} 
 .world--shh::before {
   content: '';
   position: absolute;
@@ -1275,9 +1279,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             Find Booth <span data-fill="booth">3629</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <a href="#booth" class="btn btn--ghost">
+          <!-- <a href="#booth" class="btn btn--ghost">
             Book a Tasting
-          </a>
+          </a> -->
         </div>
       </div>
       <div class="hero__stage" aria-hidden="true">
@@ -1566,7 +1570,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <p class="world__story">Super Hyper isn't just a lollipop or a bubble gum — it's a challenge. Designed for those who dare to push their limits, it delivers extreme heat that leaves you speechless, teary-eyed, and coming back for more. Get ready for unexpected reactions.</p>
       </div>
       <div class="world__hero-art reveal reveal--delay-2">
-        <img src="../../Assets/superhiperacido/New-superhyper-hot/Chupetes%20solos%20SHH.png" alt="Super Hyper Hot lollipops">
+        <img src="../../Assets/superhiperacido/New-superhyper-hot/Super%20Hyper%20Hot%20lollipops.png" alt="Super Hyper Hot lollipops">
       </div>
     </div>
 
