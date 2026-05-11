@@ -378,10 +378,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero__title {
   font-size: clamp(2.6rem, 7vw, 5.4rem);
   margin-bottom: 1.5rem;
+}
+/* Shadow only on solid fill lines — dark shadow + gradient clipped text breaks on mobile WebKit */
+.hero__title-shadow {
   text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 .hero__title .accent {
   display: inline-block;
+  color: transparent;
+  text-shadow: none;
   background: linear-gradient(120deg, #fff 0%, var(--sh-spark) 50%, #fff 70%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
@@ -1265,8 +1270,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span><strong>Confiteca</strong> · Sweets &amp; Snacks 2026 · Las Vegas</span>
         </div>
         <h1 class="hero__title display">
-          Three new worlds.<br>
-          One <span class="accent">candy house.</span>
+          <span class="hero__title-shadow">Three new worlds.<br>
+          One </span><span class="accent">candy house.</span>
         </h1>
         <p class="hero__sub">
           63 years of Latin American confectionery, with three bold new lineups for 2026 — <strong>Dr. Look</strong>, <strong>Super Hyper Hot</strong>, and <strong>Super Hyper Sour</strong>.
