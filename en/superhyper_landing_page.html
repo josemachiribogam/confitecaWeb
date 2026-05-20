@@ -582,7 +582,12 @@
             filter: drop-shadow(0 26px 36px rgba(0,0,0,.55));
             transition: transform .5s var(--ease), opacity .25s ease;
         }
-        .family:hover .family__photo img { transform: scale(1.05) rotate(-2deg); }
+        @media (hover: hover) {
+            .family:hover .family__photo img { transform: scale(1.05) rotate(-2deg); }
+        }
+        @media (hover: none) {
+            .world--hot .family:hover, .world--sour .family:hover { transform: none; }
+        }
         .family__name { font-family: 'Bungee', cursive; font-size: clamp(1.15rem,2.1vw,1.6rem); margin-bottom: .6rem; line-height: 1.1; }
         .family__pitch { color: rgba(255,255,255,0.76); margin-bottom: 1rem; }
         .family--featured .family__pitch { max-width: 46ch; }
@@ -769,18 +774,27 @@
             .world__tags { justify-content: center; }
             .world__logo { margin-left: auto; margin-right: auto; }
             .world__art, .world--sour .world__art { order: -1; margin-bottom: 1rem; }
+            .world__art img { max-width: 320px; height: auto; }
             .meter { margin-left: auto; margin-right: auto; }
             .family--featured, .world--sour .family--featured { grid-template-columns: 1fr; }
             .world--sour .family--featured .family__photo { order: 0; }
-            .family--featured .family__photo { max-width: 320px; margin: 0 auto; }
-            .range-grid { grid-template-columns: 1fr 1fr; }
+            .family--featured .family__photo {
+                aspect-ratio: auto;
+                display: block;
+                max-width: 320px;
+                width: 100%;
+                margin: 0 auto;
+            }
+            .family--featured .family__photo img { width: 100%; height: auto; }
+            .range-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+            .range-grid > .family { min-width: 0; }
             .world--sour .world__lifestyle-inner { margin-left: 0; text-align: left; }
             .world--sour .world__lifestyle-inner p { margin-left: 0; }
             .world--sour .world__lifestyle::after { background: linear-gradient(100deg, rgba(3,16,9,.94) 0%, rgba(3,16,9,.58) 48%, rgba(3,16,9,.1) 100%); }
             .reaction-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 620px) {
-            .range-grid { grid-template-columns: 1fr; }
+            .range-grid { grid-template-columns: minmax(0, 1fr); }
             .family__specs, .family--compact .family__specs { grid-template-columns: 1fr; }
             .reaction-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
             .hero-prod--hot { margin-right: 0; }
@@ -807,7 +821,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- NAV -->
     <nav id="nav">
-        <img src="../Assets/superhiperacido/superhiperacido_logo/SHA-02.png" alt="Super Hyper logo" height="80px" decoding="async">
+        <a href="../index.html" aria-label="Go to homepage">
+            <img src="../Assets/superhiperacido/superhiperacido_logo/SHA-02.png" alt="Super Hyper logo" height="80px" decoding="async">
+        </a>
         <div class="nav-links">
             <a href="#hot">Hot</a>
             <a href="#sour">Sour</a>
@@ -1293,7 +1309,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
     <footer>
-        <a href="../index.html" class="brand">SUPER HYPER</a>
+        <a href="https://confiteca.com" class="brand">SUPER HYPER</a>
         <p>&copy; 2026 Super Hyper by Confiteca. Built for the bold — do you dare?</p>
     </footer>
 
