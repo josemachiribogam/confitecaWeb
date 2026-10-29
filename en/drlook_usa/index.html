@@ -405,7 +405,7 @@ function visibleWatch(el, cb) { new IntersectionObserver(es => es.forEach(e => c
   let dr = null, mixer = null, acts = {}, current = null, nextGesture = 3;
   let DRX = .35, narrow = false;
   // where the three candies float, around Dr. Look: wide windows spread them out, phones keep them close
-  const SLOTS = { wide: [[-1.3, 2.35, -1.4], [1.4, 1.95, -.6], [1.2, .3, .9]], narrow: [[-.9, 2.2, -.7], [.92, 1.95, -.5], [.82, .3, .55]] };
+  const SLOTS = { wide: [[-1.0, 2.5, -1.4], [1.4, 1.95, -.6], [1.2, .3, .9]], narrow: [[-.9, 2.2, -.7], [.92, 1.95, -.5], [.82, .3, .55]] };
   function placeFloater(f) { const p = SLOTS[narrow ? 'narrow' : 'wide'][f.userData.slot]; f.userData.base.set(DRX + p[0], p[1], p[2]); f.userData.size = narrow ? .8 : 1; }
   const floaters = [];
   const pointer = new THREE.Vector2(), pointerSmooth = new THREE.Vector2();
@@ -443,7 +443,7 @@ function visibleWatch(el, cb) { new IntersectionObserver(es => es.forEach(e => c
     if (!dr) return; const r = canvas.getBoundingClientRect();
     ray.setFromCamera(new THREE.Vector2((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), camera);
     if (ray.intersectObject(dr, true).length) { play('spin'); nextGesture = 9; }
-    else { const hit = floaters.find(f => ray.intersectObject(f, true).length); if (hit) hit.userData.boost = 1; }
+    else { const hit = floaters.find(f => ray.intersectObject(f, true).length); if (hit && !(hit.userData.trick > 0)) hit.userData.trick = 1; }   // click a candy: it hops and does one spin
   });
 
   function size() {
@@ -469,12 +469,17 @@ function visibleWatch(el, cb) { new IntersectionObserver(es => es.forEach(e => c
     }
     if (mixer) mixer.update(REDUCED ? 0 : dt);
     for (const f of floaters) {
-      const u = f.userData; u.boost = Math.max(0, (u.boost || 0) - dt * .8);
+      // candies always show you their front; they only move when you click them
+      const u = f.userData;
       const s = f.scale.x + ((u.size || 1) - f.scale.x) * damp(5, dt); f.scale.setScalar(s);
-      const bob = REDUCED ? 0 : Math.sin(t * 1.3 + u.seed) * .12;
-      f.position.set(u.base.x + pointerSmooth.x * .15, u.base.y + bob + u.boost * .5, u.base.z);
-      f.rotation.y += dt * (u.spin + u.boost * 12) * (REDUCED ? 0 : 1);
-      f.rotation.z = Math.sin(t * .9 + u.seed) * .08;
+      let hop = 0, spin = 0;
+      if (u.trick > 0) {
+        const k = 1 - u.trick; u.trick = Math.max(0, u.trick - dt / .9);
+        hop = Math.sin(k * Math.PI) * .45; spin = (k * k * (3 - 2 * k)) * Math.PI * 2 * (u.slot % 2 ? -1 : 1);
+      }
+      const bob = REDUCED ? 0 : Math.sin(t * 1.3 + u.seed) * .05;      // a gentle float, no turning
+      f.position.set(u.base.x + pointerSmooth.x * .15, u.base.y + bob + hop, u.base.z);
+      f.rotation.set(0, Math.atan2(camera.position.x - f.position.x, camera.position.z - f.position.z) + spin, 0);
     }
     camera.position.x = DRX * .4 + pointerSmooth.x * -.25;
     renderer.render(scene, camera);
