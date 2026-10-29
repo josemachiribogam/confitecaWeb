@@ -1,9 +1,15 @@
 # macOS system files
 .DS_Store
 
+# Claude Code local working directory (worktrees, caches)
+.claude/
+
 # Lighthouse performance reports (build artifacts)
 reports/
 
 # Campaign/marketing source files (too large for GitHub, not needed for deployment)
 Assets/*/CAMPAÑAS/
 Assets/*/CAMPA*/
+
+# Dr. Look 3D source files (Meshy / Blender exports, ~600 MB): only the built files in en/drlook_usa/assets are deployed
+dr-look-lab/tools/
