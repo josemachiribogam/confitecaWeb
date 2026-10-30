@@ -27,7 +27,7 @@ if (!/\/$/.test(location.pathname) && !/\.[a-z0-9]+$/i.test(location.pathname)) 
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; font-family: Figtree, system-ui, sans-serif; color: var(--ink); background: var(--tile); font-size: 18px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+body { margin: 0; overflow-x: clip; font-family: Figtree, system-ui, sans-serif; color: var(--ink); background: var(--tile); font-size: 18px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 :focus-visible { outline: 4px solid var(--pink); outline-offset: 3px; }
@@ -79,7 +79,7 @@ header.top nav a.link:hover { text-decoration: underline; text-decoration-thickn
 .loadnote { position: absolute; z-index: 4; right: 30%; bottom: 40%; font-weight: 700; font-size: 15px; color: var(--white); }
 
 /* ---------- inventions: pick one, it spins up on the bench ---------- */
-.inv { background: var(--white); border-top: var(--line); border-bottom: var(--line); padding: 110px 0 120px; }
+.inv { background: var(--white); padding: 110px 0 120px; }
 .inv h2 { margin-bottom: 14px; }
 .inv .intro { font-weight: 600; max-width: 52ch; margin: 26px 0 40px; }
 .tabs { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 34px; }
@@ -106,7 +106,7 @@ header.top nav a.link:hover { text-decoration: underline; text-decoration-thickn
 .chips span { border: 2px solid var(--ink); border-radius: 999px; padding: 3px 11px; font-size: 14px; font-weight: 700; background: var(--white); }
 
 /* ---------- origin story: the lab TV ---------- */
-.origin { background: var(--ink); color: var(--white); padding: 120px 0; position: relative; overflow: hidden; }
+.origin { background: var(--ink); color: var(--white); padding: 130px 0 120px; position: relative; overflow: hidden; }
 .origin .grid { display: grid; grid-template-columns: .9fr 1.25fr; gap: 56px; align-items: center; }
 .origin .big { color: var(--yolk); -webkit-text-stroke-color: #0a1a40; text-shadow: 0 .09em 0 #0a1a40; }
 .origin p { font-size: 19px; max-width: 40ch; color: #d9e9ff; }
@@ -120,7 +120,7 @@ header.top nav a.link:hover { text-decoration: underline; text-decoration-thickn
 .bubble { position: absolute; left: -26px; bottom: -34px; background: var(--white); color: var(--ink); font: 400 22px/1.1 'Lilita One', sans-serif; border: var(--line); border-radius: 20px; padding: 14px 18px; box-shadow: 4px 4px 0 #0a1a40; transform: rotate(-4deg); max-width: 250px; }
 
 /* ---------- quiz ---------- */
-.quiz { background: var(--yolk); border-bottom: var(--line); padding: 120px 0; }
+.quiz { background: var(--yolk); padding: 130px 0 120px; }
 .quiz .box { max-width: 900px; }
 .quiz .big { margin-bottom: 16px; }
 .quiz .q { font-family: 'Lilita One', sans-serif; font-size: clamp(26px, 2.6vw, 34px); margin: 34px 0 20px; }
@@ -139,7 +139,7 @@ header.top nav a.link:hover { text-decoration: underline; text-decoration-thickn
 .linkbtn { background: none; border: 0; font: 700 16px Figtree, sans-serif; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; padding: 10px 4px; }
 
 /* ---------- the lab door: the last thing before you go in ---------- */
-.door { position: relative; background: var(--pink); padding: 120px 0 130px; overflow: hidden; }
+.door { position: relative; background: var(--pink); padding: 140px 0 130px; overflow: hidden; }
 .door .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
 .door p { font-size: 20px; font-weight: 600; max-width: 34ch; margin: 22px 0 32px; color: var(--white); }
 .vault { position: relative; aspect-ratio: 4 / 5; max-height: 560px; justify-self: center; width: 100%; max-width: 440px;
@@ -160,8 +160,38 @@ header.top nav a.link:hover { text-decoration: underline; text-decoration-thickn
 .flask { position: absolute; z-index: 4; width: 34%; right: -16%; bottom: -6%; transform: rotate(8deg); pointer-events: none; }
 .vault.open .leaf.l { transform: translateX(-102%); } .vault.open .leaf.r { transform: translateX(102%); } .vault.open .sign { opacity: 0; }
 
+/* ---------- slime drip edges between sections ---------- */
+.edge { position: relative; z-index: 3; height: 0; }
+.edge .drip { position: absolute; left: 0; top: -1px; width: 100%; height: 70px; display: block; }
+.edge .drip path { fill: var(--c); stroke: var(--ink); stroke-width: 3px; vector-effect: non-scaling-stroke; }
+/* ---------- scrolling verbs ---------- */
+.marquee { position: relative; z-index: 4; background: var(--ink); color: var(--yolk); border-block: 3px solid var(--ink); overflow: hidden; transform: rotate(-1.5deg); margin: -18px -10px 0; padding: 14px 0; }
+.marquee .track { display: flex; width: max-content; animation: slide 38s linear infinite; }
+.marquee span { font: 400 clamp(26px, 3vw, 40px)/1 'Lilita One', sans-serif; padding: 0 28px; white-space: nowrap; }
+.marquee span::after { content: '\2605'; color: var(--pink); margin-left: 56px; font-size: .7em; vertical-align: middle; }
+@keyframes slide { to { transform: translateX(-50%); } }
+/* ---------- where to buy ---------- */
+.stores { background: #6ff0b0; padding: 130px 0 120px; }
+.stores .lede { margin: 26px 0 34px; }
+.shops { list-style: none; margin: 0 0 56px; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 900px; }
+.shops li { background: var(--white); border: var(--line); border-radius: var(--r-mid); box-shadow: 4px 4px 0 var(--ink); padding: 22px 18px; text-align: center;
+  font: 400 26px/1.05 'Lilita One', sans-serif; display: flex; flex-direction: column; gap: 6px; justify-content: center; min-height: 112px; }
+.shops li:nth-child(odd) { transform: rotate(-1.5deg); } .shops li:nth-child(even) { transform: rotate(1.2deg); }
+.shops li small { font: 700 14px/1.2 Figtree, sans-serif; opacity: .75; }
+.ask { display: grid; grid-template-columns: 170px 1fr; gap: 26px; align-items: end; background: var(--white); border: var(--line); border-radius: var(--r-big); box-shadow: var(--pop); padding: 26px 30px 26px 10px; max-width: 760px; }
+.ask img { width: 170px; margin: -90px 0 -26px; }
+.ask h3 { font-size: 30px; margin-bottom: 8px; } .ask p { margin: 0 0 18px; max-width: 42ch; }
+/* ---------- close-up lens on the bench ---------- */
+.lens { position: absolute; right: 18px; bottom: 18px; width: 38%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 4px solid var(--ink); box-shadow: 5px 5px 0 var(--ink);
+  background: var(--white); transform: rotate(-4deg); transition: transform .25s; }
+.lens img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lens::after { content: ''; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 6px rgba(255,255,255,.55); background: radial-gradient(60% 40% at 30% 22%, rgba(255,255,255,.35), transparent 60%); }
+.lens figcaption { position: absolute; z-index: 2; left: 50%; bottom: 8%; transform: translateX(-50%); font: 700 13px Figtree, sans-serif; background: var(--white); border: 2px solid var(--ink); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.stage:hover .lens { transform: rotate(0) scale(1.04); }
+.lens[hidden] { display: none; }
+
 /* ---------- grown-ups ---------- */
-footer { background: var(--ink); color: #d9e9ff; padding: 56px 0 60px; font-size: 16px; }
+footer { background: var(--ink); color: #d9e9ff; padding: 96px 0 60px; font-size: 16px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center; justify-content: space-between; }
 footer strong { color: var(--white); font-family: 'Lilita One', sans-serif; font-weight: 400; font-size: 24px; display: block; margin-bottom: 4px; }
 footer p { margin: 0; max-width: 56ch; }
@@ -194,6 +224,9 @@ footer .btn { --c: var(--white); }
   .sticker { top: 84px; right: 16px; font-size: 15px; padding: 9px 12px; }
   .loadnote { right: 50%; bottom: auto; top: 30%; transform: translateX(50%); }
   .bench, .origin .grid, .door .wrap { grid-template-columns: 1fr; }
+  .shops { grid-template-columns: repeat(2, 1fr); } .shops li { font-size: 22px; min-height: 96px; }
+  .ask { grid-template-columns: 1fr; padding: 24px; } .ask img { display: none; } .lens { width: 44%; right: 12px; bottom: 12px; }
+  .edge .drip { height: 44px; }
   .doorcopy { padding-left: 0; } .door .pointer { display: none; } .cotton { width: 110px; left: auto; right: 0; top: -130px; } .flask { right: -6%; }
   .stage { min-height: 400px; }
   .result { grid-template-columns: 1fr; text-align: left; }
@@ -201,6 +234,7 @@ footer .btn { --c: var(--white); }
   .bubble { left: 8px; bottom: -40px; font-size: 18px; }
 }
 @media (min-width: 901px) and (max-height: 640px) { .hint { display: none; } .sticker { top: 96px; font-size: 18px; } }
+@media (prefers-reduced-motion: reduce) { .marquee .track { animation: none; } }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
@@ -219,6 +253,7 @@ footer .btn { --c: var(--white); }
       <a class="link" href="#inventions">The inventions</a>
       <a class="link" href="#origin">The FuzzGum accident</a>
       <a class="link" href="#quiz">Which one are you?</a>
+      <a class="link" href="#stores">Where to buy</a>
       <button class="btn small pink" data-lab>Enter the lab</button>
     </nav>
   </div>
@@ -238,12 +273,15 @@ footer .btn { --c: var(--white); }
           <button class="btn pink" data-lab>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-2.5L14 9V3"/><path d="M7.5 15h9"/></svg>
             Enter the lab</button>
-          <a class="btn white" href="#inventions">Meet the inventions</a>
+          <a class="btn white" href="#stores">Find it in stores</a>
         </div>
         <p class="hint">Psst: click Dr. Look.</p>
       </div>
     </div>
   </section>
+
+  <!-- what every invention makes you do: a scrolling band -->
+  <div class="marquee" aria-hidden="true"><div class="track"><span>Twist it</span><span>Dip it</span><span>Flush it</span><span>Stretch it</span><span>Chew it</span><span>Twist it</span><span>Dip it</span><span>Flush it</span><span>Stretch it</span><span>Chew it</span><span>Twist it</span><span>Dip it</span><span>Flush it</span><span>Stretch it</span><span>Chew it</span><span>Twist it</span><span>Dip it</span><span>Flush it</span><span>Stretch it</span><span>Chew it</span></div></div>
 
   <!-- INVENTIONS -->
   <section class="inv" id="inventions" aria-labelledby="invTitle">
@@ -255,12 +293,14 @@ footer .btn { --c: var(--white); }
         <div class="stage" id="stage">
           <canvas id="inv3d" aria-label="3D model of the selected invention" role="img"></canvas>
           <span class="drag" aria-hidden="true">Drag to spin</span>
+          <figure class="lens" id="lens" hidden><img id="lensImg" alt=""><figcaption>Up close</figcaption></figure>
         </div>
         <div class="card" id="card" role="tabpanel" aria-live="polite"></div>
       </div>
     </div>
   </section>
 
+  <div class="edge" style="--c: var(--white)"><svg class="drip" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V20 L1440 20 C1440 42 1410 42 1410 20 L1390 20 C1390 42 1346 42 1346 20 L1312 20 C1312 54 1274 54 1274 20 L1217 20 C1217 42 1171 42 1171 20 L1122 20 C1122 80 1095 80 1095 20 L930 20 C930 54 894 54 894 20 L827 20 C827 68 773 68 773 20 L728 20 C728 54 700 54 700 20 L636 20 C636 80 576 80 576 20 L362 20 C362 68 306 68 306 20 L164 20 C164 42 109 42 109 20 L54 20 C54 80 0 80 0 20 L0 20 Z"/></svg></div>
   <!-- ORIGIN -->
   <section class="origin" id="origin" aria-labelledby="originTitle">
     <div class="wrap grid">
@@ -278,6 +318,7 @@ footer .btn { --c: var(--white); }
     </div>
   </section>
 
+  <div class="edge" style="--c: var(--ink)"><svg class="drip" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V20 L1440 20 C1440 42 1410 42 1410 20 L1390 20 C1390 42 1346 42 1346 20 L1312 20 C1312 54 1274 54 1274 20 L1217 20 C1217 42 1171 42 1171 20 L1122 20 C1122 80 1095 80 1095 20 L930 20 C930 54 894 54 894 20 L827 20 C827 68 773 68 773 20 L728 20 C728 54 700 54 700 20 L636 20 C636 80 576 80 576 20 L362 20 C362 68 306 68 306 20 L164 20 C164 42 109 42 109 20 L54 20 C54 80 0 80 0 20 L0 20 Z"/></svg></div>
   <!-- QUIZ -->
   <section class="quiz" id="quiz" aria-labelledby="quizTitle">
     <div class="wrap">
@@ -288,6 +329,24 @@ footer .btn { --c: var(--white); }
     </div>
   </section>
 
+  <div class="edge" style="--c: var(--yolk)"><svg class="drip" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V20 L1440 20 C1440 42 1410 42 1410 20 L1390 20 C1390 42 1346 42 1346 20 L1312 20 C1312 54 1274 54 1274 20 L1217 20 C1217 42 1171 42 1171 20 L1122 20 C1122 80 1095 80 1095 20 L930 20 C930 54 894 54 894 20 L827 20 C827 68 773 68 773 20 L728 20 C728 54 700 54 700 20 L636 20 C636 80 576 80 576 20 L362 20 C362 68 306 68 306 20 L164 20 C164 42 109 42 109 20 L54 20 C54 80 0 80 0 20 L0 20 Z"/></svg></div>
+  <!-- WHERE TO BUY -->
+  <section class="stores" id="stores" aria-labelledby="storesTitle">
+    <div class="wrap">
+      <h2 class="big" id="storesTitle">Find Dr. Look in stores.</h2>
+      <p class="lede">Grab your favorite invention in the candy aisle at these stores.</p>
+      <ul class="shops" id="shops"></ul>
+      <div class="ask">
+        <img src="assets/img/drlook-pointing.webp" alt="" aria-hidden="true">
+        <div>
+          <h3>Can't find it near you?</h3>
+          <p>Ask a grown-up to tell your local store you want Dr. Look. Stores listen to their shoppers.</p>
+          <a class="btn small" href="https://www.confiteca.com/en/contact.html">Ask for Dr. Look in your store</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="edge" style="--c: #6ff0b0"><svg class="drip" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V20 L1440 20 C1440 42 1410 42 1410 20 L1390 20 C1390 42 1346 42 1346 20 L1312 20 C1312 54 1274 54 1274 20 L1217 20 C1217 42 1171 42 1171 20 L1122 20 C1122 80 1095 80 1095 20 L930 20 C930 54 894 54 894 20 L827 20 C827 68 773 68 773 20 L728 20 C728 54 700 54 700 20 L636 20 C636 80 576 80 576 20 L362 20 C362 68 306 68 306 20 L164 20 C164 42 109 42 109 20 L54 20 C54 80 0 80 0 20 L0 20 Z"/></svg></div>
   <!-- DOOR -->
   <section class="door" aria-labelledby="doorTitle">
     <div class="wrap">
@@ -308,6 +367,7 @@ footer .btn { --c: var(--white); }
       </div>
     </div>
   </section>
+  <div class="edge" style="--c: var(--pink)"><svg class="drip" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V20 L1440 20 C1440 42 1410 42 1410 20 L1390 20 C1390 42 1346 42 1346 20 L1312 20 C1312 54 1274 54 1274 20 L1217 20 C1217 42 1171 42 1171 20 L1122 20 C1122 80 1095 80 1095 20 L930 20 C930 54 894 54 894 20 L827 20 C827 68 773 68 773 20 L728 20 C728 54 700 54 700 20 L636 20 C636 80 576 80 576 20 L362 20 C362 68 306 68 306 20 L164 20 C164 42 109 42 109 20 L54 20 C54 80 0 80 0 20 L0 20 Z"/></svg></div>
 </main>
 
 <footer>
@@ -335,17 +395,29 @@ const IMG = 'assets/img/';
 
 /* ---------------- the inventions (stop = their place in the lab tour) ---------------- */
 const INVENTIONS = [
-  { key: 'fg', name: 'FuzzGum', stop: 0, color: '#ff7cbd', verb: 'Chew it', glb: 'fg-29946', level: 5, flavors: ['Cotton candy'], img: IMG + 'p-fuzzgum.webp', logo: IMG + 'logo-fuzzgum.webp',
+  { key: 'fg', zoom: IMG + 'zoom-fuzzgum.webp', name: 'FuzzGum', stop: 0, color: '#ff7cbd', verb: 'Chew it', glb: 'fg-29946', level: 5, flavors: ['Cotton candy'], img: IMG + 'p-fuzzgum.webp', logo: IMG + 'logo-fuzzgum.webp',
     text: 'It starts as fluffy cotton candy. Chew it and it turns into bubble gum. Even Dr. Look isn’t totally sure how.' },
-  { key: 'fl', name: 'Flushie', stop: 1, color: '#6fe0ff', verb: 'Flush it', glb: 'fl-3281', level: 5, flavors: ['Strawberry', 'Blueberry', 'Green apple', 'Cola'], img: IMG + 'p-flushie.webp', logo: IMG + 'logo-flushie.webp',
+  { key: 'fl', zoom: IMG + 'zoom-flushie.webp', name: 'Flushie', stop: 1, color: '#6fe0ff', verb: 'Flush it', glb: 'fl-3281', level: 5, flavors: ['Strawberry', 'Blueberry', 'Green apple', 'Cola'], img: IMG + 'p-flushie.webp', logo: IMG + 'logo-flushie.webp',
     text: 'A lollipop that lives in a tiny toilet full of sour powder. Plunge it in, lick it off, plunge again.' },
-  { key: 'lpd', name: 'Foot, Finger, Tongue', stop: 2, color: '#c79bff', verb: 'Dip it', glb: 'lpd-4380', level: 4, flavors: ['Blue raspberry', 'Watermelon', 'Green apple'], img: IMG + 'p-lpd.webp',
+  { key: 'lpd', zoom: IMG + 'zoom-lpd.webp', name: 'Foot, Finger, Tongue', stop: 2, color: '#c79bff', verb: 'Dip it', glb: 'lpd-4380', level: 4, flavors: ['Blue raspberry', 'Watermelon', 'Green apple'], img: IMG + 'p-lpd.webp',
     text: 'A gummy foot, finger or tongue on a stick, with sour powder underneath for dunking. Which body part are you eating first?' },
-  { key: 'ct', name: 'Chocotwister', stop: 3, color: '#ffb36b', verb: 'Twist it', glb: 'ct-4382', level: 4, flavors: ['Milk chocolate'], img: IMG + 'p-chocotwister.webp', logo: IMG + 'logo-chocotwister.webp',
+  { key: 'ct', zoom: IMG + 'zoom-chocotwister.webp', name: 'Chocotwister', stop: 3, color: '#ffb36b', verb: 'Twist it', glb: 'ct-4382', level: 4, flavors: ['Milk chocolate'], img: IMG + 'p-chocotwister.webp', logo: IMG + 'logo-chocotwister.webp',
     text: 'Twist Dr. Look’s feet and chocolate cream comes squishing out of his hair. Yes, his hair.' },
-  { key: 'sl', name: 'Slime', stop: 4, color: '#6ff0b0', verb: 'Stretch it', glb: 'sl-4381', level: 3, flavors: ['Grape', 'Blueberry', 'Strawberry'], img: IMG + 'p-slime.webp', logo: IMG + 'logo-slime.webp',
+  { key: 'sl', zoom: IMG + 'zoom-slime.webp', name: 'Slime', stop: 4, color: '#6ff0b0', verb: 'Stretch it', glb: 'sl-4381', level: 3, flavors: ['Grape', 'Blueberry', 'Strawberry'], img: IMG + 'p-slime.webp', logo: IMG + 'logo-slime.webp',
     text: 'Liquid candy in a little slime cup. Pop the lid, grab it, and pull. How far can you stretch it?' },
 ];
+
+/* ---------------- where to buy ----------------
+   PLACEHOLDER retailers for layout. Replace with Confiteca's confirmed US list before going live. */
+const STORES = [
+  { name: 'IT\u2019SUGAR', note: 'Candy stores nationwide' },
+  { name: 'Kroger', note: 'Midwest & South' },
+  { name: 'Meijer', note: 'Midwest' },
+  { name: 'Walgreens', note: 'Candy aisle' },
+  { name: 'Five Below', note: 'Candy wall' },
+  { name: 'Amazon', note: 'Delivered to your door' },
+];
+$('#shops').innerHTML = STORES.map(s => `<li>${s.name}<small>${s.note}</small></li>`).join('');
 
 /* ---------------- going into the lab ---------------- */
 function goLab(stop) {
@@ -524,6 +596,9 @@ function visibleWatch(el, cb) { new IntersectionObserver(es => es.forEach(e => c
         <span>Flavors</span><span class="chips">${p.flavors.map(f => `<span>${f}</span>`).join('')}</span>
       </div>
       <div><button class="btn pink" data-lab data-stop="${p.stop}">Run the ${p.name} experiment</button></div>`;
+    const lens = $('#lens'), li = $('#lensImg');   // a close-up photo of the real candy
+    li.onload = () => lens.hidden = false; li.onerror = () => lens.hidden = true;
+    li.alt = 'Close-up of ' + p.name + ' candy'; li.src = p.zoom;
     want = p.key;
     const show = obj => { if (want !== p.key) return; if (shown) holder.remove(shown); shown = obj; holder.add(obj); pop = 0; yaw = -.5; vel = 2.4; };
     if (cache[p.key]) show(cache[p.key]);
