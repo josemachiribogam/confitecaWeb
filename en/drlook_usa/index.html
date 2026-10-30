@@ -182,12 +182,14 @@ header.top nav a.link:hover { text-decoration: underline; text-decoration-thickn
 .ask img { width: 170px; margin: -90px 0 -26px; }
 .ask h3 { font-size: 30px; margin-bottom: 8px; } .ask p { margin: 0 0 18px; max-width: 42ch; }
 /* ---------- close-up lens on the bench ---------- */
-.lens { position: absolute; right: 18px; bottom: 18px; width: 38%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 4px solid var(--ink); box-shadow: 5px 5px 0 var(--ink);
-  background: var(--white); transform: rotate(-4deg); transition: transform .25s; }
+.lens { position: absolute; z-index: 3; top: 16px; right: 16px; width: clamp(92px, 19%, 132px); margin: 0; cursor: zoom-in; transform: rotate(-4deg);
+  transition: width .3s cubic-bezier(.3,1.4,.5,1), transform .25s; -webkit-tap-highlight-color: transparent; }
+.lens .ring { display: block; position: relative; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 4px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); background: var(--white); }
 .lens img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.lens::after { content: ''; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 6px rgba(255,255,255,.55); background: radial-gradient(60% 40% at 30% 22%, rgba(255,255,255,.35), transparent 60%); }
-.lens figcaption { position: absolute; z-index: 2; left: 50%; bottom: 8%; transform: translateX(-50%); font: 700 13px Figtree, sans-serif; background: var(--white); border: 2px solid var(--ink); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
-.stage:hover .lens { transform: rotate(0) scale(1.04); }
+.lens .ring::after { content: ''; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 5px rgba(255,255,255,.55); background: radial-gradient(60% 40% at 30% 22%, rgba(255,255,255,.35), transparent 60%); }
+.lens figcaption { position: absolute; z-index: 2; left: 50%; bottom: -10px; transform: translateX(-50%); font: 700 12px Figtree, sans-serif; background: var(--white); border: 2px solid var(--ink); border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+.lens:hover { transform: rotate(0) scale(1.05); }
+.lens.open { width: min(62%, 340px); cursor: zoom-out; transform: rotate(0); }
 .lens[hidden] { display: none; }
 
 /* ---------- grown-ups ---------- */
@@ -225,7 +227,7 @@ footer .btn { --c: var(--white); }
   .loadnote { right: 50%; bottom: auto; top: 30%; transform: translateX(50%); }
   .bench, .origin .grid, .door .wrap { grid-template-columns: 1fr; }
   .shops { grid-template-columns: repeat(2, 1fr); } .shops li { font-size: 22px; min-height: 96px; }
-  .ask { grid-template-columns: 1fr; padding: 24px; } .ask img { display: none; } .lens { width: 44%; right: 12px; bottom: 12px; }
+  .ask { grid-template-columns: 1fr; padding: 24px; } .ask img { display: none; } .lens { width: 84px; top: 12px; right: 12px; } .lens.open { width: 72%; }
   .edge .drip { height: 44px; }
   .doorcopy { padding-left: 0; } .door .pointer { display: none; } .cotton { width: 110px; left: auto; right: 0; top: -130px; } .flask { right: -6%; }
   .stage { min-height: 400px; }
@@ -293,7 +295,7 @@ footer .btn { --c: var(--white); }
         <div class="stage" id="stage">
           <canvas id="inv3d" aria-label="3D model of the selected invention" role="img"></canvas>
           <span class="drag" aria-hidden="true">Drag to spin</span>
-          <figure class="lens" id="lens" hidden><img id="lensImg" alt=""><figcaption>Up close</figcaption></figure>
+          <figure class="lens" id="lens" hidden role="button" tabindex="0" aria-label="Show the close-up photo bigger"><span class="ring"><img id="lensImg" alt=""></span><figcaption>Up close</figcaption></figure>
         </div>
         <div class="card" id="card" role="tabpanel" aria-live="polite"></div>
       </div>
@@ -598,7 +600,10 @@ function visibleWatch(el, cb) { new IntersectionObserver(es => es.forEach(e => c
       <div><button class="btn pink" data-lab data-stop="${p.stop}">Run the ${p.name} experiment</button></div>`;
     const lens = $('#lens'), li = $('#lensImg');   // a close-up photo of the real candy
     li.onload = () => lens.hidden = false; li.onerror = () => lens.hidden = true;
-    li.alt = 'Close-up of ' + p.name + ' candy'; li.src = p.zoom;
+    const zoom = on => { lens.classList.toggle('open', on); lens.querySelector('figcaption').textContent = on ? 'Tap to close' : 'Up close'; };
+    lens.onclick = () => zoom(!lens.classList.contains('open'));
+    lens.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lens.click(); } };
+    zoom(false); li.alt = 'Close-up of ' + p.name + ' candy'; li.src = p.zoom;
     want = p.key;
     const show = obj => { if (want !== p.key) return; if (shown) holder.remove(shown); shown = obj; holder.add(obj); pop = 0; yaw = -.5; vel = 2.4; };
     if (cache[p.key]) show(cache[p.key]);
