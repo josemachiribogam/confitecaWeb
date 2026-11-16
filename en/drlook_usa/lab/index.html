@@ -251,7 +251,39 @@ body.entered #intro { opacity: 0; visibility: hidden; }
 @keyframes stamp { 0% { opacity: 0; transform: rotate(-5deg) scale(2.2); } 60% { opacity: 1; transform: rotate(-5deg) scale(.92); } 100% { opacity: 1; transform: rotate(-5deg) scale(1); } }
 @keyframes flash { 0% { opacity: 0; } 12% { opacity: .95; } 100% { opacity: 0; } }
 
+/* ---------- talk to Dr. Look ---------- */
+#talkBtn { width: auto; padding: 0 16px 0 12px; gap: 8px; display: flex; align-items: center; border-radius: 999px; font-size: 13px; font-weight: 700; }
+#talkBtn[aria-pressed="true"] { background: var(--ink); color: #fff; }
+#talk { position: fixed; z-index: 24; left: max(16px, env(safe-area-inset-left,0px)); bottom: calc(env(safe-area-inset-bottom,0px) + 84px); width: min(340px, calc(100vw - 32px));
+  background: var(--glass); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 18px 50px rgba(19,42,94,.18);
+  overflow: hidden; opacity: 0; transform: translateY(16px) scale(.98); pointer-events: none; transition: opacity .35s, transform .35s; }
+#talk.open { opacity: 1; transform: none; pointer-events: auto; }
+#talkStage { position: relative; height: 300px; background: radial-gradient(120% 90% at 50% 30%, #ffffff 0%, #e4f1fa 55%, #cfe4f3 100%); }
+#talkStage::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(10,168,204,.05) 0 1px, transparent 1px 4px); pointer-events: none; }
+#talkGL { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#talkHead { position: absolute; z-index: 2; top: 10px; left: 12px; right: 10px; display: flex; align-items: center; gap: 8px; font-size: 10px; color: var(--cyan); }
+#talkHead .rec { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); animation: blink 1.2s infinite; }
+#talkClose { margin-left: auto; width: 30px; height: 30px; border-radius: 50%; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; color: var(--ink); }
+#talkClose svg { width: 14px; height: 14px; }
+#talkLoad { position: absolute; z-index: 2; inset: auto 0 14px 0; text-align: center; font-size: 10px; color: var(--steel); }
+#talkBubble { margin: 12px 14px 0; padding: 12px 14px; min-height: 66px; background: #fff; border: 1px solid var(--line); border-radius: 14px 14px 14px 4px; font-size: 15px; line-height: 1.4; font-weight: 500; }
+#talkChips { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 14px 14px; max-height: 104px; overflow-y: auto; overscroll-behavior: contain; }   /* about two rows; the rest scroll */
+#talk { max-height: calc(100vh - 100px); display: flex; flex-direction: column; } #talkStage { flex: none; }
+#talkChips button { padding: 7px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 600; background: #fff; border: 1.5px solid var(--ink); color: var(--ink); }
+#talkChips button:hover { background: var(--ink); color: #fff; }
+#talkChips button:disabled { opacity: .45; }
+#talkForm { display: flex; gap: 8px; padding: 0 14px 12px; }
+#talkForm[hidden] { display: none; }
+#talkInput { flex: 1; min-width: 0; padding: 9px 12px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; font: inherit; font-size: 14px; color: var(--ink); }
+#talkInput:focus { outline: none; border-color: var(--cyan); }
+#talkForm button { padding: 9px 16px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 700; }
+#talkForm button:disabled { opacity: .45; }
+#talkNote { padding: 0 16px 12px; font-size: 10.5px; line-height: 1.35; color: var(--steel); }
+#talkNote[hidden] { display: none; }
 @media (max-width: 760px) {
+  #talkBtn span { display: none; } #talkBtn { padding: 0; width: 42px; justify-content: center; }
+  #talk { left: 12px; right: 12px; width: auto; bottom: calc(env(safe-area-inset-bottom,0px) + 70px); }
+  #talkStage { height: 210px; }
   #brand img { height: 32px; } #brand .sub { display: none; }
   .seg button { padding: 7px 11px; font-size: 12px; }
   #panel { top: auto; left: max(12px, env(safe-area-inset-left,0px)); right: max(12px, env(safe-area-inset-right,0px)); width: auto;
@@ -290,6 +322,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button id="modeTour" aria-pressed="true">Guided tour</button>
     <button id="modeFree" aria-pressed="false">Explore</button>
   </div>
+  <button class="iconbtn" id="talkBtn" aria-pressed="false" aria-label="Talk to Dr. Look" title="Talk to Dr. Look (T)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><span>Ask Dr. Look</span>
+  </button>
   <button class="iconbtn" id="soundBtn" aria-label="Sound on" title="Sound (M)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path id="sndWaves" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
   </button>
@@ -306,6 +341,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div id="panelHead" class="mono"><span class="rec"></span><span id="panelTitle">Invention file</span><span class="id" id="panelId">#0000</span>
     <button id="panelClose" aria-label="Close file"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
   <div id="panelBody"></div>
+</aside>
+
+<aside id="talk" aria-label="Talk to Dr. Look" aria-hidden="true">
+  <div id="talkStage">
+    <canvas id="talkGL" aria-label="Dr. Look, close up"></canvas>
+    <div id="talkHead" class="mono"><span class="rec"></span><span>Dr. Look · live from the lab</span>
+      <button id="talkClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div id="talkLoad" class="mono">Waking up Dr. Look…</div>
+  </div>
+  <div id="talkBubble" aria-live="polite"></div>
+  <div id="talkChips"></div>
+  <form id="talkForm" hidden autocomplete="off">
+    <input id="talkInput" type="text" maxlength="160" placeholder="Ask about my candy inventions…" aria-label="Ask Dr. Look a question" enterkeyhint="send">
+    <button type="submit">Ask</button>
+  </form>
+  <p id="talkNote" hidden>Dr. Look is a cartoon character. A computer program writes his answers, so he can get things wrong. Don't share personal details.</p>
 </aside>
 
 <div id="prompt" hidden></div>
@@ -343,6 +394,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+import { createTalk } from './drlook-talk.js?v=10';
 
 /* =====================================================================
    DR. LOOK'S LAB OF DELIGHTS — v2
@@ -1735,6 +1787,7 @@ function buildUI() {
   $('#modeTour').onclick = () => setMode('tour');
   $('#modeFree').onclick = () => setMode('free');
   $('#soundBtn').onclick = () => setSound(!state.sound);
+  initTalk();
   $('#enterSound').onclick = () => enter(true);
   $('#enterQuiet').onclick = () => enter(false);
   setSound(false);
@@ -2168,7 +2221,92 @@ function onResize() {
 }
 
 boot();
-window.__lab = { updatePacks, updateExperiment, rayHits: (o, d) => new THREE.Raycaster(new THREE.Vector3(...o), new THREE.Vector3(...d).normalize()).intersectObjects((() => { const a = []; scene.traverse(m => m.isMesh && a.push(m)); return a; })(), false).slice(0, 6).map(h => (h.object.name || h.object.type) + " " + h.point.x.toFixed(3)), get screenMat() { return screenMat; }, get fuzzy() { return fuzzy; }, get camera() { return camera; }, state, goStop, runExperiment, setMode, cam, stations, setPackOpen, get drLook() { return drLook; }, drLookGesture, info: () => renderer.info };
+/* ---------------- TALK TO DR. LOOK ----------------
+   A close-up of Dr. Look who answers questions out loud.
+   - Online: answers and voice come from /api/drlook (the server function that holds the OpenAI key).
+   - Offline (local preview, or if the server is unreachable): he uses the built-in script below, with no voice.
+   Typed questions appear only when the server says they are switched on (DRLOOK_FREE_TEXT=1 in Vercel). */
+const DR_LOOK_HEAD_GLB = '../assets/models/drlook-head.glb?v=8';   // bump the number whenever the model file changes, so browsers fetch the new one
+const DR_LOOK_API = '/api/drlook';
+const TALK_SCRIPT = [
+  { id: 'who', q: 'Who are you?', mood: 'happy', a: "I'm Dr. Look! Inventor, candy scientist, and the reason this lab smells like bubblegum." },
+  { id: 'fuzzgum', q: 'What is FuzzGum?', mood: 'smile', a: "FuzzGum starts as fluffy cotton candy. Chew it, and it turns into bubble gum. Even I don't fully know how." },
+  { id: 'flushie', q: 'What is Flushie?', mood: 'laugh', a: "A tiny toilet full of sour powder, with a lollipop to dip in it. My finest and silliest invention!" },
+  { id: 'wrong', q: 'Did an experiment ever go wrong?', mood: 'grimace', a: "Wrong? Me? ... Okay, yes. Most of them. That's where the candy comes from." },
+  { id: 'surprise', q: 'Surprise me!', mood: 'shock', a: "Whoa! The Matter-Altering Machine just blinked at me. Go press the big button and see what happens." },
+];
+const TALK_OFFLINE = { mood: 'think', a: "My lab radio is offline right now. Try one of the other questions!" };
+let talk = null, talkBusy = false, talkCtx = null, talkVoice = null;
+const talkCfg = { online: false, freeText: false };
+const wait = ms => new Promise(r => setTimeout(r, ms));
+async function fetchJSON(url, opt = {}, ms = 25000) {
+  const c = new AbortController(), t = setTimeout(() => c.abort(), ms);
+  try { const r = await fetch(url, { ...opt, signal: c.signal }); return { ok: r.ok, j: await r.json() }; } finally { clearTimeout(t); }
+}
+function talkChips(list) {
+  const box = $('#talkChips'); box.textContent = '';
+  for (const item of list) { const b = document.createElement('button'); b.type = 'button'; b.textContent = item.q; b.onclick = () => askDrLook(item); box.appendChild(b); }
+}
+async function loadTalkConfig() {                                   // ask the server what is switched on; stay on the built-in script if it isn't there
+  try {
+    const { ok, j } = await fetchJSON(DR_LOOK_API, {}, 15000);
+    if (ok && j && j.ok) { talkCfg.online = true; talkCfg.freeText = !!j.freeText; if (Array.isArray(j.questions) && j.questions.length) talkChips(j.questions); }
+  } catch { /* offline: keep the script */ }
+  $('#talkForm').hidden = !talkCfg.freeText; $('#talkNote').hidden = !talkCfg.online;
+}
+async function playVoice(b64) {                                     // plays the spoken answer and reports loudness for the lip-sync
+  const bin = atob(b64), u8 = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+  const buf = await talkCtx.decodeAudioData(u8.buffer), src = talkCtx.createBufferSource(), an = talkCtx.createAnalyser();
+  src.buffer = buf; an.fftSize = 512; src.connect(an); an.connect(talkCtx.destination);
+  const data = new Uint8Array(an.fftSize); src.start(); talkVoice = src;
+  return { duration: buf.duration, level() { an.getByteTimeDomainData(data); let s = 0; for (const v of data) { const x = (v - 128) / 128; s += x * x; } return Math.min(1, Math.sqrt(s / data.length) * 4.5); } };
+}
+function stopVoice() { if (talkVoice) { try { talkVoice.stop(); } catch { /* already ended */ } talkVoice = null; } }
+async function askDrLook(item) {                                    // item: { id, q } from a button, or { question } typed by the visitor
+  if (!talk || !talk.ready || talkBusy) return; talkBusy = true;
+  const bubble = $('#talkBubble'), controls = [...$('#talkChips').children, $('#talkInput'), $('#talkForm button')]; controls.forEach(b => b.disabled = true);
+  const wantVoice = state.sound;
+  if (wantVoice) { try { talkCtx = talkCtx || new (window.AudioContext || window.webkitAudioContext)(); if (talkCtx.state === 'suspended') talkCtx.resume(); } catch { /* no audio available */ } }
+  bubble.textContent = '…'; talk.setMood('think'); const started = performance.now();
+  let reply = null;
+  if (talkCfg.online) {
+    try {
+      const { j } = await fetchJSON(DR_LOOK_API, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(item.id ? { id: item.id, voice: wantVoice } : { question: item.question, voice: wantVoice }) });
+      if (j && typeof j.text === 'string') reply = j;
+    } catch { /* fall back to the script */ }
+  }
+  if (!reply) { const local = TALK_SCRIPT.find(x => x.id === item.id) || TALK_OFFLINE; reply = { text: local.a, mood: local.mood }; }
+  await wait(Math.max(0, 650 - (performance.now() - started)));
+  const show = p => { bubble.textContent = reply.text.slice(0, Math.ceil(reply.text.length * p)); };
+  let voice = null;
+  if (reply.audio && wantVoice && talkCtx && $('#talk').classList.contains('open')) { try { voice = await playVoice(reply.audio); } catch { voice = null; } }
+  if ($('#talk').classList.contains('open')) await talk.say(reply.text, reply.mood, voice ? { duration: voice.duration, level: voice.level, onProgress: show } : { onProgress: show });
+  bubble.textContent = reply.text; await wait(700); talk.setMood('happy');
+  controls.forEach(b => b.disabled = false); talkBusy = false;
+}
+function setTalk(open) {
+  const el = $('#talk'); el.classList.toggle('open', open); el.setAttribute('aria-hidden', String(!open)); $('#talkBtn').setAttribute('aria-pressed', String(open));
+  if (!open) { stopVoice(); if (talk) talk.close(); return; }
+  if (!talkCfg.online) loadTalkConfig();                              // try the server again each time the panel opens
+  if (!talk) talk = createTalk({ canvas: $('#talkGL'), loader: new GLTFLoader().setMeshoptDecoder(MeshoptDecoder), url: DR_LOOK_HEAD_GLB });
+  talk.open().then(() => { $('#talkLoad').hidden = true; talk.setMood('happy');
+    if (!$('#talkBubble').textContent) $('#talkBubble').textContent = "Hello! Pick a question and I'll answer it."; })
+    .catch(() => { $('#talkLoad').textContent = "Dr. Look couldn't load. Try again."; });
+}
+function initTalk() {
+  talkChips(TALK_SCRIPT); loadTalkConfig();
+  $('#talkBtn').onclick = () => setTalk(!$('#talk').classList.contains('open'));
+  $('#talkClose').onclick = () => setTalk(false);
+  const input = $('#talkInput');
+  $('#talkForm').onsubmit = e => { e.preventDefault(); const q = input.value.trim(); if (q.length > 1 && !talkBusy) { input.value = ''; askDrLook({ question: q }); } };
+  for (const ev of ['keydown', 'keyup', 'keypress']) input.addEventListener(ev, e => e.stopPropagation());       // typing must not walk Dr. Look around the lab
+  addEventListener('keydown', e => { if (e.code === 'KeyT' && !e.metaKey && !e.ctrlKey && state.entered && !/^(INPUT|TEXTAREA)$/.test(e.target.tagName)) setTalk(!$('#talk').classList.contains('open')); });
+  addEventListener('pointermove', e => { if (!talk) return; const r = $('#talkGL').getBoundingClientRect();
+    talk.pointer((e.clientX - (r.left + r.width / 2)) / (innerWidth / 2), -(e.clientY - (r.top + r.height * .4)) / (innerHeight / 2)); });
+}
+
+window.__lab = { setTalk, askDrLook, TALK_SCRIPT, talkCfg, get talk() { return talk; }, updatePacks, updateExperiment, rayHits: (o, d) => new THREE.Raycaster(new THREE.Vector3(...o), new THREE.Vector3(...d).normalize()).intersectObjects((() => { const a = []; scene.traverse(m => m.isMesh && a.push(m)); return a; })(), false).slice(0, 6).map(h => (h.object.name || h.object.type) + " " + h.point.x.toFixed(3)), get screenMat() { return screenMat; }, get fuzzy() { return fuzzy; }, get camera() { return camera; }, state, goStop, runExperiment, setMode, cam, stations, setPackOpen, get drLook() { return drLook; }, drLookGesture, info: () => renderer.info };
 </script>
 </body>
 </html>
